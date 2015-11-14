@@ -33,6 +33,7 @@ angular.module('loveToEatItFrontEndApp')
     // login with instagram
     $scope.login = function() {
         $window.hello('instagram').login().then(function(auth) {
+            //doesnt get to this method
             console.log('logining');
             loginUserSession('instagram', auth.authResponse.code);
         }, function(error) {
