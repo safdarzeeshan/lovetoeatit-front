@@ -9,58 +9,58 @@
  * Main module of the application.
  */
 var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
-    'ngCookies', 'ui.router',
-]);
-
-loveToEatItFrontEndApp.factory('Test', function() {
+    'ngCookies', 'ui.router', 'csrf-cross-domain'
+]).factory('Test', function () {
 
     var testFactory = {};
-    testFactory.getValue = function(){
+    testFactory.getValue = function () {
         return 'wow';
     };
     return testFactory;
-});
-
-loveToEatItFrontEndApp.factory('Hello', function () {
+}).factory('Hello', function () {
     return {
         getData: function () {
             return 'this works';
         }
     };
-});
+}).factory('responseIntercepter', function ($q) {
+    return {
+        response: function (response) {
+            // do something on success
+            console.log('response.headers', response.headers());
+            if (response.headers()['content-type'] === "application/json; charset=utf-8") {
+            }
+            return response;
+        },
+        responseError: function (response) {
+            // do something on error
+            return $q.reject(response);
+        }
+    };
+}).config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
-loveToEatItFrontEndApp.run(function($http, $cookies, $rootScope, $location, Auth){
-
-    $http.get('http://localhost:8000/api/csrftoken')
-        .then(function(response) {
-            console.log($cookies.get('csrftoken'));
-            // $http.defaults.headers.post["x-csrftoken"] = $cookies.csrftoken;
-        });
-
-
-});
-
-
-loveToEatItFrontEndApp.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-
+    $httpProvider.defaults.useXDomain = true;
     $httpProvider.defaults.withCredentials = true;
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     // $httpProvider.defaults.headers.post["x-csrftoken"] = 'TEST';
+    //delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
     // console.log($cookies.csrftoken);
-    // $httpProvider.interceptors.push(function($cookies) {
-    //     return {
-    //         'request': function(config) {
-    //             console.log( 'config: ', config.headers );
-    //             config.headers['X-CSRFToken'] = $cookies.csrftoken;
-    //             return config;
-    //         }
-    //     };
-    // });
+    $httpProvider.interceptors.push('responseIntercepter');
+    $httpProvider.interceptors.push(function ($cookies) {
+        return {
+            'request': function (config) {
+                if ($cookies.get('csrftoken')) {
+                    config.headers['X-CSRFToken'] = $cookies.get('csrftoken');
+                }
+                return config;
+            }
+        };
+    });
 
     $urlRouterProvider.otherwise('/login');
-    $locationProvider.html5Mode( true ).hashPrefix( '!' );
+    $locationProvider.html5Mode(true).hashPrefix('!');
 
     $stateProvider
 
@@ -99,7 +99,25 @@ loveToEatItFrontEndApp.config(function($stateProvider, $urlRouterProvider, $loca
         })
 
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        .state('about', {
-        });
+        .state('about', {});
+
+}).config(function (csrfCDProvider) {
+
+    // Django default name
+    csrfCDProvider.setHeaderName('X-CSRFToken');
+    csrfCDProvider.setCookieName('CSRFToken');
+
+
+}).run(function ($http, $cookies, $rootScope, $location, Auth) {
+    $http.defaults.headers.post["x-csrftoken"] = $cookies.csrftoken;
+    $http.get('http://rfq.lan.uz:8000/api/csrftoken').success(function (data, status, headers) {
+        $http.defaults.headers.post["x-csrftoken"] = data['csrftoken'];
+        $cookies.put('x-csrftoken', data['csrftoken']);
+    }, function () {
+        console.log('FAILED', $cookies);
+        console.log(arguments);
+    });
+
 
 });
+
