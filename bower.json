@@ -2,7 +2,7 @@
   "name": "love-to-eat-it-front-end",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "^1.3.0",
+    "angular": "^1.5.0",
     "angular-cookies": "^1.3.0",
     "angular-ui-router": "ui-router#~0.2.15",
     "bootstrap-sass-official": "^3.2.0",
@@ -12,5 +12,9 @@
     "angular-mocks": "^1.3.0"
   },
   "appPath": "app",
-  "moduleName": "loveToEatItFrontEndApp"
+  "moduleName": "loveToEatItFrontEndApp",
+  "resolutions": {
+    "angular": "^1.5.0",
+    "angular-cookies": "^1.3.0"
+  }
 }

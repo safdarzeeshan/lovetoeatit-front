@@ -2,6 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
+    <base href="/">
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
@@ -13,11 +14,10 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+
   </head>
   <body ng-app="loveToEatItFrontEndApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+
 
     <!-- Add your site or application content here -->
     <div class="header">
@@ -32,15 +32,14 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">loveToEatItFrontEnd</a>
+            <a class="navbar-brand" href="#/">Love To Eat It</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a ui-sref="home">Home</a></li>
               <li><a ui-sref="login">Login</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li><a ui-sref="likes">Likes</a></li>
             </ul>
           </div>
         </div>
@@ -49,12 +48,6 @@
 
     <div class="container">
     <div ui-view></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
     </div>
 
 
@@ -76,14 +69,25 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-    <script src="bower_components/hello/dist/hello.all.js"></script>
+    <script src="bower_components/hello/dist/hello.all.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/login.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+
+    <!-- services -->
+    <script src="scripts/services/user_service.js"></script>
+    <script src="scripts/services/auth_service.js"></script>
+    <script src="scripts/services/recipe_service.js"></script>
+
+    <!-- controllers -->
+    <script src="scripts/controllers/auth.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/likes.js"></script>
+    <script src="scripts/controllers/recipe.js"></script>
+
+
+    <!-- endbuild -->
 </body>
 </html>

@@ -2,65 +2,17 @@
 
 /**
  * @ngdoc function
- * @name loveToEatItFrontEndApp.controller:MainCtrl
+ * @name loveToEatItFrontEndApp.controller:LoginCtrl
  * @description
- * # MainCtrl
+ * # LoginCtrl
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-  .controller('LoginCtrl', function ($scope, $window, $http) {
+  .controller('LoginCtrl',
+    function ($scope, $window) {
 
-    var setupHelloJs,
-        loginUserSession,
-        init;
-
-    setupHelloJs = function() {
-        $window.hello.init({
-            instagram: '7ad6176b495a4a91aa4567c730957e37'
-        },
-        {
-            //for local dev
-            redirect_uri: 'http://lovetoeat.it:9000/',
-
-            //for heroku app
-             // redirect_uri:'https://enigmatic-coast-1293.herokuapp.com/',
-            response_type: 'code',
-            handle_response_manually: true
-        });
-
-    };
-
-    // login with instagram
     $scope.login = function() {
-        $window.hello('instagram').login().then(function(auth) {
-            //doesnt get to this method
-            console.log('logining');
-            loginUserSession('instagram', auth.authResponse.code);
-        }, function(error) {
-            console.log(error);
-            $window.alert('Signin error: ' + error);
-        });
-
+        $window.location.href = 'https://api.instagram.com/oauth/authorize/?client_id=2e3edb17f4c34ccdb832240b38a3fc12&redirect_uri=http://lovetoeat.it:9000/user&response_type=code';
     };
-
-    loginUserSession = function(network, oauth_code){
-        console.log('trying to login');
-        $http({
-            method: 'POST',
-            url: 'http://mykloudkitchen.com:8000/api/login/social/session/',
-            data: {provider: network, code: oauth_code},
-        }).then(function( data ) {
-            console.log(data);
-
-        }), function(error){
-            console.log('error' + error);
-        };
-    };
-
-    init = function() {
-        setupHelloJs();
-    };
-
-    init();
 
 });
