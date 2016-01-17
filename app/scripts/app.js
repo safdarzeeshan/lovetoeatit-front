@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 /**
  * @ngdoc overview
@@ -31,35 +31,21 @@ loveToEatItFrontEndApp.factory('Hello', function () {
 
 loveToEatItFrontEndApp.run(function($http, $cookies, $rootScope, $location, Auth){
 
-     // console.log('hello');
-
-    // $http.get('http://mykloudkitchen.com:8000/api/user/')
     $http.get('http://localhost:8000/api/csrftoken')
         .then(function(response) {
             console.log($cookies.get('csrftoken'));
-            // console.log( resp.headers('Content-Type') );
-            // $cookies.csrftoken = 'HELL';
             // $http.defaults.headers.post["x-csrftoken"] = $cookies.csrftoken;
         });
 
-    $rootScope.$on('$stateChangeStart', function (event, toState) {
-
-        var requireLogin = toState.requireLogin;
-        if (requireLogin && Auth.$isLoggedIn() === false) {
-            // event.preventDefault();
-            console.log('trying to go to login');
-            $location.path('/login');
-        }
-    });
 
 });
 
 
-loveToEatItFrontEndApp.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $cookiesProvider) {
+loveToEatItFrontEndApp.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
-    // $httpProvider.defaults.withCredentials = true;
-    // $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-    // $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+    $httpProvider.defaults.withCredentials = true;
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     // $httpProvider.defaults.headers.post["x-csrftoken"] = 'TEST';
 
     // console.log($cookies.csrftoken);

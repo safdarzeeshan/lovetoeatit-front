@@ -39,7 +39,7 @@ angular.module('loveToEatItFrontEndApp')
 
         $http({
             method: 'GET',
-            url: 'http://mykloudkitchen.com:8000/api/csrftoken',
+            url: 'http://localhost:8000/test/',
 
             }).then(function() {
                 console.log('success');
@@ -49,7 +49,7 @@ angular.module('loveToEatItFrontEndApp')
             };
     };
 
-    init();
+    // init();
     login();
 
 });
