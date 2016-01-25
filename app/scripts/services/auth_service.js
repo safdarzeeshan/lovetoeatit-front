@@ -1,17 +1,17 @@
 'use strict';
 
 angular.module('loveToEatItFrontEndApp')
-.factory('Auth', function( $http ) {
+.factory('Auth', function( $http, $cookies, $localStorage ) {
 
     var authFactory = {},
-        baseUrl = 'http://mykloudkitchen.com:8000',
-        isAuthenticated = false;
+        baseUrl = 'http://mykloudkitchen.com:8000';
 
-    authFactory.$authUser = function(network, oauthCode) {
+    authFactory.$loginUser = function(network, oauthCode) {
+
         return $http({
             method: 'POST',
             url: baseUrl + '/api/login/social/session/',
-            headers : {'x-csrftoken': 'bzeBBYgXpR4vFrzFMn37FJCyiWvKDnPt','Content-Type': 'application/x-www-form-urlencoded'},
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/x-www-form-urlencoded'},
             transformRequest: function(obj) {
                 var str = [];
                 for(var p in obj)
@@ -22,6 +22,15 @@ angular.module('loveToEatItFrontEndApp')
         });
     };
 
+    authFactory.$logoutUser = function() {
+
+        return $http({
+            method: 'GET',
+            url: baseUrl + '/api/logout/session/',
+        });
+    };
+
+
     authFactory.$userStatus = function(){
         return $http({
             method: 'GET',
@@ -29,12 +38,14 @@ angular.module('loveToEatItFrontEndApp')
         });
     };
 
-    authFactory.$setUser = function(aUser){
-        isAuthenticated = aUser;
-    };
-
     authFactory.$isLoggedIn = function(){
-        return isAuthenticated;
+        if ($localStorage.isAuthenticated === 'true'){
+            return true;
+        }
+
+        else{
+            return false;
+        }
     };
 
     return authFactory;
