@@ -17,37 +17,8 @@
 
   </head>
   <body ng-app="loveToEatItFrontEndApp">
-
-
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">Love To Eat It</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li><a ui-sref="login">Login</a></li>
-              <li><a ui-sref="likes">Likes</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="container">
-    <div ui-view></div>
+      <div ui-view></div>
     </div>
 
 
@@ -70,6 +41,8 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/hello/dist/hello.all.min.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+    <script src="bower_components/angular-csrf-cross-domain/dist/angular-csrf-cross-domain.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -81,12 +54,15 @@
     <script src="scripts/services/auth_service.js"></script>
     <script src="scripts/services/recipe_service.js"></script>
 
+
     <!-- controllers -->
     <script src="scripts/controllers/auth.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/likes.js"></script>
     <script src="scripts/controllers/recipe.js"></script>
-
+    <script src="scripts/controllers/allRecipes.js"></script>
+    <script src="scripts/controllers/submitRecipe.js"></script>
+    <script src="scripts/controllers/user.js"></script>
 
     <!-- endbuild -->
 </body>

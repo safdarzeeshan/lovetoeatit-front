@@ -1,0 +1,51 @@
+<h2>Add New Recipe</h2>
+<form name="userForm" ng-submit="processForm()" >
+
+    <!-- LOCAL_ID -->
+    <div class="form-group">
+        <label>Local ID</label>
+        <input type="text" name="localId" class="form-control" ng-model="recipe.local_id" required ng-maxlength="4">
+    </div>
+
+    <!-- URL -->
+    <div class="form-group">
+        <label>Recipe URL</label>
+        <input type="text" name="url" class="form-control" ng-model="recipe.url" required>
+    </div>
+
+    <!-- IMAGE-URL -->
+    <div class="form-group">
+        <label>Image URL</label>
+        <input type="text" name="url" class="form-control" ng-model="recipe.image_url" required>
+    </div>
+
+    <!-- NAME -->
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" ng-model="recipe.name" required>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text" name="description" class="form-control" ng-model="recipe.snippet">
+    </div>
+
+    <!-- TIME -->
+    <div class="form-group">
+        <label>Time</label>
+        <input type="text" name="time" class="form-control" ng-model="recipe.time">
+    </div>
+
+    <!-- SERVING -->
+    <div class="form-group">
+        <label>Serving Size</label>
+        <input type="text" name="servingSize" class="form-control" ng-model="recipe.serving_size" required>
+    </div>
+
+    <!-- SUBMIT BUTTON -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+<div id="messages" ng-show="message">{{ message }}</div>

@@ -9,13 +9,12 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('AuthCtrl',
-    function ($scope, $window, $http, $cookieStore, $stateParams, $state, User, Auth) {
+    function ($scope, $window, $http, $cookieStore, $stateParams, $localStorage, $state, User, Auth) {
 
     var login,
         loginUserSession,
-        init,
         oauthCode,
-        csrftoken;
+
 
     login = function(){
         //get ouath code
@@ -25,31 +24,17 @@ angular.module('loveToEatItFrontEndApp')
 
     loginUserSession = function(network, oauthCode){
 
-        Auth.$authUser(network, oauthCode)
+        Auth.$loginUser(network, oauthCode)
         .success(function( data ) {
-            Auth.$setUser(true);
-            $state.go('likes');
+            //localstorage - store user status
+            $localStorage.isAuthenticated = 'true';
+            $state.go('user.likes');
 
         }), function(error){
             console.log('error' + error);
         };
     };
 
-    init = function() {
-
-        $http({
-            method: 'GET',
-            url: 'http://localhost:8000/test/',
-
-            }).then(function() {
-                console.log('success');
-
-            }), function(error){
-                console.log('error' + error);
-            };
-    };
-
-    // init();
     login();
 
 });
