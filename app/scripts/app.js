@@ -15,7 +15,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
     return {
         response: function (response) {
             // do something on success
-            console.log('response.headers', response.headers());
+            // console.log('response.headers', response.headers());
             if (response.headers()['content-type'] === "application/json; charset=utf-8") {
             }
             return response;
@@ -73,14 +73,16 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             url: '/home',
             templateUrl: 'views/user.html',
             controller: 'UserCtrl',
-            requireLogin: true
+            requireLogin: true,
+            role: ['Foodie','FoodBlogger','Admin']
         })
 
         .state('user.likes', {
             url: '/likes',
             templateUrl: 'views/likes.html',
             controller: 'LikesCtrl',
-            requireLogin: true
+            requireLogin: true,
+            role: ['Foodie','FoodBlogger','Admin']
 
         })
 
@@ -88,7 +90,8 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             url: '/recipes',
             templateUrl: 'views/allRecipes.html',
             controller: 'AllRecipesCtrl',
-            requireLogin: true
+            requireLogin: true,
+            role: ['Foodie','FoodBlogger','Admin']
 
         })
 
@@ -96,7 +99,8 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             url: '/recipe?id',
             templateUrl: 'views/recipe.html',
             controller: 'RecipeCtrl',
-            requireLogin: true
+            requireLogin: true,
+            role: ['Foodie','FoodBlogger','Admin']
 
         })
 
@@ -104,7 +108,8 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             url: '/submitrecipe',
             templateUrl: 'views/submitRecipe.html',
             controller: 'SubmitRecipeCtrl',
-            requireLogin: true
+            requireLogin: true,
+            role: ['FoodBlogger','Admin']
 
         })
 
@@ -118,7 +123,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
     csrfCDProvider.setCookieName('CSRFToken');
 
 
-}).run(function ($http, $cookies, $rootScope, $location, $state, Auth) {
+}).run(function ($http, $cookies, $rootScope, $location, $state, Auth, $localStorage) {
 
     $http.defaults.headers.post['x-csrftoken'] = $cookies.csrftoken;
 
@@ -131,13 +136,22 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
         console.log(arguments);
     });
 
-    //check if state requires user to be logged in
+    //check if state requires user to be logged in and the permission
     $rootScope.$on('$stateChangeStart', function(event, toState){
+
         if (toState.requireLogin && !Auth.$isLoggedIn()){
             // User isn’t authenticated
             $state.transitionTo('login');
             event.preventDefault();
         }
+
+        if (((toState.role).indexOf(Auth.$userRole()))===-1){
+            console.log('redirecting to likes');
+            // role isn’t correct
+            $state.transitionTo('user.likes');
+            event.preventDefault();
+        }
+
     });
 });
 

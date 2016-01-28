@@ -1,2 +1,7 @@
 <h1>{{ recipe.name }}</h1>
-<img ng-src='{{ recipe.image_url }}' class="img-rounded" />
+<img ng-src='{{ recipe.image_url }}' class="col-lg-12 col-md-6 col-xs-6" />
+<p>{{ recipe.snippet }}</p>
+<p>{{ recipe.serving_size }}</p>
+<li ng-repeat="ingredient in recipe.ingredients">
+    <p>{{ ingredient.name}}
+</li>

@@ -1,28 +1,22 @@
-<h2>Add New Recipe</h2>
-<form name="userForm" ng-submit="processForm()" >
-
-    <!-- LOCAL_ID -->
-    <div class="form-group">
-        <label>Local ID</label>
-        <input type="text" name="localId" class="form-control" ng-model="recipe.local_id" required ng-maxlength="4">
-    </div>
+<h2 ng-if="success == false" >Add New Recipe</h2>
+<form name="userForm" ng-if="success == false" ng-submit="processForm()" >
 
     <!-- URL -->
     <div class="form-group">
         <label>Recipe URL</label>
-        <input type="text" name="url" class="form-control" ng-model="recipe.url" required>
+        <input type="text" name="url" class="form-control" ng-model="recipe.url" >
     </div>
 
     <!-- IMAGE-URL -->
     <div class="form-group">
         <label>Image URL</label>
-        <input type="text" name="url" class="form-control" ng-model="recipe.image_url" required>
+        <input type="text" name="url" class="form-control" ng-model="recipe.image_url" >
     </div>
 
     <!-- NAME -->
     <div class="form-group">
         <label>Name</label>
-        <input type="text" name="name" class="form-control" ng-model="recipe.name" required>
+        <input type="text" name="name" class="form-control" ng-model="recipe.name" >
     </div>
 
     <!-- DESCRIPTION -->
@@ -40,7 +34,13 @@
     <!-- SERVING -->
     <div class="form-group">
         <label>Serving Size</label>
-        <input type="text" name="servingSize" class="form-control" ng-model="recipe.serving_size" required>
+        <input type="text" name="servingSize" class="form-control" ng-model="recipe.serving_size" >
+    </div>
+
+   <!-- INGREDIENTS -->
+    <div class="form-group">
+        <label>Ingredients</label>
+        <input type="text" name="ingredients" class="form-control" ng-model="recipe.ingredients" required ng-list>
     </div>
 
     <!-- SUBMIT BUTTON -->
@@ -48,4 +48,8 @@
 
 </form>
 
-<div id="messages" ng-show="message">{{ message }}</div>
+<div ng-if="success">
+    <h2>Recipe Added Successfully</h2>
+    <p>ID is {{ local_id }}</p>
+    <p>Please add #lovetoeatit ltei/{{ local_id }} to your instagram post</p>
+</div>

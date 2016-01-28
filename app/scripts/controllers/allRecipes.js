@@ -14,7 +14,6 @@ angular.module('loveToEatItFrontEndApp')
         //get all recipes and populate scope
         Recipe.$getAllRecipes()
         .then(function( response ) {
-            console.log('recipes data: ', response.data );
             $scope.recipes = response.data;
         });
 

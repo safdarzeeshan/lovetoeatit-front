@@ -28,6 +28,7 @@ angular.module('loveToEatItFrontEndApp')
         .success(function( data ) {
             //localstorage - store user status
             $localStorage.isAuthenticated = 'true';
+            $localStorage.role = data.role;
             $state.go('user.likes');
 
         }), function(error){

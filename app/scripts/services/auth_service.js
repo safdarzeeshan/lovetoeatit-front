@@ -48,5 +48,9 @@ angular.module('loveToEatItFrontEndApp')
         }
     };
 
+    authFactory.$userRole = function(){
+        return $localStorage.role;
+    };
+
     return authFactory;
 });

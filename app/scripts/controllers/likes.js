@@ -14,7 +14,6 @@ angular.module('loveToEatItFrontEndApp')
         //get likes and populate scope
         User.$getLikes()
         .then(function( response ) {
-            console.log('users data: ', response.data );
             $scope.likes = response.data;
         });
 
