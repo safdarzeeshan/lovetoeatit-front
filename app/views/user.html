@@ -18,7 +18,8 @@
         <ul class="nav navbar-nav">
           <li><a ui-sref="user.likes">Likes</a></li>
           <li><a ui-sref="user.allRecipes">Recipes</a></li>
-          <li ng-if="foodBlogger"><a ui-sref="user.submitRecipe">Submit Recipe</a></li>
+          <li ng-if="FoodBlogger || Admin"><a ui-sref="user.submitRecipe">Submit Recipe</a></li>
+          <li ng-if="Admin"><a>Edit Recipe</a></li>
           <li><a ng-click='logout()'>Logout</a></li>
         </ul>
       </div>

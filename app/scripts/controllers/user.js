@@ -11,22 +11,33 @@ angular.module('loveToEatItFrontEndApp')
   .controller('UserCtrl',
     function ($scope, $localStorage, $state, Auth) {
 
-    //check if user is a food blogger
-    //TODO
-    //putting static value for now
-    $scope.foodBlogger = false;
+    var role;
+
+    //check role
+    role = function(){
+
+        if (Auth.$userRole() === 'FoodBlogger'){
+            $scope.FoodBlogger = true;
+        }
+
+        if (Auth.$userRole() === 'Admin'){
+            $scope.Admin = true;
+        }
+    };
 
     $scope.logout = function() {
 
         Auth.$logoutUser()
         .success(function() {
-            //localstorage - store user status
-            $localStorage.isAuthenticated = 'false';
+            //clear localstorage
+            // $localStorage.$reset();
             $state.go('login');
 
         }), function(error){
             console.log('error' + error);
         };
     };
+
+    role();
 
 });
