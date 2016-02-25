@@ -1,4 +1,3 @@
-<h2 class='page-header'>Liked Recipes</h2>
 <div class="col-md-3 portfolio-item" ng-repeat="like in likes">
     <a href="#" ng-click="getRecipe(like.local_id)">
         <img class="img-responsive" ng-src='{{ like.image_url }}'>
@@ -8,4 +7,3 @@
     </h3>
     <p>{{like.snippet}}</p>
 </div>
-

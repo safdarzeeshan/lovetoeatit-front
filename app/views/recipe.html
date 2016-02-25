@@ -1,7 +1,19 @@
-<h1>{{ recipe.name }}</h1>
-<img ng-src='{{ recipe.image_url }}' class="col-lg-12 col-md-6 col-xs-6" />
-<p>{{ recipe.snippet }}</p>
-<p>{{ recipe.serving_size }}</p>
-<li ng-repeat="ingredient in recipe.ingredients">
-    <p>{{ ingredient.name}}
-</li>
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive" ng-src='{{ recipe.image_url }}'>
+    </div>
+    <div class="col-md-4">
+        <h3>{{ recipe.name }}</h3>
+        <b>{{ recipe.food_blogger.username }}</b>
+        <b>{{ recipe.food_blogger.blogger_info.blog_name }}</b>
+        <p>{{ recipe.snippet }}</p>
+        <p>{{recipe.no_of_likes}} Liked</p>
+        <a ng-class="recipe.has_user_liked ? 'text-danger' : 'text-muted' " ng-click="likeClick(recipe.local_id)">Like {{recipe.has_user_liked}}</a>
+        <ul>
+            <li ng-repeat="ingredient in recipe.ingredients">{{ ingredient.amount}} {{ingredient.ingredient.name}}</li>
+        </ul>
+        <button type="button" ng-click="gotoRecipe(recipe.url)" class="btn btn-primary">View Full Recipe</button>
+    </div>
+</div>
+
+

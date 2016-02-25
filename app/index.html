@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" >
   <head>
     <meta charset="utf-8">
     <base href="/">
@@ -13,6 +13,8 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+
     <!-- endbuild -->
 
   </head>
@@ -38,11 +40,13 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-csrf-cross-domain/dist/angular-csrf-cross-domain.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/checklist-model/checklist-model.js"></script>
     <script src="bower_components/hello/dist/hello.all.min.js"></script>
-    <script src="bower_components/angular-csrf-cross-domain/dist/angular-csrf-cross-domain.js"></script>
-    <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -50,9 +54,11 @@
     <script src="scripts/app.js"></script>
 
     <!-- services -->
-    <script src="scripts/services/user_service.js"></script>
+    <script src="scripts/services/likes_service.js"></script>
     <script src="scripts/services/auth_service.js"></script>
     <script src="scripts/services/recipe_service.js"></script>
+    <script src="scripts/services/collections_service.js"></script>
+    <script src="scripts/services/foodblogger_service.js"></script>
 
 
     <!-- controllers -->
@@ -62,7 +68,15 @@
     <script src="scripts/controllers/recipe.js"></script>
     <script src="scripts/controllers/allRecipes.js"></script>
     <script src="scripts/controllers/submitRecipe.js"></script>
+    <script src="scripts/controllers/submittedRecipes.js"></script>
     <script src="scripts/controllers/user.js"></script>
+    <script src="scripts/controllers/collections.js"></script>
+    <script src="scripts/controllers/collectionTag.js"></script>
+    <script src="scripts/controllers/editRecipe.js"></script>
+    <script src="scripts/controllers/feed.js"></script>
+    <script src="scripts/controllers/onboarding.js"></script>
+    <script src="scripts/controllers/howitworks.js"></script>
+    <script src="scripts/controllers/foodbloggers_list.js"></script>
 
     <!-- endbuild -->
 </body>

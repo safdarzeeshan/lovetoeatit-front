@@ -1,6 +1,12 @@
-<h2>All Recipes</h2>
-<div ng-repeat="recipe in recipes">
-  <a  href='#' ng-click="getRecipe(recipe.local_id)">
-    <img ng-src='{{ recipe.image_url }}' class="col-lg-3 col-md-4 col-xs-6 thumb" />
-  </a>
+<h2 class='page-header'>All Recipes</h2>
+<div class="col-md-3 portfolio-item" ng-repeat="recipe in recipes">
+    <a href="#" ng-click="getRecipe(recipe.local_id)">
+        <img class="img-responsive" ng-src='{{ recipe.image_url }}'>
+    </a>
+    <h3>
+        <a href="#" ng-click="getRecipe(recipe.local_id)">{{recipe.name}}</a>
+    </h3>
+    <p>{{recipe.snippet}}</p>
 </div>
+
+<!-- <input type="checkbox" ng-model="option.IsIncluded" ng-checked="option.IsIncluded"> -->

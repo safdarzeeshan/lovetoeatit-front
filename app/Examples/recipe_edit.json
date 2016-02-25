@@ -1,0 +1,59 @@
+{
+    "collection_tags": [
+        {
+            "name": "Breakfast"
+        }
+    ],
+    "ingredients": [
+        {
+            "ingredient": {
+                "name": "Gluten Free Flour"
+            },
+            "amount": "2 cups"
+        },
+        {
+            "ingredient": {
+                "name": "Coconut Oil"
+            },
+            "amount": "50 ml"
+        }
+    ],
+    "food_blogger": 1,
+    "local_id": "0002",
+    "name": "Muffins",
+    "url": "http://thequirkyprincess.com/re-rewind-glow-getter-muffins/",
+    "image_url": "http://thequirkyprincess.com/site/wp-content/uploads/2016/01/Glow-Getter-Muffins-4-683x1024.jpg",
+    "snippet": "first recipe I ever blogged",
+    "time": "30 mins",
+    "serving_size": "666 people"
+}
+
+{
+    "local_id": "0002",
+    "url": "http://thequirkyprincess.com/re-rewind-glow-getter-muffins/",
+    "image_url": "http://thequirkyprincess.com/site/wp-content/uploads/2016/01/Glow-Getter-Muffins-4-683x1024.jpg",
+    "name": "Muffins",
+    "snippet": "first recipe I ever blogged",
+    "time": "30 mins",
+    "serving_size": "666 people",
+    "ingredients": [
+        {
+            "ingredient": {
+                "name": "Gluten Free Flour"
+            },
+            "amount": "2 cups"
+        },
+        {
+            "ingredient": {
+                "name": "Coconut Oil"
+            },
+            "amount": "70 ml"
+        }
+    ],
+    "collection_tags": [
+        {
+            "name": "Breakfast"
+        }
+    ],
+    "food_blogger": 3
+}

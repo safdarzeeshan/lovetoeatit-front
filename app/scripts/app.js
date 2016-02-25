@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
-    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage'
+    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload'
 
 ]).factory('responseIntercepter', function ($q) {
     return {
@@ -46,7 +46,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
         };
     });
 
-    $urlRouterProvider.otherwise('/home/likes');
+    $urlRouterProvider.otherwise('/home/feed');
     $locationProvider.html5Mode(true).hashPrefix('!');
 
     $stateProvider
@@ -69,12 +69,50 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
         })
 
+        .state('onboarding', {
+            url: '/welcome',
+            templateUrl: 'views/onboarding_form.html',
+            controller: 'OnboardingCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBlogger','Admin'],
+            onboardingStatus: ['New', 'InProgress']
+        })
+
+        .state('howitworks', {
+            url: '/howitworks',
+            templateUrl: 'views/howitworks.html',
+            controller: 'HowitworksCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBlogger','Admin'],
+            onboardingStatus: ['New', 'InProgress']
+        })
+
+        .state('foodbloggers', {
+            url: '/foodbloggers',
+            templateUrl: 'views/foodbloggers.html',
+            controller: 'FoodBloggersCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBlogger','Admin'],
+            onboardingStatus: ['New', 'InProgress']
+        })
+
         .state('user',{
             url: '/home',
             templateUrl: 'views/user.html',
             controller: 'UserCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin']
+            role: ['Foodie','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
+        })
+
+        .state('user.feed', {
+            url: '/feed',
+            templateUrl: 'views/feed.html',
+            controller: 'FeedCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
+
         })
 
         .state('user.likes', {
@@ -82,7 +120,28 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/likes.html',
             controller: 'LikesCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin']
+            role: ['Foodie','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
+
+        })
+
+        .state('user.collections', {
+            url: '/collections',
+            templateUrl: 'views/collections.html',
+            controller: 'CollectionsCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
+
+        })
+
+        .state('user.collection', {
+            url: '/collection?collection_tag',
+            templateUrl: 'views/collectionTag.html',
+            controller: 'CollectionTagCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
 
         })
 
@@ -91,7 +150,8 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/allRecipes.html',
             controller: 'AllRecipesCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin']
+            role: ['Foodie','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
 
         })
 
@@ -100,7 +160,8 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/recipe.html',
             controller: 'RecipeCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin']
+            role: ['Foodie','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
 
         })
 
@@ -109,7 +170,28 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/submitRecipe.html',
             controller: 'SubmitRecipeCtrl',
             requireLogin: true,
-            role: ['FoodBlogger','Admin']
+            role: ['FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
+
+        })
+
+        .state('user.editRecipe', {
+            url: '/editrecipe',
+            templateUrl: 'views/editRecipe.html',
+            controller: 'EditRecipeCtrl',
+            requireLogin: true,
+            role: ['Admin'],
+            onboardingStatus: ['Complete']
+
+        })
+
+        .state('user.submittedRecipes', {
+            url: '/submittedrecipes',
+            templateUrl: 'views/submittedRecipes.html',
+            controller: 'SubmittedRecipesCtrl',
+            requireLogin: true,
+            role: ['FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
 
         })
 
@@ -139,19 +221,44 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
     //check if state requires user to be logged in and the permission
     $rootScope.$on('$stateChangeStart', function(event, toState){
 
+        if (toState.requireLogin && Auth.$isLoggedIn()){
+
+            //check if user has completed onboarding
+            if(((toState.onboardingStatus).indexOf(Auth.$onboardingStatus()))===-1){
+
+                if(Auth.$onboardingStatus()==='New'|| Auth.$onboardingStatus()==='InProgress'){
+                    $state.transitionTo('onboarding');
+                    event.preventDefault();
+                }
+                if(Auth.$onboardingStatus()==='Complete'){
+                    $state.transitionTo('user.feed');
+                    event.preventDefault();
+                }
+            }
+
+            //check if user role allows access to page
+            if (((toState.role).indexOf(Auth.$userRole()))===-1){
+                console.log('redirecting to feed');
+                // role isn’t correct
+                $state.transitionTo('user.feed');
+                event.preventDefault();
+            }
+        }
+
+        //redirect logged in user to default page
+        if (!toState.requireLogin && Auth.$isLoggedIn()){
+
+            $state.transitionTo('user.feed');
+            event.preventDefault();
+        }
+
+        //redirect unlogged in user to login page
         if (toState.requireLogin && !Auth.$isLoggedIn()){
+
             // User isn’t authenticated
             $state.transitionTo('login');
             event.preventDefault();
         }
-
-        if (((toState.role).indexOf(Auth.$userRole()))===-1){
-            console.log('redirecting to likes');
-            // role isn’t correct
-            $state.transitionTo('user.likes');
-            event.preventDefault();
-        }
-
     });
 });
 

@@ -1,0 +1,72 @@
+
+<!-- <button ng-click='follow()'>Follow</button> -->
+<h2 class='page-header'>Latest Collections</h2>
+<div class="col-md-3 portfolio-item">
+    <a href="#" ng-click="getCollection(collection[0].name)">
+        <img class="img-responsive" ng-src='{{ collection[0].recipes[0].image_url }}'>
+    </a>
+    <h3>
+        <a href="#" ng-click="getCollection(collection[0].name)">{{ collection[0].name }}</a>
+    </h3>
+</div>
+<div class="col-md-3 portfolio-item">
+    <a href="#" ng-click="getCollection(collection[1].name)">
+        <img class="img-responsive" ng-src='{{ collection[1].recipes[0].image_url }}'>
+    </a>
+    <h3>
+        <a href="#" ng-click="getCollection(collection[1].name)">{{ collection[1].name }}</a>
+    </h3>
+</div>
+
+<h2 class='page-header'>Last Liked</h2>
+<div class="col-md-3 portfolio-item">
+    <a href="#" ng-click="getRecipe(like.local_id)">
+        <img class="img-responsive" ng-src='{{ like.image_url }}'>
+    </a>
+    <h3>
+        <a href="#" ng-click="getRecipe(like.local_id)">{{like.name}}</a>
+    </h3>
+    <p>{{like.snippet}}</p>
+</div>
+
+<h2 class='page-header'>Popular Recipes</h2>
+<div class="col-md-3 portfolio-item">
+    <a href="#" ng-click="getRecipe(popularRecipe[0].local_id)">
+        <img class="img-responsive" ng-src='{{ popularRecipe[0].image_url }}'>
+    </a>
+    <h3>
+        <a href="#" ng-click="getRecipe(popularRecipe[0].local_id)">{{popularRecipe[0].name}}</a>
+    </h3>
+    <p>{{popularRecipe[0].snippet}}</p>
+</div>
+
+<div class="col-md-3 portfolio-item">
+    <a href="#" ng-click="getRecipe(popularRecipe[1].local_id)">
+        <img class="img-responsive" ng-src='{{ popularRecipe[1].image_url }}'>
+    </a>
+    <h3>
+        <a href="#" ng-click="getRecipe(popularRecipe[1].local_id)">{{popularRecipe[1].name}}</a>
+    </h3>
+    <p>{{popularRecipe[1].snippet}}</p>
+</div>
+
+<h2 class='page-header'>Latest Recipes</h2>
+<div class="col-md-3 portfolio-item">
+    <a href="#" ng-click="getRecipe(latestRecipe[0].local_id)">
+        <img class="img-responsive" ng-src='{{ latestRecipe[0].image_url }}'>
+    </a>
+    <h3>
+        <a href="#" ng-click="getRecipe(latestRecipe[0].local_id)">{{latestRecipe[0].name}}</a>
+    </h3>
+    <p>{{latestRecipe[0].snippet}}</p>
+</div>
+
+<div class="col-md-3 portfolio-item">
+    <a href="#" ng-click="getRecipe(latestRecipe[1].local_id)">
+        <img class="img-responsive" ng-src='{{ latestRecipe[1].image_url }}'>
+    </a>
+    <h3>
+        <a href="#" ng-click="getRecipe(latestRecipe[1].local_id)">{{latestRecipe[1].name}}</a>
+    </h3>
+    <p>{{latestRecipe[1].snippet}}</p>
+</div>

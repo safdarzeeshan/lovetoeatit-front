@@ -1,0 +1,22 @@
+{
+    "ingredients": [
+        {
+            "ingredient": {
+                "name": "Gluten Free Flour"
+            },
+            "amount": "3 cups"
+        },
+        {
+            "ingredient": {
+                "name": "Coconut Oil"
+            },
+            "amount": "50 ml"
+        }
+    ],
+    "name": "Muffins Oh My god",
+    "url": "http://thequirkyprincess.com/re-rewind-glow-getter-muffins/",
+    "image_url": "http://thequirkyprincess.com/site/wp-content/uploads/2016/01/Glow-Getter-Muffins-4-683x1024.jpg",
+    "snippet": "first recipe I ever blogged ",
+    "time": "30 mins",
+    "serving_size": "4 people"
+}

@@ -2,19 +2,19 @@
 
 /**
  * @ngdoc function
- * @name loveToEatItFrontEndApp.controller:MainCtrl
+ * @name loveToEatItFrontEndApp.controller:SubmittedRecipesCtrl
  * @description
- * # LikesCtrl
+ * # SubmittedRecipesCtrl
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-.controller('LikesCtrl',
-    function ($scope, $window, $state,  Likes, $http, $cookies) {
+.controller('SubmittedRecipesCtrl',
+    function ($scope, $window, $state,  FoodBlogger) {
 
         //get likes and populate scope
-        Likes.$getLikes()
+        FoodBlogger.$getSubmittedRecipes()
         .then(function( response ) {
-            $scope.likes = response.data;
+            $scope.recipes = response.data;
         });
 
         $scope.getRecipe = function(id){

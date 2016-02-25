@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('loveToEatItFrontEndApp')
-.factory('Recipe', function( $http, $cookies ) {
+.factory('Recipe', function( $http ) {
 
     var recipeFactory = {},
         baseUrl = 'http://mykloudkitchen.com:8000';
@@ -14,14 +14,12 @@ angular.module('loveToEatItFrontEndApp')
         return $http.get( baseUrl + '/api/recipes');
     };
 
-    recipeFactory.$submitRecipe = function(recipeData) {
+    recipeFactory.$getPopularRecipesFeed = function() {
+        return $http.get( baseUrl + '/api/popularrecipesfeed');
+    };
 
-        return $http({
-            method: 'POST',
-            url: baseUrl + '/api/recipecreate/',
-            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
-            data: recipeData
-        });
+    recipeFactory.$getLatestRecipesFeed = function() {
+        return $http.get( baseUrl + '/api/latestrecipesfeed');
     };
 
     return recipeFactory;

@@ -22,19 +22,39 @@ angular.module('loveToEatItFrontEndApp')
         });
     };
 
+    authFactory.$getUser = function() {
+
+        return $http({
+            method: 'GET',
+            url: baseUrl + '/api/user/',
+        });
+    };
+
+    authFactory.$updateUser = function(userInfo) {
+
+        return $http({
+            method: 'PUT',
+            url: baseUrl + '/api/user/',
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
+            data: userInfo
+        });
+    };
+
+    authFactory.$updateUserOnboardingStatus = function(status) {
+
+        return $http({
+            method: 'PUT',
+            url: baseUrl + '/api/useronboardingstatus/',
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
+            data: status
+        });
+    };
+
     authFactory.$logoutUser = function() {
 
         return $http({
             method: 'GET',
             url: baseUrl + '/api/logout/session/',
-        });
-    };
-
-
-    authFactory.$userStatus = function(){
-        return $http({
-            method: 'GET',
-            url: baseUrl + '/api/user',
         });
     };
 
@@ -50,6 +70,10 @@ angular.module('loveToEatItFrontEndApp')
 
     authFactory.$userRole = function(){
         return $localStorage.role;
+    };
+
+    authFactory.$onboardingStatus = function(){
+        return $localStorage.onboarding_status;
     };
 
     return authFactory;

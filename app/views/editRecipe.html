@@ -1,23 +1,29 @@
-<h2 class='page-header' ng-if="success == false" >Add New Recipe</h2>
+<h2 class='page-header' ng-if="success == false" >Edit Recipe</h2>
 <form name="userForm" ng-if="showForm == false" ng-submit="processForm()" >
 
-    <!-- URL -->
+    <!-- ID -->
     <div class="form-group">
-        <label>Recipe URL</label>
-        <input type="text" name="url" class="form-control" ng-model="recipe.url" >
+        <label>Recipe ID</label>
+        <input type="text" name="url" class="form-control" ng-model="recipe.local_id" >
     </div>
 
     <!-- SUBMIT BUTTON -->
-    <button type="submit" class="btn btn-primary">Get Recipe Info</button>
+    <button type="submit" class="btn btn-primary">Get Recipe</button>
 
 </form>
 
 <form name="userForm" ng-if="success == false && showForm"  ng-submit="submitForm()" >
 
+    <!-- ID -->
+    <div class="form-group">
+        <p>Recipe ID<b ng-model="recipe.local_id">{{recipe.local_id}}</b></p>
+    </div>
+
     <!-- URL -->
     <div class="form-group">
         <label>Recipe URL</label>
         <input type="text" name="url" class="form-control" ng-model="recipe.url" ng-required>
+        <button type='button' class="btn btn-primary" ng-click="scrapeForm(recipe.recipe_url)"><i class="fa fa-refresh"></i></button>
     </div>
 
     <!-- IMAGE-URL -->
@@ -53,8 +59,8 @@
    <!-- INGREDIENTS -->
     <label>Ingredient</label>
     <div class="form-group" ng-repeat="ingredient in recipe.ingredients">
-        <input type="text" name="ingredients" class="form-control" ng-model="ingredient.amount" >
-        <input type="text" name="ingredients" class="form-control" ng-model="ingredient.ingredient.name" >
+        <input type="text" name="ingredientAmount" class="form-control" ng-model="ingredient.amount" >
+        <input type="text" name="ingredientName" class="form-control" ng-model="ingredient.ingredient.name" >
     </div>
 
     <!-- COLLECTION TAGS -->
@@ -64,40 +70,21 @@
         {{collection_tag.name}}
     </div>
 
+
+    <!-- FOOD BLOGGER -->
+
+    <div class="form-group">
+        <label> Food Blogger: </label><br>
+        <select ng-model="recipe.food_blogger" class="form-control">
+            <option ng-repeat="food_blogger in food_blogger_list" value="{{food_blogger.id}}">{{food_blogger.username}}</option>
+        </select>
+    </div>
+
     <!-- SUBMIT BUTTON -->
     <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
 
 <div ng-if="success">
-    <h2>Recipe Added Successfully</h2>
-    <p>ID is {{ local_id }}</p>
-    <p>Please add #lovetoeatit ltei/{{ local_id }} to your instagram post</p>
+    <h2>Recipe {{ local_id }} Edited Successfully</h2>
 </div>
-
-<!--   <form name="myForm">
-    <fieldset>
-      <legend>Upload on form submit</legend>
-      Username:
-      <input type="text" name="userName" ng-model="username" size="31" required>
-      <i ng-show="myForm.userName.$error.required">*required</i>
-      <br>Photo:
-      <input type="file" ngf-select ng-model="picFile" name="file"
-             accept="image/*" ngf-max-size="2MB" required
-             ngf-model-invalid="errorFiles">
-      <i ng-show="myForm.file.$error.required">*required</i><br>
-      <i ng-show="myForm.file.$error.maxSize">File too large
-          {{errorFiles[0].size / 1000000|number:1}}MB: max 2M</i>
-      <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
-      <br>
-      <button ng-disabled="!myForm.$valid"
-              ng-click="uploadPic(picFile)">Submit</button>
-      <span class="progress" ng-show="picFile.progress >= 0">
-        <div style="width:{{picFile.progress}}%"
-            ng-bind="picFile.progress + '%'"></div>
-      </span>
-      <span ng-show="picFile.result">Upload Successful</span>
-      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-    </fieldset>
-    <br>
-  </form> -->
