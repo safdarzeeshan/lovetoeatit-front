@@ -1,0 +1,10 @@
+<h2>Search Results</h2>
+<div class="col-md-3 portfolio-item" ng-repeat="recipe in recipes">
+    <a href="#" ng-click="getRecipe(recipe.local_id)">
+        <img class="img-responsive" ng-src='{{ recipe.image_url }}'>
+    </a>
+    <h3>
+        <a href="#" ng-click="getRecipe(recipe.local_id)">{{recipe.name}}</a>
+    </h3>
+    <p>{{recipe.snippet}}</p>
+</div>

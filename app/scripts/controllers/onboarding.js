@@ -12,6 +12,7 @@ angular.module('loveToEatItFrontEndApp')
     function ($scope, $localStorage, FoodBlogger, $state, Auth) {
 
         $scope.onboarding_status = $localStorage.onboarding_status;
+        $scope.user = {};
 
         FoodBlogger.$getDietTagsList()
         .success(function(response){
@@ -23,7 +24,11 @@ angular.module('loveToEatItFrontEndApp')
                 //popuate user form
                 Auth.$getUser()
                 .success(function(response){
-                    $scope.user = response;
+                    console.log(response.first_name)
+                    $scope.user.first_name = response.first_name;
+                    $scope.user.last_name = response.last_name;
+                    $scope.user.email = response.email;
+
                     for (var i in response.diet_tags){
                         for(var j in $scope.diet_tags){
                             if (response.diet_tags[i].name === $scope.diet_tags[j].name){

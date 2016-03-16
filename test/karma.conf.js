@@ -31,6 +31,7 @@ module.exports = function(config) {
       'bower_components/checklist-model/checklist-model.js',
       'bower_components/hello/dist/hello.all.min.js',
       'bower_components/ng-file-upload/ng-file-upload.js',
+      'bower_components/ng-img-crop/compile/minified/ng-img-crop.js',
       'bower_components/ngstorage/ngStorage.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower

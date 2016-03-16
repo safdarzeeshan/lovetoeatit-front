@@ -11,6 +11,7 @@
     "font-awesome": "fontawesome#~4.5.0",
     "hello": "~1.9.8",
     "ng-file-upload": "~12.0.1",
+    "ng-img-crop": "ngImgCrop#~0.3.2",
     "ngstorage": "~0.3.10"
   },
   "devDependencies": {

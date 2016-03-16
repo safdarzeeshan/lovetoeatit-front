@@ -16,32 +16,36 @@ angular.module('loveToEatItFrontEndApp')
         });
     };
 
-    foodBloggerFactory.$submitRecipeWithImage = function(recipeData) {
+    foodBloggerFactory.$submitRecipeWithImage = function(recipeData, image, imageFileName) {
 
-        return Upload.upload({
-            url: baseUrl + '/api/recipecreate/',
+        var fd = new FormData();
+        fd.append('image', image, imageFileName);
+        fd.append('data', recipeData);
+
+        return  $http.post(baseUrl + '/api/recipecreate/', fd, {
+            transformRequest: angular.identity,
+            headers: {'x-csrftoken': $cookies.get('x-csrftoken'), 'Content-Type': undefined}
+        });
+    };
+
+    foodBloggerFactory.$editRecipe = function(id, recipeData, image, imageFileName) {
+
+        var fd = new FormData();
+        fd.append('image', image, imageFileName);
+        fd.append('data', recipeData);
+
+        return  $http.put(baseUrl + '/api/recipe/?id=' +id, fd, {
+            transformRequest: angular.identity,
+            headers: {'x-csrftoken': $cookies.get('x-csrftoken'), 'Content-Type': undefined}
+        });
+    };
+
+    foodBloggerFactory.$deleteRecipe = function(local_id) {
+
+        return $http({
+            method: 'DELETE',
+            url: baseUrl + '/api/recipe/?id=' +local_id,
             headers : {'x-csrftoken': $cookies.get('x-csrftoken')},
-            data: recipeData
-        });
-    };
-
-    foodBloggerFactory.$upload = function(file, username) {
-
-        return $http({
-            method: 'POST',
-            url: baseUrl + '/api/uploadimage/',
-            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
-            data: {image: file, name: username}
-        });
-    };
-
-    foodBloggerFactory.$editRecipe = function(id, recipeData) {
-
-        return $http({
-            method: 'PUT',
-            url: baseUrl + '/api/recipe/?id=' +id,
-            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
-            data: recipeData
         });
     };
 
@@ -76,6 +80,11 @@ angular.module('loveToEatItFrontEndApp')
     foodBloggerFactory.$getCategoryTagsList = function() {
 
         return $http.get( baseUrl + '/api/categorytagslist' );
+    };
+
+    foodBloggerFactory.$getTempImageUrl = function(imageUrl) {
+
+        return $http.get( baseUrl + '/api/uploadimagetemp/?imageurl=' + imageUrl  );
     };
 
     return foodBloggerFactory;

@@ -12,6 +12,16 @@
         <ul>
             <li ng-repeat="ingredient in recipe.ingredients">{{ ingredient.amount}} {{ingredient.ingredient.name}}</li>
         </ul>
+        <b>Tags</b>
+        <ul>
+            <li ng-repeat="diet_tag in recipe.diet_tags">{{diet_tag.name}}</li>
+        </ul>
+        <ul>
+            <li ng-repeat="category_tag in recipe.category_tags">{{category_tag.name}}</li>
+        </ul>
+        <ul>
+            <li ng-repeat="collection_tag in recipe.collection_tags">{{collection_tag.name}}</li>
+        </ul>
         <button type="button" ng-click="gotoRecipe(recipe.url)" class="btn btn-primary">View Full Recipe</button>
     </div>
 </div>

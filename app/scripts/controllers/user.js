@@ -52,6 +52,10 @@ angular.module('loveToEatItFrontEndApp')
         };
     };
 
+    $scope.search = function(searchTerm){
+        $state.go('user.searchResults' , { 'q': searchTerm});
+    };
+
     role();
     setupProfile();
 

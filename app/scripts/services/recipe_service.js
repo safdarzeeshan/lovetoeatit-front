@@ -22,5 +22,9 @@ angular.module('loveToEatItFrontEndApp')
         return $http.get( baseUrl + '/api/latestrecipesfeed');
     };
 
+    recipeFactory.$getRecipeSearch = function(searchTerm) {
+        return $http.get( baseUrl + '/api/recipesearch?q=' + searchTerm);
+    };
+
     return recipeFactory;
 });

@@ -17,6 +17,7 @@
         <li><a ui-sref="user.collections">Recipe Collections</a></li>
         <li><a ui-sref="user.allRecipes">Recipes</a></li>
         <li ng-if="FoodBlogger || Admin"><a ui-sref="user.submitRecipe">Submit Recipe</a></li>
+        <li><input type='text' label='search' ng-model='searchTerm'/><button ng-click='search(searchTerm)'>Search</button></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

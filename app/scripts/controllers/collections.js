@@ -22,3 +22,22 @@ angular.module('loveToEatItFrontEndApp')
         };
     }
 );
+
+angular.module('loveToEatItFrontEndApp')
+.filter('user_liked_image',function () {
+
+    return function(recipes){
+
+        var imageUrl;
+        angular.forEach(recipes, function(recipe, key){
+            if (recipe.has_user_liked === true){
+                console.log(recipe.image_url);
+                imageUrl =  recipe.image_url;
+            }
+
+        });
+
+        return imageUrl;
+    };
+
+});

@@ -15,12 +15,12 @@ angular.module('loveToEatItFrontEndApp')
 
         Recipe.$getRecipe(id)
         .then(function( response ) {
-            console.log('users data: ', response.data );
             $scope.recipe = response.data;
         });
 
         $scope.gotoRecipe = function(recipe_url) {
             $window.open(recipe_url);
+            amplitude.logEvent('Recipe blog Link Clicked');
         };
 
         $scope.likeClick = function(recipe_local_id){

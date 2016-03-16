@@ -8,7 +8,10 @@
     </div>
 
     <!-- SUBMIT BUTTON -->
-    <button type="submit" class="btn btn-primary">Get Recipe</button>
+    <button type="submit" class="btn btn-primary">
+        <span ng-if="waiting == false">Get Recipe</span>
+        <span ng-if="waiting"><i class="fa fa-cog fa-spin"></i></i></span>
+    </button>
 
 </form>
 
@@ -18,6 +21,12 @@
     <div class="form-group">
         <p>Recipe ID<b ng-model="recipe.local_id">{{recipe.local_id}}</b></p>
     </div>
+
+    <!-- DELETE -->
+    <div class="form-group">
+        <button type='button' class="btn btn-primary" ng-click="deleteRecipe(recipe.local_id)"><i class="fa fa-trash"></i></button>
+    </div>
+
 
     <!-- URL -->
     <div class="form-group">
@@ -30,8 +39,35 @@
     <div class="form-group">
         <label>Image URL</label>
         <input type="text" name="url" class="form-control" ng-model="recipe.image_url" ng-required>
+        <button type='button' class="btn btn-primary" ng-click="refreshImageUrl(recipe.image_url)"><i class="fa fa-refresh"></i></button>
     </div>
 
+    <div>Crop Image and Upload</div>
+
+    <!-- Image from URL -->
+    <div ng-if="fromImageUrl">
+        <button ng-click='uploadFromLocal()'>
+                Upload from local</button>
+        <div ngf-drop ng-model="tempImage.picUrlFile" ngf-pattern="image/*"
+             class="cropArea">
+            <img-crop image="tempImage.picUrlFile" area-type="square"
+            result-image="tempImage.croppedDataUrl" result-image-size="600" ng-init="tempImage.croppedDataUrl=''">
+            </img-crop>
+        </div>
+    </div>
+
+    <!-- Image from Local -->
+    <div ng-if="fromImageLocal">
+      <button ngf-select ng-model="tempImage.picDataFile" accept="image/*">
+              Upload Picture</button>
+      <div ngf-drop ng-model="tempImage.picDataFile" ngf-pattern="image/*"
+           class="cropArea">
+          <img-crop image="tempImage.picDataFile  | ngfDataUrl" area-type="square"
+          result-image="tempImage.croppedDataUrl" result-image-size="600"  ng-init="tempImage.croppedDataUrl=''">
+          </img-crop>
+      </div>
+      <!-- <button ng-click="uploadPic(tempImage.croppedDataUrl)" class="btn btn-primary">Submit</button> -->
+    </div>
     <!-- NAME -->
     <div class="form-group">
         <label>Name</label>
@@ -58,16 +94,29 @@
 
    <!-- INGREDIENTS -->
     <label>Ingredient</label>
-    <div class="form-group" ng-repeat="ingredient in recipe.ingredients">
+    <div class="form-group" ng-repeat="ingredient in recipe.ingredients track by $index">
         <input type="text" name="ingredientAmount" class="form-control" ng-model="ingredient.amount" >
         <input type="text" name="ingredientName" class="form-control" ng-model="ingredient.ingredient.name" >
+        <button type='button' class="btn btn-primary" ng-click="deleteIngredient($index, recipe)"><i class="fa fa-times"></i></button>
     </div>
 
-    <!-- COLLECTION TAGS -->
+    <!-- TAGS -->
     <label>Collection Tags</label>
     <div class="form-group" ng-repeat="collection_tag in collection_tags">
         <input type="checkbox" class="form-control" ng-model="collection_tag.selected" ng-true-value="'Y'" ng-false-value="'N'"/>
         {{collection_tag.name}}
+    </div>
+
+    <label>Diet Tags</label>
+    <div class="form-group" ng-repeat="diet_tag in diet_tags">
+        <input type="checkbox" class="form-control" ng-model="diet_tag.selected" ng-true-value="'Y'" ng-false-value="'N'"/>
+        {{diet_tag.name}}
+    </div>
+
+    <label>Category Tags</label>
+    <div class="form-group" ng-repeat="category_tag in category_tags">
+        <input type="checkbox" class="form-control" ng-model="category_tag.selected" ng-true-value="'Y'" ng-false-value="'N'"/>
+        {{category_tag.name}}
     </div>
 
 
@@ -81,10 +130,16 @@
     </div>
 
     <!-- SUBMIT BUTTON -->
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">
+        <span ng-if="waiting == false">Update</span>
+        <span ng-if="waiting"><i class="fa fa-cog fa-spin"></i></i></span>
+    </button>
 
 </form>
 
 <div ng-if="success">
-    <h2>Recipe {{ local_id }} Edited Successfully</h2>
+    <h2>Recipe {{ local_id }}
+        <span ng-if="edited">edited</span>
+        <span ng-if="deleted">deleted</span>
+        Successfully</h2>
 </div>

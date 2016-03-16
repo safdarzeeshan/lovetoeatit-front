@@ -1,103 +1,115 @@
+
 <h2 class='page-header' ng-if="success == false" >Add New Recipe</h2>
 <form name="userForm" ng-if="showForm == false" ng-submit="processForm()" >
 
-    <!-- URL -->
     <div class="form-group">
         <label>Recipe URL</label>
         <input type="text" name="url" class="form-control" ng-model="recipe.url" >
     </div>
 
-    <!-- SUBMIT BUTTON -->
     <button type="submit" class="btn btn-primary">Get Recipe Info</button>
 
 </form>
 
-<form name="userForm" ng-if="success == false && showForm"  ng-submit="submitForm()" >
+<form name="userForm" ng-if="success == false && showForm" ng-submit="submitRecipeForm()" validate>
 
     <!-- URL -->
     <div class="form-group">
         <label>Recipe URL</label>
-        <input type="text" name="url" class="form-control" ng-model="recipe.url" ng-required>
+        <input type="text" name="url" class="form-control" ng-model="recipe.url" required>
     </div>
 
     <!-- IMAGE-URL -->
     <div class="form-group">
         <label>Image URL</label>
-        <input type="text" name="url" class="form-control" ng-model="recipe.image_url" ng-required>
+        <input type="text" name="url" class="form-control" ng-model="recipe.image_url" required>
+        <button type='button' class="btn btn-primary" ng-click="refreshImageUrl(recipe.image_url)"><i class="fa fa-refresh"></i></button>
     </div>
 
+
+    <div>Crop Image and Upload</div>
+
+    <!-- Image from URL -->
+    <div ng-if="fromImageUrl">
+        <button ng-click='uploadFromLocal()'>
+                Upload from local</button>
+        <div ngf-drop ng-model="tempImage.picUrlFile" ngf-pattern="image/*"
+             class="cropArea">
+            <img-crop image="tempImage.picUrlFile" area-type="square"
+            result-image="tempImage.croppedDataUrl" result-image-size="600" ng-init="tempImage.croppedDataUrl=''">
+            </img-crop>
+        </div>
+    </div>
+
+    <!-- Image from Local -->
+    <div ng-if="fromImageLocal">
+      <button ngf-select ng-model="tempImage.picDataFile" accept="image/*">
+              Upload Picture</button>
+      <div ngf-drop ng-model="tempImage.picDataFile" ngf-pattern="image/*"
+           class="cropArea">
+          <img-crop image="tempImage.picDataFile  | ngfDataUrl" area-type="square"
+          result-image="tempImage.croppedDataUrl" result-image-size="600"  ng-init="tempImage.croppedDataUrl=''">
+          </img-crop>
+      </div>
+    </div>
     <!-- NAME -->
     <div class="form-group">
         <label>Name</label>
-        <input type="text" name="name" class="form-control" ng-model="recipe.name" ng-required>
+        <input type="text" name="name" class="form-control" ng-model="recipe.name" required>
     </div>
 
     <!-- DESCRIPTION -->
     <div class="form-group">
         <label>Description</label>
-        <input type="text" name="description" class="form-control" ng-model="recipe.snippet" ng-required>
+        <input type="text" name="description" class="form-control" ng-model="recipe.snippet" required>
     </div>
 
     <!-- TIME -->
     <div class="form-group">
         <label>Time</label>
-        <input type="text" name="time" class="form-control" ng-model="recipe.time" ng-required>
+        <input type="text" name="time" class="form-control" ng-model="recipe.time" required>
     </div>
 
     <!-- SERVING -->
     <div class="form-group">
         <label>Serving Size</label>
-        <input type="text" name="servingSize" class="form-control" ng-model="recipe.serving_size" >
+        <input type="text" name="servingSize" class="form-control" ng-model="recipe.serving_size" required>
     </div>
 
    <!-- INGREDIENTS -->
-    <label>Ingredient</label>
-    <div class="form-group" ng-repeat="ingredient in recipe.ingredients">
+    <label>Ingredients</label>
+    <div class="form-group" ng-repeat="ingredient in recipe.ingredients track by $index">
         <input type="text" name="ingredients" class="form-control" ng-model="ingredient.amount" >
         <input type="text" name="ingredients" class="form-control" ng-model="ingredient.ingredient.name" >
+        <button type='button' class="btn btn-primary" ng-click="deleteIngredient($index, recipe)"><i class="fa fa-times"></i></button>
     </div>
 
-    <!-- COLLECTION TAGS -->
+    <!-- TAGS -->
     <label>Collection Tags</label>
     <div class="form-group" ng-repeat="collection_tag in collection_tags">
         <input type="checkbox" class="form-control" ng-model="collection_tag.selected" ng-true-value="'Y'" ng-false-value="'N'"/>
         {{collection_tag.name}}
     </div>
 
-    <!-- SUBMIT BUTTON -->
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <label>Diet Tags</label>
+    <div class="form-group" ng-repeat="diet_tag in diet_tags">
+        <input type="checkbox" class="form-control" ng-model="diet_tag.selected" ng-true-value="'Y'" ng-false-value="'N'"/>
+        {{diet_tag.name}}
+    </div>
 
+    <label>Category Tags</label>
+    <div class="form-group" ng-repeat="category_tag in category_tags">
+        <input type="checkbox" class="form-control" ng-model="category_tag.selected" ng-true-value="'Y'" ng-false-value="'N'"/>
+        {{category_tag.name}}
+    </div>
+
+    <!-- SUBMIT BUTTON -->
+    <button type='submit' class="btn btn-primary">Submit</button>
 </form>
+
 
 <div ng-if="success">
     <h2>Recipe Added Successfully</h2>
     <p>ID is {{ local_id }}</p>
     <p>Please add #lovetoeatit ltei/{{ local_id }} to your instagram post</p>
 </div>
-
-<!--   <form name="myForm">
-    <fieldset>
-      <legend>Upload on form submit</legend>
-      Username:
-      <input type="text" name="userName" ng-model="username" size="31" required>
-      <i ng-show="myForm.userName.$error.required">*required</i>
-      <br>Photo:
-      <input type="file" ngf-select ng-model="picFile" name="file"
-             accept="image/*" ngf-max-size="2MB" required
-             ngf-model-invalid="errorFiles">
-      <i ng-show="myForm.file.$error.required">*required</i><br>
-      <i ng-show="myForm.file.$error.maxSize">File too large
-          {{errorFiles[0].size / 1000000|number:1}}MB: max 2M</i>
-      <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
-      <br>
-      <button ng-disabled="!myForm.$valid"
-              ng-click="uploadPic(picFile)">Submit</button>
-      <span class="progress" ng-show="picFile.progress >= 0">
-        <div style="width:{{picFile.progress}}%"
-            ng-bind="picFile.progress + '%'"></div>
-      </span>
-      <span ng-show="picFile.result">Upload Successful</span>
-      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-    </fieldset>
-    <br>
-  </form> -->
