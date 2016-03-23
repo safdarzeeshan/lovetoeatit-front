@@ -1,9 +1,28 @@
-<h2 class='page-header'>Collections</h2>
-<div class="col-md-3 portfolio-item" ng-repeat="collection in collections">
-    <a href="#" ng-click="getCollection(collection.name)">
-        <img class="img-responsive" ng-src='{{ collection.recipes | user_liked_image }}'>
-    </a>
-    <h3>
-        <a href="#" ng-click="getCollection(collection.name)">{{ collection.name }}</a>
-    </h3>
+<div class='collections'>
+    <div class="col-md-3 portfolio-item collection-thumbnail" ng-repeat="collection in collections">
+        <div class='collection-thumbnail-image'>
+            <a href="#" ng-click="getCollection(collection.name)">
+                <div class='album-overlay'>
+                    <img class="album-overlay-src" src='images/collection-overlay.png'>
+                </div>
+                <div class='collection-image'>
+                    <div class='collection-thumbnail-image-border'>
+                    </div>
+                    <img class="collection-image-src img-responsive" ng-src='{{ collection.recipes | user_liked_image }}'>
+                </div>
+            </a>
+        </div>
+        <div class='collection-thumbnail-info'>
+            <div class='collection-thumbnail-details'>
+                <div class='collection-thumbnail-name'>
+                    <h3>
+                        <a href="#" ng-click="getCollection(collection.name)">{{ collection.name }}</a>
+                    </h3>
+                </div>
+            </div>
+            <div class='collection-thumbnail-recipe-count'>
+                <p><i>{{ collection.recipes | user_liked_recipe_count }} recipes</i></p>
+            </div>
+        </div>
+    </div>
 </div>

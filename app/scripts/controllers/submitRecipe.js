@@ -11,29 +11,41 @@ angular.module('loveToEatItFrontEndApp')
   .controller('SubmitRecipeCtrl',
     function ($scope, FoodBlogger, Upload, $cookies) {
 
+    amplitude.logEvent('Submit Recipe page');
     $scope.recipe ={};
     $scope.tempImage ={};
     $scope.success= false;
     $scope.showForm= false;
     $scope.fromImageUrl= false;
     $scope.fromImageLocal= false;
-    var uploadrecipe;
-    $scope.processForm = function(croppedDataUrl) {
+    $scope.noRecipeInfo= false;
+    // var uploadrecipe;
 
+    $scope.processForm = function() {
+
+        amplitude.logEvent('Clicked to process url');
         //get information from recipe scraping API
         FoodBlogger.$scrapeRecipe($scope.recipe.url)
         .success(function(response){
+
             $scope.showForm= true;
             $scope.fromImageUrl= true;
-            $scope.recipe = response;
 
-            //get image from url
-            FoodBlogger.$getTempImageUrl($scope.recipe.image_url)
-            .success(function(response){
-                console.log(response);
-                $scope.tempImage.picUrlFile=response;
-                $scope.tempImage.fileName = response.substring(response.lastIndexOf('/')+1);
-            });
+            if (response.error === 'no information available'){
+                $scope.noRecipeInfo= true;
+                amplitude.logEvent('no information available');
+            }
+
+            else {
+                $scope.recipe = response;
+                //get image from url
+                FoodBlogger.$getTempImageUrl($scope.recipe.image_url)
+                .success(function(response){
+                    console.log(response);
+                    $scope.tempImage.picUrlFile=response;
+                    $scope.tempImage.fileName = response.substring(response.lastIndexOf('/')+1);
+                });
+            }
 
             //get list of tags
             FoodBlogger.$getCollectionTagsList()
@@ -50,11 +62,16 @@ angular.module('loveToEatItFrontEndApp')
             .then(function(response){
                 $scope.category_tags = response.data;
             });
+        })
+        .catch(function(error){
+            console.log(error);
+            amplitude.logEvent('error');
         });
     };
 
     $scope.submitRecipeForm = function() {
 
+        amplitude.logEvent('Clicked Submit Recipe Button');
         //validate that image has been added
         console.log($scope.tempImage.croppedDataUrl);
 
@@ -91,7 +108,7 @@ angular.module('loveToEatItFrontEndApp')
             $scope.local_id = response.local_id;
 
         }), function(error){
-            console.log('error' + error);
+            console.log('there is an error');
         };
     };
 
@@ -106,11 +123,13 @@ angular.module('loveToEatItFrontEndApp')
     };
 
     $scope.uploadFromLocal= function(){
+        amplitude.logEvent('Clicked upload from local');
         $scope.fromImageUrl= false;
         $scope.fromImageLocal= true;
     };
 
     $scope.refreshImageUrl = function(imageUrl){
+        amplitude.logEvent('Image URL refreshed');
         FoodBlogger.$getTempImageUrl(imageUrl)
         .success(function(response){
             console.log(response);
@@ -121,5 +140,12 @@ angular.module('loveToEatItFrontEndApp')
 
     $scope.deleteIngredient = function($index, recipe) {
         recipe.ingredients.splice($index, 1);
+        amplitude.logEvent('Ingredient deleted');
+    };
+
+    $scope.addIngredient = function() {
+        // var newIngredient = $scope.recipe.ingredients.length+1;
+        $scope.recipe.ingredients.push({});
+        amplitude.logEvent('Ingredient added');
     };
 });

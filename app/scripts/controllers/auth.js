@@ -29,6 +29,7 @@ angular.module('loveToEatItFrontEndApp')
         .success(function( data ) {
             //localstorage - store user status
             console.log(data);
+            amplitude.setUserId(data.instagram_id);
             $localStorage.isAuthenticated = 'true';
             $localStorage.role = data.role;
             $localStorage.onboarding_status = data.onboarding_status;

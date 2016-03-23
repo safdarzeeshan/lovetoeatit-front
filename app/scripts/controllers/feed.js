@@ -11,12 +11,8 @@ angular.module('loveToEatItFrontEndApp')
 .controller('FeedCtrl',
     function ($scope, $window, $state, Likes, Collections, Recipe) {
 
-        //get likes and populate scope
-        // Likes.$getLikes()
-        // .then(function( response ) {
-        //     $scope.likes = response.data;
-        // });
 
+        amplitude.logEvent('Feed page');
         Collections.$getCollectionsFeed()
         .then(function( response ) {
             console.log(response.data);
@@ -43,10 +39,20 @@ angular.module('loveToEatItFrontEndApp')
 
         $scope.getRecipe = function(id){
             $state.go('user.recipe' , { 'id': id});
+
+            var recipeProperties = {
+                'id': id,
+            };
+            amplitude.logEvent('Clicked recipe details', recipeProperties);
         };
 
         $scope.getCollection = function(collectionTag){
             $state.go('user.collection' , { 'collection_tag': collectionTag});
+
+            var collectionProperties = {
+                'tag': collectionTag,
+            };
+            amplitude.logEvent('Clicked collection', collectionProperties);
         };
 
     }

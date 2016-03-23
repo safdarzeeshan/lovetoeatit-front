@@ -11,8 +11,10 @@ angular.module('loveToEatItFrontEndApp')
   .controller('HowitworksCtrl',
     function ($scope, $window, $state) {
 
+    amplitude.logEvent('Onboarding - How it works page')
     $scope.foodBloggers = function() {
         $state.go('foodbloggers');
+        amplitude.logEvent('Onboarding - Clicked Food bloggers')
     };
 
 });

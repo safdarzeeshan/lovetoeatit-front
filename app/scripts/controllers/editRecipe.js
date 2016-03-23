@@ -11,6 +11,8 @@ angular.module('loveToEatItFrontEndApp')
   .controller('EditRecipeCtrl',
     function ($scope, FoodBlogger, Recipe, Upload) {
 
+
+    amplitude.logEvent('Edit recipe page');
     $scope.recipe ={};
     $scope.success= false;
     $scope.waiting= false;
@@ -26,6 +28,7 @@ angular.module('loveToEatItFrontEndApp')
     $scope.fromImageLocal= false;
 
     $scope.processForm = function() {
+        amplitude.logEvent('Clicked to process recipe id');
         $scope.waiting= true;
         //get recipe information from database
         Recipe.$getRecipe($scope.recipe.local_id)
@@ -106,6 +109,7 @@ angular.module('loveToEatItFrontEndApp')
 
     $scope.scrapeForm = function() {
         //get recipe information from database
+        amplitude.logEvent('Clicked scrape url in edit recipe');
         FoodBlogger.$scrapeRecipe($scope.recipe.url)
         .success(function(response){
             $scope.recipe.url = response.url;
@@ -126,6 +130,7 @@ angular.module('loveToEatItFrontEndApp')
     };
 
     $scope.submitForm = function() {
+        amplitude.logEvent('Clicked edit recipe button');
         $scope.waiting= true;
         //get selected collection_tags
         var c_ts = [];
@@ -196,6 +201,16 @@ angular.module('loveToEatItFrontEndApp')
         }), function(error){
             console.log('error' + error);
         };
+
+        var recipeProperties = {
+            'id': local_id,
+        };
+        amplitude.logEvent('Clicked Delete recipe', recipeProperties);
+    };
+
+    $scope.addIngredient = function() {
+        // var newIngredient = $scope.recipe.ingredients.length+1;
+        $scope.recipe.ingredients.push({});
     };
 
 

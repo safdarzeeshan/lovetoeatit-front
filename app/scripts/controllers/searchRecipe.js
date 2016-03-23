@@ -11,18 +11,24 @@ angular.module('loveToEatItFrontEndApp')
   .controller('SearchRecipeCtrl',
     function ($scope, $stateParams, $state, Recipe) {
 
+        amplitude.logEvent('Search results page');
         var searchTerm = $stateParams.q;
+        $scope.searchTerm=searchTerm;
 
-        console.log(searchTerm);
         Recipe.$getRecipeSearch(searchTerm)
         .then(function( response ) {
-            console.log(response.data);
             $scope.recipes = response.data;
+            $scope.resultCount=$scope.recipes;
+
         });
 
         $scope.getRecipe = function(id){
-            console.log(id)
             $state.go('user.recipe' , { 'id': id});
+
+            var recipeProperties = {
+                'id': id,
+            };
+            amplitude.logEvent('Clicked recipe details', recipeProperties);
         };
     }
 );

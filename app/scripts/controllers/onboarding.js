@@ -11,6 +11,7 @@ angular.module('loveToEatItFrontEndApp')
   .controller('OnboardingCtrl',
     function ($scope, $localStorage, FoodBlogger, $state, Auth) {
 
+        amplitude.logEvent('Onboarding - User info form');
         $scope.onboarding_status = $localStorage.onboarding_status;
         $scope.user = {};
 
@@ -53,6 +54,7 @@ angular.module('loveToEatItFrontEndApp')
 
         $scope.submitUserForm = function(){
             //get selected diet_tags
+            amplitude.logEvent('Onboarding - Clicked submit ')
             var d_ts = [];
             for(var i in $scope.diet_tags){
                 if($scope.diet_tags[i].selected=='Y'){

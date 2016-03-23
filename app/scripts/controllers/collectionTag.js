@@ -11,6 +11,7 @@ angular.module('loveToEatItFrontEndApp')
 .controller('CollectionTagCtrl',
     function ($scope, $stateParams, $state, $http, $cookies, Collections) {
 
+        amplitude.logEvent('Collection tag page');
         //get collection for tag and populate scope
         var collectionTag = $stateParams.collection_tag;
         $scope.collection_name = collectionTag;
@@ -22,6 +23,10 @@ angular.module('loveToEatItFrontEndApp')
 
         $scope.getRecipe = function(id){
             $state.go('user.recipe' , { 'id': id});
+            var recipeProperties = {
+                'id': id,
+            };
+            amplitude.logEvent('Clicked recipe details', recipeProperties);
         };
     }
 );

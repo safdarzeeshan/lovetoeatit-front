@@ -4,7 +4,7 @@
 
     <div class="form-group">
         <label>Recipe URL</label>
-        <input type="text" name="url" class="form-control" ng-model="recipe.url" >
+        <input type="url" name="url" class="form-control" ng-model="recipe.url" >
     </div>
 
     <button type="submit" class="btn btn-primary">Get Recipe Info</button>
@@ -12,17 +12,20 @@
 </form>
 
 <form name="userForm" ng-if="success == false && showForm" ng-submit="submitRecipeForm()" validate>
+    <p ng-if="noRecipeInfo">
+        We were unable to retrieve any recipe information. Sorry :(<br>Try double checking the blog url
+    </p>
 
     <!-- URL -->
     <div class="form-group">
         <label>Recipe URL</label>
-        <input type="text" name="url" class="form-control" ng-model="recipe.url" required>
+        <input type="url" name="url" class="form-control" ng-model="recipe.url" required>
     </div>
 
     <!-- IMAGE-URL -->
     <div class="form-group">
         <label>Image URL</label>
-        <input type="text" name="url" class="form-control" ng-model="recipe.image_url" required>
+        <input type="url" name="url" class="form-control" ng-model="recipe.image_url" required>
         <button type='button' class="btn btn-primary" ng-click="refreshImageUrl(recipe.image_url)"><i class="fa fa-refresh"></i></button>
     </div>
 
@@ -60,8 +63,8 @@
 
     <!-- DESCRIPTION -->
     <div class="form-group">
-        <label>Description</label>
-        <input type="text" name="description" class="form-control" ng-model="recipe.snippet" required>
+        <label>Description (140 Characters)</label>
+        <input type="text" name="description" class="form-control" maxlength="140" ng-model="recipe.snippet" required>
     </div>
 
     <!-- TIME -->
@@ -83,6 +86,8 @@
         <input type="text" name="ingredients" class="form-control" ng-model="ingredient.ingredient.name" >
         <button type='button' class="btn btn-primary" ng-click="deleteIngredient($index, recipe)"><i class="fa fa-times"></i></button>
     </div>
+    <button type='button' class="btn btn-primary" ng-click="addIngredient()"><i class="fa fa-plus"></i></button>
+    <br>
 
     <!-- TAGS -->
     <label>Collection Tags</label>

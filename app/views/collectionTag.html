@@ -1,9 +1,32 @@
-<div class="col-md-3 portfolio-item" ng-repeat="like in likes">
-    <a href="#" ng-click="getRecipe(like.local_id)">
-        <img class="img-responsive" ng-src='{{ like.image_url }}'>
-    </a>
-    <h3>
-        <a href="#" ng-click="getRecipe(like.local_id)">{{like.name}}</a>
-    </h3>
-    <p>{{like.snippet}}</p>
+<div class='collection_tag'>
+    <div class='collection-name'>
+        <h2>{{ collection_name }}</h2>
+    </div>
+    <div class="col-md-3 portfolio-item recipe-thumbnail" ng-repeat="like in likes">
+         <div class='recipe-thumbnail-image'>
+            <a href="#" ng-click="getRecipe(like.local_id)">
+                <div class='recipe-thumbnail-image-border'>
+                </div>
+                <img class="img-responsive" ng-src='{{ like.image_url }}'>
+            </a>
+        </div>
+        <div class='recipe-thumbnail-info'>
+            <div class='recipe-thumbnail-details'>
+                <div class='recipe-thumbnail-name'>
+                    <h4>
+                        <a href="#" ng-click="getRecipe(like.local_id)">{{like.name}}</a>
+                    </h4>
+                </div>
+                <div class='recipe-thumbnail-tags'>
+                    <span>{{ like.category_tags[0].name}}</span>
+                    <span>{{ like.diet_tags[0].name}}</span>
+                </div>
+            </div>
+            <div class='recipe-thumbnail-likes'>
+                <i class="fa fa-heart-o"></i>
+                <br>
+                <b>{{like.no_of_likes}}</b>
+            </div>
+        </div>
+    </div>
 </div>
