@@ -1,0 +1,58 @@
+.onboarding-diet{
+
+    margin-top: 60px;
+    padding-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+
+    h3{
+        margin-top: 10px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+}
+
+.diet-select{
+
+    input[type="checkbox"] {
+        display:none;
+    }
+
+    input[type="checkbox"] + label span {
+        transition: background-image 0.2s ease-in-out;
+        display: inline-block;
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        background-size: cover;
+        cursor: pointer;
+        border-color: #99CCCC;
+        border-style: solid;
+        border-width: 1px;
+    }
+
+    input[type="checkbox"]:checked + label span {
+        transition: background-image 0.2s ease-in-out;
+        background:url('/images/diet_tags/checked.png') left top no-repeat !important;
+        background-size: cover !important;
+    }
+}
+
+.next-btn{
+
+    background-color: $button-color;
+    border: none;
+    opacity: 0.9;
+    margin-left: 12em;
+
+    &:hover{
+        opacity: 1;
+    }
+
+    h3{
+        color: white;
+        margin: 0;
+        padding: 18px;
+    }
+}

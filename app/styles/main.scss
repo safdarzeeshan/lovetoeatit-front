@@ -12,12 +12,16 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 $font-heading: Lato;
 $font-text: Trebuchet MS;
 $font-text-secondary: Times New Roman;
-$primary-color: #A50F0F;
-$secondary-color: #99CCCC;
+$primary-color: #BA3B46;
+$button-color: #ED9B40;
+$secondary-color: rgba(153,204,204,1);
+$secondary-color-overlay: rgba(153,204,204,0.8);
 $sub-heading-color: #4A4A4A;
 $link-hover-color: #4A90E2;
 
+
 @import 'menu';
+@import 'feed';
 @import 'likes';
 @import 'discover';
 @import 'recipe-thumbnail';
@@ -27,6 +31,12 @@ $link-hover-color: #4A90E2;
 @import 'search';
 @import 'recipe-details';
 @import 'footer';
+@import 'onboarding_main';
+@import 'onboarding_userinfo';
+@import 'onboarding_userdiet';
+@import 'onboarding_howitworks';
+@import 'onboarding_foodbloggers';
+@import 'submit-recipe';
 
 h1{
   font-family: $font-heading;
@@ -67,7 +77,7 @@ h5{
 
 p{
   font-family: $font-text;
-  font-size: 16px;
+  font-size: 14px;
   color: $sub-heading-color;
 }
 
@@ -85,4 +95,11 @@ body{
 
 .footer{
   height: 60px;
+}
+
+button:focus, button:active, button.active, button:focus:active {
+  background-image: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }

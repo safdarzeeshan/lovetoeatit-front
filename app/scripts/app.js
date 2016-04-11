@@ -69,27 +69,46 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
         })
 
+
         .state('onboarding', {
             url: '/welcome',
-            templateUrl: 'views/onboarding_form.html',
+            templateUrl: 'views/onboarding.html',
             controller: 'OnboardingCtrl',
             requireLogin: true,
             role: ['Foodie','FoodBlogger','Admin'],
             onboardingStatus: ['New', 'InProgress']
         })
 
-        .state('howitworks', {
+        .state('onboarding.userinfo', {
+            url: '/user',
+            templateUrl: 'views/onboarding_user.html',
+            controller: 'OnboardingUserCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBlogger','Admin'],
+            onboardingStatus: ['New', 'InProgress']
+        })
+
+        .state('onboarding.userdiet', {
+            url: '/userhealth',
+            templateUrl: 'views/onboarding_userdiet.html',
+            controller: 'OnboardingUserDietCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBlogger','Admin'],
+            onboardingStatus: ['New', 'InProgress']
+        })
+
+        .state('onboarding.howitworks', {
             url: '/howitworks',
-            templateUrl: 'views/howitworks.html',
+            templateUrl: 'views/onboarding_howitworks.html',
             controller: 'HowitworksCtrl',
             requireLogin: true,
             role: ['Foodie','FoodBlogger','Admin'],
             onboardingStatus: ['New', 'InProgress']
         })
 
-        .state('foodbloggers', {
+        .state('onboarding.foodbloggers', {
             url: '/foodbloggers',
-            templateUrl: 'views/foodbloggers.html',
+            templateUrl: 'views/onboarding_foodbloggers.html',
             controller: 'FoodBloggersCtrl',
             requireLogin: true,
             role: ['Foodie','FoodBlogger','Admin'],
@@ -237,7 +256,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             if(((toState.onboardingStatus).indexOf(Auth.$onboardingStatus()))===-1){
 
                 if(Auth.$onboardingStatus()==='New'|| Auth.$onboardingStatus()==='InProgress'){
-                    $state.transitionTo('onboarding');
+                    $state.transitionTo('onboarding.userinfo');
                     event.preventDefault();
                 }
                 if(Auth.$onboardingStatus()==='Complete'){

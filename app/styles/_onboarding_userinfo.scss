@@ -1,0 +1,49 @@
+.onboarding-userinfo{
+
+    margin-top: 60px;
+    padding-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+
+.form-group{
+    margin-bottom: 30px;
+}
+
+.user-input{
+    border-radius: 0;
+    padding: 25px 15px;
+    box-shadow: none;
+    border-color: #C7C7C7;
+    border-width: 1px;
+    font-size: 16px;
+
+    &:focus{
+        background-color: #FDFDFD;
+    }
+}
+
+.onboarding-btn{
+
+    background-color: $primary-color;
+    border: none;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+
+    &:hover{
+        opacity: 1;
+    }
+
+    h2{
+        $primary-color: #A50F0F;
+        color: white;
+        margin: 0;
+    }
+}
+
+.para-terms{
+    font-size: 14px;
+}

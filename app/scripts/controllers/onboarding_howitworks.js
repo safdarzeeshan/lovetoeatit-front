@@ -13,7 +13,7 @@ angular.module('loveToEatItFrontEndApp')
 
     amplitude.logEvent('Onboarding - How it works page')
     $scope.foodBloggers = function() {
-        $state.go('foodbloggers');
+        $state.go('onboarding.foodbloggers');
         amplitude.logEvent('Onboarding - Clicked Food bloggers')
     };
 

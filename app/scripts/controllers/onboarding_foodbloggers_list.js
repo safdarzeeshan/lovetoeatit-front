@@ -9,7 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
 .controller('FoodBloggersCtrl',
-    function ($scope, $state, FoodBlogger, Auth, $localStorage) {
+    function ($scope, $window, $state, FoodBlogger, Auth, $localStorage) {
 
         amplitude.logEvent('Onboarding - Food bloggers page')
         //get likes and populate scope
@@ -20,7 +20,7 @@ angular.module('loveToEatItFrontEndApp')
         });
 
         $scope.onboardingComplete = function(){
-            amplitude.logEvent('Onboarding - clicked lets begin');
+            amplitude.logEvent('Onboarding - clicked show me some recipes');
 
             this.onboarding_status = {'onboarding_status':'Complete'};
             Auth.$updateUserOnboardingStatus(this.onboarding_status)
@@ -33,5 +33,10 @@ angular.module('loveToEatItFrontEndApp')
             };
 
         };
+
+        $scope.gotoInstagramAccount = function(intagramUsername){
+            amplitude.logEvent('Onboarding - clicked foodbloggers instagram');
+            $window.open('http://www.instagram.com/' + intagramUsername);
+        }
     }
 );

@@ -1,0 +1,24 @@
+.onboarding-main{
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 0;
+}
+
+.onboarding-banner{
+    padding: 2.5em 0;
+    background-size: cover;
+    background-image:
+        linear-gradient($secondary-color-overlay, $secondary-color-overlay),
+        url('/images/background_only-copy2.jpg');
+
+    h1{
+        color: white;
+    }
+}
+
+.onboarding-content{
+
+}
+

@@ -35,7 +35,7 @@ angular.module('loveToEatItFrontEndApp')
             $localStorage.onboarding_status = data.onboarding_status;
 
             if ($localStorage.onboarding_status === 'New' || $localStorage.onboarding_status === 'InProgress'){
-                $state.go('onboarding');
+                $state.go('onboarding.userinfo');
             }
 
             if ($localStorage.onboarding_status === 'Complete'){

@@ -1,0 +1,24 @@
+<div class='onboarding-userinfo'>
+    <form name="userForm" ng-submit="submitUserForm()" >
+
+        <!-- FIRST NAME -->
+        <div class="form-group">
+            <input type="text" placeholder='First Name *' name="first_name" class="form-control user-input" ng-model="user.first_name" ng-required>
+        </div>
+
+        <!-- LAST NAME -->
+        <div class="form-group">
+            <input type="text" placeholder='Last Name *' name="last_name" class="form-control user-input" ng-model="user.last_name" ng-required>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-group">
+            <input type="text" placeholder='Email *' name="email" class="form-control user-input" ng-model="user.email" ng-required>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <button type="submit" class="onboarding-btn"><h2>SIGN UP</h2></button>
+
+    </form>
+    <p class='para-terms'><i>Clicking Sign up confirms you've read and agree to Terms of Use.</i></p>
+</div>

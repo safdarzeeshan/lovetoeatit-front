@@ -11,12 +11,19 @@ angular.module('loveToEatItFrontEndApp')
 .controller('FeedCtrl',
     function ($scope, $window, $state, Likes, Collections, Recipe) {
 
+        $scope.noCollection = true;
 
         amplitude.logEvent('Feed page');
         Collections.$getCollectionsFeed()
         .then(function( response ) {
             console.log(response.data);
-            $scope.collection = response.data;
+            if (response.data.status === "no user recipe collections"){
+                console.log('no user collection');
+                $scope.noCollection = false;
+            }
+            else {
+                $scope.collection = response.data;
+            }
         });
 
         Likes.$getLastLike()

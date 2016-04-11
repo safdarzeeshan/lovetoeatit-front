@@ -1,72 +1,107 @@
+<div class='feed'>
+    <div ng-if='noCollection' class='feed-latest-collection collection-thumbnail-div'>
+        <div class="col-md-12 portfolio-item">
+            <a href="#" ng-click="getCollection(collection[0].name)">
+                <div class='album-overlay'>
+                    <img class="album-overlay-src" src='images/recipe-collection-feed-overlay.png'>
+                </div>
+                <div class='feed-collection-image'>
+                    <div class='feed-collection-border'>
+                    </div>
+                    <img class="img-responsive feed-thumbnail-image" ng-src='{{ collection[0].recipes[0].image_thumbnail_url }}'>
+                </div>
+            </a>
+            <div class='feed-collection-thumbnail-name'>
+                <h3>
+                    <a href="#" ng-click="getCollection(collection[0].name)">{{ collection[0].name }}</a>
+                </h3>
+            </div>
+        </div>
+        <div class="col-md-12 portfolio-item">
+            <a href="#" ng-click="getCollection(collection[1].name)">
+                <div class='album-overlay'>
+                    <img class="album-overlay-src" src='images/recipe-collection-feed-overlay.png'>
+                </div>
+                <div class='feed-collection-image'>
+                    <div class='feed-collection-border'>
+                    </div>
+                    <img class="img-responsive feed-thumbnail-image" ng-src='{{ collection[1].recipes[0].image_thumbnail_url }}'>
+                </div>
+            </a>
+            <div class='feed-collection-thumbnail-name'>
+                <h3>
+                    <a href="#" ng-click="getCollection(collection[1].name)">{{ collection[1].name }}</a>
+                </h3>
+            </div>
+        </div>
+    </div>
 
-<!-- <button ng-click='follow()'>Follow</button> -->
-<h2 class='page-header'>Latest Collections</h2>
-<div class="col-md-3 portfolio-item">
-    <a href="#" ng-click="getCollection(collection[0].name)">
-        <img class="img-responsive" ng-src='{{ collection[0].recipes[0].image_url }}'>
-    </a>
-    <h3>
-        <a href="#" ng-click="getCollection(collection[0].name)">{{ collection[0].name }}</a>
-    </h3>
-</div>
-<div class="col-md-3 portfolio-item">
-    <a href="#" ng-click="getCollection(collection[1].name)">
-        <img class="img-responsive" ng-src='{{ collection[1].recipes[0].image_url }}'>
-    </a>
-    <h3>
-        <a href="#" ng-click="getCollection(collection[1].name)">{{ collection[1].name }}</a>
-    </h3>
-</div>
+    <div class='feed-last-liked large-image-div'>
+        <div class="col-md-12 portfolio-item">
+            <a href="#" ng-click="getRecipe(like.local_id)">
+                <div class='feed-last-like-border'>
+                </div>
+                <img class="img-responsive feed-large-image" ng-src='{{ like.image_url }}'>
+            </a>
+            <div class='feed-last-like-name'>
+                <h3>
+                    <a href="#" ng-click="getRecipe(like.local_id)">Recently Liked</a>
+                </h3>
+            </div>
+        </div>
+    </div>
 
-<h2 class='page-header'>Last Liked</h2>
-<div class="col-md-3 portfolio-item">
-    <a href="#" ng-click="getRecipe(like.local_id)">
-        <img class="img-responsive" ng-src='{{ like.image_url }}'>
-    </a>
-    <h3>
-        <a href="#" ng-click="getRecipe(like.local_id)">{{like.name}}</a>
-    </h3>
-    <p>{{like.snippet}}</p>
-</div>
+    <div class='feed-popular-recipes thumbnail-div'>
+        <div class="col-md-12 portfolio-item">
+            <a href="#" ng-click="getRecipe(popularRecipe[0].local_id)">
+                <div class='feed-border'>
+                </div>
+                <img class="img-responsive feed-thumbnail-image" ng-src='{{ popularRecipe[0].image_thumbnail_url }}'>
+            </a>
+            <div class='feed-thumbnail-name'>
+                <h3>
+                    <a href="#" ng-click="getRecipe(popularRecipe[0].local_id)">Trending</a>
+                </h3>
+            </div>
+        </div>
 
-<h2 class='page-header'>Popular Recipes</h2>
-<div class="col-md-3 portfolio-item">
-    <a href="#" ng-click="getRecipe(popularRecipe[0].local_id)">
-        <img class="img-responsive" ng-src='{{ popularRecipe[0].image_url }}'>
-    </a>
-    <h3>
-        <a href="#" ng-click="getRecipe(popularRecipe[0].local_id)">{{popularRecipe[0].name}}</a>
-    </h3>
-    <p>{{popularRecipe[0].snippet}}</p>
-</div>
+        <div class="col-md-12 portfolio-item">
+            <a href="#" ng-click="getRecipe(popularRecipe[1].local_id)">
+                <div class='feed-border'>
+                </div>
+                <img class="img-responsive feed-thumbnail-image" ng-src='{{ popularRecipe[1].image_thumbnail_url }}'>
+            </a>
+            <div class='feed-thumbnail-name'>
+                <h3>
+                    <a href="#" ng-click="getRecipe(popularRecipe[1].local_id)">Recipe of the Week</a>
+                </h3>
+            </div>
+        </div>
+    </div>
 
-<div class="col-md-3 portfolio-item">
-    <a href="#" ng-click="getRecipe(popularRecipe[1].local_id)">
-        <img class="img-responsive" ng-src='{{ popularRecipe[1].image_url }}'>
-    </a>
-    <h3>
-        <a href="#" ng-click="getRecipe(popularRecipe[1].local_id)">{{popularRecipe[1].name}}</a>
-    </h3>
-    <p>{{popularRecipe[1].snippet}}</p>
-</div>
-
-<h2 class='page-header'>Latest Recipes</h2>
-<div class="col-md-3 portfolio-item">
-    <a href="#" ng-click="getRecipe(latestRecipe[0].local_id)">
-        <img class="img-responsive" ng-src='{{ latestRecipe[0].image_url }}'>
-    </a>
-    <h3>
-        <a href="#" ng-click="getRecipe(latestRecipe[0].local_id)">{{latestRecipe[0].name}}</a>
-    </h3>
-    <p>{{latestRecipe[0].snippet}}</p>
-</div>
-
-<div class="col-md-3 portfolio-item">
-    <a href="#" ng-click="getRecipe(latestRecipe[1].local_id)">
-        <img class="img-responsive" ng-src='{{ latestRecipe[1].image_url }}'>
-    </a>
-    <h3>
-        <a href="#" ng-click="getRecipe(latestRecipe[1].local_id)">{{latestRecipe[1].name}}</a>
-    </h3>
-    <p>{{latestRecipe[1].snippet}}</p>
+    <div class='feed-latest-recipes thumbnail-div'>
+        <div class="col-md-12 portfolio-item">
+            <a href="#" ng-click="getRecipe(latestRecipe[0].local_id)">
+                <div class='feed-border'>
+                </div>
+                <img class="img-responsive feed-thumbnail-image" ng-src='{{ latestRecipe[0].image_thumbnail_url }}'>
+            </a>
+            <div class='feed-thumbnail-name'>
+                <h3><a href="#" ng-click="getRecipe(latestRecipe[0].local_id)">Just Added</a>
+                </h3>
+            </div>
+        </div>
+        <div class="col-md-12 portfolio-item">
+            <a href="#" ng-click="getRecipe(latestRecipe[1].local_id)">
+                <div class='feed-border'>
+                </div>
+                <img class="img-responsive feed-thumbnail-image" ng-src='{{ latestRecipe[1].image_thumbnail_url }}'>
+            </a>
+            <div class='feed-thumbnail-name'>
+                <h3>
+                    <a href="#" ng-click="getRecipe(latestRecipe[1].local_id)">Just Added</a>
+                </h3>
+            </div>
+        </div>
+    </div>
 </div>
