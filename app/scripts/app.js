@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
-    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop'
+    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService'
 
 ]).factory('responseIntercepter', function ($q) {
     return {
@@ -57,16 +57,31 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
         .state('login', {
             url: '/login',
             templateUrl: 'views/login.html',
-            controller: 'LoginCtrl',
+            controller: 'LoginUserCtrl',
+            requireLogin: false
+
+        })
+
+        .state('fbhome', {
+            url: '/foodbloggers',
+            templateUrl: 'views/foodbloggers.html',
+            controller: 'LoginFbCtrl',
             requireLogin: false
 
         })
 
         .state('iguser', {
             url: '/iguser?code',
-            controller: 'AuthCtrl',
+            templateUrl: 'views/iguser.html',
+            controller: 'AuthUserCtrl',
             requireLogin: false
+        })
 
+        .state('igfoodblogger', {
+            url: '/iguser/foodblogger?code',
+            templateUrl: 'views/iguser.html',
+            controller: 'AuthFbCtrl',
+            requireLogin: false
         })
 
 
@@ -75,7 +90,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/onboarding.html',
             controller: 'OnboardingCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['New', 'InProgress']
         })
 
@@ -84,7 +99,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/onboarding_user.html',
             controller: 'OnboardingUserCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['New', 'InProgress']
         })
 
@@ -93,7 +108,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/onboarding_userdiet.html',
             controller: 'OnboardingUserDietCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['New', 'InProgress']
         })
 
@@ -102,7 +117,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/onboarding_howitworks.html',
             controller: 'HowitworksCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['New', 'InProgress']
         })
 
@@ -111,7 +126,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/onboarding_foodbloggers.html',
             controller: 'FoodBloggersCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['New', 'InProgress']
         })
 
@@ -120,7 +135,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/user.html',
             controller: 'UserCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['Complete']
         })
 
@@ -129,7 +144,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/feed.html',
             controller: 'FeedCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['Complete']
 
         })
@@ -139,7 +154,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/likes.html',
             controller: 'LikesCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['Complete']
 
         })
@@ -149,7 +164,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/collections.html',
             controller: 'CollectionsCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['Complete']
 
         })
@@ -159,7 +174,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/collectionTag.html',
             controller: 'CollectionTagCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['Complete']
 
         })
@@ -169,7 +184,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/allRecipes.html',
             controller: 'AllRecipesCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['Complete']
 
         })
@@ -179,7 +194,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/recipe.html',
             controller: 'RecipeCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['Complete']
 
         })
@@ -189,7 +204,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             templateUrl: 'views/searchResults.html',
             controller: 'SearchRecipeCtrl',
             requireLogin: true,
-            role: ['Foodie','FoodBlogger','Admin'],
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['Complete']
 
         })
@@ -289,5 +304,6 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             event.preventDefault();
         }
     });
+
 });
 

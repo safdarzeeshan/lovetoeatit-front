@@ -58,6 +58,14 @@ angular.module('loveToEatItFrontEndApp')
         });
     };
 
+    authFactory.$userSuccessEmail = function() {
+
+        return $http({
+            method: 'GET',
+            url: baseUrl + '/api/user_success_email/',
+        });
+    };
+
     authFactory.$isLoggedIn = function(){
         if ($localStorage.isAuthenticated === 'true'){
             return true;

@@ -18,9 +18,13 @@ $secondary-color: rgba(153,204,204,1);
 $secondary-color-overlay: rgba(153,204,204,0.8);
 $sub-heading-color: #4A4A4A;
 $link-hover-color: #4A90E2;
+$font-text-white: rgba(255,255,255,0.95);
 
 
 @import 'menu';
+@import 'login';
+@import 'food-blogger-landing';
+@import 'iguser';
 @import 'feed';
 @import 'likes';
 @import 'discover';
@@ -37,6 +41,8 @@ $link-hover-color: #4A90E2;
 @import 'onboarding_howitworks';
 @import 'onboarding_foodbloggers';
 @import 'submit-recipe';
+@import 'edit-recipe';
+@import 'submitted-recipes';
 
 h1{
   font-family: $font-heading;
@@ -75,9 +81,16 @@ h5{
   font-style: italic;
 }
 
+h6{
+  font-size: 16px;
+  font-weight: 500;
+  font-family: $font-heading;
+  color: $sub-heading-color;
+}
+
 p{
   font-family: $font-text;
-  font-size: 14px;
+  font-size: 16px;
   color: $sub-heading-color;
 }
 

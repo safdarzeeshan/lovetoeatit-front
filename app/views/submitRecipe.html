@@ -1,8 +1,15 @@
 
 <div class='submit-recipe-div'>
-    <h3 class='text-center' ng-if="success == false" >Add New Recipe</h3>
+
+    <h3 class='text-center' ng-if="success == false && loading == false && submittingRecipe == false" >Add New Recipe</h3>
     <br>
-    <form class="col-md-6 col-md-offset-3" role="form" name="userForm" ng-if="showForm == false" ng-submit="processForm()" >
+
+    <div ng-if="loading" class='col-md-4 text-center loading'>
+        <i class="fa fa-spinner fa-pulse"></i>
+        <h1>just collecting the ingredients....</h1>
+    </div>
+
+    <form class="col-md-6 col-md-offset-3" role="form" name="userForm" ng-if="showForm == false && loading == false" ng-submit="processForm()" >
 
         <div class="input-group">
             <input type = "url" class = "form-control input-lg scrape-recipe-input" ng-model="recipe.url" placeholder = "Enter Recipe URL" required>
@@ -13,26 +20,27 @@
 
     </form>
 
-    <form class="col-md-6 col-md-offset-3 submit-recipe-form" ng-if="success == false && showForm" ng-submit="submitRecipeForm()" validate>
+    <form class="col-md-6 col-md-offset-3 submit-recipe-form" ng-if="success == false && showForm && submittingRecipe == false" ng-submit="submitRecipeForm()" validate>
         <p ng-if="noRecipeInfo">
             We were unable to retrieve any recipe information. Sorry :(<br>Try double checking the blog url
+            <br>
         </p>
 
         <!-- URL -->
         <div class="form-group">
-            <label>Recipe URL</label>
+            <label>*Recipe URL</label>
             <input type="url" name="url" class="form-control input-lg" ng-model="recipe.url" required>
         </div>
 
         <!-- NAME -->
         <div class="form-group">
-            <label>Name</label>
+            <label>*Name</label>
             <input type="text" name="name" class="form-control input-lg" ng-model="recipe.name" required>
         </div>
 
         <!-- IMAGE-URL -->
         <div ng-if="fromImageUrl" class="input-group">
-            <label>Image URL</label>
+            <label>*Image URL</label>
             <input type="url" name="url" class="form-control input-lg" ng-model="recipe.image_url" required>
             <div class="input-group-btn">
                 <button class="btn refresh-btn" type="button" ng-click="refreshImageUrl(recipe.image_url)"><i class="fa fa-refresh"></i></button>
@@ -49,7 +57,7 @@
                  class="cropArea">
                 <div class='text-center image-upload-waiting' ng-if='imageUploading'><i class="fa fa-spinner fa-pulse"></i></div>
                 <img-crop image="tempImage.picUrlFile" area-type="square"
-                result-image="tempImage.croppedDataUrl" result-image-size="600" ng-init="tempImage.croppedDataUrl=''">
+                result-image="tempImage.croppedDataUrl" result-image-format="image/jpeg" result-image-size="600" ng-init="tempImage.croppedDataUrl=''">
                 </img-crop>
             </div>
         </div>
@@ -61,31 +69,31 @@
           <div ngf-drop ng-model="tempImage.picDataFile" ngf-pattern="image/*"
                class="cropArea">
               <img-crop image="tempImage.picDataFile  | ngfDataUrl" area-type="square"
-              result-image="tempImage.croppedDataUrl" result-image-size="600"  ng-init="tempImage.croppedDataUrl=''">
+              result-image="tempImage.croppedDataUrl" result-image-format="image/jpeg" result-image-size="600"  ng-init="tempImage.croppedDataUrl=''">
               </img-crop>
           </div>
         </div>
 
         <!-- DESCRIPTION -->
         <div class="form-group">
-            <label>Description (140 Characters)</label>
+            <label>*Description (140 Characters)</label>
             <textarea name="description" class="form-control" maxlength="140" rows = "3" ng-model="recipe.snippet" required></textarea>
         </div>
 
         <!-- TIME -->
         <div class="form-group">
-            <label>Time</label>
-            <input type="text" name="time" class="form-control input-lg" ng-model="recipe.time" required>
+            <label>*Time (minutes)</label>
+            <input type="text" name="time" class="form-control input-lg" placeholder='eg. 10'ng-model="recipe.time" required>
         </div>
 
         <!-- SERVING -->
         <div class="form-group">
-            <label>Serving Size</label>
-            <input type="text" name="servingSize" class="form-control input-lg" ng-model="recipe.serving_size" required>
+            <label>*Serving Size (no of people)</label>
+            <input type="text" name="servingSize" placeholder='eg. 2-4' class="form-control input-lg" ng-model="recipe.serving_size" required>
         </div>
 
        <!-- INGREDIENTS -->
-        <label>Ingredients</label>
+        <label>*Ingredients</label>
         <div class="form-group ingredient" ng-repeat="ingredient in recipe.ingredients track by $index">
             <input class='col-md-3 input-lg' type="text" name="ingredients" class="form-control input-lg" ng-model="ingredient.amount" >
             <input class='col-md-8 input-lg ingredient-name' type="text" name="ingredients" class="form-control input-lg" ng-model="ingredient.ingredient.name" >
@@ -105,6 +113,20 @@
         <br>
 
         <!-- TAGS -->
+
+        <div class="submit-recipe-tags col-md-12">
+            <label>Category? (Select atleast 1)</label>
+            <br>
+            <div class="form-group submit-recipe-tag" ng-repeat="collection_tag in collection_tags">
+                <input type="checkbox" id="collection-{{ collection_tag.name }}" class="form-control" ng-model="collection_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" />
+                <label for="collection-{{ collection_tag.name }}">
+                    <span>
+                        {{collection_tag.name}}
+                    </span>
+                </label>
+            </div>
+        </div>
+
         <div class="submit-recipe-tags col-md-12">
             <label>Friendly for?</label>
             <br>
@@ -119,25 +141,7 @@
         </div>
 
         <div class="submit-recipe-tags col-md-12">
-            <label>Collection Tags</label>
-            <br>
-    <!--         <div class="form-group" ng-repeat="collection_tag in collection_tags">
-                <input type="checkbox" class="form-control" ng-model="collection_tag.selected" ng-true-value="'Y'" ng-false-value="'N'"/>
-                {{collection_tag.name}}
-            </div> -->
-            <div class="form-group submit-recipe-tag" ng-repeat="collection_tag in collection_tags">
-                <input type="checkbox" id="collection-{{ collection_tag.name }}" class="form-control" ng-model="collection_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" />
-                <label for="collection-{{ collection_tag.name }}">
-                    <span>
-                        {{collection_tag.name}}
-                    </span>
-                </label>
-            </div>
-        </div>
-
-
-        <div class="submit-recipe-tags col-md-12">
-            <label>Category Tags</label>
+            <label>Yeah Baby</label>
             <br>
     <!--         <div class="form-group" ng-repeat="category_tag in category_tags">
                 <input type="checkbox" class="form-control" ng-model="category_tag.selected" ng-true-value="'Y'" ng-false-value="'N'"/>
@@ -156,6 +160,11 @@
         <!-- SUBMIT BUTTON -->
         <button type='submit' class="recipe-submit-btn"><h4>SUBMIT</h4></button>
     </form>
+
+    <div ng-if="submittingRecipe" class='col-md-4 text-center loading'>
+        <i class="fa fa-spinner fa-pulse"></i>
+        <h1>just putting it in the oven....</h1>
+    </div>
 
 
     <div class='recipe-submit-success col-md-4' ng-if="success">

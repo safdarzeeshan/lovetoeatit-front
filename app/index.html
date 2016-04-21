@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <base href="/">
-    <title></title>
+    <link rel="shortcut icon" href="/images/logo.ico">
+    <title>Love to Eat it</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -17,6 +18,8 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/custom_style.css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/external/animate.min.css" type="text/css">
+
 
     <!-- endbuild -->
 
@@ -51,6 +54,7 @@
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
@@ -62,20 +66,25 @@
     </script>
 
     <!-- build:js(.) scripts/vendor.js -->
+
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-csrf-cross-domain/dist/angular-csrf-cross-domain.js"></script>
+    <script src="bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
+    <script src="bower_components/angular-scroll/angular-scroll.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/checklist-model/checklist-model.js"></script>
     <script src="bower_components/hello/dist/hello.all.min.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
+    <script src="bower_components/ngSmoothScroll/lib/angular-smooth-scroll.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
@@ -89,8 +98,10 @@
 
 
     <!-- controllers -->
-    <script src="scripts/controllers/auth.js"></script>
-    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/auth_user.js"></script>
+    <script src="scripts/controllers/auth_foodblogger.js"></script>
+    <script src="scripts/controllers/login_user.js"></script>
+    <script src="scripts/controllers/login_foodblogger.js"></script>
     <script src="scripts/controllers/likes.js"></script>
     <script src="scripts/controllers/recipe.js"></script>
     <script src="scripts/controllers/allRecipes.js"></script>
@@ -107,6 +118,7 @@
     <script src="scripts/controllers/onboarding_howitworks.js"></script>
     <script src="scripts/controllers/onboarding_foodbloggers_list.js"></script>
     <script src="scripts/controllers/searchRecipe.js"></script>
+    <script src="scripts/controllers/modal.js"></script>
     <!-- endbuild -->
 </body>
 </html>

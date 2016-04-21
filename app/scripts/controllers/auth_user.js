@@ -8,12 +8,13 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-  .controller('AuthCtrl',
-    function ($scope, $window, $http, $cookieStore, $stateParams, $localStorage, $state, Auth) {
+  .controller('AuthUserCtrl',
+    function ($scope, $window, $http, $cookieStore, $stateParams, $location, $localStorage, $state, Auth) {
 
     var login,
         loginUserSession,
         oauthCode,
+        url,
 
 
     login = function(){
@@ -28,11 +29,14 @@ angular.module('loveToEatItFrontEndApp')
         Auth.$loginUser(network, oauthCode)
         .success(function( data ) {
             //localstorage - store user status
-            console.log(data);
             amplitude.setUserId(data.instagram_id);
             $localStorage.isAuthenticated = 'true';
             $localStorage.role = data.role;
             $localStorage.onboarding_status = data.onboarding_status;
+
+            if ($localStorage.foodBloggerStatus === 'FoodBloggerWaiting' && $localStorage.role === 'FoodBlogger'){
+                $localStorage.foodBloggerStatus = 'FoodBloggerValidated';
+            }
 
             if ($localStorage.onboarding_status === 'New' || $localStorage.onboarding_status === 'InProgress'){
                 $state.go('onboarding.userinfo');

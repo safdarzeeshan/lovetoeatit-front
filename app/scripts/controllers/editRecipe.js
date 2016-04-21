@@ -9,13 +9,12 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('EditRecipeCtrl',
-    function ($scope, FoodBlogger, Recipe, Upload) {
+    function ($scope, FoodBlogger, Recipe, Upload, $state, ModalService) {
 
 
     amplitude.logEvent('Edit recipe page');
     $scope.recipe ={};
     $scope.success= false;
-    $scope.waiting= false;
     $scope.showForm= false;
     $scope.edited= false;
     $scope.deleted= false;
@@ -26,17 +25,18 @@ angular.module('loveToEatItFrontEndApp')
     $scope.tempImage ={};
     $scope.fromImageUrl= false;
     $scope.fromImageLocal= false;
+    $scope.loading= false;
+    $scope.editingRecipe= false;
 
     $scope.processForm = function() {
+        $scope.loading= true;
         amplitude.logEvent('Clicked to process recipe id');
-        $scope.waiting= true;
         //get recipe information from database
         Recipe.$getRecipe($scope.recipe.local_id)
         .then(function( response ) {
-            $scope.waiting= false;
+            $scope.loading= false;
             $scope.fromImageUrl= true;
             //populate form with recipe information
-            console.log(response.data.diet_tags)
             $scope.recipe.url = response.data.url;
             $scope.recipe.image_url = response.data.image_url;
             $scope.tempImage.picUrlFile=response.data.image_url;
@@ -112,6 +112,9 @@ angular.module('loveToEatItFrontEndApp')
         amplitude.logEvent('Clicked scrape url in edit recipe');
         FoodBlogger.$scrapeRecipe($scope.recipe.url)
         .success(function(response){
+
+            console.log(response);
+
             $scope.recipe.url = response.url;
             $scope.recipe.image_url = response.image_url;
             $scope.recipe.name = response.name;
@@ -120,18 +123,43 @@ angular.module('loveToEatItFrontEndApp')
             $scope.recipe.serving_size = response.serving_size;
             $scope.recipe.ingredients = response.ingredients;
 
-            FoodBlogger.$getTempImageUrl($scope.recipe.image_url)
-            .success(function(response){
-                console.log(response);
-                $scope.tempImage.picUrlFile=response;
-                $scope.tempImage.fileName = response.substring(response.lastIndexOf('/')+1);
+            if (response.image_url){
+                $scope.imageUploading= true;
+                FoodBlogger.$getTempImageUrl($scope.recipe.image_url)
+                .success(function(response){
+                    $scope.imageUploading= false;
+                    $scope.tempImage.picUrlFile=response;
+                    $scope.tempImage.fileName = response.substring(response.lastIndexOf('/')+1);
+
+                }), function(error){
+                    console.log('error' + error);
+                };
+            }
+
+        }).catch(function(error){
+            console.log(error.data);
+            ModalService.showModal({
+                templateUrl: 'views/modal_error.html',
+                controller: "ModalCtrl",
+                inputs: {
+                    message: error.data.error
+                }
+                }).then(function(modal) {
+                    modal.element.modal();
+                    modal.close.then(function() {
+                        // $scope.message = "You said " + result;
+                });
             });
+            amplitude.logEvent('error');
         });
     };
 
     $scope.submitForm = function() {
+
+        console.log(Upload.dataUrltoBlob($scope.tempImage.croppedDataUrl));
+
         amplitude.logEvent('Clicked edit recipe button');
-        $scope.waiting= true;
+        $scope.editingRecipe= true;
         //get selected collection_tags
         var c_ts = [];
         for(var i in $scope.collection_tags){
@@ -159,7 +187,7 @@ angular.module('loveToEatItFrontEndApp')
 
         FoodBlogger.$editRecipe($scope.recipe.local_id, angular.toJson($scope.recipe), Upload.dataUrltoBlob($scope.tempImage.croppedDataUrl), $scope.tempImage.fileName )
         .success(function(response) {
-            $scope.waiting= false;
+            $scope.editingRecipe= false;
             $scope.success= true;
             $scope.edited= true;
             $scope.local_id = response.local_id;
@@ -177,10 +205,10 @@ angular.module('loveToEatItFrontEndApp')
     $scope.refreshImageUrl = function(imageUrl){
         $scope.fromImageUrl= true;
         $scope.fromImageLocal= false;
-        console.log('over her uploading')
+        $scope.imageUploading= true;
         FoodBlogger.$getTempImageUrl(imageUrl)
         .success(function(response){
-            console.log(response);
+            $scope.imageUploading= false;
             $scope.tempImage.picUrlFile=response;
             $scope.tempImage.fileName = response.substring(response.lastIndexOf('/')+1);
         });
@@ -212,6 +240,10 @@ angular.module('loveToEatItFrontEndApp')
         // var newIngredient = $scope.recipe.ingredients.length+1;
         $scope.recipe.ingredients.push({});
     };
+
+    $scope.editRecipeRefresh = function(){
+        $state.transitionTo($state.current, {}, { reload: true, inherit: true, notify: true })
+    }
 
 
 });

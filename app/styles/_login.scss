@@ -1,0 +1,241 @@
+section {
+    padding: 3em 0;
+    background-color: #FFFFFF;
+    margin: 1em;
+}
+
+aside {
+    padding: 50px 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+
+header {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    color: rgba(95, 94, 93, 0.901961);
+    min-height: 850px;
+
+}
+
+.user-landing-header{
+    background:   linear-gradient(
+        rgba(76, 76, 76, 0.5),
+        rgba(76, 76, 76, 0.1)
+    ),
+    /* bottom, image */
+    url("/images/DSC_0150.jpg");
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+header .header-content {
+    position: relative;
+    width: 100%;
+    padding: 100px 15px;
+    text-align: center;
+
+    h1{
+        font-size: 3em;
+        color: $font-text-white;
+    }
+
+    h2{
+        color: $font-text-white;
+        font-weight: 100;
+    }
+
+    .header-content-inner{
+        margin-top: 10em;
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 750px;
+
+        hr{
+            max-width: 15em;
+        }
+    }
+}
+
+.cta-more-info i{
+    font-size: 5em;
+    color: $primary-color;
+}
+
+.cta-more-info{
+    padding-top: 1em;
+}
+
+.cta-more-info a:hover{
+    background-color: rgba(153, 204, 204, 1);
+}
+
+#login_session_instagram{
+    padding: 10px 40px;
+    font-family: 'Noto Sans','Raleway', sans-serif;
+    color: white;
+    font-weight: 200;
+    // margin-top: 2em;
+    font-size: 1.5em;
+    border: 0px solid #dbdbdb;
+    border-radius: 5px;
+    /*outline: 0;*/
+    background-color: $primary-color;
+    opacity: 0.9;
+    cursor: pointer;
+    color: rgba(255, 252, 249, 0.9);
+}
+
+#login_session_instagram:hover{
+    background-color: $primary-color;
+    opacity: 1;
+}
+
+
+hr {
+    max-width: 50px;
+    border-width: 3px;
+    border-color: #99cccc;
+}
+
+
+.quote {
+    color: #99cccc;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.testimonials{
+    padding-top: 25px;
+}
+/*-------------------------------*/
+/*    Carousel Fade Transition   */
+/*-------------------------------*/
+
+#fade-quote-carousel.carousel {
+  padding-bottom: 60px;
+}
+#fade-quote-carousel.carousel .carousel-inner .item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+      -ms-transition-property: opacity;
+          transition-property: opacity;
+}
+#fade-quote-carousel.carousel .carousel-inner .active {
+  opacity: 1;
+  -webkit-transition-property: opacity;
+      -ms-transition-property: opacity;
+          transition-property: opacity;
+}
+#fade-quote-carousel.carousel .carousel-indicators {
+  bottom: 10px;
+}
+#fade-quote-carousel.carousel .carousel-indicators > li {
+  background-color: #e84a64;
+  border: none;
+}
+#fade-quote-carousel blockquote {
+    text-align: center;
+    border: none;
+}
+#fade-quote-carousel .profile-circle {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 200px;
+}
+
+#wrapper {
+     width: 1005px;
+     margin: 0 auto;
+}
+#leftcolumn, #rightcolumn {
+    border: 1px solid white;
+    float: left;
+    min-height: 20px;
+    color: white;
+}
+#leftcolumn {
+     width: 10px;
+     background-color: #111;
+}
+
+#rightcolumn {
+     width: 10px;
+     background-color: #777;
+}
+
+.food-blogger-links{
+    font-size: 1.5em;
+    margin-top: 1em;
+}
+
+.cta-services .btn-primary{
+    font-size: 1.5em;
+    font-weight: 400;
+    background-color: rgba(153, 204, 204, 0.8);
+    margin-top: 2em;
+    text-transform: none;
+    border-radius: 5px;
+    padding: 14px;
+    margin-bottom: 10px;
+    border: none;
+
+}
+
+.cta-services .btn-primary:hover{
+    background-color: rgba(153, 204, 204, 1);
+}
+.cta-services span{
+    font-size: 1.5em;
+}
+
+.landing-page-videoWrapper {
+    float: none;
+    clear: both;
+    width: 800px;
+    position: relative;
+    padding-bottom: 36.25%;
+    padding-top: 25px;
+    height: 0;
+    margin: 0 auto;
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        max-width: 800px;
+        // max-height: 400px;
+    }
+}
+
+footer {
+  padding: 25px 0 30px;
+}
+footer .list-inline {
+  margin: 0;
+  padding: 0;
+}
+footer .copyright {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 1em;
+}
+
+// .yesScrolling {
+//   background-color: white !important;
+// }
+
+// .notScrolling {
+//   background-color: red !important;
+// }

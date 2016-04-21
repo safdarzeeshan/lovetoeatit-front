@@ -16,6 +16,18 @@ angular.module('loveToEatItFrontEndApp')
         FoodBlogger.$getSubmittedRecipes()
         .then(function( response ) {
             $scope.recipes = response.data;
+
+            // for(var i in $scope.recipes){
+            //     if($scope.recipes[i].ig_media_associated=='true'){
+            //         console.log('it is true');
+            //     }
+
+            //     if($scope.recipes[i].ig_media_associated=='false'){
+            //         console.log('it is false');
+            //     }
+            // }
+            // $scope.recipes[0].ig_media_associated = false;
+
         });
 
         $scope.getRecipe = function(id){

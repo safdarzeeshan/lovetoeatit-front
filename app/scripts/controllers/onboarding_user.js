@@ -29,11 +29,21 @@ angular.module('loveToEatItFrontEndApp')
 
 
         $scope.submitUserForm = function(){
-            amplitude.logEvent('Onboarding user info- Clicked sign up ')
-            console.log($scope.user);
+            amplitude.logEvent('Onboarding user info - Clicked sign up ')
             //update user information
+            if ($localStorage.foodBloggerStatus === 'FoodBloggerWaiting'){
+                $scope.user.role = 'FoodBloggerWaiting';
+            }
+
             Auth.$updateUser($scope.user)
             .success(function(response){
+                Auth.$userSuccessEmail()
+                .success(function(){
+                    console.log('email sent to user');
+                }),function(error){
+                    console.log(error)
+                };
+
                 $state.go('onboarding.userdiet');
 
             }),function(error){

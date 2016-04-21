@@ -23,10 +23,12 @@
                 </div>
             </div>
             <div class='recipe-thumbnail-likes'>
-                <i class="fa fa-heart-o"></i>
+                <i ng-if="like.has_user_liked == true" class="fa fa-heart"></i>
+                <i ng-if="like.has_user_liked == false" class="fa fa-heart-o"></i>
                 <br>
                 <b>{{like.no_of_likes}}</b>
             </div>
+
         </div>
     </div>
 </div>

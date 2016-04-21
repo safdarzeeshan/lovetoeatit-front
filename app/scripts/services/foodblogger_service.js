@@ -4,7 +4,13 @@ angular.module('loveToEatItFrontEndApp')
 .factory('FoodBlogger', function( $http, $cookies, Upload ) {
 
     var foodBloggerFactory = {},
-        baseUrl = 'http://mykloudkitchen.com:8000';
+        baseUrl = 'http://mykloudkitchen.com:8000',
+
+        //Prod
+        // recipeScraperUrl = 'http://recipescraper.lovetoeat.it'
+
+        //Local
+        recipeScraperUrl = 'http://localhost:9292';
 
     foodBloggerFactory.$submitRecipe = function(recipeData) {
 
@@ -53,7 +59,7 @@ angular.module('loveToEatItFrontEndApp')
 
         return $http({
             method: 'GET',
-            url: 'http://localhost:4567/?url=' + recipeURL,
+            url: recipeScraperUrl +'/?url=' + recipeURL,
         });
     };
 
