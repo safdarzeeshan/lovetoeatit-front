@@ -1,5 +1,5 @@
 .feed{
-    width: 100%;
+    width: 98%;
     margin: 0 auto;
     margin-top: 60px;
 
@@ -15,14 +15,67 @@
     }
 }
 
-.feed-latest-collection{
-    width: 22%;
+
+//Collections
+.feed-latest-collections{
+
+    width: 20%;
+    margin-left: 20px;
+    margin-right: 20px;
+    float: left;
+
+    .feed-latest-collection{
+        margin-bottom: 60px;
+    }
+}
+
+.feed-collection-thumbnail-name{
+    background: rgba(255, 255, 255, 0.6);
+    width: 80%;
+    height: 60px;
+    position: relative;
+    z-index: 2;
+    margin-top: -85px;
+    text-align: center;
+    left: 20px;
+    max-width: 300px
+}
+
+
+//last liked
+
+.feed-last-liked{
+    width: 36%;
+    float: left;
+    margin-top: 18px;
+    margin-right: 20px;
+
+    .last-liked{
+        padding: 0;
+    }
+}
+
+
+.feed-last-like-name{
+    background: rgba(255, 255, 255, 0.6);
+    width: 100%;
+    height: 60px;
+    position: relative;
+    z-index: 2;
+    top: -40px;
+    text-align: center;
+    margin-top: -60px;
+}
+
+//popular and latest
+
+.thumbnail-div{
+    width: 19%;
     float: left;
 }
 
-.thumbnail-div{
-    width: 20%;
-    float: left;
+.feed-latest-popular-recipes{
+
     margin-top: 18px;
 
     .portfolio-item{
@@ -30,89 +83,95 @@
     }
 }
 
-.large-image-div{
-    width: 38%;
-    float: left;
-    margin-top: 18px;
-}
-
-.feed-thumbnail-image{
-    width: 240px;
-}
-
-.feed-collection-border{
-
-    height: 230px;
-    width: 230px;
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    border-style: solid;
-    border-color: white;
-    border-width: 2px;
-}
-
-.feed-border{
-
-    height: 230px;
-    width: 230px;
-    position: absolute;
-    top: 5px;
-    left: 20px;
-    border-style: solid;
-    border-color: white;
-    border-width: 2px;
-}
-
-.feed-collection-image{
-    z-index: 2;
-    position: relative;
-    width: 279px;
-    margin: 21px 21px;
-}
-
-.feed-large-image{
-    width: 500px;
-}
-
 .feed-thumbnail-name{
     background: rgba(255, 255, 255, 0.6);
-    width: 240px;
-    height: 64px;
-    position: absolute;
-    z-index: 1;
-    margin-top: -64px;
-    text-align: center;
-}
-
-.feed-collection-thumbnail-name{
-    background: rgba(255, 255, 255, 0.6);
-    width: 240px;
-    height: 64px;
-    position: absolute;
+    width: 100%;
+    height: 60px;
+    position: relative;
     z-index: 2;
-    margin-top: -85px;
+    top: -40px;
     text-align: center;
-    margin-left: 21px;
+    margin-top: -60px;
+    max-width: 300px;
+
+    h2{
+        margin-top: 0px;
+    }
 }
 
-.feed-last-like-name{
-    background: rgba(255, 255, 255, 0.6);
-    width: 500px;
-    height: 64px;
-    position: absolute;
-    z-index: 2;
-    margin-top: -64px;
-    text-align: center;
+
+@media #{$tablet-width}{
+    .feed-latest-collections{
+        width: 100%;
+
+        .feed-latest-collection{
+            float: left;
+        }
+    }
+
+    .thumbnail-div{
+        width: 90%;
+        margin-left: 5%;
+
+        .feed-thumbnail{
+            float: left;
+        }
+    }
+
+    .feed-last-liked{
+        width: 60%;
+        margin-left: 20%;
+    }
+
+    .feed-latest-collections{
+        width: 100%;
+
+        .feed-latest-collection{
+            margin-right: 30px;
+            margin-left: 30px;
+        }
+
+        .collection-thumbnail-image{
+            width: 90%;
+        }
+
+        .feed-collection-thumbnail-name{
+            width: 90%
+        }
+    }
+
 }
 
-.feed-last-like-border{
-    height: 490px;
-    width: 490px;
-    position: absolute;
-    top: 5px;
-    margin-left: 5px;
-    border-style: solid;
-    border-color: white;
-    border-width: 3px;
+@media #{$mobile-width}{
+
+    .thumbnail-div{
+        width: 100%;
+        margin-left: 35px;
+    }
+
+    .feed-last-liked{
+        width: 100%;
+        max-width: 300px;
+        margin-left: 50px;
+    }
+
+    .feed-latest-collections{
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+
+        .feed-collection-thumbnail-name{
+            width: 100%;
+        }
+
+        .collection-thumbnail-image{
+            width: 100%;
+        }
+    }
 }
+
+
+
+
+
+

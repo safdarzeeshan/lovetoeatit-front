@@ -1,17 +1,17 @@
 <div class='discover'>
-    <div class="col-md-3 portfolio-item recipe-thumbnail" ng-repeat="recipe in recipes">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 recipe-thumbnail" ng-repeat="recipe in recipes">
         <div class='recipe-thumbnail-image'>
             <a href="#" ng-click="getRecipe(recipe.local_id)">
                 <div class='recipe-thumbnail-image-border'>
                 </div>
-                <img class="img-responsive" ng-src='{{ recipe.image_url }}'>
+                <img class="img-responsive" ng-src='{{ recipe.image_url }}' alt="">
             </a>
         </div>
         <div class='recipe-thumbnail-info'>
             <div class='recipe-thumbnail-details'>
                 <div class='recipe-thumbnail-name'>
                     <h4>
-                        <a href="#" ng-click="getRecipe(recipe.local_id)">{{recipe.name}}</a>
+                        <a href="#" title="{{recipe.name}}" ng-click="getRecipe(recipe.local_id)">{{recipe.name}}</a>
                     </h4>
                 </div>
                 <div class='recipe-thumbnail-tags'>
@@ -20,16 +20,11 @@
                 </div>
             </div>
             <div class='recipe-thumbnail-likes'>
-                <a ng-class="recipe.has_user_liked ? 'like true' : 'like false' " ng-click="likeClick($index, recipe.local_id)">
-                    <i ng-if="recipe.has_user_liked == true" class="fa fa-heart"></i>
-                    <i ng-if="recipe.has_user_liked == false" class="fa fa-heart-o"></i>
-                    <!-- {{recipe.has_user_liked}} -->
-                </a>
+                <i ng-if="recipe.has_user_liked == true" class="fa fa-heart"></i>
+                <i ng-if="recipe.has_user_liked == false" class="fa fa-heart-o"></i>
                 <br>
                 <b>{{recipe.no_of_likes}}</b>
             </div>
         </div>
     </div>
 </div>
-
-<!-- <input type="checkbox" ng-model="option.IsIncluded" ng-checked="option.IsIncluded"> -->

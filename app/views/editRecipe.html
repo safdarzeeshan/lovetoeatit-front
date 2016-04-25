@@ -33,7 +33,7 @@
 
         <!-- URL -->
         <div class="input-group">
-            <label>Recipe URL</label>
+            <label>*Recipe URL</label>
             <input type="text" name="url" class="form-control input-lg" ng-model="recipe.url"required>
 <!--             <button type='button' class="btn btn-primary" ng-click="scrapeForm(recipe.recipe_url)"><i class="fa fa-refresh"></i></button> -->
             <div class="input-group-btn">
@@ -43,13 +43,13 @@
 
         <!-- NAME -->
         <div class="form-group">
-            <label>Name</label>
+            <label>*Name</label>
             <input type="text" name="name" class="form-control input-lg" ng-model="recipe.name" required>
         </div>
 
         <!-- IMAGE-URL -->
         <div ng-if="fromImageUrl" class="input-group">
-            <label>Image URL</label>
+            <label>*Image URL</label>
             <input type="text" name="url" class="form-control input-lg" ng-model="recipe.image_url" ng-required>
             <div class="input-group-btn">
                 <button class="btn refresh-btn" type="button" ng-click="refreshImageUrl(recipe.image_url)"><i class="fa fa-refresh"></i></button>
@@ -86,24 +86,24 @@
 
         <!-- DESCRIPTION -->
         <div class="form-group">
-            <label>Description (140 Characters)</label>
+            <label>*Description (140 Characters)</label>
             <textarea name="description" class="form-control" maxlength="140" rows = "3" ng-model="recipe.snippet" required></textarea>
         </div>
 
         <!-- TIME -->
         <div class="form-group">
-            <label>Time</label>
-            <input type="text" name="time" class="form-control input-lg" ng-model="recipe.time" required>
+            <label>*Time (minutes)</label>
+            <input type="text" name="time" class="form-control input-lg" placeholder='eg. 10' ng-model="recipe.time" required>
         </div>
 
         <!-- SERVING -->
         <div class="form-group">
-            <label>Serving Size</label>
-            <input type="text" name="servingSize" class="form-control input-lg" ng-model="recipe.serving_size" required>
+            <label>*Serving Size (no of people)</label>
+            <input type="text" name="servingSize" placeholder='eg. 2-4' class="form-control input-lg" ng-model="recipe.serving_size" required>
         </div>
 
        <!-- INGREDIENTS -->
-        <label>Ingredients</label>
+        <label>*Ingredients</label>
         <div class="form-group ingredient" ng-repeat="ingredient in recipe.ingredients track by $index">
             <input class='col-md-3 input-lg' type="text" name="ingredientAmount" class="form-control input-lg" ng-model="ingredient.amount" >
             <input class='col-md-8 input-lg ingredient-name' type="text" name="ingredientName" class="form-control input-lg" ng-model="ingredient.ingredient.name" >
@@ -122,17 +122,12 @@
         <br>
 
         <!-- TAGS -->
-<!--         <label>Collection Tags</label>
-        <div class="form-group" ng-repeat="collection_tag in collection_tags">
-            <input type="checkbox" class="form-control" ng-model="collection_tag.selected" ng-true-value="'Y'" ng-false-value="'N'"/>
-            {{collection_tag.name}}
-        </div> -->
 
         <div class="submit-recipe-tags col-md-12">
-            <label>Collection Tags</label>
+            <label>*Category? <span ng-if='cl!=limit'>(Select atleast 1)</span><span ng-if='cl===limit'>(Maximum 3 can be selected)</span></label>
             <br>
             <div class="form-group submit-recipe-tag" ng-repeat="collection_tag in collection_tags">
-                <input type="checkbox" id="collection-{{ collection_tag.name }}" class="form-control" ng-model="collection_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" />
+                <input type="checkbox" id="collection-{{ collection_tag.name }}" class="form-control" ng-model="collection_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" / ng-change="checkChangedTag()" ng-disabled="cl===limit && collection_tag.selected!=='Y'">
                 <label for="collection-{{ collection_tag.name }}">
                     <span>
                         {{collection_tag.name}}
@@ -155,7 +150,7 @@
         </div>
 
         <div class="submit-recipe-tags col-md-12">
-            <label>Category Tags</label>
+            <label>Yeah Baby!!</label>
             <br>
             <div class="form-group submit-recipe-tag" ng-repeat="category_tag in category_tags">
                 <input type="checkbox" id="collection-{{ category_tag.name }}" class="form-control" ng-model="category_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" />

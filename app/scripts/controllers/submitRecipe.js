@@ -22,6 +22,8 @@ angular.module('loveToEatItFrontEndApp')
     $scope.imageUploading= false;
     $scope.loading= false;
     $scope.submittingRecipe= false;
+    $scope.limit = 3;
+    var checked;
 
     // $scope.success= true;
     // $scope.showForm= true;
@@ -159,6 +161,14 @@ angular.module('loveToEatItFrontEndApp')
         // var newIngredient = $scope.recipe.ingredients.length+1;
         $scope.recipe.ingredients.push({});
         amplitude.logEvent('Ingredient added');
+    };
+
+    $scope.checkChangedTag = function() {
+
+        checked = $scope.collection_tags.filter(function( tag ) {
+            return tag.selected === 'Y';
+        });
+        $scope.cl = checked.length;
     };
 
     $scope.gotoSubmittedRecipes = function() {

@@ -1,20 +1,20 @@
 <div class='collection_tag'>
     <div class='collection-name'>
-        <h2>{{ collection_name }}</h2>
+        <h1>{{ collection_name }}</h1>
     </div>
-    <div class="col-md-3 portfolio-item recipe-thumbnail" ng-repeat="like in likes">
-         <div class='recipe-thumbnail-image'>
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 recipe-thumbnail" ng-repeat="like in likes">
+        <div class='recipe-thumbnail-image'>
             <a href="#" ng-click="getRecipe(like.local_id)">
                 <div class='recipe-thumbnail-image-border'>
                 </div>
-                <img class="img-responsive" ng-src='{{ like.image_url }}'>
+                <img class="img-responsive" ng-src='{{ like.image_url }}' alt="">
             </a>
         </div>
         <div class='recipe-thumbnail-info'>
             <div class='recipe-thumbnail-details'>
                 <div class='recipe-thumbnail-name'>
                     <h4>
-                        <a href="#" ng-click="getRecipe(like.local_id)">{{like.name}}</a>
+                        <a href="#" title="{{like.name}}" ng-click="getRecipe(like.local_id)">{{like.name}}</a>
                     </h4>
                 </div>
                 <div class='recipe-thumbnail-tags'>
@@ -28,7 +28,6 @@
                 <br>
                 <b>{{like.no_of_likes}}</b>
             </div>
-
         </div>
     </div>
 </div>

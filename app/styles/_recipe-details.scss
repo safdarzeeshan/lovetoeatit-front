@@ -1,22 +1,31 @@
 .recipe-details{
-    width: 95%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
 
+.recipe-details-header{
+    float: right;
+}
+
+.recipe-details-image{
+    position: relative;
+    max-width: 600px;
+}
+
 .recipe-details-image-border{
-    height: 580px;
-    width: 580px;
+    height: 95%;
+    width: 95%;
     position: absolute;
-    top: 10px;
-    margin-left: 10px;
+    margin-left: 2.5%;
+    margin-top: 2.5%;
     border-style: solid;
     border-color: white;
     border-width: 4px;
 }
 
 .recipe-details-info{
-    width: 600px;
+    // width: 600px;
 }
 
 .recipe-details-blogger{
@@ -43,6 +52,15 @@
     }
 }
 
+.recipe-name{
+    a{
+        color: inherit;
+        text-decoration: none;
+    }
+    a:hover{
+        color: $link-hover-color;
+    }
+}
 .recipe-name-line{
     max-width: 50%;
     border-color: $sub-heading-color;
@@ -50,7 +68,6 @@
 }
 
 .recipe-details-facts{
-    margin-top: 25px;
 
     div{
         margin-right: 20px;
@@ -90,6 +107,7 @@
 
 .recipe-details-snippet{
     margin-top: 30px;
+    padding-left: 2em;
 }
 
 .recipe-likes{
@@ -104,8 +122,9 @@
 
 .recipe-details-ingredients{
 
-    width: 80%;
+    // width: 80%;
     margin-top: 25px;
+    padding-left: 2em;
 
     ul{
         margin-top: 20px;
@@ -133,14 +152,20 @@
     border: none;
     background-color: $secondary-color;
     opacity: 0.8;
-    margin-bottom: 100px;
-    color: white;
+    margin-left: 2em;
+
+    h2{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color: white;
+    }
 }
 
 .recipe-url-btn:hover{
     opacity: 1;
     background-color: #99CCCC;
     color: white;
+
 }
 
 .recipe-tags{
@@ -161,5 +186,36 @@
         padding-left: 5px;
         padding-right: 5px;
         color: $secondary-color;
+    }
+}
+
+@media #{$tablet-width}{
+
+
+}
+
+@media #{$mobile-width}{
+
+    .recipe-details-facts{
+        margin-top: 2em;
+    }
+
+    .recipe-url-btn{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+    }
+
+    .recipe-details-snippet{
+        padding-left: 0;
+    }
+
+    .recipe-details-ingredients{
+        padding-left: 0;
+    }
+
+    .recipe-details-image-border{
+        border-width: 2px;
     }
 }

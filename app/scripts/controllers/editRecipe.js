@@ -27,6 +27,8 @@ angular.module('loveToEatItFrontEndApp')
     $scope.fromImageLocal= false;
     $scope.loading= false;
     $scope.editingRecipe= false;
+    $scope.limit = 3;
+    var checked;
 
     $scope.processForm = function() {
         $scope.loading= true;
@@ -36,6 +38,7 @@ angular.module('loveToEatItFrontEndApp')
         .then(function( response ) {
             $scope.loading= false;
             $scope.fromImageUrl= true;
+
             //populate form with recipe information
             $scope.recipe.url = response.data.url;
             $scope.recipe.image_url = response.data.image_url;
@@ -245,5 +248,14 @@ angular.module('loveToEatItFrontEndApp')
         $state.transitionTo($state.current, {}, { reload: true, inherit: true, notify: true })
     }
 
+    $scope.checkChangedTag = function() {
+
+        checked = $scope.collection_tags.filter(function( tag ) {
+            console.log( 'tag: ', tag );
+            return tag.selected === "Y"
+        });
+
+        $scope.cl = checked.length;
+    };
 
 });
