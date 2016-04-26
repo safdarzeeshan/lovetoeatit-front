@@ -427,7 +427,7 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    }
+    },
 
     nginx: {
       options: {
