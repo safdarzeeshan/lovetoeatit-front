@@ -428,6 +428,15 @@ module.exports = function (grunt) {
         singleRun: true
       }
     }
+
+    nginx: {
+      options: {
+        config: '/etc/nginx/nginx.conf',
+        prefix: '/home/ubuntu/lovetoeatit-front'
+
+      }
+    }
+
   });
 
 
@@ -482,4 +491,8 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask("webstart", "nginx:start");
+  grunt.registerTask("webstop", "nginx:stop");
+  grunt.registerTask("webrestart", "nginx:restart");
 };
