@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('loveToEatItFrontEndApp')
-.factory('Auth', function( $http, $cookies, $localStorage ) {
+.factory('Auth', function( $http, $cookies, $localStorage, Config ) {
 
     var authFactory = {},
-        baseUrl = 'http://mykloudkitchen.com:8000';
+        baseUrl = Config.$baseUrl;
 
     authFactory.$loginUser = function(network, oauthCode) {
 

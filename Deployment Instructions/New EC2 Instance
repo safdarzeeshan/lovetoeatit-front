@@ -1,0 +1,142 @@
+1- Launch EC2 instance (kloud-front) and add rule to security group to authorize inbound connections to port 80 from anywhere.
+
+2. connect to EC2 via SSH and prepare Grunt Environment:
+
+#NodeJS Installation:
+
+>sudo apt-get update
+>cd ~
+>wget http://nodejs.org/dist/v0.10.35/node-v0.10.35-linux-x64.tar.gz
+>cd /usr/local
+>sudo tar --strip-components 1 -xzf ~/node-v0.10.35-linux-x64.tar.gz
+>node -v
+
+#NPM installation:
+>sudo npm install npm@2.1.17 -g
+>npm -v
+
+# Yo install
+>sudo npm install --global  yo@1.4.6
+
+#bower install
+>sudo npm install --global  bower@1.5.2
+
+#install grunt-cli
+>sudo npm install --global  grunt-cli@0.1.13
+
+#install ruby
+sudo su
+cd
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+exec $SHELL
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+exec $SHELL
+
+git clone https://github.com/rbenv/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
+
+rbenv install 2.0.0-p481
+-possible error. Google it, there will be a github answer about installing C compilers
+rbenv global 2.0.0-p481
+ruby -v
+gem install bundler
+
+#install compass
+>sudo su
+>cd
+>gem install compass -v 1.0.1
+
+#install angular generator
+npm install --global generator-angular@0.11.1
+
+#install git
+sudo apt-get install git
+
+#download the source code:
+Create new folder
+>mkdir ltei-front
+>cd ltei-front
+>git init
+>git clone https://github.com/safdarzeeshan/lovetoeatit-front.git
+>cd lovetoeatit-front/
+
+#update the version in "package.json":
+"grunt-contrib-imagemin": "^1.0.0",
+
+#install npm and bower packages
+>npm install
+>bower install --allow-root
+
+>grunt build
+>grunt serve
+
+If error isntall image min. npm install imagemin
+
+#install nginx plugin
+npm install grunt-nginx --save-dev
+
+#install nginx
+apt-get install nginx
+
+#This should already be there is code. If not add it
+#add tasks on Gruntfile.js. Add the lines:
+    nginx: {
+      options: {
+        config: '/etc/nginx/nginx.conf',
+        prefix: '/home/ubuntu/lovetoeatit-front'
+
+      }
+    }
+
+  grunt.registerTask("webstart", "nginx:start");
+  grunt.registerTask("webstop", "nginx:stop");
+  grunt.registerTask("webrestart", "nginx:restart");
+
+
+#modify "nginx.conf" . :
+cd /etc/nginx/
+service nginx stop
+mv nginx.conf nginx.conf.back
+sudo chown -R $USER:$USER /home/ubuntu/ltei-front/lovetoeatit-front/dist
+sudo chown -R $USER:$USER /home/ubuntu/ltei-front/lovetoeatit-front/
+sudo chmod -R 755 /home/ubuntu
+sudo chmod -R 755 /home/ubuntu/ltei-front/lovetoeatit-front/
+sudo chmod -R 755 /home/ubuntu/ltei-front/lovetoeatit-front/dist
+
+
+
+#The content file is (replace the domain name)
+events  {
+        worker_connections 1024;
+}
+http {
+        include       mime.types;
+        default_type  application/octet-stream;
+        server {
+                listen 80;
+                server_name ec2-52-38-194-123.us-west-2.compute.amazonaws.com;
+                location / {
+                        root /home/ubuntu/lovetoeatit-front/dist/;
+                        index index.html;
+                }
+        }
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log;
+
+}
+
+
+#update npm packages
+npm cache clear
+npm install
+
+#Start nginx server via grunt
+grunt webstart
+
+#if there is an error saying address already in bind. It might be because apache is running
+#stop apache
+
+sudo systemctl stop apache2.service

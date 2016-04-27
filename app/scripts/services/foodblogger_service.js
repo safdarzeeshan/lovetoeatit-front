@@ -1,16 +1,11 @@
 'use strict';
 
 angular.module('loveToEatItFrontEndApp')
-.factory('FoodBlogger', function( $http, $cookies, Upload ) {
+.factory('FoodBlogger', function( $http, $cookies, Upload, Config ) {
 
     var foodBloggerFactory = {},
-        baseUrl = 'http://mykloudkitchen.com:8000',
-
-        //Prod
-        // recipeScraperUrl = 'http://recipescraper.lovetoeat.it'
-
-        //Local
-        recipeScraperUrl = 'http://localhost:9292';
+        baseUrl = Config.$baseUrl,
+        recipeScraperUrl = Config.$recipeScraperUrl;
 
     foodBloggerFactory.$submitRecipe = function(recipeData) {
 

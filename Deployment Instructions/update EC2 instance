@@ -1,0 +1,14 @@
+#Not Tested yet
+
+SSH into EC2 instance using hatim.pem
+
+>cd /home/ubuntu/ltei-front/lovetoeatit-front
+
+check which branch its on. git branch -a
+if on master just do
+>git fetch
+
+test by doing
+>grunt build
+
+>grunt webrestart

@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('loveToEatItFrontEndApp')
-.factory('Likes', function( $http ) {
+.factory('Likes', function( $http, Config ) {
 
     var likesFactory = {},
-        baseUrl = 'http://mykloudkitchen.com:8000';
+        baseUrl = Config.$baseUrl;
 
     likesFactory.$getLikes = function() {
         return $http.get( baseUrl + '/api/userlikes' );

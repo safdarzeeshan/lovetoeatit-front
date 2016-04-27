@@ -22,9 +22,12 @@ angular.module('loveToEatItFrontEndApp')
         oauthCode = $stateParams.code;
         $localStorage.accesstoken = oauthCode;
         loginUserSession('instagram',oauthCode);
+        console.log('trying to login');
     };
 
     loginUserSession = function(network, oauthCode){
+
+        console.log('trying to connect to backend');
 
         Auth.$loginUser(network, oauthCode)
         .success(function( data ) {

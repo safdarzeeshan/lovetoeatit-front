@@ -249,12 +249,12 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
     csrfCDProvider.setCookieName('CSRFToken');
 
 
-}).run(function ($http, $cookies, $rootScope, $location, $state, Auth, $localStorage) {
+}).run(function ($http, $cookies, $rootScope, $location, $state, Auth, $localStorage, Config) {
 
     $http.defaults.headers.post['x-csrftoken'] = $cookies.csrftoken;
 
-    $http.get('http://localhost:8000/api/csrftoken').success(function (data, status, headers) {
-        // $http.defaults.headers.post["x-csrftoken"] = data['csrftoken'];
+    $http.get(Config.$baseUrl + '/api/csrftoken').success(function (data, status, headers) {
+       // $http.defaults.headers.post["x-csrftoken"] = data['csrftoken'];
         $http.defaults.headers.post['x-csrftoken'] = $cookies.get('x-csrftoken');
         $cookies.put('x-csrftoken', data['csrftoken']);
     }, function () {
