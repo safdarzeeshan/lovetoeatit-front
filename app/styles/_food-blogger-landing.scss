@@ -12,10 +12,6 @@
     -o-background-size: cover;
 }
 
-#services .blogger-heading-container{
-    width: 50%;
-}
-
 #services .container{
     width: 60%;
 }
@@ -37,6 +33,10 @@
     -o-background-size: cover;
     padding: 2em 0;
 
+}
+
+#phone_only{
+    display:none;
 }
 
 .timeline {
@@ -212,4 +212,166 @@
 
 .our_story_profile_image {
     max-width: 80%;
+}
+
+@media screen and (max-width: 1280px) {
+    .our_story_profile_image{
+
+        max-width: 80%;
+    }
+
+}
+
+@media screen and (max-width: 1024px) {
+
+    #how_it_works {
+        padding-top: 0em;
+        padding-bottom: 0em;
+    }
+
+    .timeline-body p{
+        font-size:1.25em;
+    }
+
+
+}
+@media screen and (max-width: 960px) {
+
+    .timeline{
+        right: 42%;
+    }
+
+    #how_it_works{
+        background-position: right;
+    }
+
+    .our_story_profile_image{
+        margin: auto;
+        margin-bottom: 2em;
+        max-width: 25%;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .our_story_profile_image{
+        margin: auto;
+        margin-bottom: 2em;
+    }
+
+    .our_story_profile_image {
+    max-width: 30%;
+    }
+
+
+}
+@media screen and (max-width: 700px) {
+
+    .howitworks-foodblogger {
+        background-image: none;
+        background-color: white;
+    }
+
+    #phone_only{
+        display: block;
+        float: none;
+        margin: auto;
+        padding-top: 3em;
+    }
+
+    .timeline{
+        right: 0%
+    }
+
+    .timeline:before{
+        bottom: 120px;
+    }
+
+    .our_story_profile_image {
+    max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .blogger-heading-container{
+        width:100%!important;
+    }
+
+    .testimonial-box{
+        height: 550px;
+    }
+
+    .value_prop{
+        width: 100%;
+    }
+
+    #phone_only{
+        width:80%;
+    }
+
+    .blogger-heading{
+        font-size:2em;
+    }
+    .food-blogger .page_heading{
+        font-size: 2em;
+        width: 100%;
+    }
+
+    .blogger-heading-container{
+        width:100%;
+    }
+
+    .blogger-heading-container h2{
+        font-size: 2em;
+    }
+
+    .service-icon{
+        width: 40%;
+    }
+
+    .timeline{
+        right: 0%
+    }
+
+    .timeline:before{
+        bottom: 110px;
+    }
+
+    .banner h2{
+        font-size: 2em;
+    }
+
+    .howitworks-foodblogger {
+        background-image: none;
+        background-color: white;
+    }
+
+    #phone_only{
+        display: block;
+        float: none;
+        margin: auto;
+        padding-top: 3em;
+    }
+
+    .our_story_profile_image {
+    max-width: 50%;
+    }
+
+}
+
+@media screen and (max-width: 385px)  {
+}
+
+
+@media screen and (max-width: 375px) {
+}
+
+@media screen and (max-width: 320px), screen and (max-height: 568px) {
+    .testimonial-box{
+        height: 500px;
+    }
+}
+
+@media screen and (max-width: 320px) , screen and (max-height: 480px){
 }

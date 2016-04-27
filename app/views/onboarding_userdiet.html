@@ -1,20 +1,21 @@
-<div class='onboarding-diet'>
-    <h3>What's your diet?</h3>
+<div class='onboarding-diet text-center'>
+    <h2 class='heading-unbold'>Do have any dietary preference?</h2>
+    <br>
 
     <form name="userDietForm" ng-submit="submitUserForm()" >
 
         <!-- DIET TAGS -->
-        <div class="diet-select form-group col-md-4 text-center" ng-repeat="diet_tag in diet_tags">
+        <div class="diet-select form-group col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center" ng-repeat="diet_tag in diet_tags">
             <input type="checkbox" id="diet-{{ diet_tag.name }}" class="form-control" ng-model="diet_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" />
             <label for="diet-{{ diet_tag.name }}">
                 <span style="background:url({{diet_tag.image_url}}) left top no-repeat; background-size: cover;"></span>
             </label>
             <h3>{{diet_tag.name}}</h3>
         </div>
-
+        <br>
         <!-- SUBMIT BUTTON -->
-        <div class='text-center'>
-            <button type="submit" class="next-btn"><h3>Next</h3></button>
+        <div class='custom-center'>
+            <button type="submit" class="next-btn"><h2>Next</h2></button>
         </div>
 
     </form>
