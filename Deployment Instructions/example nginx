@@ -1,3 +1,7 @@
+nginx is located at /etc/nginx
+
+this is nginx.conf file
+
 http {
     include       mime.types;
     default_type  application/octet-stream;

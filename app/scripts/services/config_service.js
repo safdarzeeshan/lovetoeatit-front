@@ -6,7 +6,7 @@ angular.module('loveToEatItFrontEndApp')
     var config = {};
 
     //local - Backend
-    config.$baseUrl = 'http://mykloudkitchen.com:8000';
+    // config.$baseUrl = 'http://mykloudkitchen.com:8000';
 
     //AWS - Backend
     config.$baseUrl = 'http://api.lovetoeat.it';
