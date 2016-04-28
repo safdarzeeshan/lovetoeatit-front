@@ -15,9 +15,10 @@ angular.module('loveToEatItFrontEndApp')
         //get all recipes and populate scope
         Recipe.$getAllRecipes()
         .then(function( response ) {
-            $scope.recipes = response.data;
-            console.log(response.data);
-
+            // $scope.recipes = response.data;
+            //display last 10 recipes
+            $scope.recipes = response.data.slice(Math.max(response.data.length - 10, 1));
+            console.log(response.data.slice(-10,0));
         });
 
         $scope.getRecipe = function(id){

@@ -46,6 +46,7 @@ $tablet-width: "only screen and (max-width : 768px)";
 @import 'submit-recipe';
 @import 'edit-recipe';
 @import 'submitted-recipes';
+@import 'custom_style';
 
 h1{
   font-family: $font-heading;
