@@ -9,7 +9,7 @@ if on master just do
 >git pull origin
 
 >sudo su
-test by doing
+
 >grunt build
 
 >grunt webrestart
