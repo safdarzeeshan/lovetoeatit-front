@@ -49,7 +49,9 @@
             </div>
             <div class='recipe-likes'>
                 <a ng-class="recipe.has_user_liked ? 'like true' : 'like false' " ng-click="likeClick(recipe.local_id)">
-                    <img src='{{ heart }}'/>
+                    <!-- <img src='{{heart}}'/> -->
+                    <img ng-if="recipe.has_user_liked" src='images/heart-filled.png'/>
+                    <img ng-if="recipe.has_user_liked === false" src='images/heart-outline.png'/>
                 </a>
                 <h5>{{recipe.no_of_likes}}</h5>
             </div>

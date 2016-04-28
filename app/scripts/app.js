@@ -46,7 +46,13 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
         };
     });
 
-    $urlRouterProvider.otherwise('/home/feed');
+    // $urlRouterProvider.otherwise('/home/feed');
+    $urlRouterProvider.otherwise(function($injector, $location){
+        $injector.invoke(function($state) {
+            $state.go('login');
+        });
+    });
+
     $locationProvider.html5Mode(true).hashPrefix('!');
 
     $stateProvider
@@ -277,6 +283,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
                 if(Auth.$onboardingStatus()==='Complete'){
                     $state.transitionTo('user.feed');
                     event.preventDefault();
+
                 }
             }
 
@@ -303,6 +310,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             $state.transitionTo('login');
             event.preventDefault();
         }
+
     });
 
 });

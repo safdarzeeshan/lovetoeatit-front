@@ -13,18 +13,20 @@ angular.module('loveToEatItFrontEndApp')
 
         amplitude.logEvent('Recipe Details page');
         var id = $stateParams.id;
+        // var $scope.heart;
 
         Recipe.$getRecipe(id)
         .then(function( response ) {
             $scope.recipe = response.data;
+            console.log(response.data)
 
-            if ($scope.recipe.has_user_liked === true){
-                $scope.heart = 'images/heart-filled.png';
-            }
+            // if ($scope.recipe.has_user_liked === true){
+            //     $scope.heart = 'images/heart-filled.png';
+            // }
 
-            if ($scope.recipe.has_user_liked === false){
-                $scope.heart = 'images/heart-outline.png';
-            }
+            // if ($scope.recipe.has_user_liked === false){
+            //     $scope.heart = 'images/heart-outline.png';
+            // }
         });
 
         $scope.gotoRecipe = function(recipe_url) {
@@ -41,16 +43,17 @@ angular.module('loveToEatItFrontEndApp')
             amplitude.logEvent('Recipe like clicked');
             Likes.$likeRecipe(recipe_local_id)
             .then(function(response){
+                console.log(response.data);
                 $scope.recipe.has_user_liked = response.data.has_user_liked;
                 $scope.recipe.no_of_likes = response.data.no_of_likes;
 
-                if ($scope.recipe.has_user_liked === 'true'){
-                    $scope.heart = 'images/heart-filled.png';
-                }
+                // if ($scope.recipe.has_user_liked === 'true'){
+                //     $scope.heart = 'images/heart-filled.png';
+                // }
 
-                if ($scope.recipe.has_user_liked === 'false'){
-                    $scope.heart = 'images/heart-outline.png';
-                }
+                // if ($scope.recipe.has_user_liked === 'false'){
+                //     $scope.heart = 'images/heart-outline.png';
+                // }
             });
         };
     }
