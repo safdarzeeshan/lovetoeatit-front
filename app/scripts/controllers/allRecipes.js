@@ -17,9 +17,11 @@ angular.module('loveToEatItFrontEndApp')
         .then(function( response ) {
             $scope.recipes = response.data;
 
-            //display last 10 recipes
-            // $scope.recipes = response.data.slice(Math.max(response.data.length - 10, 1));
+        })
+        .catch(function(error){
+            console.log(error);
         });
+
 
         $scope.getRecipe = function(id){
             $state.go('user.recipe' , { 'id': id});
