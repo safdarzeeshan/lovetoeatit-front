@@ -6,10 +6,10 @@ angular.module('loveToEatItFrontEndApp')
     var config = {};
 
     //local - Backend
-    config.$baseUrl = 'http://mykloudkitchen.com:8000';
+    // config.$baseUrl = 'http://api.lovetoeat.test:8000';
 
     //AWS - Backend
-    // config.$baseUrl = 'http://api.lovetoeat.it';
+    config.$baseUrl =  'http://api.lovetoeat.it';
 
     //Local - Recipe Scraper
     // config.$recipeScraperUrl = 'http://localhost:9292';
@@ -18,7 +18,8 @@ angular.module('loveToEatItFrontEndApp')
     config.$recipeScraperUrl = 'http://recipescraper.lovetoeat.it';
 
     //local - Redirect
-    // config.$redirectUrl = 'http://lovetoeat.it:9000';
+    // config.$redirectUrl = 'http://app.lovetoeat.test:9000';
+    // config.$redirectUrl = 'http://192.168.0.17:9000';
 
     //AWS - Redirect
     config.$redirectUrl = 'http://app.lovetoeat.it';
