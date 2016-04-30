@@ -189,8 +189,18 @@
     }
 }
 
-@media #{$tablet-width}{
+@media #{$tablet-portrait}{
 
+    .recipe-url-btn{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+    }
+
+    .recipe-tags{
+        margin-bottom: 20px;
+    }
 
 }
 

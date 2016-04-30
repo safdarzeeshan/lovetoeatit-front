@@ -99,6 +99,10 @@
     }
 }
 
+.feed-thumbnail{
+    max-width: 300px;
+}
+
 .feed-thumbnail-name{
     background: rgba(255, 255, 255, 0.6);
     width: 100%;
@@ -119,7 +123,19 @@
 }
 
 
-@media #{$tablet-width}{
+@media #{$tablet-landscape}{
+    .feed-last-liked{
+        width: 35%;
+    }
+
+    .feed-latest-collections{
+        .feed-latest-collection{
+            margin-bottom: 30px;
+        }
+    }
+}
+
+@media #{$tablet-portrait}{
     .feed-latest-collections{
         width: 100%;
 
@@ -129,8 +145,8 @@
     }
 
     .thumbnail-div{
-        width: 90%;
-        margin-left: 5%;
+        width: 80%;
+        margin-left: 10%;
 
         .feed-thumbnail{
             float: left;
@@ -144,11 +160,13 @@
 
     .feed-latest-collections{
         width: 100%;
+        margin-bottom: 30px;
 
         .feed-latest-collection{
             margin-right: 30px;
             margin-left: 30px;
         }
+
 
         .collection-thumbnail-image{
             width: 90%;
@@ -164,20 +182,30 @@
 @media #{$mobile-width}{
 
     .thumbnail-div{
-        width: 100%;
-        margin-left: 35px;
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .feed-thumbnail{
+        padding: 0;
     }
 
     .feed-last-liked{
-        width: 100%;
+        width: 80%;
         max-width: 300px;
-        margin-left: 50px;
+        margin-left: 10%;
+        margin-top: 0px;
     }
 
     .feed-latest-collections{
         width: 100%;
         margin-right: 0;
         margin-left: 0;
+
+        .feed-latest-collection{
+            margin-left: 23px;
+            margin-bottom: 60px;
+        }
 
         .feed-collection-thumbnail-name{
             width: 100%;

@@ -75,13 +75,13 @@
 
 
 
-@media #{$laptop-width}{
+@media #{$tablet-landscape}{
     .search-box{
-        width: 201px !important;
+        width: 200px !important;
     }
 }
 
-@media #{$tablet-width}{
+@media #{$tablet-portrait}{
     .navbar-nav{
         margin-left: 20px;
 
@@ -96,7 +96,7 @@
     }
 
     .search-box{
-        width: 150px !important;
+        width: 140px !important;
     }
 }
 

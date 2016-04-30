@@ -26,22 +26,18 @@
 }
 
 .recipe-thumbnail-likes{
-    width: 20%;
-    float: left;
+    width: 15%;
+    float: right;
     margin-top: 10px;
+    text-align: center;
 
     a{
         cursor: pointer;
     }
 
     i{
-        margin-left: 24px;
         font-size: 20px;
         color: $primary-color;
-    }
-
-    b{
-        margin-left: 30px;
     }
 }
 
