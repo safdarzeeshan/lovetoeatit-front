@@ -9,7 +9,7 @@
         <h1>just collecting the ingredients....</h1>
     </div>
 
-    <form class="col-md-6 col-md-offset-3" role="form" name="userForm" ng-if="showForm == false && loading == false" ng-submit="processForm()" >
+    <form class="col-lg-6 col-md-8 col-sm-8 col-xs-11 custom-center" role="form" name="userForm" ng-if="showForm == false && loading == false" ng-submit="processForm()" >
 
         <div class="input-group">
             <input type = "url" class = "form-control input-lg scrape-recipe-input" ng-model="recipe.url" placeholder = "Enter Recipe URL" required>
@@ -20,7 +20,7 @@
 
     </form>
 
-    <form class="col-md-6 col-md-offset-3 submit-recipe-form" ng-if="success == false && showForm && submittingRecipe == false" ng-submit="submitRecipeForm()" validate>
+    <form class="col-lg-6 col-md-8 col-sm-8 col-xs-11 custom-center submit-recipe-form" ng-if="success == false && showForm && submittingRecipe == false" ng-submit="submitRecipeForm()" validate>
         <p ng-if="noRecipeInfo">
             We were unable to retrieve any recipe information. Sorry :(<br>Try double checking the blog url
             <br>
@@ -95,8 +95,8 @@
        <!-- INGREDIENTS -->
         <label>*Ingredients</label>
         <div class="form-group ingredient" ng-repeat="ingredient in recipe.ingredients track by $index">
-            <input class='col-md-3 input-lg' type="text" name="ingredients" class="form-control input-lg" ng-model="ingredient.amount" >
-            <input class='col-md-8 input-lg ingredient-name' type="text" name="ingredients" class="form-control input-lg" ng-model="ingredient.ingredient.name" >
+            <input class='col-md-3 col-sm-3 col-xs-2  input-lg' type="text" name="ingredients" class="form-control input-lg" ng-model="ingredient.amount" >
+            <input class='col-md-8 col-sm-8 col-xs-9 input-lg ingredient-name' type="text" name="ingredients" class="form-control input-lg" ng-model="ingredient.ingredient.name" maxlength="140">
             <div class="">
                 <button type='button' class='ingredient-del-btn' ng-click="deleteIngredient($index, recipe)">
                     <i class="fa fa-times"></i>
@@ -114,7 +114,7 @@
 
         <!-- TAGS -->
 
-        <div class="submit-recipe-tags col-md-12">
+        <div class="submit-recipe-tags col-md-12 col-sm-12 col-xs-12">
             <label>Category? <span ng-if='cl!==limit'>(Select atleast 1)</span><span ng-if='cl===limit'>(Maximum 3 can be selected)</span></label>
             <br>
             <div class="form-group submit-recipe-tag" ng-repeat="collection_tag in collection_tags">
@@ -127,7 +127,7 @@
             </div>
         </div>
 
-        <div class="submit-recipe-tags col-md-12">
+        <div class="submit-recipe-tags col-md-12 col-sm-12 col-xs-12">
             <label>Friendly for?</label>
             <br>
             <div class="form-group submit-recipe-tag" ng-repeat="diet_tag in diet_tags">
@@ -140,7 +140,7 @@
             </div>
         </div>
 
-        <div class="submit-recipe-tags col-md-12">
+        <div class="submit-recipe-tags col-md-12 col-sm-12 col-xs-12">
             <label>Yeah Baby</label>
             <br>
             <div class="form-group submit-recipe-tag" ng-repeat="category_tag in category_tags">
@@ -154,7 +154,7 @@
         </div>
 
         <!-- SUBMIT BUTTON -->
-        <button type='submit' class="recipe-submit-btn"><h4>SUBMIT</h4></button>
+        <button type='submit' class="col-md-4 col-sm-4 col-xs-6 recipe-submit-btn custom-center"><h4>SUBMIT</h4></button>
     </form>
 
     <div ng-if="submittingRecipe" class='col-md-4 text-center loading'>
@@ -163,7 +163,7 @@
     </div>
 
 
-    <div class='recipe-submit-success col-md-4' ng-if="success">
+    <div class='recipe-submit-success col-md-4 col-sm-6 custom-center' ng-if="success">
         <div class='submit-recipe-banner text-center'>
             <h2>Success</h2>
             <h3>Recipe Added Successfully</h3>
@@ -172,7 +172,7 @@
         <div class='submit-recipe-success-content'>
             <p>Just one more step to go,</p>
             <p>Please add <b>#LoveToEatIt LTEI/{{ local_id }}</b> to the caption in your instagram post</p>
-            <img class="col-md-10 col-md-offset-1" ng-src='images/instagram-caption.png'>
+            <img class="col-md-10 custom-center" ng-src='images/instagram-caption.png'>
 
             <p><i>If you’re new to Love To Eat It or just need a refresher, check out our detailed how it works </i></p>
         </div>

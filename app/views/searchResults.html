@@ -1,8 +1,9 @@
 <div class='search'>
     <div class='search-term'>
-        <h3>{{ recipes.length }} results matching '{{ searchTerm }}'</h3>
+        <h3><span class='heading-unbold'>{{ recipes.length }} results matching</span> '{{ searchTerm }}'</h3>
     </div>
-    <div class="col-md-3 portfolio-item recipe-thumbnail" ng-repeat="recipe in recipes">
+    <br>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 recipe-thumbnail" ng-repeat="recipe in recipes">
         <div class='recipe-thumbnail-image'>
             <a href="#" ng-click="getRecipe(recipe.local_id)">
                 <div class='recipe-thumbnail-image-border'>

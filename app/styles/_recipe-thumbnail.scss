@@ -14,12 +14,13 @@
 }
 
 .recipe-thumbnail-image{
+    margin: 0 auto;
     position: relative;
     max-width: 300px;
 }
 
 .recipe-thumbnail-info{
-
+    margin: 0 auto;
     background-color: white;
     height: 82px;
     max-width: 300px;
@@ -86,7 +87,11 @@
 
 @media #{$mobile-width}{
 
-    .recipe-thumbnail{
-        width:100%;
+    .recipe-thumbnail-image{
+        margin: 0 auto;
+    }
+
+    .recipe-thumbnail-info{
+        margin: 0 auto;
     }
 }

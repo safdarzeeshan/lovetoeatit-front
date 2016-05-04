@@ -36,6 +36,7 @@ module.exports = function(config) {
       'bower_components/ng-img-crop/compile/minified/ng-img-crop.js',
       'bower_components/ngSmoothScroll/lib/angular-smooth-scroll.js',
       'bower_components/ngstorage/ngStorage.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

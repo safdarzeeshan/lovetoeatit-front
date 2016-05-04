@@ -1,5 +1,5 @@
 <div class='feed'>
-    <div ng-if='noCollection' class='feed-latest-collections'>
+    <div ng-if='collection' class='feed-latest-collections'>
          <div class='feed-latest-collection'>
             <div class='collection-thumbnail-image'>
                 <a href="#" ng-click="getCollection(collection[0].name)">
@@ -53,7 +53,8 @@
             </div>
             <div class='feed-last-like-name'>
                 <h2>
-                    <a href="#" ng-click="getRecipe(like.local_id)">Recently Liked</a>
+                    <a ng-if='lastLike' href="#" ng-click="getRecipe(like.local_id)">Recently Liked</a>
+                    <a ng-if='lastLike == false'href="#" ng-click="getRecipe(like.local_id)">Most Popular</a>
                 </h2>
             </div>
         </div>

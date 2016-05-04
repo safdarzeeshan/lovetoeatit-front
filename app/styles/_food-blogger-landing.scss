@@ -10,6 +10,7 @@
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    min-height: 700px;
 }
 
 #services .container{
@@ -224,10 +225,10 @@
 
 @media screen and (max-width: 1024px) {
 
-    #how_it_works {
-        padding-top: 0em;
-        padding-bottom: 0em;
-    }
+    // #how_it_works {
+    //     padding-top: 0em;
+    //     padding-bottom: 0em;
+    // }
 
     .timeline-body p{
         font-size:1.25em;
@@ -304,6 +305,7 @@
 
     .value_prop{
         width: 100%;
+        margin-bottom: 2em;
     }
 
     #phone_only{
@@ -311,7 +313,9 @@
     }
 
     .blogger-heading{
-        font-size:2em;
+        h1{
+            font-size:2em;
+        }
     }
     .food-blogger .page_heading{
         font-size: 2em;

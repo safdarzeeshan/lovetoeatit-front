@@ -9,7 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('SubmitRecipeCtrl',
-    function ($scope, $state, FoodBlogger, Upload, $cookies) {
+    function ($scope, $state, FoodBlogger, Upload, $cookies, ModalService, $element) {
 
     amplitude.logEvent('Submit Recipe page');
     $scope.recipe ={};
@@ -69,14 +69,26 @@ angular.module('loveToEatItFrontEndApp')
             .then(function(response){
                 $scope.category_tags = response.data;
             });
-        })
-        .catch(function(error){
-            console.log('error')
+        }).catch(function(error){
             console.log(error);
             $scope.loading= false;
             $scope.showForm= true;
             $scope.fromImageUrl= true;
-            $scope.noRecipeInfo= true;
+            // $scope.noRecipeInfo= true;
+            amplitude.logEvent('error');
+            console.log(error);
+            $scope.submittingRecipe= false;
+            ModalService.showModal({
+                templateUrl: 'views/modal_error.html',
+                controller: "ModalCtrl",
+                inputs: {
+                    message: "We weren't able to get any recipe information. You'll have to enter in manually. Sorry :("
+                }
+                }).then(function(modal) {
+                    modal.element.modal();
+                    modal.close.then(function() {
+                });
+            });
             amplitude.logEvent('error');
         });
     };
@@ -121,9 +133,22 @@ angular.module('loveToEatItFrontEndApp')
             $scope.success= true;
             $scope.local_id = response.local_id;
 
-        }), function(error){
-            console.log('there is an error');
-        };
+        }).catch(function(error){
+            console.log(error);
+            $scope.submittingRecipe= false;
+            ModalService.showModal({
+                templateUrl: 'views/modal_error.html',
+                controller: "ModalCtrl",
+                inputs: {
+                    message: 'There was an error. Please double check the recipe'
+                }
+                }).then(function(modal) {
+                    modal.element.modal();
+                    modal.close.then(function() {
+                });
+            });
+            amplitude.logEvent('error');
+        });
     };
 
     $scope.uploadPic = function(croppedDataUrl) {
@@ -149,6 +174,21 @@ angular.module('loveToEatItFrontEndApp')
             console.log(response)
             $scope.tempImage.picUrlFile=response;
             $scope.tempImage.fileName = response.substring(response.lastIndexOf('/')+1);
+
+        }).catch(function(error){
+            $scope.imageUploading= false;
+            ModalService.showModal({
+                templateUrl: 'views/modal_error.html',
+                controller: "ModalCtrl",
+                inputs: {
+                    message: 'Unable to get image from URL. Please check the URL.'
+                }
+                }).then(function(modal) {
+                    modal.element.modal();
+                    modal.close.then(function() {
+                });
+            });
+            amplitude.logEvent(' image refresh error');
         });
     };
 

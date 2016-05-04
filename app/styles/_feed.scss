@@ -129,6 +129,8 @@
     }
 
     .feed-latest-collections{
+        margin-left: 0;
+        margin-right: 0;
         .feed-latest-collection{
             margin-bottom: 30px;
         }
@@ -182,19 +184,27 @@
 @media #{$mobile-width}{
 
     .thumbnail-div{
-        width: 80%;
-        margin-left: 10%;
-    }
+        width: 100%;
+        margin-left: 0;
 
-    .feed-thumbnail{
-        padding: 0;
+        .feed-thumbnail{
+            padding: 0;
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+        }
     }
 
     .feed-last-liked{
-        width: 80%;
-        max-width: 300px;
-        margin-left: 10%;
+        width: 100%;
         margin-top: 0px;
+        margin-left: 0;
+
+        .last-liked{
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
     .feed-latest-collections{
@@ -203,16 +213,33 @@
         margin-left: 0;
 
         .feed-latest-collection{
-            margin-left: 23px;
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
             margin-bottom: 60px;
-        }
 
-        .feed-collection-thumbnail-name{
-            width: 100%;
-        }
 
-        .collection-thumbnail-image{
-            width: 100%;
+            // .collection-thumbnail-image{
+            //     margin-left: auto;
+            //     margin-right: auto;
+
+            //     .album-overlay{
+            //         .img-responsive{
+            //             left: 0;
+            //         }
+            //     }
+
+            //     .collection-image{
+            //         left: 0;
+            //     }
+            // }
+
+            .feed-collection-thumbnail-name{
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                left: 0;
+            }
         }
     }
 }

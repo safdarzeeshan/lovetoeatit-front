@@ -7,7 +7,7 @@
     .recipe1{
         position: absolute;
         top: 20px;
-        left: 20px;
+        // left: 20px;
         z-index: 1;
         -webkit-transform: rotate(10deg);
     }
@@ -15,7 +15,7 @@
     .recipe2{
         position: absolute;
         top: 20px;
-        left: 20px;
+        // left: 20px;
         z-index: 1;
         -webkit-transform: rotate(5deg);
     }
@@ -24,7 +24,8 @@
 .collection-thumbnail-image{
     width: 80%;
     max-width: 300px;
-    position: relative
+    position: relative;
+    margin: 0 auto;
 }
 
 .collection-thumbnail-image-border{
@@ -42,20 +43,21 @@
 .collection-image{
     position: relative;
     top: 20px;
-    left: 20px;
+    // left: 20px;
     z-index: 2;
-    // -webkit-transform: rotate(5deg);
 }
 
 .collection-thumbnail-info{
     position: relative;
-    left: 20px;
+    // left: 20px;
     width: 80%;
     z-index: 3;
     background-color: white;
     height: 60px;
     max-width: 300px;
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
 
     .collection-thumbnail-details{
         margin-right: 5px;
@@ -92,5 +94,35 @@
         font-size: 14px;
         }
     }
+
+}
+
+@media #{$mobile-width}{
+    .collection-thumbnail{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .collection-thumbnail-image{
+        margin-left: auto;
+        margin-right: auto;
+
+        .album-overlay{
+            .img-responsive{
+                // left: 0;
+            }
+        }
+
+        .collection-image{
+            // left: 0;
+        }
+    }
+
+    .collection-thumbnail-info{
+        margin-left: auto;
+        margin-right: auto;
+        // left: 0;
+    }
+
 
 }
