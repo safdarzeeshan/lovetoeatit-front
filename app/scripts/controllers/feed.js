@@ -17,8 +17,7 @@ angular.module('loveToEatItFrontEndApp')
         amplitude.logEvent('Feed page');
         Collections.$getCollectionsFeed()
         .then(function( response ) {
-            console.log(response.data);
-            if (response.data.status === "no user recipe collections"){
+            if (response.data.status === 'no user recipe collections'){
                 console.log('no user collection');
                 $scope.collection = false;
             }
@@ -29,18 +28,15 @@ angular.module('loveToEatItFrontEndApp')
 
         Likes.$getLastLike()
         .then(function( response ) {
-            console.log(response.data);
-            if (response.data.length !== 0 ){
-                $scope.like = response.data;
-            }
-
-            else{
+            if (response.data.status === 'no last like'){
                 Recipe.$getPopularRecipesFeed()
                 .then(function( response ) {
                     $scope.lastLike = false;
-                    console.log(response.data);
                     $scope.like = response.data[2];
                 });
+            }
+            else{
+                $scope.like = response.data;
             }
         });
 
