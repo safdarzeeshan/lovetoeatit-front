@@ -1,3 +1,7 @@
+.edit-recipe{
+
+}
+
 .edit-recipe-form{
 
     input{
@@ -32,21 +36,5 @@
 .recipe-delete-btn{
 
     background-color: red;
-    border: none;
-    opacity: 0.9;
-    width: 20%;
-    margin-left: 18em;
-    margin-bottom: 10em;
-    margin-top: 2em;
-
-    &:hover{
-        opacity: 1;
-    }
-
-    h3{
-        color: white;
-        margin: 0;
-        padding: 10px;
-    }
 
 }

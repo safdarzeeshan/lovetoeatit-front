@@ -1,188 +1,189 @@
-<h3 class='text-center' ng-if="success == false && loading == false && editingRecipe == false" >Edit Recipe</h3>
+<div class='edit-recipe'>
+    <h3 class='text-center' ng-if="success == false && loading == false && editingRecipe == false" >Edit Recipe</h3>
 
-<!-- Recipe ID -->
+    <!-- Recipe ID -->
 
-<div ng-if="loading" class='col-md-4 text-center loading'>
-    <i class="fa fa-spinner fa-pulse"></i>
-    <h1>just collecting the ingredients....</h1>
-</div>
+    <div ng-if="loading" class='col-md-4 text-center loading'>
+        <i class="fa fa-spinner fa-pulse"></i>
+        <h1>just collecting the ingredients....</h1>
+    </div>
 
-<form name="userForm" class="col-md-6 col-md-offset-3" ng-if="showForm == false && loading == false" ng-submit="processForm()" >
-    <div class="input-group">
-        <input type = "text" class = "form-control input-lg scrape-recipe-input" ng-model="recipe.local_id" placeholder = "Enter Recipe ID" required>
-        <div class="input-group-btn recipe-scrape-btn">
-            <button class="btn" type="submit">
-                <i class="fa fa-chevron-right"></i>
-            </button>
+    <form name="userForm" class="col-md-6 col-md-offset-3" ng-if="showForm == false && loading == false" ng-submit="processForm()" >
+        <div class="input-group">
+            <input type = "text" class = "form-control input-lg scrape-recipe-input" ng-model="recipe.local_id" placeholder = "Enter Recipe ID" required>
+            <div class="input-group-btn recipe-scrape-btn">
+                <button class="btn" type="submit">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
         </div>
-    </div>
 
-</form>
+    </form>
 
-<!-- Recipe Details -->
-<form name="userForm" class="col-md-6 col-md-offset-3 edit-recipe-form" ng-if="success == false && showForm && editingRecipe == false"  ng-submit="submitForm()" >
+    <!-- Recipe Details -->
+    <form name="userForm" class="col-lg-6 col-md-8 col-sm-8 col-xs-11 custom-center edit-recipe-form" ng-if="success == false && showForm && editingRecipe == false"  ng-submit="submitForm()" >
 
-    <!-- ID -->
-    <div class="form-group">
-        <h3>Recipe ID <b ng-model="recipe.local_id">{{recipe.local_id}}</b></h3>
-    </div>
-
-    <!-- URL -->
-    <div class="input-group">
-        <label>*Recipe URL</label>
-        <input type="url" name="url" class="form-control input-lg" ng-model="recipe.url"required>
-        <div class="input-group-btn">
-            <button class="btn refresh-btn" type="button" ng-click="scrapeForm(recipe.recipe_url)"><i class="fa fa-refresh"></i></button>
+        <!-- ID -->
+        <div class="form-group">
+            <h3>Recipe ID <b ng-model="recipe.local_id">{{recipe.local_id}}</b></h3>
         </div>
-    </div>
 
-    <!-- NAME -->
-    <div class="form-group">
-        <label>*Name</label>
-        <input type="text" name="name" class="form-control input-lg" ng-model="recipe.name" required>
-    </div>
-
-    <!-- IMAGE-URL -->
-    <div ng-if="fromImageUrl" class="input-group">
-        <label>*Image URL</label>
-        <input type="url" name="url" class="form-control input-lg" ng-model="recipe.image_url" ng-required>
-        <div class="input-group-btn">
-            <button class="btn refresh-btn" type="button" ng-click="refreshImageUrl(recipe.image_url)"><i class="fa fa-refresh"></i></button>
+        <!-- URL -->
+        <div class="input-group">
+            <label>*Recipe URL</label>
+            <input type="url" name="url" class="form-control input-lg" ng-model="recipe.url"required>
+            <div class="input-group-btn">
+                <button class="btn refresh-btn" type="button" ng-click="scrapeForm(recipe.recipe_url)"><i class="fa fa-refresh"></i></button>
+            </div>
         </div>
-    </div>
 
-    <!-- Image from URL -->
-    <div ng-if="fromImageUrl">
-        <p><i>Have a better picture on your laptop</i>
-            <button ng-click='uploadFromLocal()'>
-                Upload from computer</button>
-        </p>
-        <div ngf-drop ng-model="tempImage.picUrlFile" ngf-pattern="image/*"
-             class="cropArea">
-            <div class='text-center image-upload-waiting' ng-if='imageUploading'><i class="fa fa-spinner fa-pulse"></i></div>
-            <img-crop image="tempImage.picUrlFile" area-type="square"
-            result-image="tempImage.croppedDataUrl" result-image-size="600" result-image-format="image/jpeg" ng-init="tempImage.croppedDataUrl=''">
-            </img-crop>
+        <!-- NAME -->
+        <div class="form-group">
+            <label>*Name</label>
+            <input type="text" name="name" class="form-control input-lg" ng-model="recipe.name" required>
         </div>
-    </div>
 
-    <!-- Image from Local -->
-    <div ng-if="fromImageLocal">
-        <button ngf-select ng-model="tempImage.picDataFile" class accept="image/*">
-              Browse <i class="fa fa-laptop"></i></button>
-        <div ngf-drop ng-model="tempImage.picDataFile" ngf-pattern="image/*"
-           class="cropArea">
-              <img-crop image="tempImage.picDataFile  | ngfDataUrl" area-type="square"
-              result-image="tempImage.croppedDataUrl" result-image-format="image/jpeg" result-image-size="600"  ng-init="tempImage.croppedDataUrl=''">
-              </img-crop>
+        <!-- IMAGE-URL -->
+        <div ng-if="fromImageUrl" class="input-group">
+            <label>*Image URL</label>
+            <input type="url" name="url" class="form-control input-lg" ng-model="recipe.image_url" ng-required>
+            <div class="input-group-btn">
+                <button class="btn refresh-btn" type="button" ng-click="refreshImageUrl(recipe.image_url)"><i class="fa fa-refresh"></i></button>
+            </div>
         </div>
-    </div>
 
-    <!-- DESCRIPTION -->
-    <div class="form-group">
-        <label>*Description (140 Characters)</label>
-        <textarea name="description" class="form-control" ng-maxlength="140" maxlength="140" rows = "3" ng-model="recipe.snippet" required></textarea>
-    </div>
+        <!-- Image from URL -->
+        <div ng-if="fromImageUrl">
+            <p><i>Have a better picture on your laptop</i>
+                <button ng-click='uploadFromLocal()'>
+                    Upload from computer</button>
+            </p>
+            <div ngf-drop ng-model="tempImage.picUrlFile" ngf-pattern="image/*"
+                 class="cropArea">
+                <div class='text-center image-upload-waiting' ng-if='imageUploading'><i class="fa fa-spinner fa-pulse"></i></div>
+                <img-crop image="tempImage.picUrlFile" area-type="square"
+                result-image="tempImage.croppedDataUrl" result-image-size="600" result-image-format="image/jpeg" ng-init="tempImage.croppedDataUrl=''">
+                </img-crop>
+            </div>
+        </div>
 
-    <!-- TIME -->
-    <div class="form-group">
-        <label>*Time (minutes)</label>
-        <input type="text" name="time" class="form-control input-lg" placeholder='eg. 10' ng-model="recipe.time" required>
-    </div>
+        <!-- Image from Local -->
+        <div ng-if="fromImageLocal">
+            <button ngf-select ng-model="tempImage.picDataFile" class accept="image/*">
+                  Browse <i class="fa fa-laptop"></i></button>
+            <div ngf-drop ng-model="tempImage.picDataFile" ngf-pattern="image/*"
+               class="cropArea">
+                  <img-crop image="tempImage.picDataFile  | ngfDataUrl" area-type="square"
+                  result-image="tempImage.croppedDataUrl" result-image-format="image/jpeg" result-image-size="600"  ng-init="tempImage.croppedDataUrl=''">
+                  </img-crop>
+            </div>
+        </div>
 
-    <!-- SERVING -->
-    <div class="form-group">
-        <label>*Serving Size (no of people)</label>
-        <input type="text" name="servingSize" placeholder='eg. 2-4' class="form-control input-lg" ng-model="recipe.serving_size" required>
-    </div>
+        <!-- DESCRIPTION -->
+        <div class="form-group">
+            <label>*Description (140 Characters)</label>
+            <textarea name="description" class="form-control" ng-maxlength="140" maxlength="140" rows = "3" ng-model="recipe.snippet" required></textarea>
+        </div>
 
-   <!-- INGREDIENTS -->
-    <label>*Ingredients</label>
-    <div class="form-group ingredient" ng-repeat="ingredient in recipe.ingredients track by $index">
-        <input class='col-md-3 input-lg' type="text" name="ingredientAmount" class="form-control input-lg" ng-model="ingredient.amount" >
-        <input class='col-md-8 input-lg ingredient-name' type="text" name="ingredientName" class="form-control input-lg" ng-model="ingredient.ingredient.name" maxlength="100">
+        <!-- TIME -->
+        <div class="form-group">
+            <label>*Time (minutes)</label>
+            <input type="text" name="time" class="form-control input-lg" placeholder='eg. 10' ng-model="recipe.time" required>
+        </div>
+
+        <!-- SERVING -->
+        <div class="form-group">
+            <label>*Serving Size (no of people)</label>
+            <input type="text" name="servingSize" placeholder='eg. 2-4' class="form-control input-lg" ng-model="recipe.serving_size" required>
+        </div>
+
+       <!-- INGREDIENTS -->
+        <label>*Ingredients</label>
+        <div class="form-group ingredient" ng-repeat="ingredient in recipe.ingredients track by $index">
+            <input class='col-md-3 col-sm-3 col-xs-2 input-lg' type="text" name="ingredientAmount" class="form-control input-lg" ng-model="ingredient.amount" >
+            <input class='col-md-8 col-sm-8 col-xs-9 input-lg ingredient-name' type="text" name="ingredientName" class="form-control input-lg" ng-model="ingredient.ingredient.name" maxlength="100">
+            <div>
+                <button type='button' class='ingredient-del-btn' ng-click="deleteIngredient($index, recipe)">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
         <div>
-            <button type='button' class='ingredient-del-btn' ng-click="deleteIngredient($index, recipe)">
-                <i class="fa fa-times"></i>
+            <h4><i>Add another ingredient</i></h4>
+            <button type='button' class='ingredient-add-btn' ng-click="addIngredient()">
+                <i class="fa fa-plus"></i>
             </button>
         </div>
-    </div>
-    <div>
-        <h4><i>Add another ingredient</i></h4>
-        <button type='button' class='ingredient-add-btn' ng-click="addIngredient()">
-            <i class="fa fa-plus"></i>
-        </button>
-    </div>
-    <br>
-
-    <!-- TAGS -->
-    <div class="submit-recipe-tags col-md-12">
-        <label>*Category? <span ng-if='cl!=limit'>(Select atleast 1)</span><span ng-if='cl===limit'>(Maximum 3 can be selected)</span></label>
         <br>
-        <div class="form-group submit-recipe-tag" ng-repeat="collection_tag in collection_tags">
-            <input type="checkbox" id="collection-{{ collection_tag.name }}" class="form-control" ng-model="collection_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" ng-change="checkChangedTag()" ng-disabled="cl===limit && collection_tag.selected!=='Y'" />
-            <label for="collection-{{ collection_tag.name }}">
-                <span>
-                    {{collection_tag.name}}
-                </span>
-            </label>
-        </div>
-    </div>
 
-    <div class="submit-recipe-tags col-md-12">
-        <label>Friendly for?</label>
+        <!-- TAGS -->
+        <div class="submit-recipe-tags col-md-12 col-sm-12 col-xs-12">
+            <label>*Category? <span ng-if='cl!=limit'>(Select atleast 1)</span><span ng-if='cl===limit'>(Maximum 3 can be selected)</span></label>
+            <br>
+            <div class="form-group submit-recipe-tag" ng-repeat="collection_tag in collection_tags">
+                <input type="checkbox" id="collection-{{ collection_tag.name }}" class="form-control" ng-model="collection_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" ng-change="checkChangedTag()" ng-disabled="cl===limit && collection_tag.selected!=='Y'" />
+                <label for="collection-{{ collection_tag.name }}">
+                    <span>
+                        {{collection_tag.name}}
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <div class="submit-recipe-tags col-md-12 col-sm-12 col-xs-12">
+            <label>Friendly for?</label>
+            <br>
+            <div class="form-group submit-recipe-tag" ng-repeat="diet_tag in diet_tags">
+                <input type="checkbox" id="diet-{{ diet_tag.name }}" class="form-control" ng-model="diet_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" />
+                <label for="diet-{{ diet_tag.name }}">
+                    <span>
+                        {{diet_tag.name}}
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <div class="submit-recipe-tags col-md-12 col-sm-12 col-xs-12">
+            <label>Yeah Baby!!</label>
+            <br>
+            <div class="form-group submit-recipe-tag" ng-repeat="category_tag in category_tags">
+                <input type="checkbox" id="collection-{{ category_tag.name }}" class="form-control" ng-model="category_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" />
+                <label for="collection-{{ category_tag.name }}">
+                    <span>
+                        {{category_tag.name}}
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <!-- FOOD BLOGGER -->
+        <div class="form-group">
+            <label> Food Blogger: </label><br>
+            <select ng-model="recipe.food_blogger" class="form-control" name='Food Blogger'>
+                <option ng-repeat="food_blogger in food_blogger_list" value="{{food_blogger.id}}">{{food_blogger.username}}</option>
+            </select>
+        </div>
+        <!-- <h1>{{userForm.$valid}}</h1> -->
+
+        <!-- SUBMIT BUTTON -->
+        <button type='submit' class="col-md-4 col-sm-4 col-xs-6 recipe-submit-btn custom-center"><h4>UPDATE</h4></button>
+
+        <!-- DELETE -->
         <br>
-        <div class="form-group submit-recipe-tag" ng-repeat="diet_tag in diet_tags">
-            <input type="checkbox" id="diet-{{ diet_tag.name }}" class="form-control" ng-model="diet_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" />
-            <label for="diet-{{ diet_tag.name }}">
-                <span>
-                    {{diet_tag.name}}
-                </span>
-            </label>
-        </div>
+        <button type='button' class="col-md-4 col-sm-4 col-xs-6 recipe-submit-btn custom-center recipe-delete-btn" ng-click="deleteRecipe(recipe.local_id)"><h4>DELETE</h4></button>
+    </form>
+
+    <div ng-if="editingRecipe" class='col-md-4 text-center loading'>
+        <i class="fa fa-spinner fa-pulse"></i>
+        <h1>just putting it in the oven....</h1>
     </div>
 
-    <div class="submit-recipe-tags col-md-12">
-        <label>Yeah Baby!!</label>
+    <div class="col-md-6 col-md-offset-3" ng-if="success">
+        <h2>Recipe {{ local_id }}
+            <span ng-if="edited">edited</span>
+            <span ng-if="deleted">deleted</span>
+            Successfully</h2>
         <br>
-        <div class="form-group submit-recipe-tag" ng-repeat="category_tag in category_tags">
-            <input type="checkbox" id="collection-{{ category_tag.name }}" class="form-control" ng-model="category_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" />
-            <label for="collection-{{ category_tag.name }}">
-                <span>
-                    {{category_tag.name}}
-                </span>
-            </label>
-        </div>
+        <button type='button' class="recipe-submit-btn" ng-click="editRecipeRefresh()"><h4>Edit Another Recipe</h4></button>
     </div>
-    <br>
-
-    <!-- FOOD BLOGGER -->
-    <div class="form-group">
-        <label> Food Blogger: </label><br>
-        <select ng-model="recipe.food_blogger" class="form-control" name='Food Blogger'>
-            <option ng-repeat="food_blogger in food_blogger_list" value="{{food_blogger.id}}">{{food_blogger.username}}</option>
-        </select>
-    </div>
-    <h1>{{userForm.$valid}}</h1>
-
-    <!-- SUBMIT BUTTON -->
-    <button type='submit' class="recipe-submit-btn"><h4>UPDATE</h4></button>
-
-    <!-- DELETE -->
-    <br>
-    <button type='button' class="recipe-delete-btn" ng-click="deleteRecipe(recipe.local_id)"><h4>Delete Recipe</h4></button>
-</form>
-
-<div ng-if="editingRecipe" class='col-md-4 text-center loading'>
-    <i class="fa fa-spinner fa-pulse"></i>
-    <h1>just putting it in the oven....</h1>
-</div>
-
-<div class="col-md-6 col-md-offset-3" ng-if="success">
-    <h2>Recipe {{ local_id }}
-        <span ng-if="edited">edited</span>
-        <span ng-if="deleted">deleted</span>
-        Successfully</h2>
-    <br>
-    <button type='button' class="recipe-submit-btn" ng-click="editRecipeRefresh()"><h4>Edit Another Recipe</h4></button>
 </div>

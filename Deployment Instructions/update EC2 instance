@@ -6,9 +6,10 @@ SSH into EC2 instance using hatim.pem
 
 check which branch its on. git branch -a
 if on master just do
->git pull origin
 
 >sudo su
+
+>git pull origin
 
 >grunt build
 

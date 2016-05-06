@@ -265,22 +265,35 @@ angular.module('loveToEatItFrontEndApp')
         recipe.ingredients.splice($index, 1);
     };
 
+
     $scope.deleteRecipe = function(local_id) {
+        ModalService.showModal({
+            templateUrl: 'views/modal_delete_recipe.html',
+            controller: "ModalDeleteRecipeCtrl",
+            inputs: {
+                local_id: local_id
+            }
+        }).then(function(modal) {
+                modal.element.modal();
+                modal.close.then(function(recipe) {
 
-        FoodBlogger.$deleteRecipe(local_id )
-        .success(function(response) {
-            $scope.success=true
-            $scope.deleted=true
-            $scope.local_id = local_id;
+                FoodBlogger.$deleteRecipe(local_id )
+                .success(function(response) {
+                    $scope.success=true
+                    $scope.deleted=true
+                    $scope.local_id = local_id;
 
-        }), function(error){
-            console.log('error' + error);
-        };
+                }).catch(function(error){
+                    console.log('error' + error);
+                });
 
-        var recipeProperties = {
-            'id': local_id,
-        };
-        amplitude.logEvent('Clicked Delete recipe', recipeProperties);
+                var recipeProperties = {
+                'id': local_id,
+                };
+                amplitude.logEvent('Clicked Delete recipe', recipeProperties);
+            })
+        });
+
     };
 
     $scope.addIngredient = function() {
@@ -302,4 +315,21 @@ angular.module('loveToEatItFrontEndApp')
         $scope.cl = checked.length;
     };
 
+});
+
+angular.module('loveToEatItFrontEndApp')
+    .controller('ModalDeleteRecipeCtrl', function($scope, close, local_id, Recipe) {
+        $scope.local_id = local_id;
+        $scope.close = function() {
+            console.log('clicked on close')
+            close(500); // close, but give 500ms for bootstrap to animate
+        };
+
+        $scope.deleteRecipeFinal = function(local_id) {
+        console.log('clicked on delete recipe');
+
+            close({
+            local_id: $scope.local_id,
+            }, 500);
+        };
 });
