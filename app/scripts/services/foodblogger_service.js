@@ -35,7 +35,7 @@ angular.module('loveToEatItFrontEndApp')
         fd.append('image', image, imageFileName);
         fd.append('data', recipeData);
 
-        return  $http.put(baseUrl + '/api/recipe/?id=' +id, fd, {
+        return  $http.put(baseUrl + '/api/recipe?id=' +id, fd, {
             transformRequest: angular.identity,
             headers: {'x-csrftoken': $cookies.get('x-csrftoken'), 'Content-Type': undefined}
         });
