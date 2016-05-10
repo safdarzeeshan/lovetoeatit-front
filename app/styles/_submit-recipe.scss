@@ -178,7 +178,7 @@
     background-color: $button-color;
     border: none;
     opacity: 0.9;
-    top: 2em;
+    // top: 2em;
 
     &:hover{
         opacity: 1;
@@ -198,6 +198,7 @@
     margin-right: auto;
     background-color: white;
     padding: 0;
+    padding-bottom: 2em;
 
     .submit-recipe-banner{
         padding: 2.5em 0;
@@ -221,13 +222,6 @@
             margin-bottom: 30px;
             margin-top: 20px;
         }
-    }
-
-    button{
-        width: 30%;
-        margin-left: 12em;
-        margin-bottom: 2em;
-        margin-top: 0em;
     }
 }
 

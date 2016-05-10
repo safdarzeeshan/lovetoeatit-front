@@ -11,7 +11,7 @@ angular.module('loveToEatItFrontEndApp')
 
         return $http({
             method: 'POST',
-            url: baseUrl + '/api/recipecreate/',
+            url: baseUrl + '/api/recipecreate',
             headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
             data: recipeData
         });
@@ -54,7 +54,7 @@ angular.module('loveToEatItFrontEndApp')
 
         return $http({
             method: 'GET',
-            url: recipeScraperUrl +'/?url=' + recipeURL,
+            url: recipeScraperUrl +'?url=' + recipeURL,
         });
     };
 
@@ -85,7 +85,7 @@ angular.module('loveToEatItFrontEndApp')
 
     foodBloggerFactory.$getTempImageUrl = function(imageUrl) {
 
-        return $http.get( baseUrl + '/api/uploadimagetemp/?imageurl=' + imageUrl  );
+        return $http.get( baseUrl + '/api/uploadimagetemp?imageurl=' + imageUrl  );
     };
 
     return foodBloggerFactory;

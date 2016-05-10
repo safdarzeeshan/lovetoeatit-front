@@ -9,7 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('FaqFbCtrl',
-    function ($scope, $window, Config) {
+    function ($scope, $window, Config, $localStorage) {
 
         $scope.oneAtATime = true;
 
@@ -32,23 +32,23 @@ angular.module('loveToEatItFrontEndApp')
             },
             {
                 question: 'How do I sign up?',
-                answer: 'Yes they will need to sign up!'
+                answer: 'Click on this link http://www.lovetoeat.it/foodbloggers and et voilà'
             },
             {
                 question: 'What does the code look like?',
-                answer: 'Yes they will need to sign up!'
+                answer: 'LTEI/1234'
             },
             {
                 question: 'Do I need to use the code on all my pictures?',
-                answer: 'Yes they will need to sign up!'
+                answer: 'Yes. Every time you share a new recipe on Instagram that you want Love To Eat It users to access in a magical way, you’ll need to add the code you get when you submit a recipe to our website.'
             },
             {
                 question: 'How long does it take for my content to appear on the site?',
-                answer: 'Yes they will need to sign up!'
+                answer: 'Instantly!'
             },
             {
                 question: 'What is your criteria of accepting food blogger?',
-                answer: 'Yes they will need to sign up!'
+                answer: 'We accept cookies as bribes :)'
             },
             {
                 question: "What if I don't want to share the code?",

@@ -9,7 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('OnboardingUserCtrl',
-    function ($scope, $localStorage, FoodBlogger, $state, Auth) {
+    function ($scope, $localStorage, FoodBlogger, $state, Auth, ModalService) {
 
         amplitude.logEvent('Onboarding - User info form');
         $scope.onboarding_status = $localStorage.onboarding_status;
@@ -49,5 +49,20 @@ angular.module('loveToEatItFrontEndApp')
             }),function(error){
                 console.log('cannot update user information' + error);
             };
+        };
+
+        $scope.termsOfUse = function(){
+            ModalService.showModal({
+                templateUrl: 'views/modal_termsofuse.html',
+                controller: "ModalCtrl",
+                inputs: {
+                message: "These are our terms of use"
+            }
+            }).then(function(modal) {
+                modal.element.modal();
+                modal.close.then(function() {
+                });
+            });
+
         };
     });

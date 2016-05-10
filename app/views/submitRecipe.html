@@ -49,7 +49,7 @@
 
         <!-- Image from URL -->
         <div class='image-crop-area' ng-if="fromImageUrl">
-            <p><i>Have a better picture on your laptop</i>
+            <p>
                 <button ng-click='uploadFromLocal()'>
                     Upload from computer</button>
                 </p>
@@ -170,12 +170,14 @@
             <h2>ID - {{ local_id }}</h2>
         </div>
         <div class='submit-recipe-success-content'>
-            <p>Just one more step to go,</p>
-            <p>Please add <b>#LoveToEatIt LTEI/{{ local_id }}</b> to the caption in your instagram post</p>
+            <p>Please add the following to the caption of your recipe post: </p>
+            <h3>#LoveToEatIt LTEI/{{ local_id }}</h3>
             <img class="col-md-10 custom-center" src='images/instagram-caption.png'>
 
-            <p><i>If you’re new to Love To Eat It or just need a refresher, check out our detailed how it works </i></p>
+            <p><i>Let your followers know that by signing up with Love To Eat It they'll get to add your recipes (and many others) to their online cookbook as well as instant access to your recipe links!</i></p>
+            <br>
+            <p>If you’re new to Love To Eat It or just need a refresher, check out our detailed How It Works</p>
         </div>
-        <button type='submit' class="col-md-4 col-sm-4 col-xs-6 recipe-submit-btn custom-center" ng-click='gotoSubmittedRecipes()'><h4>My Submitted Recipes</h4></button>
+        <button type='submit' class="col-lg-6 col-md-6 col-sm-4 col-xs-6 recipe-submit-btn custom-center" ng-click='gotoSubmittedRecipes()'><h4>My Submitted Recipes</h4></button>
     </div>
 </div>
