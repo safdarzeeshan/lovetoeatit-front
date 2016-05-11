@@ -297,8 +297,11 @@ angular.module('loveToEatItFrontEndApp')
     };
 
     $scope.addIngredient = function() {
-        // var newIngredient = $scope.recipe.ingredients.length+1;
+        if ($scope.recipe.ingredients == undefined){
+            $scope.recipe.ingredients= [];
+        }
         $scope.recipe.ingredients.push({});
+        amplitude.logEvent('Ingredient added');
     };
 
     $scope.editRecipeRefresh = function(){
