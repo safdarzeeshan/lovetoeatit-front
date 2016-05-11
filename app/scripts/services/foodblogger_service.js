@@ -45,7 +45,7 @@ angular.module('loveToEatItFrontEndApp')
 
         return $http({
             method: 'DELETE',
-            url: baseUrl + '/api/recipe/?id=' +local_id,
+            url: baseUrl + '/api/recipe?id=' +local_id,
             headers : {'x-csrftoken': $cookies.get('x-csrftoken')},
         });
     };

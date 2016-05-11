@@ -12,7 +12,7 @@ angular.module('loveToEatItFrontEndApp')
     config.$baseUrl =  'http://api.lovetoeat.it';
 
     //Local - Recipe Scraper
-    // config.$recipeScraperUrl = 'http://localhost:4567/';
+    // config.$recipeScraperUrl = 'http://localhost:9292/';
 
     //AWS - Recipe Scraper
     config.$recipeScraperUrl = 'http://recipescraper.lovetoeat.it';
