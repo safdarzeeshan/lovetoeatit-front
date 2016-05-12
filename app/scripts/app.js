@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
-    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService', 'ui.bootstrap'
+    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService'
 
 ]).factory('responseIntercepter', function ($q) {
     return {
@@ -38,7 +38,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
     $httpProvider.interceptors.push(function ($cookies) {
         return {
             'request': function (config) {
-                if ($cookies.get('csrftoken')) {
+                if ($cookies.get('x-csrftoken') || $cookies.get('csrftoken')) {
                     //config.headers['X-CSRFToken'] = $cookies.get('x-csrftoken');
                     config.headers['x-csrftoken'] = $cookies.get('x-csrftoken') || $cookies.get('csrftoken');
                 }
@@ -73,14 +73,6 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             url: '/foodbloggers',
             templateUrl: 'views/foodbloggers.html',
             controller: 'LoginFbCtrl',
-            requireLogin: false
-
-        })
-
-        .state('fbfaq', {
-            url: '/foodbloggersfaq',
-            templateUrl: 'views/foodbloggers_faq.html',
-            controller: 'FaqFbCtrl',
             requireLogin: false
 
         })
@@ -270,10 +262,10 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
     $http.get(Config.$baseUrl + '/api/csrftoken').success(function (data, status, headers) {
        // $http.defaults.headers.post["x-csrftoken"] = data['csrftoken'];
-        console.log('data = ',data);
-        $http.defaults.headers.post['x-csrftoken'] = data['csrftoken'] || $cookies.get('x-csrftoken') || $cookies.get('csrftoken');
-        $cookies.put('x-csrftoken', data['csrftoken']);
-        //$cookies.put('csrftoken', data['csrftoken']);
+        var token = data['csrftoken'] || $cookies.get('x-csrftoken') || $cookies.get('csrftoken');
+        $http.defaults.headers.post['x-csrftoken'] = token;
+        $cookies.put('x-csrftoken', token);
+        $cookies.put('csrftoken', token);
     }, function () {
         console.log('FAILED', $cookies);
         console.log(arguments);
