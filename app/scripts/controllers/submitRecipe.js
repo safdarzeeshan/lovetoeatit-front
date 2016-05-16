@@ -54,21 +54,6 @@ angular.module('loveToEatItFrontEndApp')
                 });
             }
 
-            //get list of tags
-            FoodBlogger.$getCollectionTagsList()
-            .then(function(response){
-                $scope.collection_tags = response.data;
-            });
-
-            FoodBlogger.$getDietTagsList()
-            .then(function(response){
-                $scope.diet_tags = response.data;
-            });
-
-            FoodBlogger.$getCategoryTagsList()
-            .then(function(response){
-                $scope.category_tags = response.data;
-            });
         }).catch(function(error){
             console.log(error);
             $scope.loading= false;
@@ -90,6 +75,22 @@ angular.module('loveToEatItFrontEndApp')
                 });
             });
             amplitude.logEvent('error');
+        });
+
+        //get list of tags
+        FoodBlogger.$getCollectionTagsList()
+        .then(function(response){
+            $scope.collection_tags = response.data;
+        });
+
+        FoodBlogger.$getDietTagsList()
+        .then(function(response){
+            $scope.diet_tags = response.data;
+        });
+
+        FoodBlogger.$getCategoryTagsList()
+        .then(function(response){
+            $scope.category_tags = response.data;
         });
     };
 
@@ -162,6 +163,12 @@ angular.module('loveToEatItFrontEndApp')
         amplitude.logEvent('Clicked upload from local');
         $scope.fromImageUrl= false;
         $scope.fromImageLocal= true;
+    };
+
+    $scope.uploadFromURL= function(){
+        amplitude.logEvent('Clicked upload from URL');
+        $scope.fromImageUrl= true;
+        $scope.fromImageLocal= false;
     };
 
     $scope.refreshImageUrl = function(imageUrl){

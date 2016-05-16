@@ -234,6 +234,12 @@ angular.module('loveToEatItFrontEndApp')
         $scope.fromImageLocal= true;
     };
 
+    $scope.uploadFromURL= function(){
+        $scope.fromImageUrl= true;
+        $scope.fromImageLocal= false;
+    };
+
+
     $scope.refreshImageUrl = function(imageUrl){
         $scope.fromImageUrl= true;
         $scope.fromImageLocal= false;

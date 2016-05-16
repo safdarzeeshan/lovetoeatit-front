@@ -5,6 +5,12 @@ angular.module('loveToEatItFrontEndApp')
 
     var config = {};
 
+    //csrf token - local
+    // config.$csrfDomain = '.lovetoeat.test';
+
+    //csrf token - prod
+    config.$csrfDomain = '.lovetoeat.it';
+
     //local - Backend
     // config.$baseUrl = 'http://api.lovetoeat.test:8000';
 
@@ -19,7 +25,6 @@ angular.module('loveToEatItFrontEndApp')
 
     //local - Redirect
     // config.$redirectUrl = 'http://app.lovetoeat.test:9000';
-    // config.$redirectUrl = 'http://192.168.0.17:9000';
 
     //AWS - Redirect
     config.$redirectUrl = 'http://app.lovetoeat.it';

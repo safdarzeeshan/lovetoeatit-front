@@ -71,6 +71,7 @@
         <div ng-if="fromImageLocal">
             <button ngf-select ng-model="tempImage.picDataFile" class accept="image/*">
                   Browse <i class="fa fa-laptop"></i></button>
+            <button ng-click='uploadFromURL()'>Upload from URL</button>
             <div ngf-drop ng-model="tempImage.picDataFile" ngf-pattern="image/*"
                class="cropArea">
                   <img-crop image="tempImage.picDataFile  | ngfDataUrl" area-type="square"

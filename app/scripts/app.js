@@ -264,8 +264,9 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
        // $http.defaults.headers.post["x-csrftoken"] = data['csrftoken'];
         var token = data['csrftoken'] || $cookies.get('x-csrftoken') || $cookies.get('csrftoken');
         $http.defaults.headers.post['x-csrftoken'] = token;
-        $cookies.put('x-csrftoken', token);
-        $cookies.put('csrftoken', token);
+        // $cookies.put('x-csrftoken', token);
+        // $cookies.put('csrftoken', token, {domain:".lovetoeat.it"});
+        $cookies.put('csrftoken', token, {domain:Config.$csrfDomain});
     }, function () {
         console.log('FAILED', $cookies);
         console.log(arguments);
