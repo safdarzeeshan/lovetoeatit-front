@@ -129,7 +129,7 @@
         <div class="submit-recipe-tags col-md-12 col-sm-12 col-xs-12">
             <label>Friendly for?</label>
             <br>
-            <div class="form-group submit-recipe-tag" ng-repeat="diet_tag in diet_tags">
+            <div class="form-group submit-recipe-tag" ng-repeat="diet_tag in diet_tags" ng-if="diet_tag.name!='Good With Everything'">
                 <input type="checkbox" id="diet-{{ diet_tag.name }}" class="form-control" ng-model="diet_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" />
                 <label for="diet-{{ diet_tag.name }}">
                     <span>

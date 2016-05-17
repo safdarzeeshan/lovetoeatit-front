@@ -42,7 +42,7 @@ angular.module('loveToEatItFrontEndApp')
 
         Recipe.$getPopularRecipesFeed()
         .then(function( response ) {
-            console.log(response.data);
+            // console.log(response.data);
             $scope.popularRecipe = response.data;
         });
 

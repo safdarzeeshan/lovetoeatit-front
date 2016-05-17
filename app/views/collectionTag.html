@@ -18,8 +18,9 @@
                     </h4>
                 </div>
                 <div class='recipe-thumbnail-tags'>
-                    <span>{{ like.category_tags[0].name}}</span>
-                    <span>{{ like.diet_tags[0].name}}</span>
+                    <span ng-if="like.category_tags[0]"> {{ like.category_tags[0].name}}</span>
+                    <span ng-if="like.collection_tags[0]">{{ like.collection_tags[0].name}}</span>
+                    <span ng-if="like.diet_tags[0]">{{ like.diet_tags[0].name}}</span>
                 </div>
             </div>
             <div class='recipe-thumbnail-likes'>
