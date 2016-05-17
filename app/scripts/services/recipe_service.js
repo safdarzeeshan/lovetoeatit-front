@@ -23,7 +23,7 @@ angular.module('loveToEatItFrontEndApp')
     };
 
     recipeFactory.$getRecipeSearch = function(searchTerm) {
-        return $http.get( baseUrl + '/api/recipesearch?q=' + searchTerm);
+        return $http.get( baseUrl + '/api/search?q=' + searchTerm);
     };
 
     return recipeFactory;
