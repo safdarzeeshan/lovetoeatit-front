@@ -25,7 +25,7 @@
             <div class="form-group">
               <input type="text" class="form-control search-box" placeholder="Search" ng-model='searchTerm'>
             </div>
-            <button type="submit" class="search-btn" ng-click='search(searchTerm)'><i class="fa fa-search"></i></button>
+            <button type="submit" data-toggle="collapse"  data-target=".navbar-collapse.in" class="search-btn" ng-click='search(searchTerm)'><i class="fa fa-search"></i></button>
           </form>
         </li>
         <li class="dropdown">
@@ -33,9 +33,9 @@
             <img src="{{user.social_thumb}}" class="profile-image img-circle">
             <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li ng-if="FoodBlogger || Admin"><a  href="#" ng-click='gotoSubmittedRecipes()'>Submitted Recipes</a></li>
+            <li ng-if="FoodBlogger || Admin"><a  data-toggle="collapse"  data-target=".navbar-collapse.in" href="#" ng-click='gotoSubmittedRecipes()'>Submitted Recipes</a></li>
             <li ng-if="FoodBlogger || Admin" role="separator" class="divider"></li>
-            <li ng-if="Admin"><a href="#" ng-click='gotoEditRecipe()'>Edit Recipe</a></li>
+            <li ng-if="Admin"><a href="#" data-toggle="collapse"  data-target=".navbar-collapse.in" ng-click='gotoEditRecipe()'>Edit Recipe</a></li>
             <li ng-if="Admin" role="separator" class="divider"></li>
             <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" ng-click='logout()'>Logout</a></li>
           </ul>
