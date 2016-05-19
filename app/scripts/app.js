@@ -91,6 +91,17 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             requireLogin: false
         })
 
+        .state('privacypolicy', {
+            url: '/privacypolicy',
+            templateUrl: 'views/privacypolicy.html',
+            requireLogin: false
+        })
+
+        .state('termsofuse', {
+            url: '/termsofuse',
+            templateUrl: 'views/termsofuse.html',
+            requireLogin: false
+        })
 
         .state('onboarding', {
             url: '/welcome',
