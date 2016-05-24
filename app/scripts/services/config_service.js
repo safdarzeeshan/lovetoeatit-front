@@ -26,7 +26,7 @@ angular.module('loveToEatItFrontEndApp')
     //local - Redirect
     // config.$redirectUrl = 'http://app.lovetoeat.test:9000';
 
-    //AWS - Redirect
+    // AWS - Redirect
     config.$redirectUrl = 'http://app.lovetoeat.it';
 
     return config;
