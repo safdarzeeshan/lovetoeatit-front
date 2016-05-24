@@ -11,6 +11,7 @@ angular.module('loveToEatItFrontEndApp')
 .controller('LikesCtrl',
     function ($scope, $window, $state,  Likes, $http, $cookies) {
 
+        $scope.limit = 40;
         amplitude.logEvent('Likes page');
 
         //get likes and populate scope

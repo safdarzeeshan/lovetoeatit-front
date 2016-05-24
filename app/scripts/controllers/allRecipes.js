@@ -11,6 +11,8 @@ angular.module('loveToEatItFrontEndApp')
 .controller('AllRecipesCtrl',
     function ($scope, $window, $state, Recipe, Likes) {
 
+        $scope.limit = 40;
+
         amplitude.logEvent('Discover Page');
         //get all recipes and populate scope
         Recipe.$getAllRecipes()
@@ -50,5 +52,6 @@ angular.module('loveToEatItFrontEndApp')
 
 
         };
+
     }
 );

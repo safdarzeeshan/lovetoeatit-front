@@ -95,7 +95,7 @@
         <label>*Ingredients</label>
         <div class="form-group ingredient" ng-repeat="ingredient in recipe.ingredients track by $index">
             <input class='col-md-3 col-sm-3 col-xs-2  input-lg' type="text" name="ingredients" class="form-control input-lg" ng-model="ingredient.amount" >
-            <input class='col-md-8 col-sm-8 col-xs-9 input-lg ingredient-name' type="text" name="ingredients" class="form-control input-lg" ng-model="ingredient.ingredient.name" maxlength="140">
+            <input class='col-md-8 col-sm-8 col-xs-9 input-lg ingredient-name' type="text" name="ingredients" class="form-control input-lg" ng-model="ingredient.ingredient.name" maxlength="140" required>
             <div class="">
                 <button type='button' class='ingredient-del-btn' ng-click="deleteIngredient($index, recipe)">
                     <i class="fa fa-times"></i>

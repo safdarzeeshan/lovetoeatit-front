@@ -9,9 +9,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     src: url("/fonts/Trebuchet MS.ttf");
 }
 
-$font-heading: Lato;
-$font-text: Trebuchet MS;
-$font-text-secondary: Lato;
+$font-heading: Lato, 'Noto Sans';
+$font-text: 'Trebuchet MS';
+$font-text-secondary: Lato, 'Noto Sans';
 $primary-color: #BA3B46;
 $button-color: #ED9B40;
 $secondary-color: rgba(153,204,204,1);
@@ -136,4 +136,21 @@ button:focus, button:active, button.active, button:focus:active {
 
 .heading-unbold{
   font-weight: 100;
+}
+
+.showMore-btn{
+    background-color: $button-color;
+    border: none;
+    opacity: 0.9;
+    clear: both;
+
+    &:hover{
+        opacity: 1;
+    }
+
+    h3{
+        color: white;
+        margin: 0;
+        padding: 10px;
+    }
 }
