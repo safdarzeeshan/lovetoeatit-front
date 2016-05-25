@@ -39,11 +39,11 @@ angular.module('loveToEatItFrontEndApp')
             Likes.$likeRecipe(recipe_local_id)
             .then(function(response){
 
-                if (response.data.has_user_liked === 'true'){
+                if (response.data.has_user_liked === true){
                     $scope.recipes[$index].has_user_liked = true;
                 }
 
-                if (response.data.has_user_liked === 'false'){
+                if (response.data.has_user_liked === false){
                     $scope.recipes[$index].has_user_liked = false;
                 }
 

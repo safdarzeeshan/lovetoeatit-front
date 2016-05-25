@@ -36,6 +36,10 @@
         cursor: pointer;
     }
 
+    a:hover{
+        text-decoration: none;
+    }
+
     i{
         font-size: 20px;
         color: $primary-color;

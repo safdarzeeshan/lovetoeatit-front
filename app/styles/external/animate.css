@@ -1,0 +1,24 @@
+.animate-like.ng-enter,
+.animate-like.ng-leave
+{
+/*    -webkit-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;*/
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+}
+
+/*.animate-like.ng-enter {
+    left: 100%;
+}
+.animate-like.ng-enter.animate-like.ng-enter-active {
+    left: 0;
+}
+
+.animate-like.ng-leave {
+    left: 0;
+}
+.animate-like.ng-leave.animate.ng-leave-active{
+    left: -100%;
+}*/

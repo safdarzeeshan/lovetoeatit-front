@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
-    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService'
+    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService', 'ngAnimate'
 
 ]).factory('responseIntercepter', function ($q) {
     return {

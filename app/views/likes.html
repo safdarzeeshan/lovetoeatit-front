@@ -21,8 +21,10 @@
                 </div>
             </div>
             <div class='recipe-thumbnail-likes'>
-                <i ng-if="like.has_user_liked == true" class="fa fa-heart"></i>
-                <i ng-if="like.has_user_liked == false" class="fa fa-heart-o"></i>
+                <a class="recipe-thumbnail-like" ng-click="likeClick($index, like.local_id)">
+                    <i ng-if="like.has_user_liked == true" class="fa fa-heart"></i>
+                    <i ng-if="like.has_user_liked == false" class="fa fa-heart-o"></i>
+                </a>
                 <br>
                 <b>{{like.no_of_likes}}</b>
             </div>

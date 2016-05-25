@@ -9,7 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
 .controller('CollectionTagCtrl',
-    function ($scope, $stateParams, $state, $http, $cookies, Collections) {
+    function ($scope, $stateParams, $state, $http, $cookies, Collections, Likes) {
 
         amplitude.logEvent('Collection tag page');
         //get collection for tag and populate scope
@@ -27,6 +27,24 @@ angular.module('loveToEatItFrontEndApp')
                 'id': id,
             };
             amplitude.logEvent('Clicked recipe details', recipeProperties);
+        };
+
+        $scope.likeClick = function($index, recipe_local_id){
+            amplitude.logEvent('Recipe thumbnail like clicked ');
+
+            Likes.$likeRecipe(recipe_local_id)
+            .then(function(response){
+
+                if (response.data.has_user_liked === true){
+                    $scope.likes[$index].has_user_liked = true;
+                }
+
+                if (response.data.has_user_liked === false){
+                    $scope.likes[$index].has_user_liked = false;
+                }
+
+                $scope.likes[$index].no_of_likes = response.data.no_of_likes;
+            });
         };
     }
 );
