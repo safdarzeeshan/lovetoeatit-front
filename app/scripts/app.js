@@ -9,8 +9,7 @@
  * Main module of the application.
  */
 var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
-    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService', 'ngAnimate'
-
+    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService', 'ngAnimate','ui.bootstrap'
 ]).factory('responseIntercepter', function ($q) {
     return {
         response: function (response) {
@@ -88,6 +87,13 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             url: '/iguser/foodblogger?code',
             templateUrl: 'views/iguser.html',
             controller: 'AuthFbCtrl',
+            requireLogin: false
+        })
+
+        .state('foodbloggersfaq', {
+            url: '/foodbloggersfaq',
+            templateUrl: 'views/foodbloggers_faq.html',
+            controller: 'FaqFbCtrl',
             requireLogin: false
         })
 
