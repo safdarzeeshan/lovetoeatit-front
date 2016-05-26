@@ -12,10 +12,12 @@ angular.module('loveToEatItFrontEndApp')
     function ($scope, $window, $state, Collections, $filter) {
 
         amplitude.logEvent('Collections page');
+        $scope.loading= true;
 
         //get all recipes and populate scope
         Collections.$getAllCollections()
         .then(function( response ) {
+            $scope.loading= false;
             $scope.collections = response.data;
 
         });

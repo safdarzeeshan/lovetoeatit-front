@@ -12,12 +12,14 @@ angular.module('loveToEatItFrontEndApp')
     function ($scope, $window, $state, Recipe, Likes) {
 
         $scope.limit = 40;
+        $scope.loading= true;
 
         amplitude.logEvent('Discover Page');
         //get all recipes and populate scope
         Recipe.$getAllRecipes()
         .then(function( response ) {
             $scope.recipes = response.data;
+            $scope.loading= false;
 
         })
         .catch(function(error){

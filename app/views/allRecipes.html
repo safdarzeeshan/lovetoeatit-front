@@ -1,4 +1,8 @@
-<div class='discover'>
+<div ng-if="loading" class='col-md-4 text-center loading'>
+    <i class="fa fa-spinner fa-pulse"></i>
+    <h1>collecting some recipes...</h1>
+</div>
+<div class='discover' ng-if="loading == false">
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 recipe-thumbnail recipe-thumbnail nga-fast nga-slide-up" ng-repeat="recipe in recipes | limitTo: limit">
         <div class='recipe-thumbnail-image'>
             <a href="#" ng-click="getRecipe(recipe.local_id)">

@@ -11,6 +11,7 @@ angular.module('loveToEatItFrontEndApp')
 .controller('CollectionTagCtrl',
     function ($scope, $stateParams, $state, $http, $cookies, Collections, Likes) {
 
+        $scope.loading= true;
         amplitude.logEvent('Collection tag page');
         //get collection for tag and populate scope
         var collectionTag = $stateParams.collection_tag;
@@ -18,6 +19,7 @@ angular.module('loveToEatItFrontEndApp')
 
         Collections.$getCollection(collectionTag)
         .then(function( response ) {
+            $scope.loading= false;
             $scope.likes = response.data;
         });
 
