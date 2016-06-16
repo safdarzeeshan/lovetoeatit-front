@@ -3,7 +3,7 @@
     <h1>building your cookbook...</h1>
 </div>
 
-<div class='collections'>
+<div class='collections' ng-if="loading == false">
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 collection-thumbnail recipe-thumbnail nga-fast nga-slide-up" ng-repeat="collection in collections">
         <div class='collection-thumbnail-image'>
             <a href="#" ng-click="getCollection(collection.name)">

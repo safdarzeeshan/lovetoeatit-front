@@ -40,9 +40,14 @@ git clone https://github.com/rbenv/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-g
 
 rbenv install 2.0.0-p481
 -possible error. Google it, there will be a github answer about installing C compilers
+sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev
+
 rbenv global 2.0.0-p481
 ruby -v
 gem install bundler
+
+
+sudo apt-get install ruby1.9.1-dev
 
 #install compass
 >sudo su
