@@ -10,6 +10,10 @@ angular.module('loveToEatItFrontEndApp')
         return $http.get( baseUrl + '/api/recipe?id=' +id );
     };
 
+    recipeFactory.$getRelatedRecipes = function(c_t) {
+        return $http.get( baseUrl + '/api/relatedrecipes?collection_tag=' + c_t );
+    };
+
     recipeFactory.$getAllRecipes = function() {
         return $http.get( baseUrl + '/api/recipes');
     };
