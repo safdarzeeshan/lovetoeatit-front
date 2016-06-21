@@ -25,13 +25,25 @@
         </div>
         <div class='recipe-tags'>
             <div class='recipe-details-tags' ng-repeat="category_tag in recipe.category_tags">
-                <span>{{ category_tag.name }}</span>
+                <a href="#" ng-click="gotoTagRecipes('category_tag', category_tag.name)">
+                <span>
+                    {{ category_tag.name }}
+                </span>
+                </a>
             </div>
             <div class='recipe-details-tags' ng-repeat="collection_tag in recipe.collection_tags">
-                <span>{{ collection_tag.name }}</span>
+                <a href="#" ng-click="gotoTagRecipes('collection_tag', collection_tag.name)">
+                    <span>
+                        {{ collection_tag.name }}
+                    </span>
+                </a>
             </div>
             <div class='recipe-details-tags' ng-repeat="diet_tag in recipe.diet_tags">
-                <span>{{ diet_tag.name }}</span>
+                <a href="#" ng-click="gotoTagRecipes('diet_tag', diet_tag.name)">
+                    <span>
+                        {{ diet_tag.name }}
+                    </span>
+                </a>
             </div>
         </div>
     </div>

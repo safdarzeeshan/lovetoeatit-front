@@ -223,6 +223,17 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
         })
 
+        .state('user.tagrecipes', {
+            url: '/tagrecipes?name&tag',
+            templateUrl: 'views/allTagRecipes.html',
+            controller: 'AllTagRecipesCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
+
+        })
+
+
         .state('user.searchResults', {
             url: '/search?q',
             templateUrl: 'views/searchResults.html',
@@ -334,4 +345,6 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
     });
 
-});
+}).constant('_',
+    window._
+);

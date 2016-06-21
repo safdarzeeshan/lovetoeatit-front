@@ -52,5 +52,10 @@ angular.module('loveToEatItFrontEndApp')
             };
             amplitude.logEvent('Clicked recipe details', recipeProperties);
         };
+
+        $scope.gotoTagRecipes = function(tag, name){
+            $state.go('user.tagrecipes' , { 'tag': tag, 'name': name});
+        };
+
     }
 );

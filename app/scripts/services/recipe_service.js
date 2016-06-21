@@ -14,6 +14,10 @@ angular.module('loveToEatItFrontEndApp')
         return $http.get( baseUrl + '/api/relatedrecipes?collection_tag=' + c_t );
     };
 
+    recipeFactory.$getTagRecipes = function(tag, name) {
+        return $http.get( baseUrl + '/api/alltagrecipes?tag=' + tag + '&name=' + name);
+    };
+
     recipeFactory.$getAllRecipes = function() {
         return $http.get( baseUrl + '/api/recipes');
     };
