@@ -428,7 +428,10 @@ module.exports = function (grunt) {
         'compass:dist',
         'imagemin',
         'svgmin'
-      ]
+      ],
+        options: {
+                limit: 5
+            }
     },
 
     // Test settings
