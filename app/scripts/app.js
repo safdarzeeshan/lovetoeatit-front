@@ -345,6 +345,4 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
     });
 
-}).constant('_',
-    window._
-);
+});

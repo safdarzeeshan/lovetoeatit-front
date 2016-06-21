@@ -4,31 +4,7 @@
 </div>
 <div class='discover' ng-if="loading == false">
 
-    <div class="submit-recipe-tags col-md-12 col-sm-12 col-xs-12">
-        <br>
-        <div class="form-group submit-recipe-tag" ng-repeat="diet_tag in diet_tags" ng-if="diet_tag.name!='Good With Everything'">
-            <input type="checkbox" id="diet-{{ diet_tag.name }}" class="form-control" ng-model="diet_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" ng-change="checkChangedDietTag()"/>
-            <label for="diet-{{ diet_tag.name }}">
-                <span>
-                    {{diet_tag.name}}
-                </span>
-            </label>
-        </div>
-    </div>
-
-    <div class="submit-recipe-tags col-md-12 col-sm-12 col-xs-12">
-        <br>
-        <div class="form-group submit-recipe-tag" ng-repeat="collection_tag in collection_tags">
-            <input type="checkbox" id="diet-{{ collection_tag.name }}" class="form-control" ng-model="collection_tag.selected" ng-true-value="'Y'" ng-false-value="'N'" ng-change="checkChangedCollectionTag()"/>
-            <label for="diet-{{ collection_tag.name }}">
-                <span>
-                    {{collection_tag.name}}
-                </span>
-            </label>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 recipe-thumbnail recipe-thumbnail nga-fast nga-slide-up" ng-repeat="recipe in recipes | limitTo: limit | dietFilter: d_ts | collectionFilter: c_ts ">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 recipe-thumbnail recipe-thumbnail nga-fast nga-slide-up" ng-repeat="recipe in recipes | limitTo: limit">
         <div class='recipe-thumbnail-image'>
             <a href="#" ng-click="getRecipe(recipe.local_id)">
                 <div class='recipe-thumbnail-image-border'>
