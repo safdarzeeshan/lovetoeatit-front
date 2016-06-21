@@ -430,7 +430,7 @@ module.exports = function (grunt) {
         'svgmin'
       ],
         options: {
-                limit: 5
+                limit: 3
             }
     },
 
