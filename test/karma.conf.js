@@ -29,7 +29,6 @@ module.exports = function(config) {
       'bower_components/angular-modal-service/dst/angular-modal-service.js',
       'bower_components/angular-scroll/angular-scroll.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
       'bower_components/checklist-model/checklist-model.js',
       'bower_components/hello/dist/hello.all.min.js',
       'bower_components/ng-file-upload/ng-file-upload.js',
@@ -38,7 +37,7 @@ module.exports = function(config) {
       'bower_components/ngstorage/ngStorage.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-animate/angular-animate.js',
-      'bower_components/underscore/underscore.js',
+      'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

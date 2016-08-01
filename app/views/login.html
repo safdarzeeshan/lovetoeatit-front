@@ -13,10 +13,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
+                    <h3><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#how_it_works">How It Works</a></h3>
+                </li>
+                <li>
                     <h3><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#services">About</a></h3>
                 </li>
                 <li>
-                    <h3><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#how_it_works">How It Works</a></h3>
+                    <h3><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#brands">Brands</a></h3>
                 </li>
                 <li>
                     <h3><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="/foodbloggers">Food Bloggers</a></h3>
@@ -174,6 +177,80 @@
             Sign Up Now</i>
             </a>
             <br>
+        </div>
+    </div>
+</section>
+<section id="brands" class="banner">
+    <div class="container landing-page-heading">
+        <div class="text-center">
+            <div>
+                <h1>Are you a brand that wants to work with influencers?</h1>
+                <hr class="primary">
+                <h2 class="blogger-sub-heading section-heading heading-unbold">
+                Whether it's the latest food trend or a hot new recipe, our food bloggers know what's good</h2>
+
+            </div>
+        </div>
+        <br>
+        <div ng-if='emailBrandCta' class="content custom-center col-lg-8 col-md-8 col-sm-10 col-xs-8">
+            <div class="row">
+                <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+                    <div class="service-box">
+                        <img src="/images/treasure.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
+                        <p class="text-muted">Discover mouth-watering content </p>
+                    </div>
+                </div>
+                <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+                    <div class="service-box">
+                       <img src="/images/stats.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
+                       <p class="text-muted">Insight into target markers </p>
+                    </div>
+                </div>
+                <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+                    <div class="service-box">
+                        <img src="/images/handshake.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
+                        <p class="text-muted">Build relationships with food bloggers</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="cta-services text-center">
+            <a href="#" ng-click='emailBrandDataForm()' du-smooth-scroll class="btn btn-primary">
+                Drop us a line</i>
+            </a>
+            </div>
+        </div>
+
+        <div ng-if='emailBrandCta == false && emailBrandSuccess == false' class='onboarding-userinfo'>
+                <form name="userForm" ng-submit="submitBrandForm()" >
+
+                <!-- Name -->
+                <div class="form-group">
+                    <input type="text" placeholder='Representative Name *' name="first_name" class="form-control user-input" ng-model="brand.contact_name" ng-required>
+                </div>
+
+                <!-- Company Name -->
+                <div class="form-group">
+                    <input type="text" placeholder='Company Name *' name="company_name" class="form-control user-input" ng-model="brand.company_name" ng-required>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="form-group">
+                    <input type="text" placeholder='Email *' name="email" class="form-control user-input" ng-model="brand.contact_email" ng-required>
+                </div>
+
+                <div class="cta-services text-center">
+                    <button type="submit" ng-click='emailBrandData()' du-smooth-scroll class="btn btn-primary">
+                    Submit
+                    </button>
+                </div>
+
+            </form>
+        </div>
+        <div ng-if='emailBrandSuccess' class=" text-center">
+            <div class="cta-services">
+                <span>Thanks. We will be in contact with you very soon. <i class="fa fa-thumbs-o-up"></i></span>
+            </div>
         </div>
     </div>
 </section>

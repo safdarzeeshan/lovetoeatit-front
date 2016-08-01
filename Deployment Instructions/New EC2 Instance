@@ -12,7 +12,7 @@
 >node -v
 
 #NPM installation:
->sudo npm install npm@2.1.17 -g
+>sudo npm install npm@3.9.5 -g
 >npm -v
 
 # Yo install
@@ -120,12 +120,16 @@ events  {
 http {
         include       mime.types;
         default_type  application/octet-stream;
+
         server {
                 listen 80;
-                server_name ec2-52-38-194-123.us-west-2.compute.amazonaws.com;
-                location / {
-                        root /home/ubuntu/lovetoeatit-front/dist/;
-                        index index.html;
+                server_name ec2-52-27-31-81.us-west-2.compute.amazonaws.com;
+                root /home/ubuntu/ltei-front/lovetoeatit-front/dist/;
+                index index.html;
+
+                 location / {
+                        try_files $uri /index.html;
+
                 }
         }
         access_log /var/log/nginx/access.log;

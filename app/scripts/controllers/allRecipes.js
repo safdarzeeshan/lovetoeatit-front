@@ -13,26 +13,35 @@ angular.module('loveToEatItFrontEndApp')
 
         $scope.limit = 40;
         $scope.loading= true;
-        $scope.tags = ['Mains', 'Desserts'];
-        // $scope.tagFilter= {{collection_tags:{name:''}};
 
-        $scope.d_ts=[];
-        $scope.c_ts=[];
+        $scope.diet_ts=[];
+        $scope.collection_ts=[];
+        $scope.category_ts=[];
 
         $scope.checkChangedDietTag = function() {
-            $scope.d_ts = [];
+            $scope.diet_ts = [];
             for(var i in $scope.diet_tags){
                 if($scope.diet_tags[i].selected=='Y'){
-                    $scope.d_ts.push($scope.diet_tags[i].name);
+                    $scope.diet_ts.push($scope.diet_tags[i].name);
                 }
             }
         };
 
         $scope.checkChangedCollectionTag = function() {
-            $scope.c_ts = [];
+            $scope.collection_ts = [];
             for(var i in $scope.collection_tags){
                 if($scope.collection_tags[i].selected=='Y'){
-                    $scope.c_ts.push($scope.collection_tags[i].name);
+                    $scope.collection_ts.push($scope.collection_tags[i].name);
+                }
+            }
+            console.log($scope.collection_ts);
+        };
+
+        $scope.checkChangedCategoryTag = function() {
+            $scope.category_ts = [];
+            for(var i in $scope.category_tags){
+                if($scope.category_tags[i].selected=='Y'){
+                    $scope.category_ts.push($scope.category_tags[i].name);
                 }
             }
         };
@@ -45,6 +54,11 @@ angular.module('loveToEatItFrontEndApp')
         FoodBlogger.$getCollectionTagsList()
         .then(function(response){
             $scope.collection_tags = response.data;
+        });
+
+        FoodBlogger.$getCategoryTagsList()
+        .then(function(response){
+            $scope.category_tags = response.data;
         });
 
         amplitude.logEvent('Discover Page');
@@ -91,45 +105,65 @@ angular.module('loveToEatItFrontEndApp')
 angular.module('loveToEatItFrontEndApp')
 .filter('dietFilter',function () {
 
-    return function(recipes, d_ts){
+    return function(recipes, diet_ts){
 
-        if (d_ts.length == 0){
+        if (diet_ts.length == 0){
             return recipes;
         }
 
         var filteredRecipes = [];
 
         angular.forEach(recipes, function(recipe, key){
-            angular.forEach(recipe.diet_tags, function(d_t, key){
-                if (d_ts.indexOf(d_t.name) !=-1 && filteredRecipes.indexOf(recipe) ==-1){
+            angular.forEach(recipe.diet_tags, function(diet_t, key){
+                if (diet_ts.indexOf(diet_t.name) !=-1 && filteredRecipes.indexOf(recipe) ==-1){
                     filteredRecipes.push(recipe);
                 }
             });
         });
         return filteredRecipes;
     };
-
 });
 
 angular.module('loveToEatItFrontEndApp')
 .filter('collectionFilter',function () {
 
-    return function(recipes, c_ts){
+    return function(recipes, collection_ts){
 
-        if (c_ts.length == 0){
+        if (collection_ts.length == 0){
             return recipes;
         }
 
         var filteredRecipes = [];
 
         angular.forEach(recipes, function(recipe, key){
-            angular.forEach(recipe.collection_tags, function(c_t, key){
-                if (c_ts.indexOf(c_t.name) !=-1 && filteredRecipes.indexOf(recipe) ==-1){
+            angular.forEach(recipe.collection_tags, function(collection_t, key){
+                if (collection_ts.indexOf(collection_t.name) !=-1 && filteredRecipes.indexOf(recipe) ==-1){
                     filteredRecipes.push(recipe);
                 }
             });
         });
         return filteredRecipes;
     };
+});
 
+angular.module('loveToEatItFrontEndApp')
+.filter('categoryFilter',function () {
+
+    return function(recipes, category_ts){
+
+        if (category_ts.length == 0){
+            return recipes;
+        }
+
+        var filteredRecipes = [];
+
+        angular.forEach(recipes, function(recipe, key){
+            angular.forEach(recipe.category_tags, function(category_t, key){
+                if (category_ts.indexOf(category_t.name) !=-1 && filteredRecipes.indexOf(recipe) ==-1){
+                    filteredRecipes.push(recipe);
+                }
+            });
+        });
+        return filteredRecipes;
+    };
 });
