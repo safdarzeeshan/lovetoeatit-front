@@ -161,7 +161,7 @@
         <div class="form-group">
             <label> Food Blogger: </label><br>
             <select ng-model="recipe.food_blogger" class="form-control" name='Food Blogger'>
-                <option ng-repeat="food_blogger in food_blogger_list" value="{{food_blogger.id}}">{{food_blogger.username}}</option>
+                <option ng-repeat="food_blogger in food_blogger_list" value="{{food_blogger.id}}">{{food_blogger.blogger_info.blog_name}}</option>
             </select>
         </div>
         <!-- <h1>{{userForm.$valid}}</h1> -->

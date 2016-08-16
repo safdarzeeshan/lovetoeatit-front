@@ -33,7 +33,7 @@ angular.module('loveToEatItFrontEndApp')
     authFactory.$updateUser = function(userInfo) {
 
         return $http({
-            method: 'PUT',
+            method: 'PATCH',
             url: baseUrl + '/api/user/',
             headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
             data: userInfo
@@ -82,6 +82,83 @@ angular.module('loveToEatItFrontEndApp')
 
     authFactory.$onboardingStatus = function(){
         return $localStorage.onboarding_status;
+    };
+
+    authFactory.$loginUserLocal = function(email, password) {
+
+        return $http({
+            method: 'POST',
+            url: baseUrl + '/api/login/',
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+                return str.join('&');
+            },
+            data: { email: email, password: password }
+        });
+    };
+
+    authFactory.$register = function(data) {
+
+        return $http({
+            method: 'POST',
+            url: baseUrl + '/api/registration/',
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+                return str.join('&');
+            },
+            data: data
+        });
+    };
+
+    authFactory.$changePassword = function(data) {
+
+        return $http({
+            method: 'POST',
+            url: baseUrl + '/api/password/change/',
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
+            data: data
+        });
+    };
+
+    authFactory.$resetPassword = function(data) {
+
+        return $http({
+            method: 'POST',
+            url: baseUrl + '/api/password/reset/',
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
+            data: data
+        });
+    };
+
+    authFactory.$resetPasswordConfirm = function(data) {
+        return $http({
+            method: 'POST',
+            url: baseUrl + '/api/password/reset/confirm/',
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
+            data: data
+        });
+    };
+
+    authFactory.$registerCustomUser = function() {
+
+        return $http({
+            method: 'GET',
+            url: baseUrl + '/api/registercustomuser/',
+        });
+    };
+
+    authFactory.$logoutUserLocal = function() {
+
+        return $http({
+            method: 'POST',
+            url: baseUrl + '/api/logout/',
+        });
     };
 
     return authFactory;

@@ -1,0 +1,16 @@
+
+<div class="col-sm-4 custom-center"><!--left col-->
+
+  <ul class="list-group">
+    <li class="list-group-item text-muted">Profile</li>
+    <li class="list-group-item text-right"><span class="pull-left"><strong>User Name</strong></span> {{user.username}}</li>
+    <li class="list-group-item text-right"><span class="pull-left"><strong>First Name</strong></span> {{user.first_name}}</li>
+    <li class="list-group-item text-right"><span class="pull-left"><strong>Email</strong></span> {{user.email}}</li>
+    <li class="list-group-item text-right"><span class="pull-left"><strong>Instagram</strong></span> <a href='http://www.instagram.com/{{user.ig_username}}' target='_blank'>@{{user.ig_username}}</a></li>
+ </ul>
+ <p><button class="btn btn-lg btn-success custom-center" ng-click='connectInstagram()'>Connect Instagram</button></p>
+</div>
+<div>
+    <button class="btn btn-lg btn-success custom-center" ng-click='gotoChangePassword()'>Change Password</button></p>
+</div>
+

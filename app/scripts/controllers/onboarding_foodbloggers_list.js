@@ -20,6 +20,7 @@ angular.module('loveToEatItFrontEndApp')
         });
 
         $scope.onboardingComplete = function(){
+            console.log('completing onboarding_status');
             amplitude.logEvent('Onboarding - clicked show me some recipes');
 
             this.onboarding_status = {'onboarding_status':'Complete'};

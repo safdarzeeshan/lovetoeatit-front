@@ -8,7 +8,7 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-  .controller('LoginFbCtrl',
+  .controller('LandingPageFBCtrl',
     function ($scope, $window, $localStorage, Config) {
 
     $scope.scroll = 0;

@@ -30,9 +30,10 @@
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <img src="{{user.social_thumb}}" class="profile-image img-circle">
+            <img src="{{user.ig_profile_image_url}}" class="profile-image img-circle">
             <b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" ng-click='gotoUserProfile()'>Profile</a></li>
             <li ng-if="FoodBlogger || Admin"><a  data-toggle="collapse"  data-target=".navbar-collapse.in" href="#" ng-click='gotoSubmittedRecipes()'>Submitted Recipes</a></li>
             <li ng-if="FoodBlogger || Admin" role="separator" class="divider"></li>
             <li ng-if="Admin"><a href="#" data-toggle="collapse"  data-target=".navbar-collapse.in" ng-click='gotoEditRecipe()'>Edit Recipe</a></li>
