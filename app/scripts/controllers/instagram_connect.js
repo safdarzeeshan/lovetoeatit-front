@@ -8,7 +8,7 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-  .controller('InstagramConnectCtrl', function ($scope, $stateParams, $http, $location, Auth, $state) {
+  .controller('InstagramConnectCtrl', function ($localStorage, $scope, $stateParams, $http, $location, Auth, $state) {
 
     var igConnect,
     token,
@@ -16,7 +16,6 @@ angular.module('loveToEatItFrontEndApp')
     data;
 
     igConnect = function(){
-        console.log('we are HHERRRE');
         //get  token
         $scope.location = $location.url();
         token = $location.hash().split('=')[1];
@@ -33,12 +32,29 @@ angular.module('loveToEatItFrontEndApp')
                     ig_token:token
                     };
 
+            if ($localStorage.foodBloggerStatus === 'FoodBloggerWaiting'){
+                console.log('food blogger in waiting')
+                data.role=$localStorage.foodBloggerStatus;
+            }
+
+            console.log(data)
             Auth.$updateUser(data)
             .then(function(data){
 
+                console.log(data)
+                $localStorage.role = data.data.role;
+                $localStorage.onboarding_status = data.data.onboarding_status;
+
                 if(Auth.$onboardingStatus()==='New'|| Auth.$onboardingStatus()==='InProgress'){
-                    $state.transitionTo('onboarding.instagram_connect');
-                    event.preventDefault();
+
+                    //send user success email
+                    Auth.$userSuccessEmail()
+                    .success(function(){
+                        console.log('email sent to user');
+                    }),function(error){
+                        console.log(error);
+                    };
+                    $state.transitionTo('onboarding.userdiet');
                 }
 
                 else{

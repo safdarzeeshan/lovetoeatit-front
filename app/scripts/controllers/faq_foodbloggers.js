@@ -9,7 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('FaqFbCtrl',
-    function ($scope, $window, Config, $localStorage) {
+    function ($scope, $window, Config, $localStorage, $state) {
 
         $scope.oneAtATime = true;
 
@@ -57,8 +57,8 @@ angular.module('loveToEatItFrontEndApp')
         ];
 
     $scope.login = function() {
-        $window.location.href = 'https://api.instagram.com/oauth/authorize/?client_id=2e3edb17f4c34ccdb832240b38a3fc12&redirect_uri=' + Config.$redirectUrl + '/iguser&response_type=code';
         $localStorage.foodBloggerStatus = 'FoodBloggerWaiting';
+        $state.go('login');
         amplitude.logEvent('Clicked login');
     };
 });

@@ -58,6 +58,15 @@ angular.module('loveToEatItFrontEndApp')
                         console.log('going to feed')
                         $state.go('user.feed');
                     }
+
+                    //user has not connected ig profile
+                    if ($localStorage.onboarding_status === null){
+                        console.log('here');
+                        $scope.loading = false;
+                        $localStorage.role = 'Foodie';
+                        $localStorage.onboarding_status = 'New';
+                        $state.go('onboarding.instagram_connect');
+                    }
                     amplitude.setUserId(response.instagram_id);
 
                 }),function(error){

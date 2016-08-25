@@ -38,34 +38,18 @@ angular.module('loveToEatItFrontEndApp')
             'last_name':$scope.newuser.last_name
             };
 
-            if ($localStorage.foodBloggerStatus === 'FoodBloggerWaiting'){
-                $scope.user.role = 'FoodBloggerWaiting';
-            }
-
             Auth.$register(data)
             .success(function(data){
                 // success case
                 $http.defaults.headers.common.Authorization = 'Token ' + data.key;
                 $cookies.put('token', data.key);
                 console.log(data.key);
-
-                //create customuser profile
-                Auth.$registerCustomUser()
-                .success(function(response){
-                    console.log(response);
-
-                    $localStorage.role = response.role;
-                    $localStorage.isAuthenticated = 'true';
-                    $localStorage.onboarding_status = response.onboarding_status;
+                $localStorage.role = 'Foodie';
+                $localStorage.isAuthenticated = 'true';
+                $localStorage.onboarding_status = 'New';
 
                     Auth.$updateUser(name)
                     .success(function(response){
-                        Auth.$userSuccessEmail()
-                        .success(function(){
-                            console.log('email sent to user');
-                        }),function(error){
-                            console.log(error);
-                        };
                         console.log(response);
                         $scope.loading = false;
                         $state.go('onboarding.instagram_connect');
@@ -73,10 +57,6 @@ angular.module('loveToEatItFrontEndApp')
                     }),function(error){
                         console.log('cannot update user information' + error);
                     };
-
-                }),function(error){
-                    console.log('cannot retrieve user information' + error);
-                };
 
             })
             .catch(function(errors){

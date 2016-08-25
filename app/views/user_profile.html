@@ -1,16 +1,27 @@
-
-<div class="col-sm-4 custom-center"><!--left col-->
-
-  <ul class="list-group">
-    <li class="list-group-item text-muted">Profile</li>
-    <li class="list-group-item text-right"><span class="pull-left"><strong>User Name</strong></span> {{user.username}}</li>
-    <li class="list-group-item text-right"><span class="pull-left"><strong>First Name</strong></span> {{user.first_name}}</li>
-    <li class="list-group-item text-right"><span class="pull-left"><strong>Email</strong></span> {{user.email}}</li>
-    <li class="list-group-item text-right"><span class="pull-left"><strong>Instagram</strong></span> <a href='http://www.instagram.com/{{user.ig_username}}' target='_blank'>@{{user.ig_username}}</a></li>
- </ul>
- <p><button class="btn btn-lg btn-success custom-center" ng-click='connectInstagram()'>Connect Instagram</button></p>
+<div class='onboarding-main col-lg-4 col-md-6 col-sm-8 col-xs-11 custom-center'>
+    <div class='onboarding-banner text-center'>
+        <!-- <img src="{{user.ig_profile_image_url}}" class="profile-image img-circle"> -->
+        <h1>{{user.first_name}} {{user.last_name}}</h1>
+    </div>
+    <div class="onboarding-content">
+        <div class='profile-content text-center'>
+            <div class='onboarding-userinfo'>
+                <div>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Email</strong></span> {{user.email}}</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Instagram</strong></span> <a href='http://www.instagram.com/{{user.ig_username}}' target='_blank'>@{{user.ig_username}}</a></li>
+                </div>
+                <br>
+                <br>
+                <div class='custom-center'>
+                    <button ng-click='connectInstagram()' class="profile-btn"><h4>Connect <i class="fa fa-instagram"></i></h4></button>
+                </div>
+                <br>
+                <div class='custom-center'>
+                    <button ng-click='gotoChangePassword()' class="profile-btn"><h4>Change Password</h4></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <button class="btn btn-lg btn-success custom-center" ng-click='gotoChangePassword()'>Change Password</button></p>
-</div>
+
 

@@ -145,14 +145,6 @@ angular.module('loveToEatItFrontEndApp')
         });
     };
 
-    authFactory.$registerCustomUser = function() {
-
-        return $http({
-            method: 'GET',
-            url: baseUrl + '/api/registercustomuser/',
-        });
-    };
-
     authFactory.$logoutUserLocal = function() {
 
         return $http({

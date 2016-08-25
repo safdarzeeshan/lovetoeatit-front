@@ -25,4 +25,8 @@ angular.module('loveToEatItFrontEndApp')
         amplitude.logEvent('User - changed password view');
     };
 
+    $scope.gotoUserDiet = function(){
+        $state.go('onboarding.userdiet');
+    };
+
   });

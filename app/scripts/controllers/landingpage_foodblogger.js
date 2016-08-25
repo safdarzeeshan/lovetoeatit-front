@@ -9,14 +9,21 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('LandingPageFBCtrl',
-    function ($scope, $window, $localStorage, Config) {
+    function ($scope, $window, $localStorage, Config, $state) {
 
-    $scope.scroll = 0;
-    amplitude.logEvent('Landing page');
-    $scope.login = function() {
-        $window.location.href = 'https://api.instagram.com/oauth/authorize/?client_id=2e3edb17f4c34ccdb832240b38a3fc12&redirect_uri=' + Config.$redirectUrl + '/iguser&response_type=code';
+    amplitude.logEvent('FoodBloggerLanding page');
+    $scope.login = function(){
+        console.log('clicked login');
+        $state.go('login');
+    };
+
+    $scope.register = function(){
         $localStorage.foodBloggerStatus = 'FoodBloggerWaiting';
-        amplitude.logEvent('Clicked login');
+        $state.go('register');
+    };
+
+    $scope.gotoFbFaq = function(){
+        $state.go('foodbloggersfaq');
     };
 
 });
