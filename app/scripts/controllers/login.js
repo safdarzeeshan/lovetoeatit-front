@@ -49,12 +49,10 @@ angular.module('loveToEatItFrontEndApp')
                     }
 
                     if ($localStorage.onboarding_status === 'New' || $localStorage.onboarding_status === 'InProgress'){
-                        $scope.loading = false;
                         $state.go('onboarding.instagram_connect');
                     }
 
                     if ($localStorage.onboarding_status === 'Complete'){
-                        $scope.loading = false;
                         console.log('going to feed')
                         $state.go('user.feed');
                     }
@@ -62,7 +60,6 @@ angular.module('loveToEatItFrontEndApp')
                     //user has not connected ig profile
                     if ($localStorage.onboarding_status === null){
                         console.log('here');
-                        $scope.loading = false;
                         $localStorage.role = 'Foodie';
                         $localStorage.onboarding_status = 'New';
                         $state.go('onboarding.instagram_connect');

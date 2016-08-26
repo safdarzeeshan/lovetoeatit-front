@@ -15,7 +15,18 @@
     }
 }
 
-.onboarding-content{
+.carousel-indicators{
+    bottom: 0;
 
+    li{
+        background-color: $secondary-color;
+        opacity: 0.7;
+        cursor: default;
+    }
+
+    .active{
+        background-color: $secondary-color;
+        opacity: 1;
+    }
 }
 
