@@ -1,11 +1,15 @@
+<!-- <div ng-if="loading" class='col-md-4 text-center loading'>
+    <i class="fa fa-spinner fa-pulse"></i>
+    <h1>just preheating the oven...</h1>
+</div> -->
 <div class='feed'>
     <div ng-if='collection' class='feed-latest-collections'>
          <div class='feed-latest-collection'>
             <div class='collection-thumbnail-image'>
                 <a href="#" ng-click="getCollection(collection[0].name)">
                     <div class='album-overlay'>
-                        <img class="recipe1 img-responsive" src='https://s3.amazonaws.com/ltei-recipe-images/overlay-images/recipe1.jpg'>
-                        <img class="recipe2 img-responsive" src='https://s3.amazonaws.com/ltei-recipe-images/overlay-images/recipe2.jpg'>
+                        <img class="recipe1 img-responsive" ng-src='{{ overlay1 }}'>
+                        <img class="recipe2 img-responsive" ng-src='{{ overlay2 }}'>
                     </div>
                     <div class='collection-image'>
                         <div class='collection-thumbnail-image-border'>
@@ -24,8 +28,8 @@
             <div class='collection-thumbnail-image'>
                 <a href="#" ng-click="getCollection(collection[1].name)">
                     <div class='album-overlay'>
-                        <img class="recipe1 img-responsive" src='https://s3.amazonaws.com/ltei-recipe-images/overlay-images/recipe1.jpg'>
-                        <img class="recipe2 img-responsive" src='https://s3.amazonaws.com/ltei-recipe-images/overlay-images/recipe2.jpg'>
+                        <img class="recipe1 img-responsive" ng-src='{{ overlay1 }}'>
+                        <img class="recipe2 img-responsive" ng-src='{{ overlay2 }}'>
                     </div>
                     <div class='collection-image'>
                         <div class='collection-thumbnail-image-border'>

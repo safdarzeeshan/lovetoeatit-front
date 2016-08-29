@@ -30,6 +30,25 @@ angular.module('loveToEatItFrontEndApp')
         });
     };
 
+    authFactory.$getUserDietTags = function() {
+
+        return $http({
+            method: 'GET',
+            url: baseUrl + '/api/userdiettags/',
+        });
+    };
+
+    authFactory.$updateUserDietTags = function(diet_tags) {
+
+        return $http({
+            method: 'PUT',
+            url: baseUrl + '/api/userdiettags/',
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
+            data: diet_tags
+        });
+    };
+
+
     authFactory.$updateUser = function(userInfo) {
 
         return $http({

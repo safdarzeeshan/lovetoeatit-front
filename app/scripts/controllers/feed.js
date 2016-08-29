@@ -23,6 +23,9 @@ angular.module('loveToEatItFrontEndApp')
             }
             else {
                 $scope.collection = response.data;
+                console.log('overlay images')
+                $scope.overlay1 = 'https://s3.amazonaws.com/ltei-recipe-images/overlay-images/recipe1.jpg';
+                $scope.overlay2 = 'https://s3.amazonaws.com/ltei-recipe-images/overlay-images/recipe2.jpg';
             }
         });
 
