@@ -12,16 +12,19 @@ angular.module('loveToEatItFrontEndApp')
     $scope.newuser = {'username':'','password':''};
 
     $scope.loading = false;
+    amplitude.logEvent('Register Page');
 
     $scope.gotoLogin = function(){
         $state.go('login');
     };
 
     $scope.gotoResetPassword = function(){
+        amplitude.logEvent('Reset Password');
         $state.go('resetpassword');
     };
 
     $scope.register = function(formData){
+        amplitude.logEvent('Register user form submitted');
         $scope.errors = [];
         Validate.form_validation(formData,$scope.errors);
         if(!formData.$invalid){
@@ -48,19 +51,26 @@ angular.module('loveToEatItFrontEndApp')
                 $localStorage.isAuthenticated = 'true';
                 $localStorage.onboarding_status = 'New';
 
+                //analytics
+                amplitude.setUserId(data.email)
+                amplitude.logEvent('New user registered');
+
                     Auth.$updateUser(name)
                     .success(function(response){
-                        console.log(response);
+
                         $scope.loading = false;
+                        amplitude.logEvent('New user updated with name');
                         $state.go('onboarding.instagram_connect');
 
                     }),function(error){
+                        amplitude.logEvent('cannot update user information');
                         console.log('cannot update user information' + error);
                     };
 
             })
             .catch(function(errors){
                 // error case
+                amplitude.logEvent('Register user error ' + errors.data);
                 $scope.loading = false;
                 $scope.errors = errors.data;
             });

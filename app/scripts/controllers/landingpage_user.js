@@ -16,18 +16,20 @@ angular.module('loveToEatItFrontEndApp')
     $scope.emailBrandCta = true;
     $scope.emailBrandSuccess = false;
 
-    amplitude.logEvent('Landing page');
+    amplitude.logEvent('User Landing page');
 
     $scope.login = function(){
-        console.log('clicked login');
+        amplitude.logEvent('User clicked Login');
         $state.go('login');
     };
 
     $scope.register = function(){
+        amplitude.logEvent('User clicked Sign Up');
         $state.go('register');
     };
 
     $scope.emailBrandDataForm = function(){
+        amplitude.logEvent('User clicked Drop us a line');
         $scope.emailBrandCta = false;
     };
 

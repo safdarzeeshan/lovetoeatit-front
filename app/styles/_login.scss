@@ -48,11 +48,11 @@ header .header-content {
     text-align: center;
     padding-top: 10em;
 
-    h7{
+    h1{
         color: $font-text-white;
     }
 
-    h2{
+    h3{
         color: $font-text-white;
         font-weight: 300;
     }
@@ -242,7 +242,7 @@ footer .copyright {
     }
 
     .header-content-inner{
-      h7{
+      h1{
         font-size: 3em;
       }
     }
@@ -256,7 +256,7 @@ footer .copyright {
 @media #{$mobile-width}{
 
     .header-content-inner{
-      h7{
+      h1{
         font-size: 2.5em;
       }
     }

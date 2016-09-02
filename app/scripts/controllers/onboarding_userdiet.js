@@ -39,7 +39,7 @@ angular.module('loveToEatItFrontEndApp')
 
         $scope.submitUserForm = function(){
             //get selected diet_tags
-            amplitude.logEvent('Onboarding - Clicked submit ')
+            amplitude.logEvent('Onboarding - Clicked submit from user diet ')
             var d_ts = [];
             for(var i in $scope.diet_tags){
                 if($scope.diet_tags[i].selected=='Y'){

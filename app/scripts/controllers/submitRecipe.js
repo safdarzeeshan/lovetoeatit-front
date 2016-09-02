@@ -224,4 +224,25 @@ angular.module('loveToEatItFrontEndApp')
         $state.go('user.submittedRecipes');
         amplitude.logEvent('Clicked Submitted recipes');
     };
+
+    $scope.submitRecipeVideo = function(){
+        ModalService.showModal({
+            templateUrl: 'views/modal_video.html',
+            controller: "ModalCtrl",
+            inputs: {
+                message: "https://www.youtube.com/embed/8vSyPaf6QIM?rel=0&enablejsapi=1"
+        }
+        }).then(function(modal) {
+            modal.element.modal();
+            modal.element.one('hidden.bs.modal', function () {
+                if (!modal.controller.closed) {
+                    var iframe = document.getElementById("ytmodal").contentWindow;
+                    console.log(iframe);
+                    iframe.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+                    close(null, 500);
+                }
+            });
+        });
+
+    };
 });

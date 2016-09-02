@@ -36,7 +36,7 @@ angular.module('loveToEatItFrontEndApp')
         };
 
         $scope.gotoInstagramAccount = function(intagramUsername){
-            amplitude.logEvent('Onboarding - clicked foodbloggers instagram');
+            amplitude.logEvent('Onboarding - clicked ' + + intagramUsername + ' instagram');
             $window.open('http://www.instagram.com/' + intagramUsername);
         }
     }

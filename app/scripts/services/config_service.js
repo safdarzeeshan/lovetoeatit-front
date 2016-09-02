@@ -15,7 +15,7 @@ angular.module('loveToEatItFrontEndApp')
     // config.$baseUrl = 'http://api.lovetoeat.test:8000';
 
     //AWS - Backend
-    config.$baseUrl =  'http://api.lovetoeat.it';
+    config.$baseUrl =  'http://www.lovetoeat.it';
 
     //Local - Recipe Scraper
     // config.$recipeScraperUrl = 'http://localhost:4567/';
@@ -27,7 +27,7 @@ angular.module('loveToEatItFrontEndApp')
     // config.$redirectUrl = 'http://app.lovetoeat.test:9000';
 
     // AWS - Redirect
-    config.$redirectUrl = 'http://app.lovetoeat.it';
+    config.$redirectUrl = 'http://www.lovetoeat.it';
 
     return config;
 });

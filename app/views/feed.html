@@ -19,9 +19,9 @@
                 </a>
             </div>
             <div class='feed-collection-thumbnail-name'>
-                <h2>
+                <h3>
                     <a href="#" ng-click="getCollection(collection[0].name)">{{ collection[0].name }}</a>
-                </h2>
+                </h3>
             </div>
         </div>
         <div class='feed-latest-collection'>
@@ -39,9 +39,9 @@
                 </a>
             </div>
             <div class='feed-collection-thumbnail-name'>
-                <h2>
+                <h3>
                     <a href="#" ng-click="getCollection(collection[1].name)">{{ collection[1].name }}</a>
-                </h2>
+                </h3>
             </div>
         </div>
     </div>
@@ -56,10 +56,10 @@
                 </a>
             </div>
             <div class='feed-last-like-name'>
-                <h2>
+                <h3>
                     <a ng-if='lastLike' href="#" ng-click="getRecipe(like.local_id)">Recently Liked</a>
                     <a ng-if='lastLike == false'href="#" ng-click="getRecipe(like.local_id)">Most Popular</a>
-                </h2>
+                </h3>
             </div>
         </div>
     </div>
@@ -74,9 +74,9 @@
                 </a>
             </div>
             <div class='feed-thumbnail-name'>
-                <h2>
+                <h3>
                     <a href="#" ng-click="getRecipe(popularRecipe[0].local_id)">TRENDING</a>
-                </h2>
+                </h3>
             </div>
         </div>
 
@@ -89,9 +89,9 @@
                 </a>
             </div>
             <div class='feed-thumbnail-name'>
-                <h2>
+                <h3>
                     <a href="#" ng-click="getRecipe(popularRecipe[1].local_id)">Recipe of the Week</a>
-                </h2>
+                </h3>
             </div>
         </div>
     </div>
@@ -106,8 +106,8 @@
                 </a>
             </div>
             <div class='feed-thumbnail-name'>
-                <h2><a href="#" ng-click="getRecipe(latestRecipe[0].local_id)">Just Added</a>
-                </h2>
+                <h3><a href="#" ng-click="getRecipe(latestRecipe[0].local_id)">Just Added</a>
+                </h3>
             </div>
         </div>
         <div class="col-md-12 portfolio-item feed-thumbnail">
@@ -119,9 +119,9 @@
                 </a>
             </div>
             <div class='feed-thumbnail-name'>
-                <h2>
+                <h3>
                     <a href="#" ng-click="getRecipe(latestRecipe[1].local_id)">Just Added</a>
-                </h2>
+                </h3>
             </div>
         </div>
     </div>

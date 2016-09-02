@@ -11,18 +11,20 @@ angular.module('loveToEatItFrontEndApp')
   .controller('LandingPageFBCtrl',
     function ($scope, $window, $localStorage, Config, $state) {
 
-    amplitude.logEvent('FoodBloggerLanding page');
+    amplitude.logEvent('Food Blogger Landing page');
     $scope.login = function(){
-        console.log('clicked login');
+        amplitude.logEvent('Food Blogger clicked Login');
         $state.go('login');
     };
 
     $scope.register = function(){
         $localStorage.foodBloggerStatus = 'FoodBloggerWaiting';
+        amplitude.logEvent('Food Blogger clicked Sign Up');
         $state.go('register');
     };
 
     $scope.gotoFbFaq = function(){
+        amplitude.logEvent('Food Blogger clicked FAQ');
         $state.go('foodbloggersfaq');
     };
 

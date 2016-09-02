@@ -1,6 +1,6 @@
 <div ng-if="loading" class='col-md-4 text-center loading'>
     <i class="fa fa-spinner fa-pulse"></i>
-    <h1>gathering your recipes...</h1>
+    <h2>gathering your recipes...</h2>
 </div>
 <div class='likes'>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 recipe-thumbnail nga-fast nga-slide-up" ng-repeat="like in likes | limitTo: limit">
@@ -14,9 +14,9 @@
         <div class='recipe-thumbnail-info'>
             <div class='recipe-thumbnail-details'>
                 <div class='recipe-thumbnail-name'>
-                    <h4>
+                    <h5>
                         <a href="#" title="{{like.name}}" ng-click="getRecipe(like.local_id)">{{like.name}}</a>
-                    </h4>
+                    </h5>
                 </div>
                 <div class='recipe-thumbnail-tags'>
                     <span ng-if="like.category_tags[0]"> {{ like.category_tags[0].name}}</span>

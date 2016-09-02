@@ -13,16 +13,20 @@ angular.module('loveToEatItFrontEndApp')
     $scope.model = {'email':'','password':''};
     $scope.loading = false;
 
+    amplitude.logEvent('Login Page');
+
     $scope.gotoRegister = function(){
+        amplitude.logEvent('Clicked sign up');
         $state.go('register');
     };
 
     $scope.gotoResetPassword = function(){
+        amplitude.logEvent('Clicked forgot password');
         $state.go('resetpassword');
     };
 
     $scope.login = function(formData){
-
+        amplitude.logEvent('login form submitted');
         $scope.errors = [];
         Validate.form_validation(formData,$scope.errors);
         if(!formData.$invalid){
@@ -32,12 +36,13 @@ angular.module('loveToEatItFrontEndApp')
                 // success case
                 $http.defaults.headers.common.Authorization = 'Token ' + data.key;
                 $cookies.put('token', data.key);
-                console.log(data.key);
+                amplitude.logEvent('Login Successful');
 
                 Auth.$getUser()
                 .success(function(response){
+                    //email is set as unique id for amplitude
+                    amplitude.setUserId(response.email);
                     //populate profile picture and username
-
                     $scope.user = response;
                     $localStorage.role = response.role;
                     $localStorage.isAuthenticated = 'true';
@@ -59,12 +64,10 @@ angular.module('loveToEatItFrontEndApp')
 
                     //user has not connected ig profile
                     if ($localStorage.onboarding_status === null){
-                        console.log('here');
                         $localStorage.role = 'Foodie';
                         $localStorage.onboarding_status = 'New';
                         $state.go('onboarding.instagram_connect');
                     }
-                    amplitude.setUserId(response.instagram_id);
 
                 }),function(error){
                     console.log('cannot retrieve user information');
@@ -73,6 +76,7 @@ angular.module('loveToEatItFrontEndApp')
             })
             .catch(function(errors){
                 // error case
+                amplitude.logEvent('User login error ' + errors.data);
                 $scope.loading = false;
                 $scope.errors = errors.data;
             });

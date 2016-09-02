@@ -1,5 +1,5 @@
 <div class='onboarding-diet text-center'>
-    <h2 class='heading-unbold'>Do you have any dietary preferences?</h2>
+    <h3 class='heading-unbold'>Do you have any dietary preferences?</h3>
     <br>
 
     <form name="userDietForm" ng-submit="submitUserForm()" >
@@ -10,12 +10,12 @@
             <label for="diet-{{ diet_tag.name }}">
                 <span style="background:url({{diet_tag.image_url}}) left top no-repeat; background-size: cover;"></span>
             </label>
-            <h3>{{diet_tag.name}}</h3>
+            <h4>{{diet_tag.name}}</h4>
         </div>
         <br>
         <!-- SUBMIT BUTTON -->
         <div class='custom-center'>
-            <button type="submit" class="next-btn"><h2>Next</h2></button>
+            <button type="submit" class="next-btn"><h3>Next</h3></button>
         </div>
 
     </form>
