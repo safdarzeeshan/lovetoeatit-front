@@ -4,7 +4,7 @@
 </div>
 <div ng-if="loading == false" class='onboarding-main col-lg-4 col-md-6 col-sm-8 col-xs-11 custom-center'>
     <div class='onboarding-banner text-center'>
-        <h1>Let's Get Cooking</h1>
+        <h2>Let's Get Cooking</h2>
     </div>
     <div class="onboarding-content" id="register_view" >
         <div class='onboarding-userinfo'>
@@ -39,11 +39,12 @@
                 <div class="alert alert-danger" ng-repeat="error in errors.password2">{{error}}</div>
 
                 <!-- SUBMIT-->
-                <button type="submit" class="onboarding-btn"><h2>SIGN UP</h2></button>
+                <button type="submit" class="onboarding-btn"><h3>SIGN UP</h3></button>
             </form>
-            <p class='para-terms'><i>Signing up confirms that you've read and agreed to our <a href='#' ng-click='termsOfUse()'>Terms of Use</a>.</i></p>
+            <p class='para-terms text-center'><i>Signing up confirms that you've read and agreed to our <a href='#' ng-click='termsOfUse()'>Terms of Use</a>.</i></p>
+            <br>
             <div class="text-center">
-                <span><h3>I am already signed up!<a href="#" ng-click='gotoLogin()'> Login</a></h3></span>
+                <span><h4>I am already signed up!<a href="#" ng-click='gotoLogin()'> Login</a></h4></span>
             </div>
         </div>
     </div>

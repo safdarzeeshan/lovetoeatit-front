@@ -61,4 +61,10 @@ angular.module('loveToEatItFrontEndApp')
         $state.go('login');
         amplitude.logEvent('Clicked login');
     };
+
+    $scope.register = function(){
+        $localStorage.foodBloggerStatus = 'FoodBloggerWaiting';
+        amplitude.logEvent('Food Blogger clicked Sign Up');
+        $state.go('register');
+    };
 });
