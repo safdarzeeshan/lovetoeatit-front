@@ -1,318 +1,40 @@
-<nav id="user-menu" scroll-position="scroll" class="navbar navbar-default navbar-fixed-top" ng-class="{yesScrolling: scroll > 1, notScrolling: scroll <= 0}">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="/"><img class='menu-logo' alt="Brand" src='images/logo.png'/></a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <h3><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#how_it_works">How It Works</a></h3>
-                </li>
-                <li>
-                    <h3><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#services">About</a></h3>
-                </li>
-                <li>
-                    <h3><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#brands">Brands</a></h3>
-                </li>
-                <li>
-                    <h3><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="/foodbloggers">Food Bloggers</a></h3>
-                </li>
-                <li>
-                    <h3><a class='navbar-options' data-target=".navbar-collapse.in" href="#" ng-click='login()'>Login</a><h3>
-                </li>
-            </ul>
-        </div>
+<div ng-if="loading" class='col-md-4 text-center loading'>
+    <i class="fa fa-spinner fa-pulse"></i>
+    <h2>just preheating the oven...</h2>
+</div>
+<div ng-if="loading == false" class='onboarding-main col-lg-4 col-md-6 col-sm-8 col-xs-11 custom-center'>
+    <div class='onboarding-banner text-center'>
+        <!-- <div class='onboarding-banner-overlay'/> -->
+        <h2>Nom Nom Nom</h2>
     </div>
-</nav>
-<!-- <span class='scroll-debug' scroll-position="scroll">{{scroll}}</span> -->
-<header class='user-landing-header'>
-    <div class="header-content" id="page-top">
-        <div class="header-content-inner custom-center col-lg-8 col-md-10 col-sm-10 col-xs-12">
-            <h7>your foodie adventure begins with the like button</h7>
-            <hr>
-            <h2>Sign up with Instagram to get the recipes you love!</h2>
-            <div  class='content'>
-                <div id='signUp'>
-                    <button id="login_session_instagram" ng-click='login()'>Sign Up</button>
-                </div>
-            </div>
-            <br>
-             <a href="#how_it_works" du-smooth-scroll class="cta-more-info page-scroll">
-                <i class="fa fa-angle-down animated"></i>
-            </a>
-        </div>
-    </div>
-</header>
-<section class="howitworks" id="how_it_works">
-    <div class="container landing-page-heading">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1 class="section-heading">How it works</h1>
-                <hr class="primary">
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 custom-center">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/79D-0dY255w"></iframe>
-            </div>
-        </div>
-    </div>
-    <div class="cta-services text-center">
-        <a href="#page-top" du-smooth-scroll class="btn btn-primary page-scroll">
-            Get Started</i>
-        </a>
-        <br>
-        <span>Or find out <a href="#services" du-smooth-scroll class="page-scroll">more</a></span>
-    </div>
-</section>
-<section id="services">
-    <div class="custom-center col-lg-8 col-md-8 col-sm-10 col-xs-10 text-center landing-page-heading">
-        <div class="row">
-            <div>
-                <h1 class="blogger-heading section-heading">Cook the food you like on Instagram</h1>
-                <hr class="primary">
-                <h2 class="blogger-sub-heading section-heading heading-unbold">We can't make it for you but we can get you the recipe in a second...
-                </h2>
-            </div>
-        </div>
-    </div>
-    <div class="content custom-center col-lg-8 col-md-8 col-sm-10 col-xs-8">
-        <div class="row">
-            <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                <div class="service-box">
-                    <img src="/images/Value-1-ALT-2.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
-                    <p class="text-muted">Don’t miss out on a recipe because you can’t find the link</p>
-                </div>
-            </div>
-            <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                <div class="service-box">
-                   <img src="/images/Value3.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
-                   <p class="text-muted">Collect all the recipes you “like” on Instagram in an online cookbook</p>
-                </div>
-            </div>
-            <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                <div class="service-box">
-                    <img src="/images/Value2.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
-                    <p class="text-muted">Get instant access to the recipes you “like" on Instagram via your inbox</p>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="carousel">
-    <div class="container landing-page-heading">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1 class="blogger-heading section-heading">Food bloggers love us</h1>
-                <hr class="primary">
-            </div>
-        </div>
-    </div>
-    <div class="container testimonials">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
-                <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="17000">
-                  <ol class="carousel-indicators">
-                    <li data-target="#fade-quote-carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
-                    <li data-target="#fade-quote-carousel" data-slide-to="2"></li>
-                  </ol>
-
-                  <div class="carousel-inner testimonial-box">
-                   <div class="active item">
-                        <div class="profile-circle" style="background-color: rgba(0,0,0,.2);">
-                            <img src="/images/food_bloggers/fromthelandweliveon.jpg" class="img-responsive profile-circle" alt="">
-                        </div>
-                        <div class="food-blogger-links text-center">
-                            <a href='http://fromthelandweliveon.com/'>From The Land We Live On</a>
-                            <a href='https://www.instagram.com/fromthelandweliveon/'><i class="fa fa-instagram"></i></a>
-                        </div>
-                        <blockquote>
-                            <p>Love To Eat It is such a fantastic idea and I'm so excited to watch the platform develop and grow into its potential to connect bloggers with their readers through Instagram. It's so rewarding to see others make my recipes and post pictures on Instagram and there's no better way to encourage people to do that than to send a little teaser to their inbox!</p>
-                        </blockquote>
-                    </div>
-                    <div class="item">
-                        <div class="profile-circle" style="background-color: rgba(77,5,51,.2);">
-                            <img src="/images/food_bloggers/healthymaven.jpg" class="img-responsive profile-circle" alt="">
-                        </div>
-                        <div class="food-blogger-links text-center">
-                            <a href='http://www.thehealthymaven.com/'>The Healthy Maven</a>
-                            <a href='https://www.instagram.com/thehealthymaven/'><i class="fa fa-instagram"></i></a>
-                        </div>
-                        <blockquote>
-                            <p>I have been absolutely loving the Love to Eat It platform! It's a great way for me to connect with my Instagram audience and help them to easily access my recipes from the blog. The team is also super supportive and understanding in my needs as a business-owner.</p>
-                        </blockquote>
-                    </div>
-                    <div class="item">
-                        <div class="profile-circle" style="background-color: rgba(77,5,51,.2);">
-                            <img src="/images/food_bloggers/gardenheart.jpg" class="img-responsive profile-circle" alt="">
-                        </div>
-                        <div class="food-blogger-links text-center">
-                            <a href='http://garden-heart.com/'>Garden Heart Holistic</a>
-                            <a href='https://www.instagram.com/gardenheart_holistic/'><i class="fa fa-instagram"></i></a>
-                        </div>
-                        <blockquote>
-                            <p>An inspirational community that treasures the importance of food, conscious of ingredients that go into our meals and brings together amazing people to cook. I love receiving beautiful spreads of recipes. So honoured to be a member of this community and also to constantly be in awe of my fellow peers work. Love To Eat It is creating a space where inspiration flows and appreciation shows.</p>
-                        </blockquote>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </div>
-        <div class="cta-services text-center">
-            <span>Are you a food blogger?</span>
-            <br>
-            <a href="/foodbloggers" du-smooth-scroll class="btn btn-primary page-scroll">
-            Sign Up Now</i>
-            </a>
-            <br>
-        </div>
-    </div>
-</section>
-<section id="brands" class="banner">
-    <div class="container landing-page-heading">
-        <div class="text-center">
-            <div>
-                <h1>Are you a brand that wants to work with influencers?</h1>
-                <hr class="primary">
-                <h2 class="blogger-sub-heading section-heading heading-unbold">
-                Whether it's the latest food trend or a hot new recipe, our food bloggers know what's good</h2>
-
-            </div>
-        </div>
-        <br>
-        <div ng-if='emailBrandCta' class="content custom-center col-lg-8 col-md-8 col-sm-10 col-xs-8">
-            <div class="row">
-                <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                    <div class="service-box">
-                        <img src="/images/treasure.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
-                        <p class="text-muted">Discover mouth-watering content </p>
-                    </div>
-                </div>
-                <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                    <div class="service-box">
-                       <img src="/images/stats.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
-                       <p class="text-muted">Insight into target markers </p>
-                    </div>
-                </div>
-                <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                    <div class="service-box">
-                        <img src="/images/handshake.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
-                        <p class="text-muted">Build relationships with food bloggers</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="cta-services text-center">
-            <a href="#" ng-click='emailBrandDataForm()' du-smooth-scroll class="btn btn-primary">
-                Drop us a line</i>
-            </a>
-            </div>
-        </div>
-
-        <div ng-if='emailBrandCta == false && emailBrandSuccess == false' class='onboarding-userinfo'>
-                <form name="userForm" ng-submit="submitBrandForm()" >
-
-                <!-- Name -->
-                <div class="form-group">
-                    <input type="text" placeholder='Representative Name *' name="first_name" class="form-control user-input" ng-model="brand.contact_name" ng-required>
-                </div>
-
-                <!-- Company Name -->
-                <div class="form-group">
-                    <input type="text" placeholder='Company Name *' name="company_name" class="form-control user-input" ng-model="brand.company_name" ng-required>
-                </div>
+    <div class="onboarding-content">
+        <div id="login_view" class='onboarding-userinfo'>
+            <form role="form" ng-submit="login(loginForm)" name="loginForm" novalidate>
 
                 <!-- EMAIL -->
                 <div class="form-group">
-                    <input type="text" placeholder='Email *' name="email" class="form-control user-input" ng-model="brand.contact_email" ng-required>
+                    <input name="email" id="id_email" type="text" ng-model="model.email" placeholder="Email" class="form-control user-input" required />
                 </div>
+                <div class="alert alert-danger" ng-repeat="error in errors.email">{{error}}</div>
 
-                <div class="cta-services text-center">
-                    <button type="submit" ng-click='emailBrandData()' du-smooth-scroll class="btn btn-primary">
-                    Submit
-                    </button>
+                <!-- PASSWORD -->
+                <div class="form-group">
+                    <input name="password" id="id_password" type="password" ng-model="model.password" placeholder="Password" class="form-control user-input" required />
                 </div>
+                <div class="alert alert-danger" ng-repeat="error in errors.password">{{error}}</div>
+                <div class="alert alert-danger" ng-repeat="error in errors.non_field_errors">{{error}}</div>
+                <div class="alert alert-danger" ng-if="error">{{error}}</div>
 
+
+                <!-- SUBMIT BUTTON -->
+                <button type="submit" class="onboarding-btn"><h3>LOGIN</h3></button>
             </form>
-        </div>
-        <div ng-if='emailBrandSuccess' class=" text-center">
-            <div class="cta-services">
-                <span>Thanks. We will be in contact with you very soon. <i class="fa fa-thumbs-o-up"></i></span>
+            <div class="text-center">
+                <span><h4>Forgot your<a href="#" ng-click='gotoResetPassword()'> Password</a></h4></span>
+            </div>
+            <div class="text-center">
+                <span><h4>Haven't signed up yet?<a href="#" ng-click='gotoRegister()'> Sign Up</a></h4></span>
             </div>
         </div>
     </div>
-</section>
-<section class="banner">
-    <div class="container landing-page-heading">
-        <div class="text-center">
-            <div>
-                <h1>Cook up a storm with us</h1>
-                <hr class="primary">
-            </div>
-        </div>
-        <div class="cta-services text-center">
-            <a a href="#page-top" du-smooth-scroll class="btn btn-primary page-scroll">
-                Get Started</i>
-            </a>
-        </div>
-    </div>
-</section>
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    <li>
-                        <a href="https://twitter.com/lovetoeat_it" target="_blank">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.pinterest.com/lovetoeatit/" target="_blank">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/love2eatit/" target="_blank">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://instagram.com/lovetoeat.it" target="_blank">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-                <p class="copyright">
-                    <span><a href='/privacypolicy' target='_blank'>Privacy Policy</a> |
-                    <a href='/termsofuse' target='_blank'>Terms Of Use</a></span>
-                </p>
-                <p class="copyright text-muted">Copyright &copy; 2015, Like To Eat Inc., All rights reserved.</p>
-            </div>
-        </div>
-    </div>
-</footer>
+</div>

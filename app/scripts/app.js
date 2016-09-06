@@ -41,15 +41,18 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
                     //config.headers['X-CSRFToken'] = $cookies.get('x-csrftoken');
                     config.headers['x-csrftoken'] = $cookies.get('x-csrftoken') || $cookies.get('csrftoken');
                 }
+
+                if($cookies.get('token')){
+                    config.headers['Authorization'] = 'Token ' + $cookies.get('token');
+                }
                 return config;
             }
         };
     });
 
-    // $urlRouterProvider.otherwise('/home/feed');
     $urlRouterProvider.otherwise(function($injector, $location){
         $injector.invoke(function($state) {
-            $state.go('login');
+            $state.go('landingpage_user');
         });
     });
 
@@ -60,18 +63,50 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
         // HOME STATES AND NESTED VIEWS
 
-        .state('login', {
-            url: '/login',
-            templateUrl: 'views/login.html',
-            controller: 'LoginUserCtrl',
+        .state('landingpage_user', {
+            url: '/',
+            templateUrl: 'views/landingpage_user.html',
+            controller: 'LandingPageUserCtrl',
             requireLogin: false
 
         })
 
-        .state('fbhome', {
+        .state('landingpage_foodblogger', {
             url: '/foodbloggers',
-            templateUrl: 'views/foodbloggers.html',
-            controller: 'LoginFbCtrl',
+            templateUrl: 'views/landingpage_foodbloggers.html',
+            controller: 'LandingPageFBCtrl',
+            requireLogin: false
+
+        })
+
+        .state('login', {
+            url: '/login',
+            templateUrl: 'views/login.html',
+            controller: 'LoginCtrl',
+            requireLogin: false
+
+        })
+
+        .state('register', {
+            url: '/register',
+            templateUrl: 'views/register.html',
+            controller: 'RegisterCtrl',
+            requireLogin: false
+
+        })
+
+        .state('resetpassword', {
+            url: '/resetpassword',
+            templateUrl: 'views/reset_password.html',
+            controller: 'ResetPasswordCtrl',
+            requireLogin: false
+
+        })
+
+        .state('resetpasswordconfirm', {
+            url: '/resetpasswordconfirm/:firstToken/:passwordResetToken',
+            templateUrl: 'views/reset_password_confirm.html',
+            controller: 'ResetPasswordConfirmCtrl',
             requireLogin: false
 
         })
@@ -136,6 +171,15 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             onboardingStatus: ['New', 'InProgress']
         })
 
+        .state('onboarding.instagram_connect', {
+            url: '/userinstagram',
+            templateUrl: 'views/onboarding_instagram_connect.html',
+            controller: 'UserProfileCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['New', 'InProgress']
+        })
+
         .state('onboarding.howitworks', {
             url: '/howitworks',
             templateUrl: 'views/onboarding_howitworks.html',
@@ -161,6 +205,33 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             requireLogin: true,
             role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['Complete']
+        })
+
+        .state('user.profile', {
+            url: '/profile',
+            templateUrl: 'views/user_profile.html',
+            controller: 'UserProfileCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
+        })
+
+        .state('user.changepassword', {
+            url: '/changepassword',
+            templateUrl: 'views/change_password.html',
+            controller: 'ChangePasswordCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
+        })
+
+        .state('instagramconnect', {
+            url: '/instagramconnect?access_token',
+            templateUrl: 'views/instagram_connect.html',
+            controller: 'InstagramConnectCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['New', 'InProgress','Complete']
         })
 
         .state('user.feed', {
@@ -289,12 +360,11 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
     $http.defaults.headers.post['x-csrftoken'] = $cookies.get('x-csrftoken') || $cookies.get('csrftoken');
 
     $http.get(Config.$baseUrl + '/api/csrftoken').success(function (data, status, headers) {
-       // $http.defaults.headers.post["x-csrftoken"] = data['csrftoken'];
+
         var token = data['csrftoken'] || $cookies.get('x-csrftoken') || $cookies.get('csrftoken');
         $http.defaults.headers.post['x-csrftoken'] = token;
-        // $cookies.put('x-csrftoken', token);
-        // $cookies.put('csrftoken', token, {domain:".lovetoeat.it"});
         $cookies.put('csrftoken', token, {domain:Config.$csrfDomain});
+
     }, function () {
         console.log('FAILED', $cookies);
         console.log(arguments);
@@ -309,13 +379,12 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             if(((toState.onboardingStatus).indexOf(Auth.$onboardingStatus()))===-1){
 
                 if(Auth.$onboardingStatus()==='New'|| Auth.$onboardingStatus()==='InProgress'){
-                    $state.transitionTo('onboarding.userinfo');
+                    $state.transitionTo('onboarding.instagram_connect');
                     event.preventDefault();
                 }
                 if(Auth.$onboardingStatus()==='Complete'){
                     $state.transitionTo('user.feed');
                     event.preventDefault();
-
                 }
             }
 
@@ -339,7 +408,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
         if (toState.requireLogin && !Auth.$isLoggedIn()){
 
             // User isn’t authenticated
-            $state.transitionTo('login');
+            $state.transitionTo('landingpage_user');
             event.preventDefault();
         }
 

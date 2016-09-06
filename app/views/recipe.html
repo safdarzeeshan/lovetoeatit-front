@@ -1,16 +1,16 @@
 <div class="recipe-details">
     <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 recipe-details-header'>
         <div class='recipe-details-blogger text-center'>
-            <a href="#" ng-click="gotoBlog(recipe.blogger_info.blog_url)">
+            <a href="#" ng-click="gotoBlog(recipe.food_blogger.blogger_info.blog_url)">
                 <img src='{{ recipe.food_blogger.blogger_info.image_url }}'>
             </a>
             <a href="#" ng-click="gotoBlog(recipe.food_blogger.blogger_info.blog_url)">
                 <u>{{ recipe.food_blogger.blogger_info.blog_name }}</u>
             </a>
         </div>
-        <h1 class='text-center recipe-name'>
+        <h2 class='text-center recipe-name'>
             <a href="#" title="Goto Recipe" ng-click="gotoRecipe(recipe.url)">{{ recipe.name }}</a>
-        </h1>
+        </h2>
 
         <hr class='recipe-name-line'>
     </div>
@@ -51,25 +51,25 @@
         <div class='recipe-details-facts text-center'>
             <div class='recipe-serving-size'>
                 <img src='images/person.png'/>
-                <h5>{{ recipe.serving_size }}</h5>
+                <h6>{{ recipe.serving_size }}</h6>
             </div>
             <div class='recipe-time'>
                 <img src='images/clock.png'/>
-                <h5>{{ recipe.time }}</h5>
+                <h6>{{ recipe.time }}</h6>
             </div>
             <div class='recipe-likes'>
                 <a ng-class="recipe.has_user_liked ? 'like true' : 'like false' " ng-click="likeClick(recipe.local_id)">
                     <img ng-if="recipe.has_user_liked" src='images/heart-filled.png'/>
                     <img ng-if="recipe.has_user_liked === false" src='images/heart-outline.png'/>
                 </a>
-                <h5>{{recipe.no_of_likes}}</h5>
+                <h6>{{recipe.no_of_likes}}</h6>
             </div>
         </div>
         <div class='recipe-details-snippet'>
             <p>{{ recipe.snippet }}</p>
         </div>
         <div class='recipe-details-ingredients'>
-            <h3>Ingredients</h3>
+            <h4>Ingredients</h4>
             <ul>
                 <li ng-repeat="ingredient in recipe.ingredients">
                     <div>
@@ -80,12 +80,12 @@
             </ul>
 
         </div>
-        <button type="button" ng-click="gotoRecipe(recipe.url)" class="btn btn-primary recipe-url-btn"><h2>View Full Recipe</h2></button>
+        <button type="button" ng-click="gotoRecipe(recipe.url)" class="btn btn-primary recipe-url-btn"><h3>View Full Recipe</h3></button>
     </div>
 </div>
 
 <div class="col-lg-10 col-lg-offset-1 col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 related-recipes">
-    <h2>Related Recipes</h2>
+    <h3>Related Recipes</h3>
     <br>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 recipe-thumbnail nga-fast nga-slide-up" ng-repeat="relatedRecipe in relatedRecipes">
         <div class='recipe-thumbnail-image'>
@@ -98,9 +98,9 @@
         <div class='recipe-thumbnail-info'>
             <div class='recipe-thumbnail-details'>
                 <div class='recipe-thumbnail-name'>
-                    <h4>
+                    <h5>
                         <a href="#" title="{{relatedRecipe.name}}" ng-click="getRecipe(relatedRecipe.local_id)">{{relatedRecipe.name}}</a>
-                    </h4>
+                    </h5>
                 </div>
                 <div class='recipe-thumbnail-tags'>
                     <span ng-if="relatedRecipe.category_tags[0]"> {{ relatedRecipe.category_tags[0].name}}</span>

@@ -184,7 +184,7 @@
         opacity: 1;
     }
 
-    h3{
+    h4{
         color: white;
         margin: 0;
         padding: 10px;
@@ -198,17 +198,16 @@
     margin-right: auto;
     background-color: white;
     padding: 0;
-    padding-bottom: 2em;
 
     .submit-recipe-banner{
         padding: 2.5em 0;
         background-color: $secondary-color;
 
-        h2{
+        h3{
             color: white;
         }
 
-        h3{
+        h4{
             color: white;
         }
     }
@@ -237,7 +236,7 @@
         margin-bottom: 10px;
     }
 
-    h1{
+    h2{
         font-weight: 100;
     }
 }

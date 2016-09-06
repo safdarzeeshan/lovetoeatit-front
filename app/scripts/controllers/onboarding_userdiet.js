@@ -15,19 +15,17 @@ angular.module('loveToEatItFrontEndApp')
         $scope.onboarding_status = $localStorage.onboarding_status;
         $scope.user = {};
 
+
         FoodBlogger.$getDietTagsList()
         .success(function(response){
             $scope.diet_tags = response;
 
-            Auth.$getUser()
-            .success(function(response){
-                $scope.user.first_name = response.first_name;
-                $scope.user.last_name = response.last_name;
-                $scope.user.email = response.email;
+            Auth.$getUserDietTags()
+            .success(function(diet_tags){
 
-                for (var i in response.diet_tags){
+                for (var i in diet_tags){
                     for(var j in $scope.diet_tags){
-                        if (response.diet_tags[i].name === $scope.diet_tags[j].name){
+                        if (diet_tags[i].name === $scope.diet_tags[j].name){
                             $scope.diet_tags[j].selected = 'Y'
                         }
                     }
@@ -41,7 +39,7 @@ angular.module('loveToEatItFrontEndApp')
 
         $scope.submitUserForm = function(){
             //get selected diet_tags
-            amplitude.logEvent('Onboarding - Clicked submit ')
+            amplitude.logEvent('Onboarding - Clicked submit from user diet ')
             var d_ts = [];
             for(var i in $scope.diet_tags){
                 if($scope.diet_tags[i].selected=='Y'){
@@ -51,7 +49,7 @@ angular.module('loveToEatItFrontEndApp')
             $scope.user.diet_tags = d_ts
 
             //update user information
-            Auth.$updateUser($scope.user)
+            Auth.$updateUserDietTags(d_ts)
             .success(function(response){
                 $state.go('onboarding.howitworks');
 

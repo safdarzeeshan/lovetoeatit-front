@@ -25,9 +25,6 @@ angular.module('loveToEatItFrontEndApp')
     $scope.limit = 3;
     var checked;
 
-    // $scope.success= true;
-    // $scope.showForm= true;
-
     $scope.processForm = function() {
 
         amplitude.logEvent('Clicked to process url');
@@ -223,5 +220,21 @@ angular.module('loveToEatItFrontEndApp')
     $scope.gotoSubmittedRecipes = function() {
         $state.go('user.submittedRecipes');
         amplitude.logEvent('Clicked Submitted recipes');
+    };
+
+    $scope.submitRecipeVideo = function(){
+        ModalService.showModal({
+            templateUrl: 'views/modal_video.html',
+            controller: "ModalCtrl",
+            inputs: {
+                message: "https://www.youtube.com/embed/Ynpkyi3-JhU"
+        }
+        }).then(function(modal) {
+            modal.element.modal();
+            modal.element.on('hidden.bs.modal', function() {
+                $('.modal-video').remove();
+            });
+        });
+
     };
 });

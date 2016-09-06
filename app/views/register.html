@@ -1,0 +1,51 @@
+<div ng-if="loading" class='col-md-4 text-center loading'>
+    <i class="fa fa-spinner fa-pulse"></i>
+    <h2>Opening the cookbook...</h2>
+</div>
+<div ng-if="loading == false" class='onboarding-main col-lg-4 col-md-6 col-sm-8 col-xs-11 custom-center'>
+    <div class='onboarding-banner text-center'>
+        <h2>Let's Get Cooking</h2>
+    </div>
+    <div class="onboarding-content" id="register_view" >
+        <div class='onboarding-userinfo'>
+            <form role="form" name="registerForm" ng-submit="register(registerForm)" novalidate>
+
+                <!-- EMAIL -->
+                <div class="form-group">
+                    <input name="email" id="id_email" class="form-control user-input" type="email" ng-model="newuser.email" placeholder="Email" required />
+                </div>
+                <div class="alert alert-danger" ng-repeat="error in errors.email">{{error}} <a href="#" ng-click='gotoResetPassword()'>Forgot Your Password?</a></div>
+
+                <!-- FIRST NAME -->
+                <div class="form-group">
+                    <input class="form-control user-input" type="text" ng-model="newuser.first_name" placeholder="First Name" required />
+                </div>
+
+                <!-- LASTNAME -->
+                <div class="form-group">
+                    <input class="form-control user-input" type="text" ng-model="newuser.last_name" placeholder="Last Name" required />
+                </div>
+
+                <!-- PASSWORD 1 -->
+                <div class="form-group">
+                    <input name="password1" id="id_password1" class="form-control user-input" type="password" ng-model="newuser.password1" placeholder="Password" required />
+                </div>
+                <div class="alert alert-danger" ng-repeat="error in errors.password1">{{error}}</div>
+
+                <!-- PASSWORD 2-->
+                <div class="form-group">
+                    <input name="password" id="id_password2" class="form-control user-input" type="password" ng-model="newuser.password2" placeholder="Repeat Password" required />
+                </div>
+                <div class="alert alert-danger" ng-repeat="error in errors.password2">{{error}}</div>
+
+                <!-- SUBMIT-->
+                <button type="submit" class="onboarding-btn"><h3>SIGN UP</h3></button>
+            </form>
+            <p class='para-terms text-center'><i>Signing up confirms that you've read and agreed to our <a href='#' ng-click='termsOfUse()'>Terms of Use</a>.</i></p>
+            <br>
+            <div class="text-center">
+                <span><h4>I am already signed up!<a href="#" ng-click='gotoLogin()'> Login</a></h4></span>
+            </div>
+        </div>
+    </div>
+</div>

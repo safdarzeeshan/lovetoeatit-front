@@ -14,10 +14,10 @@
 
     <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><h3><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' ng-class="navClass('collections')" href="#" ng-click='gotoCollections()'>Cookbook</a></h3></li>
-        <li><h3><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' ng-class="navClass('likes')" href="#" ng-click='gotoLikes()'>Likes</a></h3></li>
-        <li><h3><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' ng-class="navClass('recipes')" href="#" ng-click='gotoAllRecipes()'>Discover</a></h3></li>
-        <li ng-if="FoodBlogger || Admin"><h3><a class='navbar-options' data-toggle="collapse" data-target=".navbar-collapse.in" ng-class="navClass('submitrecipe')" href="#" ng-click='gotoSubmitRecipe()'>Submit Recipe</a></h3></li>
+        <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' ng-class="navClass('collections')" href="#" ng-click='gotoCollections()'>Cookbook</a></h4></li>
+        <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' ng-class="navClass('likes')" href="#" ng-click='gotoLikes()'>Likes</a></h4></li>
+        <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' ng-class="navClass('recipes')" href="#" ng-click='gotoAllRecipes()'>Discover</a></h4></li>
+        <li ng-if="FoodBlogger || Admin"><h4><a class='navbar-options' data-toggle="collapse" data-target=".navbar-collapse.in" ng-class="navClass('submitrecipe')" href="#" ng-click='gotoSubmitRecipe()'>Submit Recipe</a></h4></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -30,9 +30,10 @@
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <img src="{{user.social_thumb}}" class="profile-image img-circle">
+            <img src="{{user.ig_profile_image_url}}" class="profile-image img-circle">
             <b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" ng-click='gotoUserProfile()'>Profile</a></li>
             <li ng-if="FoodBlogger || Admin"><a  data-toggle="collapse"  data-target=".navbar-collapse.in" href="#" ng-click='gotoSubmittedRecipes()'>Submitted Recipes</a></li>
             <li ng-if="FoodBlogger || Admin" role="separator" class="divider"></li>
             <li ng-if="Admin"><a href="#" data-toggle="collapse"  data-target=".navbar-collapse.in" ng-click='gotoEditRecipe()'>Edit Recipe</a></li>

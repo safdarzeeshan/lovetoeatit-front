@@ -20,6 +20,7 @@ angular.module('loveToEatItFrontEndApp')
         });
 
         $scope.onboardingComplete = function(){
+            console.log('completing onboarding_status');
             amplitude.logEvent('Onboarding - clicked show me some recipes');
 
             this.onboarding_status = {'onboarding_status':'Complete'};
@@ -35,7 +36,7 @@ angular.module('loveToEatItFrontEndApp')
         };
 
         $scope.gotoInstagramAccount = function(intagramUsername){
-            amplitude.logEvent('Onboarding - clicked foodbloggers instagram');
+            amplitude.logEvent('Onboarding - clicked ' + + intagramUsername + ' instagram');
             $window.open('http://www.instagram.com/' + intagramUsername);
         }
     }

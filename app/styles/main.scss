@@ -49,36 +49,44 @@ $tablet-landscape: "only screen and (max-width : 1024px)";
 @import 'submitted-recipes';
 @import 'custom_style';
 @import 'terms';
+@import 'profile';
+
 
 h1{
   font-family: $font-heading;
-  font-size: 32px;
+  font-size: 4em;
   color: $sub-heading-color;
   font-weight: bold;
 }
 
 h2{
   font-family: $font-heading;
+  font-size: 32px;
+  color: $sub-heading-color;
+  font-weight: bold;
+}
+
+h3{
+  font-family: $font-heading;
   font-size: 24px;
   color: $sub-heading-color;
   font-weight: 400;
 }
 
-h3{
-  @extend h3;
+h4{
   font-size: 16px;
   font-weight: 400;
   font-family: $font-heading;
   color: $sub-heading-color;
 }
 
-h4{
-  @extend h3;
+h5{
+  @extend h4;
   font-weight: 500;
   display: inline-block;
 }
 
-h5{
+h6{
   display:inline-block;
   font-family: $font-text-secondary;
   font-size: 16px;
@@ -87,18 +95,12 @@ h5{
   font-style: italic;
 }
 
-h6{
+h7{
   font-size: 16px;
   font-weight: 500;
   font-family: $font-heading;
   color: $sub-heading-color;
-}
-
-h7{
-  font-family: $font-heading;
-  font-size: 4em;
-  color: $sub-heading-color;
-  font-weight: bold;
+  display:inline-block;
 }
 
 p{

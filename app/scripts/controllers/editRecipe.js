@@ -57,6 +57,7 @@ angular.module('loveToEatItFrontEndApp')
             //get list of food bloggers
             FoodBlogger.$getFoodBloggersList()
             .then(function(response){
+                console.log(response.data);
                 $scope.food_blogger_list = response.data;
                 $scope.recipe.food_blogger = current_food_blogger.id.toString();
             });

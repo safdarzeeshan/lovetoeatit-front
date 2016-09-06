@@ -24,10 +24,10 @@ angular.module('loveToEatItFrontEndApp')
     config.$recipeScraperUrl = 'http://recipescraper.lovetoeat.it';
 
     //local - Redirect
-    // config.$redirectUrl = 'http://app.lovetoeat.test:9000';
+    // config.$redirectUrl = 'http://www.lovetoeat.test:9000';
 
     // AWS - Redirect
-    config.$redirectUrl = 'http://app.lovetoeat.it';
+    config.$redirectUrl = 'http://www.lovetoeat.it';
 
     return config;
 });

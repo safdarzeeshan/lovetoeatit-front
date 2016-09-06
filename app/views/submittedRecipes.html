@@ -1,18 +1,18 @@
-<div class='submitted-recipes col-md-6'>
+<div class='submitted-recipes col-md-6 col-sm-8 col-xs-10'>
     <div class="row submitted-recipe" ng-repeat="recipe in recipes">
         <div>
             <a  href='#' ng-click="getRecipe(recipe.local_id)">
-                <img class="col-md-3" ng-src='{{ recipe.image_thumbnail_url }}'/>
+                <img class="col-md-3 col-sm-3 col-xs-10" ng-src='{{ recipe.image_thumbnail_url }}'/>
             </a>
         </div>
-        <div class="col-md-8">
-            <h3>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <h4>
                 <a  href='#' ng-click="getRecipe(recipe.local_id)">{{recipe.name}}</a>
-            </h3>
-            <h6>ID - {{recipe.local_id}}</h6>
-            <h6>{{recipe.created_at | date : 'shortDate'}}</h6>
-            <h6 ng-show="recipe.ig_media_associated" >Status - Instagram Post Associated <i class="fa fa-check" aria-hidden="true"></i></h6>
-            <h6 ng-show="!recipe.ig_media_associated" >Status - No Instagram Post Associated <i class="fa fa-times" aria-hidden="true"></i></h6>
+            </h4>
+            <h4>LTEI/{{recipe.local_id}}</h4>
+            <h4>{{recipe.created_at | date : 'shortDate'}}</h4>
+            <h4 ng-show="recipe.ig_media_associated" >Status - Instagram Post Associated <i class="fa fa-check" aria-hidden="true"></i></h4>
+            <h4 ng-show="!recipe.ig_media_associated" >Status - No Instagram Post Associated <i class="fa fa-times" aria-hidden="true"></i></h4>
         </div>
     </div>
 </div>

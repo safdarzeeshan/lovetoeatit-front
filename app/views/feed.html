@@ -1,11 +1,15 @@
+<!-- <div ng-if="loading" class='col-md-4 text-center loading'>
+    <i class="fa fa-spinner fa-pulse"></i>
+    <h1>just preheating the oven...</h1>
+</div> -->
 <div class='feed'>
     <div ng-if='collection' class='feed-latest-collections'>
          <div class='feed-latest-collection'>
             <div class='collection-thumbnail-image'>
                 <a href="#" ng-click="getCollection(collection[0].name)">
                     <div class='album-overlay'>
-                        <img class="recipe1 img-responsive" src='https://s3.amazonaws.com/ltei-recipe-images/overlay-images/recipe1.jpg'>
-                        <img class="recipe2 img-responsive" src='https://s3.amazonaws.com/ltei-recipe-images/overlay-images/recipe2.jpg'>
+                        <img class="recipe1 img-responsive" ng-src='{{ overlay1 }}'>
+                        <img class="recipe2 img-responsive" ng-src='{{ overlay2 }}'>
                     </div>
                     <div class='collection-image'>
                         <div class='collection-thumbnail-image-border'>
@@ -15,17 +19,17 @@
                 </a>
             </div>
             <div class='feed-collection-thumbnail-name'>
-                <h2>
+                <h3>
                     <a href="#" ng-click="getCollection(collection[0].name)">{{ collection[0].name }}</a>
-                </h2>
+                </h3>
             </div>
         </div>
         <div class='feed-latest-collection'>
             <div class='collection-thumbnail-image'>
                 <a href="#" ng-click="getCollection(collection[1].name)">
                     <div class='album-overlay'>
-                        <img class="recipe1 img-responsive" src='https://s3.amazonaws.com/ltei-recipe-images/overlay-images/recipe1.jpg'>
-                        <img class="recipe2 img-responsive" src='https://s3.amazonaws.com/ltei-recipe-images/overlay-images/recipe2.jpg'>
+                        <img class="recipe1 img-responsive" ng-src='{{ overlay1 }}'>
+                        <img class="recipe2 img-responsive" ng-src='{{ overlay2 }}'>
                     </div>
                     <div class='collection-image'>
                         <div class='collection-thumbnail-image-border'>
@@ -35,9 +39,9 @@
                 </a>
             </div>
             <div class='feed-collection-thumbnail-name'>
-                <h2>
+                <h3>
                     <a href="#" ng-click="getCollection(collection[1].name)">{{ collection[1].name }}</a>
-                </h2>
+                </h3>
             </div>
         </div>
     </div>
@@ -52,10 +56,10 @@
                 </a>
             </div>
             <div class='feed-last-like-name'>
-                <h2>
+                <h3>
                     <a ng-if='lastLike' href="#" ng-click="getRecipe(like.local_id)">Recently Liked</a>
                     <a ng-if='lastLike == false'href="#" ng-click="getRecipe(like.local_id)">Most Popular</a>
-                </h2>
+                </h3>
             </div>
         </div>
     </div>
@@ -70,9 +74,9 @@
                 </a>
             </div>
             <div class='feed-thumbnail-name'>
-                <h2>
+                <h3>
                     <a href="#" ng-click="getRecipe(popularRecipe[0].local_id)">TRENDING</a>
-                </h2>
+                </h3>
             </div>
         </div>
 
@@ -85,9 +89,9 @@
                 </a>
             </div>
             <div class='feed-thumbnail-name'>
-                <h2>
+                <h3>
                     <a href="#" ng-click="getRecipe(popularRecipe[1].local_id)">Recipe of the Week</a>
-                </h2>
+                </h3>
             </div>
         </div>
     </div>
@@ -102,8 +106,8 @@
                 </a>
             </div>
             <div class='feed-thumbnail-name'>
-                <h2><a href="#" ng-click="getRecipe(latestRecipe[0].local_id)">Just Added</a>
-                </h2>
+                <h3><a href="#" ng-click="getRecipe(latestRecipe[0].local_id)">Just Added</a>
+                </h3>
             </div>
         </div>
         <div class="col-md-12 portfolio-item feed-thumbnail">
@@ -115,9 +119,9 @@
                 </a>
             </div>
             <div class='feed-thumbnail-name'>
-                <h2>
+                <h3>
                     <a href="#" ng-click="getRecipe(latestRecipe[1].local_id)">Just Added</a>
-                </h2>
+                </h3>
             </div>
         </div>
     </div>

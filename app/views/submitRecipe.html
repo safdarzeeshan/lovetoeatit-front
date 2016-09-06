@@ -1,12 +1,12 @@
 
 <div class='submit-recipe-div'>
 
-    <h3 class='text-center' ng-if="success == false && loading == false && submittingRecipe == false" >Add New Recipe</h3>
+    <h4 class='text-center' ng-if="success == false && loading == false && submittingRecipe == false" >Add New Recipe</h4>
     <br>
 
     <div ng-if="loading" class='col-md-4 text-center loading'>
         <i class="fa fa-spinner fa-pulse"></i>
-        <h1>just collecting the ingredients....</h1>
+        <h2>just collecting the ingredients....</h2>
     </div>
 
     <form class="col-lg-6 col-md-8 col-sm-8 col-xs-11 custom-center" role="form" name="userForm" ng-if="showForm == false && loading == false" ng-submit="processForm()" >
@@ -17,8 +17,13 @@
                 <button class="btn" type="submit"><i class="fa fa-chevron-right"></i></button>
             </div>
         </div>
+        <div>
+            <p class="text-center"><i>Need a refresher in submitting a recipe. Check this quick <a href="#" ng-click='submitRecipeVideo()'>video</a>.</i></p>
+        </div>
 
     </form>
+
+
 
     <form class="col-lg-6 col-md-8 col-sm-8 col-xs-11 custom-center submit-recipe-form" ng-if="success == false && showForm && submittingRecipe == false" ng-submit="submitRecipeForm()" validate>
         <p ng-if="noRecipeInfo">
@@ -104,7 +109,7 @@
         </div>
 
          <div>
-            <h4><i>Add another ingredient</i></h4>
+            <h5><i>Add another ingredient</i></h5>
             <button type='button' class='ingredient-add-btn' ng-click="addIngredient()">
                 <i class="fa fa-plus"></i>
             </button>
@@ -153,30 +158,29 @@
         </div>
 
         <!-- SUBMIT BUTTON -->
-        <button type='submit' class="col-md-4 col-sm-4 col-xs-6 recipe-submit-btn custom-center"><h4>SUBMIT</h4></button>
+        <button type='submit' class="col-md-4 col-sm-4 col-xs-6 recipe-submit-btn custom-center"><h5>SUBMIT</h5></button>
     </form>
 
     <div ng-if="submittingRecipe" class='col-md-4 text-center loading'>
         <i class="fa fa-spinner fa-pulse"></i>
-        <h1>just putting it in the oven....</h1>
+        <h2>just putting it in the oven....</h2>
     </div>
 
-
-    <div class='recipe-submit-success col-lg-4 col-md-6 col-sm-8 col-xs-11 custom-center' ng-if="success">
-        <div class='submit-recipe-banner text-center'>
-            <h2>Success</h2>
-            <h3>Recipe Added Successfully</h3>
-            <h2>ID - {{ local_id }}</h2>
-        </div>
-        <div class='submit-recipe-success-content'>
-            <p>Please add the following to the caption of your recipe post: </p>
-            <h3>#LoveToEatIt LTEI/{{ local_id }}</h3>
-            <img class="col-md-10 custom-center" src='images/instagram-caption.png'>
-
-            <p><i>Let your followers know that by signing up with Love To Eat It they'll get to add your recipes (and many others) to their online cookbook as well as instant access to your recipe links!</i></p>
+    <div ng-if="success">
+        <h4 class='text-center'>Add the following to the caption of your Instagram recipe post: </h4>
+        <br>
+        <div class='recipe-submit-success col-lg-4 col-md-6 col-sm-8 col-xs-11 custom-center'>
+            <div class='submit-recipe-banner text-center'>
+                <h3>#LoveToEatIt LTEI/{{ local_id }}</h3>
+<!--                 <h3>#LoveToEatIt LTEI/0115</h3> -->
+            </div>
             <br>
-            <p>If you’re new to Love To Eat It or just need a refresher, check out our detailed How It Works</p>
+            <div class='submit-recipe-success-content'>
+                <img class="col-md-10 custom-center" src='images/instagram-caption.png'>
+                <br>
+<!--                 <p>If you’re new to Love To Eat It or just need a refresher, check out our detailed How It Works</p> -->
+            </div>
         </div>
-        <button type='submit' class="col-lg-6 col-md-6 col-sm-4 col-xs-6 recipe-submit-btn custom-center" ng-click='gotoSubmittedRecipes()'><h4>My Submitted Recipes</h4></button>
+        <button type='submit' class="col-lg-2 col-md-2 col-sm-4 col-xs-6 recipe-submit-btn custom-center" ng-click='gotoSubmittedRecipes()'><h5>My Submitted Recipes</h5></button>
     </div>
 </div>

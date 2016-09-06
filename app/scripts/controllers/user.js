@@ -9,7 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('UserCtrl',
-    function ($scope, $localStorage, $location, $state, Auth) {
+    function ($scope, $localStorage, $location, $state, Auth, $http, $cookies) {
 
     var role,
         setupProfile;
@@ -49,13 +49,15 @@ angular.module('loveToEatItFrontEndApp')
 
     $scope.logout = function() {
 
-        Auth.$logoutUser()
+        Auth.$logoutUserLocal()
         .success(function() {
             //clear localstorage
             $localStorage.$reset();
+            delete $http.defaults.headers.common.Authorization;
+            delete $cookies.remove('token');
             amplitude.logEvent('Clicked Logout');
             amplitude.clearUserProperties();
-            $state.go('login');
+            $state.go('landingpage_user');
 
         }), function(error){
             console.log('error' + error);
@@ -104,6 +106,11 @@ angular.module('loveToEatItFrontEndApp')
     $scope.gotoSubmittedRecipes = function() {
         $state.go('user.submittedRecipes');
         amplitude.logEvent('Clicked Submitted recipes');
+    }
+
+    $scope.gotoUserProfile = function() {
+        $state.go('user.profile');
+        amplitude.logEvent('Clicked User Profile');
     };
 
     role();

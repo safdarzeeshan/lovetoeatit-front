@@ -1,10 +1,10 @@
 <div ng-if="loading" class='col-md-4 text-center loading'>
     <i class="fa fa-spinner fa-pulse"></i>
-    <h1>recipes are on their way...</h1>
+    <h2>recipes are on their way...</h2>
 </div>
 <div class='discover' ng-if="loading == false">
     <div class='collection-name'>
-        <h1>{{ tag }}</h1>
+        <h2>{{ tag }}</h2>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 recipe-thumbnail recipe-thumbnail nga-fast nga-slide-up" ng-repeat="recipe in recipes | limitTo: limit">
         <div class='recipe-thumbnail-image'>
@@ -17,9 +17,9 @@
         <div class='recipe-thumbnail-info'>
             <div class='recipe-thumbnail-details'>
                 <div class='recipe-thumbnail-name'>
-                    <h4>
+                    <h5>
                         <a href="#" title="{{recipe.name}}" ng-click="getRecipe(recipe.local_id)">{{recipe.name}}</a>
-                    </h4>
+                    </h5>
                 </div>
                 <div class='recipe-thumbnail-tags'>
                     <span ng-if="recipe.category_tags[0]"> {{ recipe.category_tags[0].name}}</span>
@@ -37,5 +37,5 @@
             </div>
         </div>
     </div>
-    <button class="col-md-4 col-sm-4 col-xs-6 showMore-btn custom-center" ng-hide="limit >= recipes.length || recipes.length == null" ng-click="limit = limit + 40" ><h4>SHOW MORE</h4></button>
+    <button class="col-md-4 col-sm-4 col-xs-6 showMore-btn custom-center" ng-hide="limit >= recipes.length || recipes.length == null" ng-click="limit = limit + 40" ><h5>SHOW MORE</h5></button>
 </div>

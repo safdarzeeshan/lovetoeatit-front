@@ -42,7 +42,7 @@ angular.module('loveToEatItFrontEndApp')
             }
 
             if ($localStorage.onboarding_status === 'New' || $localStorage.onboarding_status === 'InProgress'){
-                $state.go('onboarding.userinfo');
+                $state.go('onboarding.instagram_connect');
             }
 
             if ($localStorage.onboarding_status === 'Complete'){
