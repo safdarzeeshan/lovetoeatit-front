@@ -25,9 +25,6 @@ angular.module('loveToEatItFrontEndApp')
     $scope.limit = 3;
     var checked;
 
-    // $scope.success= true;
-    // $scope.showForm= true;
-
     $scope.processForm = function() {
 
         amplitude.logEvent('Clicked to process url');

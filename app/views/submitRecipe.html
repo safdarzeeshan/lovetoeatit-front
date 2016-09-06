@@ -166,24 +166,21 @@
         <h2>just putting it in the oven....</h2>
     </div>
 
-
-    <div class='recipe-submit-success col-lg-4 col-md-6 col-sm-8 col-xs-11 custom-center' ng-if="success">
-        <div class='submit-recipe-banner text-center'>
-            <h3>Success</h3>
-            <h3>LTEI/{{ local_id }}</h3>
-<!--             <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-            <h3>LTEI/0015</h3> -->
-        </div>
-        <div class='submit-recipe-success-content'>
-            <p>Add the following to the caption of your Instagram recipe post: </p>
-            <h4>#LoveToEatIt LTEI/{{ local_id }}</h4>
-            <!-- <h3 class="text-center">#LoveToEatIt LTEI/0015</h3> -->
-            <img class="col-md-10 custom-center" src='images/instagram-caption.png'>
-<!--
-            <p><i>Let your followers know that by signing up with Love To Eat It they'll get to add your recipes (and many others) to their online cookbook as well as instant access to your recipe links!</i></p> -->
+    <div ng-if="success">
+        <h4 class='text-center'>Add the following to the caption of your Instagram recipe post: </h4>
+        <br>
+        <div class='recipe-submit-success col-lg-4 col-md-6 col-sm-8 col-xs-11 custom-center'>
+            <div class='submit-recipe-banner text-center'>
+                <h3>#LoveToEatIt LTEI/{{ local_id }}</h3>
+<!--                 <h3>#LoveToEatIt LTEI/0115</h3> -->
+            </div>
             <br>
-            <p>If you’re new to Love To Eat It or just need a refresher, check out our detailed How It Works</p>
+            <div class='submit-recipe-success-content'>
+                <img class="col-md-10 custom-center" src='images/instagram-caption.png'>
+                <br>
+<!--                 <p>If you’re new to Love To Eat It or just need a refresher, check out our detailed How It Works</p> -->
+            </div>
         </div>
-        <button type='submit' class="col-lg-6 col-md-6 col-sm-4 col-xs-6 recipe-submit-btn custom-center" ng-click='gotoSubmittedRecipes()'><h5>My Submitted Recipes</h5></button>
+        <button type='submit' class="col-lg-2 col-md-2 col-sm-4 col-xs-6 recipe-submit-btn custom-center" ng-click='gotoSubmittedRecipes()'><h5>My Submitted Recipes</h5></button>
     </div>
 </div>
