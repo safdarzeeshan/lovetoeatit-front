@@ -9,11 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
     .controller('ModalCtrl', function($scope, close, message) {
-        console.log('message is' + message);
         $scope.message = message;
-        $scope.close = function() {
-            close(null, 500); // close, but give 500ms for bootstrap to animate
-        };
     });
 
 angular.module('loveToEatItFrontEndApp')

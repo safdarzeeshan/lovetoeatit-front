@@ -227,17 +227,12 @@ angular.module('loveToEatItFrontEndApp')
             templateUrl: 'views/modal_video.html',
             controller: "ModalCtrl",
             inputs: {
-                message: "https://www.youtube.com/embed/8vSyPaf6QIM?rel=0&enablejsapi=1"
+                message: "https://www.youtube.com/embed/Ynpkyi3-JhU"
         }
         }).then(function(modal) {
             modal.element.modal();
-            modal.element.one('hidden.bs.modal', function () {
-                if (!modal.controller.closed) {
-                    var iframe = document.getElementById("ytmodal").contentWindow;
-                    console.log(iframe);
-                    iframe.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
-                    close(null, 500);
-                }
+            modal.element.on('hidden.bs.modal', function() {
+                $('.modal-video').remove();
             });
         });
 

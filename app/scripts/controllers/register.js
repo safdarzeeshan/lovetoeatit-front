@@ -58,7 +58,6 @@ angular.module('loveToEatItFrontEndApp')
                     Auth.$updateUser(name)
                     .success(function(response){
 
-                        $scope.loading = false;
                         amplitude.logEvent('New user updated with name');
                         $state.go('onboarding.instagram_connect');
 
