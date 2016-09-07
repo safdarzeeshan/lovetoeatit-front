@@ -8,7 +8,7 @@
     </div>
     <div class="onboarding-content" id="register_view" >
         <div class='onboarding-userinfo'>
-            <form role="form" name="registerForm" ng-submit="register(registerForm)" novalidate>
+            <form role="form" name="registerForm" ng-submit="register(registerForm)">
 
                 <!-- EMAIL -->
                 <div class="form-group">
@@ -36,6 +36,7 @@
                 <div class="form-group">
                     <input name="password" id="id_password2" class="form-control user-input" type="password" ng-model="newuser.password2" placeholder="Repeat Password" required />
                 </div>
+                <div class="alert alert-danger" ng-repeat="error in errors.non_field_errors">{{error}}</div>
                 <div class="alert alert-danger" ng-repeat="error in errors.password2">{{error}}</div>
 
                 <!-- SUBMIT-->
