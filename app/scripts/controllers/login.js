@@ -64,6 +64,8 @@ angular.module('loveToEatItFrontEndApp')
 
                     //user has not connected ig profile
                     if ($localStorage.onboarding_status === null){
+                        amplitude.logEvent('User has not customuser');
+                        console.log('no customuser')
                         $localStorage.role = 'Foodie';
                         $localStorage.onboarding_status = 'New';
                         $state.go('onboarding.instagram_connect');
