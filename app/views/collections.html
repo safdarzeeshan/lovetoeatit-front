@@ -3,7 +3,14 @@
     <h2>building your cookbook...</h2>
 </div>
 
-<div class='collections' ng-if="loading == false">
+<div ng-if="no_collections" class='col-md-8 col-sm-6 custom-center'>
+    <div class="text-center alert alert-success ">Aren't you hungry? Time to start liking recipes…</div>
+    <div class='custom-center col-md-8'>
+        <button ng-click='gotoAllRecipes()' class="next-btn custom-center"><h5 class='heading-white'>Discover Recipes</h5></button>
+    </div>
+</div>
+
+<div class='collections' ng-if="no_collections == false">
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 collection-thumbnail recipe-thumbnail nga-fast nga-slide-up" ng-repeat="collection in collections">
         <div class='collection-thumbnail-image'>
             <a href="#" ng-click="getCollection(collection.name)">

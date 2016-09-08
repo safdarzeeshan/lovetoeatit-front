@@ -14,12 +14,17 @@ angular.module('loveToEatItFrontEndApp')
         $scope.limit = 40;
         $scope.loading= true;
         amplitude.logEvent('Likes page');
+        $scope.no_likes = false;
 
         //get likes and populate scope
         Likes.$getLikes()
         .then(function( response ) {
             $scope.loading= false;
             $scope.likes = response.data;
+
+            if($scope.likes.length == 0){
+                $scope.no_likes = true;
+            }
         })
         .catch(function(error){
             console.log(error);

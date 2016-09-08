@@ -15,6 +15,7 @@
                         <div class='collection-thumbnail-image-border'>
                         </div>
                         <img class="img-responsive" ng-src='{{ collection[0].recipes[0].image_url }}'>
+                        <!-- <img class="img-responsive" ng-src='{{ collection[0].recipes| user_liked_image}}'> -->
                     </div>
                 </a>
             </div>
@@ -24,7 +25,7 @@
                 </h3>
             </div>
         </div>
-        <div class='feed-latest-collection'>
+        <div ng-if = '(collection).length >= 2' class='feed-latest-collection'>
             <div class='collection-thumbnail-image'>
                 <a href="#" ng-click="getCollection(collection[1].name)">
                     <div class='album-overlay'>
