@@ -28,10 +28,6 @@ angular.module('loveToEatItFrontEndApp')
         .then(function(response) {
             igInfo = response.data.data;
 
-            var instagramProperties = {
-                'username': igInfo.username,
-            };
-            amplitude.logEvent('Clicked recipe details', instagramProperties);
             //update user's profile with their Instagram information
             data = {ig_username:igInfo.username,
                     ig_id: igInfo.id,
