@@ -73,5 +73,10 @@ angular.module('loveToEatItFrontEndApp')
             amplitude.logEvent('Clicked collection', collectionProperties);
         };
 
+        $scope.gotoAllRecipes = function(){
+            $state.go('user.allRecipes');
+            amplitude.logEvent('Clicked all recipes');
+        }
+
     }
 );

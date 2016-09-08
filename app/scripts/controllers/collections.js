@@ -13,12 +13,17 @@ angular.module('loveToEatItFrontEndApp')
 
         amplitude.logEvent('Collections page');
         $scope.loading= true;
+        $scope.no_collections = false;
 
         //get all recipes and populate scope
         Collections.$getAllCollections()
         .then(function( response ) {
             $scope.loading= false;
             $scope.collections = response.data;
+
+            if($scope.collections.length == 0){
+                $scope.no_collections = true;
+            }
 
         });
 
