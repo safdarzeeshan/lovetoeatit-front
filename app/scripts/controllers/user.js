@@ -35,9 +35,19 @@ angular.module('loveToEatItFrontEndApp')
             console.log($scope.user)
             amplitude.setUserId(response.instagram_id);
 
-        }),function(error){
+        }).catch(function(error){
             console.log('cannot retrieve user information');
-        };
+            console.log(error)
+
+            //Delete all cookies & local storage and take the user to login page
+            $localStorage.$reset();
+            delete $http.defaults.headers.common.Authorization;
+            delete $cookies.remove('token');
+            amplitude.logEvent(error);
+            amplitude.clearUserProperties();
+            $state.go('login');
+
+        });
 
     };
 
