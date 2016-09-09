@@ -32,12 +32,20 @@ angular.module('loveToEatItFrontEndApp')
         .success(function(response){
             //populate profile picture and username
             $scope.user = response;
-            console.log($scope.user)
             amplitude.setUserId(response.instagram_id);
 
-        }),function(error){
-            console.log('cannot retrieve user information');
-        };
+        }).catch(function(error){
+            console.log(error)
+
+            //Delete all cookies & local storage and take the user to login page
+            $localStorage.$reset();
+            delete $http.defaults.headers.common.Authorization;
+            delete $cookies.remove('token');
+            amplitude.logEvent(error);
+            amplitude.clearUserProperties();
+            $state.go('login');
+
+        });
 
     };
 
@@ -59,9 +67,9 @@ angular.module('loveToEatItFrontEndApp')
             amplitude.clearUserProperties();
             $state.go('landingpage_user');
 
-        }), function(error){
+        }).catch(function(error){
             console.log('error' + error);
-        };
+        });
     };
 
     $scope.search = function(searchTerm){

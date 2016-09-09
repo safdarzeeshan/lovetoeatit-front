@@ -6,22 +6,6 @@ angular.module('loveToEatItFrontEndApp')
     var authFactory = {},
         baseUrl = Config.$baseUrl;
 
-    authFactory.$loginUser = function(network, oauthCode) {
-
-        return $http({
-            method: 'POST',
-            url: baseUrl + '/api/login/social/session/',
-            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/x-www-form-urlencoded'},
-            transformRequest: function(obj) {
-                var str = [];
-                for(var p in obj)
-                str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
-                return str.join('&');
-            },
-            data: { provider: network, code: oauthCode }
-        });
-    };
-
     authFactory.$getUser = function() {
 
         return $http({
