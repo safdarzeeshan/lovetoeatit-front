@@ -32,8 +32,10 @@ angular.module('loveToEatItFrontEndApp')
         .success(function(response){
             //populate profile picture and username
             $scope.user = response;
-            console.log($scope.user)
-            amplitude.setUserId(response.instagram_id);
+
+            //make sure user gets updated with new role
+            $localStorage.role = response.role;
+            amplitude.setUserId(response.email);
 
         }).catch(function(error){
             console.log('cannot retrieve user information');

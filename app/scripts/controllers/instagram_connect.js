@@ -13,7 +13,8 @@ angular.module('loveToEatItFrontEndApp')
     var igConnect,
     token,
     igInfo,
-    data;
+    data,
+    updateUser;
 
     amplitude.logEvent('Instagram Connect page');
 
@@ -37,41 +38,28 @@ angular.module('loveToEatItFrontEndApp')
 
             if ($localStorage.foodBloggerStatus === 'FoodBloggerWaiting'){
                 console.log('food blogger in waiting')
-                data.role=$localStorage.foodBloggerStatus;
+                //make sure user doesnt override FoodBlogger status
+                Auth.$getUser()
+                .success(function(response){
+                    console.log(response)
+                    if (response.role === 'FoodBlogger'){
+                        $localStorage.foodBloggerStatus = 'FoodBloggerValidated';
+                        updateUser(data);
+                    }
+
+                    else if(response.role === 'FoodBloggerWaiting' || response.role === 'Foodie' || response.role === null){
+                        data.role=$localStorage.foodBloggerStatus;
+                        updateUser(data);
+                    }
+
+                }),function(error){
+                    console.log('cannot retrieve user information');
+                };
             }
 
-            console.log(data)
-            Auth.$updateUser(data)
-            .then(function(data){
-
-                amplitude.logEvent('updated user with instagram details');
-                console.log(data)
-                $localStorage.role = data.data.role;
-                $localStorage.onboarding_status = data.data.onboarding_status;
-
-                if(Auth.$onboardingStatus()==='New'|| Auth.$onboardingStatus()==='InProgress'){
-
-                    //send user success email
-                    Auth.$userSuccessEmail()
-                    .success(function(){
-                        amplitude.logEvent('welcome email sent to user');
-                    }),function(error){
-                        console.log(error);
-                    };
-                    amplitude.logEvent('going to user onboarding diet');
-                    $state.transitionTo('onboarding.userdiet');
-                }
-
-                else{
-                    amplitude.logEvent('going to user profile');
-                    $state.go('user.profile');
-                }
-
-            },function(data){
-            // error case
-                amplitude.logEvent('user update error');
-                $scope.error = data;
-            });
+            else{
+                updateUser(data);
+            }
 
         },function(data){
             // error case
@@ -80,6 +68,40 @@ angular.module('loveToEatItFrontEndApp')
             $scope.error = data;
         });
     };
+
+    updateUser = function(data){
+        Auth.$updateUser(data)
+        .then(function(data){
+
+            amplitude.logEvent('updated user with instagram details');
+            console.log(data)
+            $localStorage.role = data.data.role;
+            $localStorage.onboarding_status = data.data.onboarding_status;
+
+            if(Auth.$onboardingStatus()==='New'|| Auth.$onboardingStatus()==='InProgress'){
+
+                //send user success email
+                Auth.$userSuccessEmail()
+                .success(function(){
+                    amplitude.logEvent('welcome email sent to user');
+                }),function(error){
+                    console.log(error);
+                };
+                amplitude.logEvent('going to user onboarding diet');
+                $state.transitionTo('onboarding.userdiet');
+            }
+
+            else{
+                amplitude.logEvent('going to user profile');
+                $state.go('user.profile');
+            }
+
+        },function(data){
+        // error case
+            amplitude.logEvent('user update error');
+            $scope.error = data;
+        });
+    }
 
     igConnect();
   });
