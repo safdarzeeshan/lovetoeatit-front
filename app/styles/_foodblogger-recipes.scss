@@ -1,0 +1,104 @@
+.foodblogger-recipes{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fb-info{
+    padding-right: 2em;
+
+    .fb-image{
+        margin-bottom: 1em;
+
+        .img-circle{
+            width: 175px;
+        }
+    }
+
+    .fb-details{
+        h3{
+            margin-top: 0;
+        }
+
+        p{
+            font-size: 14px;
+            margin-top: 2em;
+            margin-bottom: 1em;
+        }
+
+        .social-btn{
+
+            background-color: $secondary-color-overlay;
+            border: none;
+            margin-bottom: 5px;
+            display: block;
+
+            &:hover{
+                background-color: $secondary-color;
+            }
+
+            h4{
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+@media #{$tablet-landscape}{
+    .fb-info{
+        .fb-image{
+            .img-circle{
+                width: 150px;
+            }
+        }
+    }
+}
+
+@media #{$tablet-portrait}{
+    .foodblogger-recipes{
+
+        .affix{
+            position: relative;
+        }
+
+        .fb-info{
+            .fb-details{
+                .fb-name{
+                    margin-top: 0px;
+                }
+
+                p{
+                    margin-top: 1em;
+                }
+                .social-btn{
+                    display: initial;
+                }
+            }
+        }
+
+        .fb-recipes{
+            margin-top: 4em;
+        }
+    }
+}
+
+@media #{$mobile-width}{
+
+    .fb-image{
+
+        .img-circle{
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+            display: block;
+        }
+    }
+    .fb-info{
+        text-align: center;
+    }
+
+    .fb-recipes{
+        top: 4em;
+    }
+}

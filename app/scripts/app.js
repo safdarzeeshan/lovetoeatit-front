@@ -304,6 +304,16 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
         })
 
+        .state('user.foodbloggerrecipes', {
+            url: '/foodblogger?name',
+            templateUrl: 'views/foodblogger_recipes.html',
+            controller: 'FoodbloggerRecipesCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete']
+
+        })
+
 
         .state('user.searchResults', {
             url: '/search?q',

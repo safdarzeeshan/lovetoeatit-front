@@ -63,6 +63,16 @@ angular.module('loveToEatItFrontEndApp')
         return $http.get( baseUrl + '/api/submittedrecipes' );
     };
 
+    foodBloggerFactory.$getFoodBloggerRecipes = function(name) {
+
+        return $http.get( baseUrl + '/api/foodbloggerrecipes?name=' + name);
+    };
+
+    foodBloggerFactory.$getFoodBlogger = function(name) {
+
+        return $http.get( baseUrl + '/api/foodblogger?name=' + name);
+    };
+
     foodBloggerFactory.$getFoodBloggersList = function() {
 
         return $http.get( baseUrl + '/api/foodbloggerslist' );

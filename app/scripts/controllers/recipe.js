@@ -31,6 +31,10 @@ angular.module('loveToEatItFrontEndApp')
             amplitude.logEvent('Recipe blog link clicked');
         };
 
+        $scope.gotoFbRecipes = function(blog_name) {
+            $state.go('user.foodbloggerrecipes' , {'name': blog_name});
+        };
+
         $scope.gotoBlog = function(blog_url) {
             $window.open(blog_url);
             amplitude.logEvent('Food Blogger blog link clicked');
