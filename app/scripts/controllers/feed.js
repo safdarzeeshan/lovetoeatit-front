@@ -18,12 +18,10 @@ angular.module('loveToEatItFrontEndApp')
         Collections.$getCollectionsFeed()
         .then(function( response ) {
             if (response.data.status === 'no user recipe collections'){
-                console.log('no user collection');
                 $scope.collection = false;
             }
             else {
                 $scope.collection = response.data;
-                console.log('overlay images')
                 $scope.overlay1 = 'https://s3.amazonaws.com/ltei-recipe-images/overlay-images/recipe1.jpg';
                 $scope.overlay2 = 'https://s3.amazonaws.com/ltei-recipe-images/overlay-images/recipe2.jpg';
             }
@@ -45,13 +43,11 @@ angular.module('loveToEatItFrontEndApp')
 
         Recipe.$getPopularRecipesFeed()
         .then(function( response ) {
-            // console.log(response.data);
             $scope.popularRecipe = response.data;
         });
 
         Recipe.$getLatestRecipesFeed()
         .then(function( response ) {
-            console.log(response.data);
             $scope.latestRecipe = response.data;
         });
 
