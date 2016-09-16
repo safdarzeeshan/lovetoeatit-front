@@ -22,7 +22,14 @@ angular.module('loveToEatItFrontEndApp')
 
             Recipe.$getRelatedRecipes(c_t)
             .then(function( response ) {
-                $scope.relatedRecipes = response.data;
+
+                var related_recipes = [];
+                angular.forEach(response.data, function(recipe){
+                    if (recipe.local_id !== id){
+                    related_recipes.push(recipe);
+                    }
+                });
+                $scope.relatedRecipes = related_recipes;
             });
         });
 

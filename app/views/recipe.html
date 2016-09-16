@@ -87,7 +87,7 @@
 <div class="col-lg-10 col-lg-offset-1 col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 related-recipes">
     <h3>Related Recipes</h3>
     <br>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 recipe-thumbnail nga-fast nga-slide-up" ng-repeat="relatedRecipe in relatedRecipes">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 recipe-thumbnail nga-fast nga-slide-up" ng-repeat="relatedRecipe in relatedRecipes | limitTo: 4 ">
         <div class='recipe-thumbnail-image'>
             <a href="#" ng-click="getRecipe(relatedRecipe.local_id)">
                 <div class='recipe-thumbnail-image-border'>

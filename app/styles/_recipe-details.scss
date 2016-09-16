@@ -234,6 +234,10 @@
         margin-bottom: 20px;
     }
 
+    .recipe-name-line{
+        visibility: hidden;
+    }
+
 }
 
 @media #{$tablet-landscape}{

@@ -8,12 +8,14 @@
         position: absolute;
         z-index: 1;
         -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
     }
 
     .recipe2{
         position: absolute;
         z-index: 1;
         -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
     }
 }
 
