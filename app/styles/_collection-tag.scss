@@ -9,12 +9,12 @@
     margin-bottom: 30px;
 }
 
-@media #{$mobile-width}{
+@media #{$tablet-portrait}{
 
     .collection-name{
         margin-left: 0;
 
-        h1{
+        h2{
             text-align: center;
         }
     }

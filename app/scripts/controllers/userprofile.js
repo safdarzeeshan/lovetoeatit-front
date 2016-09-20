@@ -10,6 +10,8 @@
 angular.module('loveToEatItFrontEndApp')
   .controller('UserProfileCtrl', function ($scope, $state, Config, Auth, $window) {
 
+    amplitude.logEvent('User profile page');
+
     Auth.$getUser()
     .success(function(response){
         console.log(response);

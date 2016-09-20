@@ -22,13 +22,24 @@ angular.module('loveToEatItFrontEndApp')
 
             Recipe.$getRelatedRecipes(c_t)
             .then(function( response ) {
-                $scope.relatedRecipes = response.data;
+
+                var related_recipes = [];
+                angular.forEach(response.data, function(recipe){
+                    if (recipe.local_id !== id){
+                    related_recipes.push(recipe);
+                    }
+                });
+                $scope.relatedRecipes = related_recipes;
             });
         });
 
         $scope.gotoRecipe = function(recipe_url) {
             $window.open(recipe_url);
             amplitude.logEvent('Recipe blog link clicked');
+        };
+
+        $scope.gotoFbRecipes = function(blog_name) {
+            $state.go('user.foodbloggerrecipes' , {'name': blog_name});
         };
 
         $scope.gotoBlog = function(blog_url) {
