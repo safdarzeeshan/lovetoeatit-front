@@ -132,6 +132,7 @@ angular.module('loveToEatItFrontEndApp')
             $scope.local_id = response.local_id;
 
         }).catch(function(error){
+            console.log(error.data);
             console.log(error);
             $scope.submittingRecipe= false;
             ModalService.showModal({
@@ -145,7 +146,11 @@ angular.module('loveToEatItFrontEndApp')
                     modal.close.then(function() {
                 });
             });
-            amplitude.logEvent('error');
+
+            var errorProperties = {
+                'data': error.data,
+            };
+            amplitude.logEvent('recipe submit error', errorProperties);
         });
     };
 
