@@ -14,6 +14,22 @@ angular.module('loveToEatItFrontEndApp')
         });
     };
 
+    authFactory.$getAllUsers = function() {
+
+        return $http({
+            method: 'GET',
+            url: baseUrl + '/api/allusers/',
+        });
+    };
+
+    authFactory.$getUserUsername = function(username) {
+
+        return $http({
+            method: 'GET',
+            url: baseUrl + '/api/abcget?username=' + username,
+        });
+    };
+
     authFactory.$getUserDietTags = function() {
 
         return $http({
@@ -50,6 +66,16 @@ angular.module('loveToEatItFrontEndApp')
             url: baseUrl + '/api/useronboardingstatus/',
             headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
             data: status
+        });
+    };
+
+    authFactory.$updateUserRole = function(data) {
+
+        return $http({
+            method: 'PUT',
+            url: baseUrl + '/api/userrole/',
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
+            data: data
         });
     };
 

@@ -1,0 +1,27 @@
+.custom-checkbox label::before{
+    width: 24px;
+    height: 24px;
+    margin-top: -3px;
+
+}
+
+.custom-checkbox{
+    h4{
+        margin: 0;
+        margin-left: 10px;
+    }
+}
+
+.custom-checkbox input[type="checkbox"]:checked + label::before{
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+}
+
+.checkbox input[type="checkbox"]:checked + label::after{
+    font-size: 18px;
+    margin-top: -3px;
+}
+
+.checkbox input[type="checkbox"]:focus + label::before{
+    outline: 0px !important;
+}

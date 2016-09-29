@@ -113,6 +113,11 @@ angular.module('loveToEatItFrontEndApp')
         amplitude.logEvent('Clicked Edit recipe');
     };
 
+    $scope.gotoEditUser = function() {
+        $state.go('user.allUsers');
+        amplitude.logEvent('Clicked Edit usre');
+    };
+
     $scope.gotoSubmittedRecipes = function() {
         $state.go('user.submittedRecipes');
         amplitude.logEvent('Clicked Submitted recipes');

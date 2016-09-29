@@ -1,0 +1,38 @@
+.all-users{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-thumbnail{
+    background-color: white;
+    opacity: 0.9;
+    margin-bottom: 15px;
+
+    &:hover{
+        opacity: 1;
+    }
+
+    a{
+        color: inherit;
+        text-decoration: none;
+    }
+
+    a:hover{
+        color: $link-hover-color;
+    }
+
+    img{
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+.user-filters{
+    margin-bottom: 2em;
+    padding-left: 0;
+}
+
+.role-tags{
+    margin-top: 10px;
+}
