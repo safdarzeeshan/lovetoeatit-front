@@ -37,18 +37,23 @@
     </div>
     <div class = 'users'>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 nga-fast nga-slide-up" ng-repeat="user in users | filter:filter_query">
-            <a href='#' ng-click="editUser(user.username)">
-                <div class='user-thumbnail col-xs-12'>
-                    <div>
+            <div class='user-thumbnail col-xs-12'>
+                <div>
+                    <a href='#' ng-click="editUser(user.username)">
                         <img class="col-lg-4 col-md-4 col-sm-4 col-xs-4 img-circle" ng-src='{{ user.ig_profile_image_url }}'/>
-                    </div>
-                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                        <h4>{{user.first_name}} {{user.last_name}}</h4>
-                        <h4>{{user.role}}</h4>
-                        <h4>@{{user.ig_username}}</h4>
-                    </div>
+                    </a>
                 </div>
-            </a>
+                <div class="col-lg-8 col-md-8 col-sm-7 col-xs-7">
+                    <h4>
+                        <a href='#' ng-click="editUser(user.username)">
+                        {{user.first_name}} {{user.last_name}}</a>
+                    </h4>
+                    <h4>{{user.role}}</h4>
+                    <h4>
+                        <a href="https://www.instagram.com/{{user.ig_username}}" target="_blank"><i class="fa fa-instagram"></i> {{user.ig_username}}</a>
+                    </h4>
+                </div>
+            </div>
         </div>
     </div>
 </div>

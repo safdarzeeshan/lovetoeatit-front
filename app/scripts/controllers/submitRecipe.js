@@ -45,7 +45,7 @@ angular.module('loveToEatItFrontEndApp')
                 FoodBlogger.$getTempImageUrl($scope.recipe.image_url)
                 .success(function(response){
                     $scope.imageUploading= false;
-                    console.log(response);
+                    // console.log(response);
                     $scope.tempImage.picUrlFile=response;
                     $scope.tempImage.fileName = response.substring(response.lastIndexOf('/')+1);
                 });
