@@ -9,7 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('SubmitRecipeCtrl',
-    function ($scope, $state, FoodBlogger, Upload, $cookies, ModalService, $element) {
+    function (Auth, $http, $scope, $state, FoodBlogger, Upload, $cookies, ModalService, $element) {
 
     amplitude.logEvent('Submit Recipe page');
     $scope.recipe ={};
@@ -21,16 +21,52 @@ angular.module('loveToEatItFrontEndApp')
     $scope.noRecipeInfo= false;
     $scope.imageUploading= false;
     $scope.loading= false;
+    $scope.loadingRss=true;
     $scope.submittingRecipe= false;
+    $scope.noRss= false;
     $scope.limit = 3;
     var checked;
 
-    $scope.processForm = function() {
+    Auth.$getUser()
+    .success(function(response){
+        //get food blogger info
+        FoodBlogger.$getNewFoodBlogger(response.username)
+        .success(function(response){
+            //check if blog url has trailing slash
+            var fbUrl = response.blog_url;
+            if (fbUrl.substr(-1) !== '/') {         // If the last character is not a slash
+                fbUrl = fbUrl + '/';                // Append a slash to it.
+            }
+            //get blog rss feed
+            $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(fbUrl +'feed'))
+            .success(function(res){
+                $scope.loadingRss=false;
+
+                if (res.responseData !== null) {
+                    $scope.latestRecipes = res.responseData.feed.entries;
+                }
+
+                else{
+                    console.log(res.responseDetails);
+                    $scope.noRss= true;
+                }
+
+            }).catch(function(error){
+                $scope.loadingRss=false;
+                $scope.noRss= true;
+            });
+        });
+    }).catch(function(error){
+        console.log(error);
+    });
+
+
+    $scope.processForm = function(recipeUrl) {
 
         amplitude.logEvent('Clicked to process url');
         $scope.loading= true;
         //get information from recipe scraping API
-        FoodBlogger.$scrapeRecipe($scope.recipe.url)
+        FoodBlogger.$scrapeRecipe(recipeUrl)
         .success(function(response){
 
             $scope.loading= false;
@@ -39,7 +75,7 @@ angular.module('loveToEatItFrontEndApp')
             $scope.recipe = response;
 
             //get image from url
-            console.log($scope.recipe.image_url);
+            console.log($scope.recipe.image_url)
             if ($scope.recipe.image_url !== null){
                 $scope.imageUploading= true;
                 FoodBlogger.$getTempImageUrl($scope.recipe.image_url)
