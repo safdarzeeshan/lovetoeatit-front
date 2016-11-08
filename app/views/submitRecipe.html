@@ -1,29 +1,56 @@
 
 <div class='submit-recipe-div'>
-
-    <h4 class='text-center' ng-if="success == false && loading == false && submittingRecipe == false" >Add New Recipe</h4>
-    <br>
-
     <div ng-if="loading" class='col-md-4 text-center loading'>
         <i class="fa fa-spinner fa-pulse"></i>
         <h2>just collecting the ingredients....</h2>
     </div>
 
-    <form class="col-lg-6 col-md-8 col-sm-8 col-xs-11 custom-center" role="form" name="userForm" ng-if="showForm == false && loading == false" ng-submit="processForm()" >
-
+    <h3 class='text-center' ng-if="success == false && loading == false && submittingRecipe == false" >Add New Recipe</h3>
+    <hr ng-if="success == false && loading == false && submittingRecipe == false" class='col-xs-1 custom-center recipe-name-line'>
+    <!-- <br> -->
+    <form class="col-lg-6 col-md-8 col-sm-8 col-xs-11 custom-center" role="form" name="userForm" ng-if="showForm == false && loading == false" ng-submit="processForm(recipe.url)" >
+<!--         <div class='recipe-details-snippet'>
+            <p class="text-center"><i>Need a refresher in submitting a recipe. Check this quick <a href="#" ng-click='submitRecipeVideo()'>video</a>.</i></p>
+        </div> -->
         <div class="input-group">
             <input type = "url" class = "form-control input-lg scrape-recipe-input" ng-model="recipe.url" placeholder = "Enter Recipe URL" required>
             <div class="input-group-btn recipe-scrape-btn">
                 <button class="btn" type="submit"><i class="fa fa-chevron-right"></i></button>
             </div>
+            <div class="input-group-btn">
+                <a href="#" title="How to submit a recipe" class="info-button" ng-click='submitRecipeVideo()'><i class="fa fa-question-circle"></i></a>
+            </div>
         </div>
-        <div>
-            <p class="text-center"><i>Need a refresher in submitting a recipe. Check this quick <a href="#" ng-click='submitRecipeVideo()'>video</a>.</i></p>
-        </div>
-
     </form>
 
+    <div ng-if="showForm == false && loading == false" class='col-lg-8 col-md-10 col-sm-11 col-xs-11 custom-center'>
 
+        <div class='recipe-details-snippet'>
+            <p class="text-center"><i>Or select a recipe straight from your blog.</i></p>
+        </div>
+        <br>
+        <div ng-if="loadingRss" class='col-md-4 text-center loading loading-rss'>
+            <i class="fa fa-spinner fa-pulse"></i>
+            <h2>gathering your latest work....</h2>
+        </div>
+        <div ng-if="noRss" class='col-md-8 col-sm-6 custom-center'>
+            <div class="text-center alert alert-success ">Sorry :( We were unable to load your blog posts. Please add your blog url instead.</div>
+        </div>
+        <div class='col-lg-4 col-md-4 col-sm-6 col-xs-12' ng-repeat="recipe in latestRecipes">
+            <a href='#' ng-click="processForm(recipe.link)">
+            <div class="rss-recipe col-xs-12">
+                <div class='rss-recipe-name'>
+                    <h4><u>{{recipe.title}}</u></h4>
+                </div>
+                <br>
+                <div class='rss-recipe-snippet'>
+                    <p>{{recipe.contentSnippet}}</p>
+                </div>
+                <h4 class='date'>{{recipe.publishedDate}}</h4>
+            </div>
+            </a>
+        </div>
+    </div>
 
     <form class="col-lg-6 col-md-8 col-sm-8 col-xs-11 custom-center submit-recipe-form" ng-if="success == false && showForm && submittingRecipe == false" ng-submit="submitRecipeForm()" validate>
         <p ng-if="noRecipeInfo">

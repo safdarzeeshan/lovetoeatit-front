@@ -284,7 +284,7 @@ angular.module('loveToEatItFrontEndApp')
                 modal.element.modal();
                 modal.close.then(function(recipe) {
 
-                FoodBlogger.$deleteRecipe(local_id )
+                FoodBlogger.$deleteRecipe(local_id)
                 .success(function(response) {
                     $scope.success=true
                     $scope.deleted=true

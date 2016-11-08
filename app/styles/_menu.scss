@@ -76,8 +76,6 @@
     background-color: white;
 }
 
-
-
 @media #{$tablet-landscape}{
     .search-box{
         width: 200px !important;
@@ -110,7 +108,11 @@
     }
 
     .container-fluid{
-        padding-left: 30px;
+        // padding-left: 30px;
+    }
+
+    .menu-logo{
+        margin-left: 15px;
     }
 
     .search-box{
@@ -125,4 +127,20 @@
     .navbar-collapse{
         margin-right: 0;
     }
+
+    #bs-example-navbar-collapse-1{
+        margin-top: 10px;
+    }
+
+    .navbar-more-overlay {
+        background-color: rgba(102, 102, 102, 0.55);
+        display: block;
+        height: 100%;
+        left: 0px;
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        z-index: 1029;
+    }
+
 }

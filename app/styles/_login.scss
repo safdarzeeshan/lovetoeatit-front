@@ -76,7 +76,8 @@ header .header-content {
     background-color: rgba(153, 204, 204, 1);
 }
 
-#login_session_instagram{
+.landing-page-signup-btn{
+    float: none;
     padding: 10px 40px;
     font-family: 'Noto Sans','Raleway', sans-serif;
     color: white;
@@ -84,18 +85,30 @@ header .header-content {
     // margin-top: 2em;
     font-size: 1.5em;
     border: 0px solid #dbdbdb;
-    border-radius: 5px;
+    border-radius: 3px;
     /*outline: 0;*/
     background-color: $primary-color;
     opacity: 0.9;
     cursor: pointer;
     color: rgba(255, 252, 249, 0.9);
+
+    &:hover{
+      background-color: $primary-color;
+      opacity: 1;
+    }
 }
 
-#login_session_instagram:hover{
-    background-color: $primary-color;
-    opacity: 1;
+.landing-page-login-btn{
+  display: none;
+  color: #BA3B46;
+  background-color: rgba(255,255,255,0.6);
+
+  &:hover{
+    background-color: rgba(255,255,255,0.8);
+  }
 }
+
+
 
 .landing-page-heading{
   margin-top: 2em;
@@ -255,13 +268,17 @@ footer .copyright {
 
 @media #{$mobile-width}{
 
-    .header-content-inner{
-      h1{
-        font-size: 2.5em;
-      }
-    }
+  .landing-page-login-btn{
+    display: inline;
 
-    .blogger-sub-heading{
-      font-size: 1.5em;
+  }
+  .header-content-inner{
+    h1{
+      font-size: 2.5em;
     }
+  }
+
+  .blogger-sub-heading{
+    font-size: 1.5em;
+  }
 }
