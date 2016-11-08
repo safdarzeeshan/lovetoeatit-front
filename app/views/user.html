@@ -1,6 +1,5 @@
-
+<!-- <div ng-if="showMobileMenu" class="navbar-more-overlay"></div> -->
 <nav class="navbar-default navbar-fixed-top" id='user-menu' role="navigation">
-  <!-- <div class="navbar navbar-default navbar-fixed-top"> -->
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -37,7 +36,7 @@
             <li ng-if="FoodBlogger || Admin"><a  data-toggle="collapse"  data-target=".navbar-collapse.in" href="#" ng-click='gotoSubmittedRecipes()'>Submitted Recipes</a></li>
             <li ng-if="FoodBlogger || Admin" role="separator" class="divider"></li>
             <li ng-if="Admin"><a href="#" data-toggle="collapse"  data-target=".navbar-collapse.in" ng-click='gotoEditRecipe()'>Edit Recipe</a></li>
-            <li ng-if="Admin" role="separator" class="divider"></li>
+            <li ng-if="Admin"><a href="#" data-toggle="collapse"  data-target=".navbar-collapse.in" ng-click='gotoEditUser()'>Edit User</a></li>
             <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" ng-click='logout()'>Logout</a></li>
           </ul>
         </li>

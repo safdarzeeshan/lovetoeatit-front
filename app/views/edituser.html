@@ -1,0 +1,54 @@
+<div ng-if="loading" class='col-md-4 text-center loading'>
+    <i class="fa fa-spinner fa-pulse"></i>
+    <h2>Be careful with what you change about people...</h2>
+</div>
+
+<div ng-if = "loading == false && success == false" class='onboarding-main col-lg-4 col-md-6 col-sm-8 col-xs-11 custom-center'>
+    <div class='onboarding-banner text-center'>
+        <!-- <img src="{{user.ig_profile_image_url}}" class="profile-image img-circle"> -->
+        <h2>{{user_to_edit.first_name}} {{user_to_edit.last_name}}</h2>
+        <h4 class="heading-white"><i class="fa fa-envelope" aria-hidden="true"></i> {{user_to_edit.email}}</h4>
+    </div>
+    <div class="onboarding-content">
+        <div class='profile-content text-center'>
+            <div class='useredit'>
+                <div class="form-group">
+                    <select ng-model="user_to_edit.role" class="styled-select slate" name='Role'>
+                        <option value="Foodie">Foodie</option>
+                        <option value="FoodBlogger">FoodBlogger</option>
+                        <option value="FoodBloggerWaiting">FoodBloggerWaiting</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
+                <div ng-show = "user_to_edit.role == 'FoodBlogger'">
+                    <div class="form-group">
+                        <input name="name" class="form-control user-input" type="text" ng-model="blogger_info.blog_name" placeholder="Name of Food Blog" required />
+                    </div>
+                    <div class="form-group">
+                        <textarea name="description" class="form-control user-input"  rows = "4" ng-model="blogger_info.description" placeholder="Description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input name="name" class="form-control user-input" type="text" ng-model="blogger_info.image_url" placeholder="Image URL" required />
+                    </div>
+                    <div class="form-group">
+                        <input name="name" class="form-control user-input" type="text" ng-model="blogger_info.blog_url" placeholder="Blog URL" required />
+                    </div>
+                </div>
+
+                <div class='custom-center'>
+                    <button ng-if="blogger_info_exists" ng-click='updateBloggerInfo()' class="profile-btn"><h4>Update</h4></button>
+                    <button ng-if="blogger_info_exists == false" ng-click='createBloggerInfo()' class="profile-btn"><h4>Create</h4></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 custom-center text-center" ng-if="success">
+    <img src="/images/jesus.jpg" class="col-md-6 custom-center">
+    <h4>User Update Successfully</h4>
+    <h4>{{role_update}}</h4>
+    <h4>{{blogger_info_update}}</h4>
+    <br>
+    <button type='button' class="recipe-submit-btn" ng-click="gotoAllUsers()"><h5>Edit Another User</h5></button>
+</div>

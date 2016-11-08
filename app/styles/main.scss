@@ -51,6 +51,11 @@ $tablet-landscape: "only screen and (max-width : 1024px)";
 @import 'terms';
 @import 'profile';
 @import 'foodblogger-recipes';
+@import 'awesome-bootstrap-checkbox';
+@import 'register';
+@import 'edit_user';
+@import 'all_users';
+@import 'modal-video';
 
 
 h1{
@@ -151,7 +156,7 @@ button:focus, button:active, button.active, button:focus:active {
         opacity: 1;
     }
 
-    h3{
+    h4{
         color: white;
         margin: 0;
         padding: 10px;

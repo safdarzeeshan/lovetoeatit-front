@@ -39,7 +39,13 @@
                 <div class="alert alert-danger" ng-repeat="error in errors.non_field_errors">{{error}}</div>
                 <div class="alert alert-danger" ng-repeat="error in errors.password2">{{error}}</div>
 
+                <!--Food Blogger Check-->
+                <div class="checkbox checkbox-success custom-checkbox">
+                    <input type="checkbox" id="checkbox1" ng-model="foodblogger.waiting" ng-change="updateFoodBloggerStatus()">
+                    <label for="checkbox1"><h4>I am a Food Blogger</h4></label>
+                </div>
                 <!-- SUBMIT-->
+                <br>
                 <button type="submit" class="onboarding-btn"><h3>SIGN UP</h3></button>
             </form>
             <p class='para-terms text-center'><i>Signing up confirms that you've read and agreed to our <a href='#' ng-click='termsOfUse()'>Terms of Use</a>.</i></p>

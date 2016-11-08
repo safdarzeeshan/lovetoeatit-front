@@ -153,14 +153,6 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             onboardingStatus: ['New', 'InProgress']
         })
 
-        .state('onboarding.userinfo', {
-            url: '/user',
-            templateUrl: 'views/onboarding_user.html',
-            controller: 'OnboardingUserCtrl',
-            requireLogin: true,
-            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
-            onboardingStatus: ['New', 'InProgress']
-        })
 
         .state('onboarding.userdiet', {
             url: '/userhealth',
@@ -339,6 +331,26 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             url: '/editrecipe',
             templateUrl: 'views/editRecipe.html',
             controller: 'EditRecipeCtrl',
+            requireLogin: true,
+            role: ['Admin'],
+            onboardingStatus: ['Complete']
+
+        })
+
+        .state('user.allUsers', {
+            url: '/allusers',
+            templateUrl: 'views/allUsers.html',
+            controller: 'AllUsersCtrl',
+            requireLogin: true,
+            role: ['Admin'],
+            onboardingStatus: ['Complete']
+
+        })
+
+        .state('user.editUser', {
+            url: '/edituser?username',
+            templateUrl: 'views/edituser.html',
+            controller: 'EditUserCtrl',
             requireLogin: true,
             role: ['Admin'],
             onboardingStatus: ['Complete']

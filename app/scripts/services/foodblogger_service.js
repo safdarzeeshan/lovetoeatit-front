@@ -17,6 +17,38 @@ angular.module('loveToEatItFrontEndApp')
         });
     };
 
+
+    foodBloggerFactory.$getNewFoodBlogger = function(username) {
+
+        return $http({
+            method: 'GET',
+            url: baseUrl + '/api/editfoodblogger?username=' + username,
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
+        });
+    };
+
+
+    foodBloggerFactory.$createFoodBlogger = function(bloggerData) {
+
+        return $http({
+            method: 'POST',
+            url: baseUrl + '/api/editfoodblogger',
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
+            data: bloggerData
+        });
+    };
+
+
+    foodBloggerFactory.$updateFoodBlogger = function(bloggerData) {
+
+        return $http({
+            method: 'PUT',
+            url: baseUrl + '/api/editfoodblogger',
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
+            data: bloggerData
+        });
+    };
+
     foodBloggerFactory.$submitRecipeWithImage = function(recipeData, image, imageFileName) {
 
         var fd = new FormData();

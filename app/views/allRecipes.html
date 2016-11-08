@@ -4,7 +4,7 @@
 </div>
 <div class='discover' ng-if="loading == false">
 
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 recipe-thumbnail recipe-thumbnail nga-fast nga-slide-up" ng-repeat="recipe in recipes | limitTo: limit">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 recipe-thumbnail nga-fast nga-slide-up" ng-repeat="recipe in recipes | limitTo: limit">
         <div class='recipe-thumbnail-image'>
             <a href="#" ng-click="getRecipe(recipe.local_id)">
                 <div class='recipe-thumbnail-image-border'>

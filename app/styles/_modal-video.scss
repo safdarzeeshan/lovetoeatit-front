@@ -1,0 +1,43 @@
+.embed-responsive{
+    position: initial;
+}
+
+.modal-video{
+    width: 1000px;
+}
+
+.modal-video-close-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    text-shadow: none;
+    opacity: 0.8;
+    margin-right: 10px;
+    font-size: 3em;
+
+    &:hover{
+        color: white;
+        opacity: 1;
+    }
+}
+@media #{$tablet-landscape}{
+    .modal-video{
+        width: 800px;
+    }
+}
+
+@media #{$tablet-portrait}{
+    .modal-video{
+        width: 600px;
+    }
+}
+
+@media #{$mobile-width}{
+    .modal-video{
+        width: auto;
+    }
+    .modal-video-main{
+        top:100px;
+    }
+}

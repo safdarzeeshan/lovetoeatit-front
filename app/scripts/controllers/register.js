@@ -1,4 +1,3 @@
-'use strict';
 
 /**
  * @ngdoc function
@@ -10,6 +9,15 @@
 angular.module('loveToEatItFrontEndApp')
   .controller('RegisterCtrl', function ($http, $cookies, $scope, Auth, Validate, $state, $localStorage, ModalService) {
     $scope.newuser = {'username':'','password':''};
+
+    //check if user came from foodblogger page
+    if ($localStorage.foodBloggerStatus === 'FoodBloggerWaiting'){
+        $scope.foodblogger = {'waiting': true};
+    }
+
+    else{
+        $scope.foodblogger = {'waiting': false};
+    }
 
     $scope.loading = false;
     amplitude.logEvent('Register Page');
@@ -23,7 +31,18 @@ angular.module('loveToEatItFrontEndApp')
         $state.go('resetpassword');
     };
 
+    $scope.updateFoodBloggerStatus = function(){
+        if ($scope.foodblogger.waiting === true){
+            $localStorage.foodBloggerStatus = 'FoodBloggerWaiting';
+        }
+
+        else if ($scope.foodblogger.waiting === false) {
+            $localStorage.$reset({foodBloggerStatus:undefined});
+        }
+    }
+
     $scope.register = function(formData){
+        console.log($scope.foodblogger.waiting);
         amplitude.logEvent('Register user form submitted');
         $scope.errors = [];
         Validate.form_validation(formData,$scope.errors);

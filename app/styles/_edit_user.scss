@@ -1,0 +1,46 @@
+.useredit{
+
+    margin-top: 60px;
+    padding-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.styled-select {
+    background-image: url(/images/arrow.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    opacity: 0.8;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    width: 100%;
+    padding: 14px 15px;
+    height: auto;
+    border-color: #C7C7C7;
+    border-width: 1px;
+    cursor: pointer;
+
+    &:hover{
+        opacity: 1;
+    }
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+}
+
+.styled-select.slate select {
+   border: 1px solid #ccc;
+   font-size: 16px;
+   height: 34px;
+   width: 268px;
+}

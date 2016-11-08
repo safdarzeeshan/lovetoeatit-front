@@ -1,0 +1,59 @@
+<div ng-if="loading" class='col-md-4 text-center loading'>
+    <i class="fa fa-spinner fa-pulse"></i>
+    <h2>finding your people...</h2>
+</div>
+
+<div ng-if="loading == false" class='all-users'>
+    <div class = 'user-filters col-xs-12'>
+        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-11">
+            <input type = "text" class = "form-control input-lg scrape-recipe-input" ng-model="filter_query.$" placeholder = "Filter by any keyword" >
+        </div>
+        <div class="submit-recipe-tag role-tags col-lg-4 col-md-6 col-sm-8 col-xs-11">
+            <input type="checkbox" id="role-Foodie" class="form-control" ng-model="filter_query.role" ng-true-value="'Foodie'" ng-false-value="" />
+            <label for="role-Foodie">
+                <span>
+                    Foodie
+                </span>
+            </label>
+            <input type="checkbox" id="role-FoodBloggerWaiting" class="form-control" ng-model="filter_query.role" ng-true-value="'FoodBloggerWaiting'" ng-false-value="" />
+            <label for="role-FoodBloggerWaiting">
+                <span>
+                    Food Blogger in Waiting
+                </span>
+            </label>
+            <input type="checkbox" id="role-FoodBlogger" class="form-control" ng-model="filter_query.role" ng-true-value="'FoodBlogger'" ng-false-value="" />
+            <label for="role-FoodBlogger">
+                <span>
+                    Food Blogger
+                </span>
+            </label>
+            <input type="checkbox" id="role-Admin" class="form-control" ng-model="filter_query.role" ng-true-value="'Admin'" ng-false-value="" />
+            <label for="role-Admin">
+                <span>
+                    Admin
+                </span>
+            </label>
+        </div>
+    </div>
+    <div class = 'users'>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 nga-fast nga-slide-up" ng-repeat="user in users | filter:filter_query">
+            <div class='user-thumbnail col-xs-12'>
+                <div>
+                    <a href='#' ng-click="editUser(user.username)">
+                        <img class="col-lg-4 col-md-4 col-sm-4 col-xs-4 img-circle" ng-src='{{ user.ig_profile_image_url }}'/>
+                    </a>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-7 col-xs-7">
+                    <h4>
+                        <a href='#' ng-click="editUser(user.username)">
+                        {{user.first_name}} {{user.last_name}}</a>
+                    </h4>
+                    <h4>{{user.role}}</h4>
+                    <h4>
+                        <a href="https://www.instagram.com/{{user.ig_username}}" target="_blank"><i class="fa fa-instagram"></i> {{user.ig_username}}</a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

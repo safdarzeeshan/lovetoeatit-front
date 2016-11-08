@@ -9,10 +9,12 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('UserCtrl',
-    function ($scope, $localStorage, $location, $state, Auth, $http, $cookies) {
+    function ($scope, $localStorage, $location, $state, Auth, $http, $cookies, $element) {
 
     var role,
         setupProfile;
+
+    $scope.showMobileMenu = false;
 
     //check role
     role = function(){
@@ -113,6 +115,11 @@ angular.module('loveToEatItFrontEndApp')
         amplitude.logEvent('Clicked Edit recipe');
     };
 
+    $scope.gotoEditUser = function() {
+        $state.go('user.allUsers');
+        amplitude.logEvent('Clicked Edit usre');
+    };
+
     $scope.gotoSubmittedRecipes = function() {
         $state.go('user.submittedRecipes');
         amplitude.logEvent('Clicked Submitted recipes');
@@ -121,6 +128,10 @@ angular.module('loveToEatItFrontEndApp')
     $scope.gotoUserProfile = function() {
         $state.go('user.profile');
         amplitude.logEvent('Clicked User Profile');
+    };
+
+    $scope.darkenBackground = function(){
+      console.log($('#bs-example-navbar-collapse-1').attr('aria-expanded'));
     };
 
     role();
