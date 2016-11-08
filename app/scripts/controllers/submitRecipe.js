@@ -268,7 +268,7 @@ angular.module('loveToEatItFrontEndApp')
             templateUrl: 'views/modal_video.html',
             controller: "ModalCtrl",
             inputs: {
-                message: "https://www.youtube.com/embed/Ynpkyi3-JhU"
+                message: "https://www.youtube.com/embed/Ynpkyi3-JhU?autohide=2&showinfo=0"
         }
         }).then(function(modal) {
             modal.element.modal();

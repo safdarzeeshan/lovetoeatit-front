@@ -9,7 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('OnboardingUserDietCtrl',
-    function ($scope, $localStorage, FoodBlogger, $state, Auth) {
+    function ($scope, $localStorage, FoodBlogger, $state, Auth, ModalService) {
 
         amplitude.logEvent('Onboarding - User diet form');
         $scope.onboarding_status = $localStorage.onboarding_status;
@@ -35,6 +35,21 @@ angular.module('loveToEatItFrontEndApp')
                 console.log('cannot retrieve user information');
             };
         });
+
+        $scope.instagram_example = function(){
+            ModalService.showModal({
+                templateUrl: 'views/modal_instagram.html',
+                controller: "ModalCtrl",
+                inputs: {
+                message: "These are our terms of use"
+            }
+            }).then(function(modal) {
+                modal.element.modal();
+                modal.close.then(function() {
+                });
+            });
+
+        };
 
 
         $scope.submitUserForm = function(){
