@@ -13,14 +13,67 @@
     min-height: 700px;
 }
 
-#services .container{
-    width: 60%;
+.fb-services-features{
+    margin-top: 5em;
 }
 
 .service-icon{
     width: 60%;
     margin: auto;
     margin-bottom: 2em;
+}
+
+.featured-blogger{
+    &:hover{
+        .featured-blogger-name{
+        opacity: 1;
+        }
+    }
+}
+
+
+.featured-blogger{
+    padding:0;
+
+    .featured-blogger-name{
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        background: rgba(255, 255, 255, 0.75);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+
+        h3{
+          margin-left: 2.5%;
+          margin-right: 2.5%;
+          margin-top: 43%;
+          font-weight: bold;
+        }
+    }
+}
+
+.our-story-info{
+    margin-top: 5em;
+    padding-bottom: 5em;
+
+    p{
+        font-size: 18px;
+        font-family: Times New Roman;
+        font-style: italic;
+    }
+
+    hr{
+        max-width: 20%;
+    }
+
+    .img-circle{
+        width: 6%;
+    }
+
+    h4{
+        text-align: center;
+    }
 }
 
 .howitworks-foodblogger{
@@ -32,7 +85,7 @@
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    padding: 2em 0;
+    padding: 4em 0;
 
 }
 

@@ -9,7 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('LandingPageUserCtrl',
-    function ($scope, $window, Config, Brand, ModalService, $state) {
+    function ($scope, Recipe, $window, Config, Brand, ModalService, $state, $element) {
 
     $scope.scroll = 0;
     $scope.brand ={};
@@ -17,6 +17,17 @@ angular.module('loveToEatItFrontEndApp')
     $scope.emailBrandSuccess = false;
 
     amplitude.logEvent('User Landing page');
+
+
+    Recipe.$getTopRecipePicks()
+    .then(function( response ) {
+        console.log(response.data)
+        $scope.recipes = response.data;
+
+    })
+    .catch(function(error){
+        console.log(error);
+    });
 
     $scope.login = function(){
         amplitude.logEvent('User clicked Login');
@@ -44,6 +55,32 @@ angular.module('loveToEatItFrontEndApp')
         }),function(error){
             console.log('cannot send email' + error);
         };
+    };
+
+    $scope.howitworksVideo = function(){
+        ModalService.showModal({
+            templateUrl: 'views/modal_video.html',
+            controller: "ModalCtrl",
+            inputs: {
+                message: "https://www.youtube.com/embed/79D-0dY255w?autohide=2&showinfo=0&autoplay=1"
+        }
+        }).then(function(modal) {
+            modal.element.modal();
+            modal.element.on('hidden.bs.modal', function() {
+                $('.modal-video').remove();
+            });
+        });
+    }
+
+    $scope.gotoRecipeExample = function(id){
+
+        console.log('here');
+
+        $state.go('recipeexample' , { 'id': id});
+        var recipeProperties = {
+            'id': id,
+        };
+        amplitude.logEvent('Clicked recipe pick', recipeProperties);
     };
 
 });

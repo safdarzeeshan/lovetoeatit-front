@@ -71,6 +71,14 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
         })
 
+        .state('recipeexample', {
+            url: '/recipeexample?id',
+            templateUrl: 'views/recipeExample.html',
+            controller: 'RecipeExampleCtrl',
+            requireLogin: false
+
+        })
+
         .state('landingpage_foodblogger', {
             url: '/foodbloggers',
             templateUrl: 'views/landingpage_foodbloggers.html',

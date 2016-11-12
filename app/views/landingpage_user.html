@@ -12,14 +12,14 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li>
+<!--                 <li>
                     <h4><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#how_it_works">How It Works</a></h4>
-                </li>
+                </li> -->
                 <li>
                     <h4><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#services">About</a></h4>
                 </li>
                 <li>
-                    <h4><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#brands">Brands</a></h4>
+                    <h4><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#topRecipePicks">Recipes</a></h4>
                 </li>
                 <li>
                     <h4><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="/foodbloggers">Food Bloggers</a></h4>
@@ -34,13 +34,16 @@
 <!-- <span class='scroll-debug' scroll-position="scroll">{{scroll}}</span> -->
 <header class='user-landing-header'>
     <div class="header-content" id="page-top">
-        <div class="header-content-inner custom-center col-lg-8 col-md-10 col-sm-10 col-xs-12">
+        <div class="header-content-inner col-lg-7 col-md-10 col-sm-10 col-xs-12">
             <h1>Sign up to get the recipes you love on Instagram!</h1>
-            <h3>your foodie adventure begins with the like button</h3>
             <hr>
-            <div  class='content'>
+            <div class='content'>
                 <div>
                     <button class='col-md-3 col-sm-4 col-xs-7 landing-page-signup-btn' ng-click='register()'>Sign Up</button>
+                </div>
+                <br>
+                <div>
+                    <button class='col-md-3 col-sm-4 col-xs-7 landing-page-howitworks-btn' ng-click='howitworksVideo()'><i class="fa fa-play-circle-o" aria-hidden="true"></i> How It Works</button>
                 </div>
                 <br>
                 <div>
@@ -48,13 +51,124 @@
                 </div>
             </div>
             <br>
-             <a href="#how_it_works" du-smooth-scroll class="cta-more-info page-scroll">
+<!--              <a href="#how_it_works" du-smooth-scroll class="cta-more-info page-scroll">
                 <i class="fa fa-angle-down animated"></i>
-            </a>
+            </a> -->
         </div>
     </div>
 </header>
-<section class="howitworks" id="how_it_works">
+<section id="services">
+    <div class="col-xs-12 text-center landing-page-heading">
+        <h2 class="section-heading heading-white">Cook the food you like on Instagram</h2>
+        <h3 class="blogger-sub-heading section-heading heading-unbold heading-white">We can't make it for you but we can get you the recipe in a second...
+        </h3>
+    </div>
+    <div class="row">
+        <div class="value-prop background-light-grey col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+            <div class="service-box custom-center col-lg-8 col-md-8 col-sm-10 col-xs-10">
+                <img src="/images/Value-1-ALT-2.png" class="service-icon img-responsive" alt="Foodie Adventure Recipe Image 1" data-wow-delay=".1s">
+                <p class="text-muted">Don’t miss out on a recipe because you can’t find the link</p>
+            </div>
+        </div>
+        <div class="value-prop background-grey col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+            <div class="service-box custom-center col-lg-8 col-md-8 col-sm-10 col-xs-10">
+               <img src="/images/Value3.png" class="service-icon img-responsive" alt="Foodie Adventure Recipe Image 2" data-wow-delay=".1s">
+               <p class="text-muted">Collect all the recipes you “like” on Instagram in an online cookbook</p>
+            </div>
+        </div>
+        <div class="value-prop background-light-grey col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
+            <div class="service-box custom-center col-lg-8 col-md-8 col-sm-10 col-xs-10">
+                <img src="/images/Value2.png" class="service-icon img-responsive" alt="Foodie Adventure Recipe Image 3" data-wow-delay=".1s">
+                <p class="text-muted">Get instant access to the recipes you “like" on Instagram via your inbox</p>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section id="topRecipePicks">
+    <div class="col-xs-12 text-center landing-page-heading">
+        <h2 class="section-heading heading-white">Recipes of the Week</h2>
+    </div>
+    <div class='recipe-picks'>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 recipe-pick recipe-thumbnail nga-fast nga-slide-up" ng-repeat="recipe in recipes | limitTo: 4">
+            <a href="#" ng-click="gotoRecipeExample(recipe.local_id)">
+            <div class='recipe-thumbnail-image'>
+
+                    <div class='recipe-pick-name'>
+                        <h3>
+                            {{ recipe.name }}
+                        </h3>
+                    </div>
+
+                <div class='recipe-thumbnail-image-border'>
+                </div>
+                <img class="img-responsive" ng-src='{{ recipe.image_url }}' alt="">
+            </div>
+            </a>
+        </div>
+    </div>
+</section>
+<section id="carousel">
+    <div class="col-xs-12 text-center landing-page-heading">
+        <h2 class="section-heading heading-white">Food bloggers love us</h2>
+    </div>
+    <div class="container testimonials">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="17000">
+                <ol class="carousel-indicators">
+                    <li data-target="#fade-quote-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="2"></li>
+                </ol>
+
+                <div class="carousel-inner testimonial-box">
+                    <div class="active item row">
+                        <div class="col-lg-2 custom-center">
+                            <img src="/images/food_bloggers/fromthelandweliveon.jpg" class="img-responsive img-circle" alt="Food Blogger - From The Land We Live On">
+                        </div>
+                        <div class="text-center">
+                            <a href='http://fromthelandweliveon.com/'><h3>From The Land We Live On</h3></a>
+                        </div>
+                        <blockquote class="col-lg-10 custom-center">
+                            <p><i class="fa fa-quote-left" aria-hidden="true"></i>  Love To Eat It is such a fantastic idea and I'm so excited to watch the platform develop and grow into its potential to connect bloggers with their readers through Instagram. It's so rewarding to see others make my recipes and post pictures on Instagram and there's no better way to encourage people to do that than to send a little teaser to their inbox!</p>
+                        </blockquote>
+                    </div>
+                    <div class="item">
+                        <div class="col-lg-2 custom-center">
+                            <img src="/images/food_bloggers/healthymaven.jpg" class="img-responsive img-circle" alt="Food Blogger - The Healthy Maven">
+                        </div>
+                        <div class="text-center">
+                            <a href='http://www.thehealthymaven.com/'><h3>The Healthy Maven</h3></a>
+                        </div>
+                        <blockquote class="col-lg-10 custom-center">
+                            <p><i class="fa fa-quote-left" aria-hidden="true"></i>  I have been absolutely loving the Love to Eat It platform! It's a great way for me to connect with my Instagram audience and help them to easily access my recipes from the blog. The team is also super supportive and understanding in my needs as a business-owner.</p>
+                        </blockquote>
+                    </div>
+                    <div class="item">
+                        <div class="col-lg-2 custom-center">
+                            <img src="/images/food_bloggers/gardenheart.jpg" class="img-responsive img-circle" alt="Food Blogger - Garden Heart Holistic">
+                        </div>
+                        <div class="food-blogger-links text-center">
+                            <a href='http://garden-heart.com/'><h3>Garden Heart Holistic</h3></a>
+                        </div>
+                        <blockquote class="col-lg-10 custom-center">
+                            <p><i class="fa fa-quote-left" aria-hidden="true"></i>  An inspirational community that treasures the importance of food, conscious of ingredients that go into our meals and brings together amazing people to cook. I love receiving beautiful spreads of recipes. So honoured to be a member of this community and also to constantly be in awe of my fellow peers work. Love To Eat It is creating a space where inspiration flows and appreciation shows.</p>
+                        </blockquote>
+                    </div>
+              </div>
+            </div>
+        </div>
+<!--         <div class="cta-services text-center">
+            <span>Are you a food blogger?</span>
+            <br>
+            <a href="/foodbloggers" du-smooth-scroll class="btn btn-primary page-scroll">
+            Sign Up Now</i>
+            </a>
+            <br>
+        </div> -->
+    </div>
+</section>
+<!-- <section class="howitworks" id="how_it_works">
     <div class="container landing-page-heading">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -77,188 +191,8 @@
         <br>
         <span>Or find out <a href="#services" du-smooth-scroll class="page-scroll">more</a></span>
     </div>
-</section>
-<section id="services">
-    <div class="custom-center col-lg-8 col-md-8 col-sm-10 col-xs-10 text-center landing-page-heading">
-        <div class="row">
-            <div>
-                <h2 class="blogger-heading section-heading">Cook the food you like on Instagram</h2>
-                <hr class="primary">
-                <h3 class="blogger-sub-heading section-heading heading-unbold">We can't make it for you but we can get you the recipe in a second...
-                </h3>
-            </div>
-        </div>
-    </div>
-    <div class="content custom-center col-lg-8 col-md-8 col-sm-10 col-xs-8">
-        <div class="row">
-            <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                <div class="service-box">
-                    <img src="/images/Value-1-ALT-2.png" class="service-icon img-responsive" alt="Foodie Adventure Recipe Image 1" data-wow-delay=".1s">
-                    <p class="text-muted">Don’t miss out on a recipe because you can’t find the link</p>
-                </div>
-            </div>
-            <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                <div class="service-box">
-                   <img src="/images/Value3.png" class="service-icon img-responsive" alt="Foodie Adventure Recipe Image 2" data-wow-delay=".1s">
-                   <p class="text-muted">Collect all the recipes you “like” on Instagram in an online cookbook</p>
-                </div>
-            </div>
-            <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                <div class="service-box">
-                    <img src="/images/Value2.png" class="service-icon img-responsive" alt="Foodie Adventure Recipe Image 3" data-wow-delay=".1s">
-                    <p class="text-muted">Get instant access to the recipes you “like" on Instagram via your inbox</p>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="carousel">
-    <div class="container landing-page-heading">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="blogger-heading section-heading">Food bloggers love us</h2>
-                <hr class="primary">
-            </div>
-        </div>
-    </div>
-    <div class="container testimonials">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
-                <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="17000">
-                  <ol class="carousel-indicators">
-                    <li data-target="#fade-quote-carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
-                    <li data-target="#fade-quote-carousel" data-slide-to="2"></li>
-                  </ol>
-
-                  <div class="carousel-inner testimonial-box">
-                   <div class="active item">
-                        <div class="profile-circle" style="background-color: rgba(0,0,0,.2);">
-                            <img src="/images/food_bloggers/fromthelandweliveon.jpg" class="img-responsive profile-circle" alt="Food Blogger - From The Land We Live On">
-                        </div>
-                        <div class="food-blogger-links text-center">
-                            <a href='http://fromthelandweliveon.com/'>From The Land We Live On</a>
-                            <a href='https://www.instagram.com/fromthelandweliveon/'><i class="fa fa-instagram"></i></a>
-                        </div>
-                        <blockquote>
-                            <p>Love To Eat It is such a fantastic idea and I'm so excited to watch the platform develop and grow into its potential to connect bloggers with their readers through Instagram. It's so rewarding to see others make my recipes and post pictures on Instagram and there's no better way to encourage people to do that than to send a little teaser to their inbox!</p>
-                        </blockquote>
-                    </div>
-                    <div class="item">
-                        <div class="profile-circle" style="background-color: rgba(77,5,51,.2);">
-                            <img src="/images/food_bloggers/healthymaven.jpg" class="img-responsive profile-circle" alt="Food Blogger - The Healthy Maven">
-                        </div>
-                        <div class="food-blogger-links text-center">
-                            <a href='http://www.thehealthymaven.com/'>The Healthy Maven</a>
-                            <a href='https://www.instagram.com/thehealthymaven/'><i class="fa fa-instagram"></i></a>
-                        </div>
-                        <blockquote>
-                            <p>I have been absolutely loving the Love to Eat It platform! It's a great way for me to connect with my Instagram audience and help them to easily access my recipes from the blog. The team is also super supportive and understanding in my needs as a business-owner.</p>
-                        </blockquote>
-                    </div>
-                    <div class="item">
-                        <div class="profile-circle" style="background-color: rgba(77,5,51,.2);">
-                            <img src="/images/food_bloggers/gardenheart.jpg" class="img-responsive profile-circle" alt="Food Blogger - Garden Heart Holistic">
-                        </div>
-                        <div class="food-blogger-links text-center">
-                            <a href='http://garden-heart.com/'>Garden Heart Holistic</a>
-                            <a href='https://www.instagram.com/gardenheart_holistic/'><i class="fa fa-instagram"></i></a>
-                        </div>
-                        <blockquote>
-                            <p>An inspirational community that treasures the importance of food, conscious of ingredients that go into our meals and brings together amazing people to cook. I love receiving beautiful spreads of recipes. So honoured to be a member of this community and also to constantly be in awe of my fellow peers work. Love To Eat It is creating a space where inspiration flows and appreciation shows.</p>
-                        </blockquote>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </div>
-        <div class="cta-services text-center">
-            <span>Are you a food blogger?</span>
-            <br>
-            <a href="/foodbloggers" du-smooth-scroll class="btn btn-primary page-scroll">
-            Sign Up Now</i>
-            </a>
-            <br>
-        </div>
-    </div>
-</section>
-<section id="brands" class="banner">
-    <div class="container landing-page-heading">
-        <div class="text-center">
-            <div>
-                <h2>Are you a brand that wants to work with influencers?</h2>
-                <hr class="primary">
-                <h3 class="blogger-sub-heading section-heading heading-unbold">
-                Whether it's the latest food trend or a hot new recipe, our food bloggers know what's good</h3>
-
-            </div>
-        </div>
-        <br>
-        <div ng-if='emailBrandCta' class="content custom-center col-lg-8 col-md-8 col-sm-10 col-xs-8">
-            <div class="row">
-                <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                    <div class="service-box">
-                        <img src="/images/treasure.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
-                        <p class="text-muted">Discover mouth-watering content </p>
-                    </div>
-                </div>
-                <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                    <div class="service-box">
-                       <img src="/images/stats.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
-                       <p class="text-muted">Insight into target markets </p>
-                    </div>
-                </div>
-                <div class="value_prop col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-                    <div class="service-box">
-                        <img src="/images/handshake.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
-                        <p class="text-muted">Build relationships with food bloggers</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="cta-services text-center">
-            <a href="#" ng-click='emailBrandDataForm()' du-smooth-scroll class="btn btn-primary">
-                Drop us a line</i>
-            </a>
-            </div>
-        </div>
-
-        <div ng-if='emailBrandCta == false && emailBrandSuccess == false' class='onboarding-userinfo'>
-                <form name="userForm" ng-submit="submitBrandForm()" >
-
-                <!-- Name -->
-                <div class="form-group">
-                    <input type="text" placeholder='Representative Name *' name="first_name" class="form-control user-input" ng-model="brand.contact_name" ng-required>
-                </div>
-
-                <!-- Company Name -->
-                <div class="form-group">
-                    <input type="text" placeholder='Company Name *' name="company_name" class="form-control user-input" ng-model="brand.company_name" ng-required>
-                </div>
-
-                <!-- EMAIL -->
-                <div class="form-group">
-                    <input type="text" placeholder='Email *' name="email" class="form-control user-input" ng-model="brand.contact_email" ng-required>
-                </div>
-
-                <div class="cta-services text-center">
-                    <button type="submit" ng-click='emailBrandData()' du-smooth-scroll class="btn btn-primary">
-                    Submit
-                    </button>
-                </div>
-
-            </form>
-        </div>
-        <div ng-if='emailBrandSuccess' class=" text-center">
-            <div class="cta-services">
-                <span>Thanks. We will be in contact with you very soon. <i class="fa fa-thumbs-o-up"></i></span>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="banner">
+</section> -->
+<!-- <section class="banner">
     <div class="container landing-page-heading">
         <div class="text-center">
             <div>
@@ -272,7 +206,7 @@
             </a>
         </div>
     </div>
-</section>
+</section> -->
 <footer>
     <div class="container">
         <div class="row">

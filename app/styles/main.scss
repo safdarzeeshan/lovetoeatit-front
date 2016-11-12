@@ -15,6 +15,7 @@ $font-text-secondary: Lato, 'Noto Sans', 'Trebuchet MS';
 $primary-color: #BA3B46;
 $button-color: #ED9B40;
 $secondary-color: rgba(153,204,204,1);
+$secondary-color-opaque: rgba(153,204,204,0.9);
 $secondary-color-overlay: rgba(153,204,204,0.8);
 $sub-heading-color: #4A4A4A;
 $link-hover-color: #4A90E2;
@@ -26,7 +27,7 @@ $tablet-landscape: "only screen and (max-width : 1024px)";
 
 
 @import 'menu';
-@import 'login';
+@import 'landing-page';
 @import 'food-blogger-landing';
 @import 'iguser';
 @import 'feed';
@@ -60,7 +61,7 @@ $tablet-landscape: "only screen and (max-width : 1024px)";
 
 h1{
   font-family: $font-heading;
-  font-size: 4em;
+  font-size: 3.5em;
   color: $sub-heading-color;
   font-weight: bold;
 }

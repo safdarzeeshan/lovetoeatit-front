@@ -1,0 +1,115 @@
+<nav id="user-menu" scroll-position="scroll" class="navbar navbar-default navbar-fixed-top" ng-class="{yesScrolling: scroll > 1, notScrolling: scroll <= 0}">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/"><img class='menu-logo' alt="Love To Eat It Brand" src='images/logo.png'/></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav">
+                <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' href="#" ng-click='gotoRegister()'>Cookbook</a></h4></li>
+                <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' href="#" ng-click='gotoRegister()'>Likes</a></h4></li>
+                <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' href="#" ng-click='gotoRegister()'>Discover</a></h4></li>
+                <li><h4><a class='navbar-options' data-toggle="collapse" data-target=".navbar-collapse.in" href="#" ng-click='gotoRegister()'>Submit Recipe</a></h4></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <h4><a class='navbar-options' data-target=".navbar-collapse.in" href="#" ng-click='gotoRegister()'>Sign Up</a><h4>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<br>
+<div class="recipe-details">
+    <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 recipe-details-header'>
+        <div class='recipe-details-blogger text-center'>
+            <a href="#" ng-click="gotoBlog(recipe.food_blogger.blogger_info.blog_url)">
+                <img src='{{ recipe.food_blogger.blogger_info.image_url }}'>
+            </a>
+            <a href="#" ng-click="gotoBlog(recipe.food_blogger.blogger_info.blog_url)">
+                <u>{{ recipe.food_blogger.blogger_info.blog_name }}</u>
+            </a>
+        </div>
+        <h2 class='text-center recipe-name'>
+            <a href="#" title="Goto Recipe" ng-click="gotoRecipe(recipe.url)">{{ recipe.name }}</a>
+        </h2>
+
+        <hr class='recipe-name-line'>
+    </div>
+
+    <div class='col-lg-6 col-md-6 col-md-offset-0 col-sm-8 col-sm-offset-2 col-xs-12'>
+        <div class='recipe-details-image'>
+            <a href="#" ng-click="gotoRecipe(recipe.url)">
+                <div class='recipe-details-image-border'>
+                </div>
+                <img class="img-responsive" ng-src='{{ recipe.image_url }}'>
+            </a>
+        </div>
+        <div class='recipe-tags'>
+            <div class='recipe-details-tags' ng-repeat="category_tag in recipe.category_tags">
+                <a href="#" ng-click="gotoRegister()">
+                <span>
+                    {{ category_tag.name }}
+                </span>
+                </a>
+            </div>
+            <div class='recipe-details-tags' ng-repeat="collection_tag in recipe.collection_tags">
+                <a href="#" ng-click="gotoRegister()">
+                    <span>
+                        {{ collection_tag.name }}
+                    </span>
+                </a>
+            </div>
+            <div class='recipe-details-tags' ng-repeat="diet_tag in recipe.diet_tags">
+                <a href="#" ng-click="gotoRegister()">
+                    <span>
+                        {{ diet_tag.name }}
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 recipe-details-info">
+        <div class='recipe-details-facts text-center'>
+            <div class='recipe-serving-size'>
+                <img src='images/person.png'/>
+                <h6>{{ recipe.serving_size }}</h6>
+            </div>
+            <div class='recipe-time'>
+                <img src='images/clock.png'/>
+                <h6>{{ recipe.time }}</h6>
+            </div>
+            <div class='recipe-likes'>
+                <a ng-click="gotoRegister()">
+                    <img src='images/heart-outline.png'/>
+                </a>
+                <h6>{{recipe.no_of_likes}}</h6>
+            </div>
+        </div>
+        <div class='recipe-details-snippet'>
+            <p>{{ recipe.snippet }}</p>
+        </div>
+        <div class='recipe-details-ingredients'>
+            <h4>Ingredients</h4>
+            <ul>
+                <li ng-repeat="ingredient in recipe.ingredients">
+                    <div>
+                        <p>{{ ingredient.amount}} {{ingredient.ingredient.name}}</p>
+                        <hr class='ingredient-line' align='left' />
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <button type="button" ng-click="gotoRecipe(recipe.url)" class="btn btn-primary recipe-url-btn"><h3>View Full Recipe</h3></button>
+    </div>
+</div>
