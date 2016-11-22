@@ -8,6 +8,9 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="/"><img class='menu-logo' alt="Brand" src='images/logo.png'/></a>
+            <div class='login-btn-mobile visible-xs'>
+                <h4><a class='navbar-options' href="#" ng-click='login()'>Login</a></h4>
+            </div>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -19,7 +22,7 @@
                     <h4><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#how_it_works">How It Works</a></h4>
                 </li>
                 <li>
-                    <h4><a class='navbar-options' data-target=".navbar-collapse.in" href="#" ng-click='login()'>Login</a><h4>
+                    <h4><a class='navbar-options hidden-xs' data-target=".navbar-collapse.in" href="#" ng-click='login()'>Login</a><h4>
                 </li>
             </ul>
         </div>
@@ -27,16 +30,11 @@
 </nav>
 <!-- <span class='scroll-debug' scroll-position="scroll">{{scroll}}</span> -->
 <section id="faq">
-    <div class="container landing-page-heading">
-        <div class="text-center">
-            <div>
-                <h2>FAQ</h2>
-                <hr class="primary">
-            </div>
-        </div>
+    <div class="text-center landing-page-heading">
+        <h2 class="section-heading heading-white">Frequently Asked Questions</h2>
     </div>
-    <div>
-        <uib-accordion close-others="oneAtATime" class='col-lg-6 col-md-8 col-sm-10 col-xs-12 custom-center'>
+    <div class='faqs col-lg-6 col-md-8 col-sm-10 col-xs-12 custom-center'>
+        <uib-accordion close-others="oneAtATime" >
             <uib-accordion-group heading="{{faq.question}}" ng-repeat="faq in faqs">
             {{faq.answer}}
             </uib-accordion-group>
@@ -49,14 +47,11 @@
     </div>
 </section>
 <section class="howitworks" id="how_it_works">
-    <div class="container landing-page-heading">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">How it works</h2>
-                <hr class="primary">
-            </div>
-        </div>
+    <div class="text-center landing-page-heading">
+        <h2 class="section-heading heading-white">How It Works</h2>
     </div>
+    <br>
+    <br>
     <div class="container">
         <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 custom-center">
             <div class="embed-responsive embed-responsive-16by9">
