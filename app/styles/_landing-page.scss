@@ -108,7 +108,7 @@ header .header-content {
 
 .landing-page-heading{
   background-color: $secondary-color;
-  padding: 30px 0;
+  padding: 30px 10px;
 }
 
 #services{
@@ -269,6 +269,11 @@ hr {
     margin-bottom: 50px;
   }
 
+  .recipe-thumbnail-name h5{
+    text-decoration: underline;
+    color: $link-hover-color;
+  }
+
   .recipe-pick-name{
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
@@ -376,7 +381,7 @@ hr {
 }
 .cta-services {
   margin-top: 3em;
-  margin-bottom: 2em;
+  padding-bottom: 2em;
 
   span{
     font-size: 1.5em;
@@ -434,6 +439,10 @@ footer .copyright {
 
 @media #{$mobile-width}{
 
+  .recipe-picks{
+    margin-left: auto;
+    margin-right: auto;
+  }
   .user-landing-header{
     background: url("/images/DSC_0563_mobile.jpg");
     background-position: center;
