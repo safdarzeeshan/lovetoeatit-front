@@ -14,22 +14,22 @@ angular.module('loveToEatItFrontEndApp')
     $scope.featured_bloggers = [
         {
             name:'Simply Stacie',
-            image:'/images/food_bloggers/simply_stacie.jpg',
+            image:'https://s3-us-west-2.amazonaws.com/ltei-webpage-static/food-bloggers/simply_stacie.jpg',
             blog_url:'http://www.simplystacie.net/'
         },
         {
             name:'Little Bits of Real Food',
-            image:'/images/food_bloggers/little_bits_of.jpg',
+            image:'https://s3-us-west-2.amazonaws.com/ltei-webpage-static/food-bloggers/little_bits_of.jpg',
             blog_url:'http://littlebitsof.com/'
         },
         {
             name:'Hollistic Foodie',
-            image:'/images/food_bloggers/hollistic_foodie.jpg',
+            image:'https://s3-us-west-2.amazonaws.com/ltei-webpage-static/food-bloggers/hollistic_foodie.jpg',
             blog_url:'http://holisticfoodie.com/'
         },
         {
             name:'My Daily Randomness',
-            image:'/images/food_bloggers/my_daily_randomness.jpg',
+            image:'https://s3-us-west-2.amazonaws.com/ltei-webpage-static/food-bloggers/my_daily_randomness.jpg',
             blog_url:'http://www.brittanystager.com'
         }];
 
