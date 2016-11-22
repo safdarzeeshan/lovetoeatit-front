@@ -76,6 +76,10 @@
     background-color: white;
 }
 
+.navbar-toggle{
+    margin-top: 12px;
+}
+
 @media #{$tablet-landscape}{
     .search-box{
         width: 200px !important;
@@ -129,7 +133,7 @@
     }
 
     #bs-example-navbar-collapse-1{
-        margin-top: 10px;
+        margin-top: 0;
     }
 
     .navbar-more-overlay {

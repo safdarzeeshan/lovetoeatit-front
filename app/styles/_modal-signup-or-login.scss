@@ -1,0 +1,19 @@
+.modal-signup{
+    padding: 0;
+
+    .onboarding-btn{
+        width: 50%;
+    }
+
+    .onboarding-btn-outline{
+        background-color: white;
+        border-style: solid;
+        border-color: #BA3B46;
+        border-width: 5px;
+
+        h3{
+            color: #BA3B46;
+            font-weight: bold;
+        }
+    }
+}

@@ -22,6 +22,14 @@ angular.module('loveToEatItFrontEndApp')
         return $http.get( baseUrl + '/api/recipes');
     };
 
+    recipeFactory.$getTopRecipePicks = function() {
+        return $http.get( baseUrl + '/api/toprecipepicks');
+    };
+
+    recipeFactory.$getRecipeExample = function(id) {
+        return $http.get( baseUrl + '/api/recipeexample?id=' +id );
+    };
+
     recipeFactory.$getPopularRecipesFeed = function() {
         return $http.get( baseUrl + '/api/popularrecipesfeed');
     };

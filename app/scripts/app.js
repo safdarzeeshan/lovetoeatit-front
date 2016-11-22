@@ -71,6 +71,14 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
         })
 
+        .state('recipeexample', {
+            url: '/recipeexample?id',
+            templateUrl: 'views/recipeExample.html',
+            controller: 'RecipeExampleCtrl',
+            requireLogin: false
+
+        })
+
         .state('landingpage_foodblogger', {
             url: '/foodbloggers',
             templateUrl: 'views/landingpage_foodbloggers.html',
@@ -377,7 +385,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
     csrfCDProvider.setCookieName('CSRFToken');
 
 
-}).run(function ($http, $cookies, $rootScope, $location, $state, Auth, $localStorage, Config) {
+}).run(function ($http, $cookies, $rootScope, $location, $state, Auth, $localStorage, Config, $stateParams) {
 
     $http.defaults.headers.post['x-csrftoken'] = $cookies.get('x-csrftoken') || $cookies.get('csrftoken');
 
@@ -393,7 +401,9 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
     });
 
     //check if state requires user to be logged in and the permission
-    $rootScope.$on('$stateChangeStart', function(event, toState){
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+
+        $rootScope.previousState = fromState;
 
         if (toState.requireLogin && Auth.$isLoggedIn()){
 
@@ -422,8 +432,15 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
         //redirect logged in user to default page
         if (!toState.requireLogin && Auth.$isLoggedIn()){
 
-            $state.transitionTo('user.feed');
-            event.preventDefault();
+            if (toState.url === '/recipeexample?id'){
+                $state.transitionTo('user.recipe', { 'id': toParams.id});
+                event.preventDefault();
+            }
+
+            else{
+                $state.transitionTo('user.feed');
+                event.preventDefault();
+            }
         }
 
         //redirect unlogged in user to login page

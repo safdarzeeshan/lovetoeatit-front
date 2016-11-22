@@ -1,26 +1,91 @@
 .foodblogger-landing-header{
-    background:   linear-gradient(
-        rgba(76, 76, 76, 0.5),
-        rgba(76, 76, 76, 0.1)
-    ),
-    /* bottom, image */
-    url("/images/DSC_0159_compressed.jpg");
+    background: url("/images/DSC_0553_compressed.jpg");
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    min-height: 700px;
+    background-position: top;
 }
 
-#services .container{
-    width: 60%;
+.fb-services-features{
+    margin-top: 5em;
 }
 
-.service-icon{
-    width: 60%;
-    margin: auto;
-    margin-bottom: 2em;
+.featured-blogger{
+    &:hover{
+        .featured-blogger-name{
+        opacity: 1;
+        }
+    }
+}
+
+#featured-bloggers{
+    background-color: $background-grey;
+    text-align: center;
+}
+
+.featured-bloggers{
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+}
+
+.featured-blogger{
+    padding:0;
+
+    .blogger-thumbnail-info{
+        background-color: white;
+        height: 60px;
+        padding-top: 10px;
+        // padding-left: 10px;
+    }
+
+    .featured-blogger-name{
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        background: rgba(255, 255, 255, 0.75);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+
+        h3{
+          margin-left: 2.5%;
+          margin-right: 2.5%;
+          margin-top: 43%;
+          font-weight: bold;
+        }
+    }
+}
+
+#our_story, #carousel{
+    .landing-page-heading{
+        margin-bottom: 5em;
+    }
+}
+
+.our-story-info{
+    // margin-top: 5em;
+    padding-bottom: 5em;
+
+    p{
+        font-size: 18px;
+        font-family: Times New Roman;
+        font-style: italic;
+    }
+
+    hr{
+        max-width: 20%;
+    }
+
+    .img-circle{
+        width: 6%;
+    }
+
+    h4{
+        text-align: center;
+    }
 }
 
 .howitworks-foodblogger{
@@ -32,7 +97,7 @@
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    padding: 2em 0;
+    padding: 4em 0;
 
 }
 
@@ -234,15 +299,35 @@
         font-size:1.25em;
     }
 
+    .howitworks-foodblogger{
+        padding: 2em 0;
+    }
+
 
 }
 @media screen and (max-width: 960px) {
+
+    // .featured-blogger{
+    //     padding: 3em;
+    // }
+
+    .featured-bloggers{
+        width: 80%;
+        margin: 2em 0;
+    }
+
+    .featured-blogger{
+        margin: 2em 0;
+    }
+    .featured-blogger-size{
+        width: 80%;
+    }
 
     .timeline{
         right: 42%;
     }
 
-    #how_it_works{
+    .howitworks-foodblogger{
         background-position: right;
     }
 
@@ -255,6 +340,12 @@
 }
 
 @media screen and (max-width: 768px) {
+    .fb-services-features{
+        .service-icon{
+            width: 90%;
+        }
+    }
+
     .our_story_profile_image{
         margin: auto;
         margin-bottom: 2em;
@@ -263,6 +354,7 @@
     .our_story_profile_image {
     max-width: 30%;
     }
+
 
 
 }
@@ -295,6 +387,35 @@
 
 @media screen and (max-width: 480px) {
 
+    .foodblogger-landing-header{
+        background: url("/images/DSC_0569_mobile.jpg");
+        background-position: center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    .header-content-inner-fb{
+        padding: 0;
+
+        .header-content-fb-title{
+            padding: 1em 10px;
+            background: rgba(0, 0, 0, 0.25);
+
+            h1{
+                font-size: 2em;
+                font-weight: 800;
+            }
+        }
+    }
+
+    .fb-services-features{
+        .service-icon{
+            width: 40%;
+        }
+    }
+
     .blogger-heading-container{
         width:100%!important;
     }
@@ -305,7 +426,7 @@
 
     .value_prop{
         width: 100%;
-        margin-bottom: 2em;
+        margin-bottom: 3em;
     }
 
     #phone_only{
@@ -358,8 +479,12 @@
         padding-top: 3em;
     }
 
-    .our_story_profile_image {
-    max-width: 50%;
+    .featured-blogger-size {
+    width: 90%;
+    }
+
+    .our-story-info .img-circle {
+        width: 15%;
     }
 
 }
