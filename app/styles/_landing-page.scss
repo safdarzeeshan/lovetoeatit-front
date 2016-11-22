@@ -1,0 +1,498 @@
+.navbar-default{
+    background-color: white;
+}
+
+.login-btn-mobile{
+  float: right;
+
+  h4{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+
+    a{
+      color: inherit;
+      text-decoration: none;
+      opacity: 0.6;
+    }
+  }
+}
+
+section {
+    background-color: #FFFFFF;
+}
+
+aside {
+    padding: 50px 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+
+header {
+    position: relative;
+    width: 100%;
+    color: #fff;
+    color: rgba(95, 94, 93, 0.9);
+    min-height: 700px;
+    // height: 100vh;
+
+}
+
+.user-landing-header{
+    background: url("/images/DSC_0543_compressed.jpg");
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    // min-height: auto;
+}
+
+header .header-content {
+    position: relative;
+    width: 100%;
+    padding-top: 10em;
+
+    h1{
+        color: $font-text-white;
+    }
+
+    h3{
+        color: $font-text-white;
+        font-weight: 300;
+    }
+}
+
+.header-content-inner{
+    margin-left: 10%;
+    hr{
+        margin-left: 0;
+        max-width: 7em;
+    }
+
+    .content{
+      margin-top: 3em;
+    }
+}
+
+.header-content-main-title{
+  margin-left: 0;
+  padding: 0;
+  float: none;
+}
+
+.header-content-title{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+
+  .header-content-icon{
+    width: 60px;
+    float: left;
+    margin-right: 2em;
+  }
+
+  h1{
+    margin:0px;
+  }
+}
+
+.get-it-heading-div{
+  margin-bottom: 15px
+}
+
+
+.landing-page-heading{
+  background-color: $secondary-color;
+  padding: 30px 0;
+}
+
+#services{
+  // margin-top: -150px;
+
+  .landing-page-heading{
+    background-color:$secondary-color-opaque;
+  }
+}
+
+.section-heading{
+    margin: 10px 0;
+}
+
+
+.value-props{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.value-prop{
+    padding: 40px 0;
+
+    .value-prop-box{
+          width: 60%;
+    }
+
+}
+
+.service-icon{
+  margin: auto;
+  margin-bottom: 2em;
+  width: 60%;
+}
+
+.background-grey{
+  background-color: $background-grey;
+}
+
+.background-light-grey{
+  background: rgba(253, 253, 253,0.3);
+}
+
+.cta-more-info i{
+    font-size: 5em;
+    color: $primary-color;
+}
+
+.cta-more-info{
+    padding-top: 1em;
+}
+
+.cta-more-info a:hover{
+    background-color: rgba(153, 204, 204, 1);
+}
+
+.landing-page-signup-btn{
+    float: none;
+    padding: 10px 20px;
+    font-family: 'Noto Sans','Raleway', sans-serif;
+    color: white;
+    font-weight: 200;
+    // margin-top: 2em;
+    font-size: 1.5em;
+    border: 0px solid #dbdbdb;
+    border-radius: 3px;
+    /*outline: 0;*/
+    background-color: $primary-color;
+    opacity: 0.9;
+    cursor: pointer;
+    color: rgba(255, 252, 249, 0.9);
+
+    &:hover{
+      background-color: $primary-color;
+      opacity: 1;
+    }
+}
+
+.landing-page-howitworks-btn{
+
+    float: none;
+    padding: 10px 20px;
+    font-family: 'Noto Sans','Raleway', sans-serif;
+    font-weight: 200;
+    font-size: 1.5em;
+    border-radius: 3px;
+    border:none;
+    background-color: rgba(255,255,255,0.2);
+    opacity: 0.9;
+    cursor: pointer;
+    color: rgba(255, 252, 249, 0.9);
+
+    &:hover{
+      background-color: rgba(255,255,255,0.3);
+      opacity: 1;
+    }
+}
+
+.landing-page-login-btn{
+  display: none;
+  color: #BA3B46;
+  background-color: rgba(255,255,255,0.6);
+
+  &:hover{
+    background-color: rgba(255,255,255,0.8);
+  }
+}
+
+hr {
+    max-width: 50px;
+    border-width: 3px;
+    border-color: #99cccc;
+}
+
+
+.quote {
+    color: #99cccc;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.testimonials{
+    // margin-top: 4em;
+}
+
+
+#topRecipePicks{
+  text-align: center;
+
+  .recipe-thumbnail-info{
+    height: 50px;
+
+    .recipe-thumbnail-details{
+      width: 100%;
+    }
+  }
+}
+
+.recipe-pick{
+  .recipe-thumbnail-image{
+    cursor: pointer;
+
+    &:hover{
+      .recipe-pick-name{
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.recipe-picks{
+  margin-left: 30px;
+  margin-right: 30px;
+  display: inline-block;
+  margin-top: 2em;
+
+  .recipe-thumbnail{
+    margin-bottom: 50px;
+  }
+
+  .recipe-pick-name{
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.75);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+
+    h3{
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      margin-top: 43%;
+      font-weight: bold;
+    }
+  }
+}
+
+// .carousel-inner{
+//   margin-top: 5em;
+// }
+
+
+
+/*-------------------------------*/
+/*    Carousel Fade Transition   */
+/*-------------------------------*/
+
+#fade-quote-carousel.carousel {
+  padding-bottom: 40px;
+}
+
+#fade-quote-carousel.carousel .carousel-inner .item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+      -ms-transition-property: opacity;
+          transition-property: opacity;
+}
+#fade-quote-carousel.carousel .carousel-inner .active {
+  opacity: 1;
+  -webkit-transition-property: opacity;
+      -ms-transition-property: opacity;
+          transition-property: opacity;
+}
+#fade-quote-carousel.carousel .carousel-indicators {
+  bottom: 10px;
+}
+#fade-quote-carousel.carousel .carousel-indicators > li {
+  background-color: $secondary-color;
+  border: none;
+}
+#fade-quote-carousel blockquote {
+    text-align: center;
+    border: none;
+
+    p{
+      font-size: 1em;
+      font-family: Times New Roman;
+      font-style: italic;
+      height: 8em;
+    }
+}
+#fade-quote-carousel .profile-circle {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+#wrapper {
+     width: 1005px;
+     margin: 0 auto;
+}
+#leftcolumn, #rightcolumn {
+    border: 1px solid white;
+    float: left;
+    min-height: 20px;
+    color: white;
+}
+#leftcolumn {
+     width: 10px;
+     background-color: #111;
+}
+
+#rightcolumn {
+     width: 10px;
+     background-color: #777;
+}
+
+.cta-services .btn-primary{
+    font-size: 1.5em;
+    font-weight: 400;
+    background-color: rgba(153, 204, 204, 0.8);
+    margin-top: 1em;
+    text-transform: none;
+    border-radius: 5px;
+    padding: 14px;
+    margin-bottom: 10px;
+    border: none;
+
+}
+
+.cta-services .btn-primary:hover{
+    background-color: rgba(153, 204, 204, 1);
+}
+.cta-services {
+  margin-top: 3em;
+  margin-bottom: 2em;
+
+  span{
+    font-size: 1.5em;
+  }
+}
+.custom-center {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+  background-color: $background-grey;
+  padding: 25px 0 30px;
+}
+footer .list-inline {
+  margin: 0;
+  padding: 0;
+
+  a{
+    color: $primary-color;
+  }
+}
+footer .copyright {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 1em;
+}
+
+// .yesScrolling {
+//   background-color: white !important;
+// }
+
+// .notScrolling {
+//   background-color: red !important;
+// }
+
+@media #{$tablet-portrait}{
+
+    .header-content {
+      padding-top: 16em;
+    }
+
+    .header-content-inner{
+      h1{
+        font-size: 3em;
+      }
+    }
+
+    #topRecipePicks{
+      background-color: $background-grey;
+    }
+}
+
+@media #{$mobile-width}{
+
+  .user-landing-header{
+    background: url("/images/DSC_0563_mobile.jpg");
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+
+  .landing-page-login-btn{
+    display: inline;
+
+  }
+
+  header .header-content{
+    padding-top: 10em;
+
+    .header-content-title{
+      margin-bottom: 10px;
+
+      h1{
+        font-size: 2.5em;
+        font-weight: 800;
+      }
+    }
+
+    .header-content-icon{
+      width: 37px;
+      float: left;
+      margin-right: 1em;
+    }
+    .header-content-inner{
+      text-align: center;
+      margin-left: 0;
+
+      .header-content-main-title{
+        margin-bottom: 2em;
+        margin-left: 25%;
+
+      }
+
+      hr{
+        margin-left: auto
+      }
+
+      .content{
+        margin-top: 2em;
+
+        .landing-page-signup-btn, .landing-page-howitworks-btn {
+          font-weight: 400;
+          font-size: 1.5em;
+          padding: 5px 0
+
+        }
+      }
+    }
+  }
+
+  .blogger-sub-heading{
+    font-size: 1.5em;
+  }
+}

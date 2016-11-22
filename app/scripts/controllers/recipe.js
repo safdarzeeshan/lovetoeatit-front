@@ -9,11 +9,11 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('RecipeCtrl',
-    function ($scope, $window, $stateParams, Recipe, Likes, $state) {
+    function ($scope, $window, $stateParams, Recipe, Likes, $state, $rootScope) {
 
         amplitude.logEvent('Recipe Details page');
+        // console.log($rootScope.previousState);
         var id = $stateParams.id;
-        // var $scope.heart;
 
         Recipe.$getRecipe(id)
         .then(function( response ) {
