@@ -13,10 +13,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
             <ul class="nav navbar-nav">
-                <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' href="#" ng-click='gotoRegister()'>Cookbook</a></h4></li>
-                <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' href="#" ng-click='gotoRegister()'>Likes</a></h4></li>
-                <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' href="#" ng-click='gotoRegister()'>Discover</a></h4></li>
-                <li><h4><a class='navbar-options' data-toggle="collapse" data-target=".navbar-collapse.in" href="#" ng-click='gotoRegister()'>Submit Recipe</a></h4></li>
+                <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' href="#" ng-click='signupRegisterModal()'>Cookbook</a></h4></li>
+                <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' href="#" ng-click='signupRegisterModal()'>Likes</a></h4></li>
+                <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' href="#" ng-click='signupRegisterModal()'>Discover</a></h4></li>
+                <li><h4><a class='navbar-options' data-toggle="collapse" data-target=".navbar-collapse.in" href="#" ng-click='signupRegisterModal()'>Submit Recipe</a></h4></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -56,21 +56,21 @@
         </div>
         <div class='recipe-tags'>
             <div class='recipe-details-tags' ng-repeat="category_tag in recipe.category_tags">
-                <a href="#" ng-click="gotoRegister()">
+                <a href="#" ng-click="signupRegisterModal()">
                 <span>
                     {{ category_tag.name }}
                 </span>
                 </a>
             </div>
             <div class='recipe-details-tags' ng-repeat="collection_tag in recipe.collection_tags">
-                <a href="#" ng-click="gotoRegister()">
+                <a href="#" ng-click="signupRegisterModal()">
                     <span>
                         {{ collection_tag.name }}
                     </span>
                 </a>
             </div>
             <div class='recipe-details-tags' ng-repeat="diet_tag in recipe.diet_tags">
-                <a href="#" ng-click="gotoRegister()">
+                <a href="#" ng-click="signupRegisterModal()">
                     <span>
                         {{ diet_tag.name }}
                     </span>
@@ -89,7 +89,7 @@
                 <h6>{{ recipe.time }}</h6>
             </div>
             <div class='recipe-likes'>
-                <a ng-click="gotoRegister()">
+                <a ng-click="signupRegisterModal()">
                     <img src='images/heart-outline.png'/>
                 </a>
                 <h6>{{recipe.no_of_likes}}</h6>
@@ -113,3 +113,4 @@
         <button type="button" ng-click="gotoRecipe(recipe.url)" class="btn btn-primary recipe-url-btn"><h3>View Full Recipe</h3></button>
     </div>
 </div>
+<div class='col-xs-12 block'></div>

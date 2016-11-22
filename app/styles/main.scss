@@ -12,6 +12,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 $font-heading: Lato, 'Noto Sans', 'Trebuchet MS';
 $font-text: 'Trebuchet MS';
 $font-text-secondary: Lato, 'Noto Sans', 'Trebuchet MS';
+$background-grey:#FAFAFA;
 $primary-color: #BA3B46;
 $button-color: #ED9B40;
 $secondary-color: rgba(153,204,204,1);
@@ -57,6 +58,7 @@ $tablet-landscape: "only screen and (max-width : 1024px)";
 @import 'edit_user';
 @import 'all_users';
 @import 'modal-video';
+@import 'modal-signup-or-login';
 
 
 h1{
@@ -117,7 +119,7 @@ p{
 }
 
 body{
-  background-color: #FAFAFA;
+  background-color: $background-grey;
   //for fixed navbar
   padding-top: 60px;
   font-family: $font-text;

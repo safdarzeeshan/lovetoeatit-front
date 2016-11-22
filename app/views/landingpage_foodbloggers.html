@@ -9,12 +9,15 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="/"><img class='menu-logo' alt="Brand" src='images/logo.png'/></a>
+            <div class='login-btn-mobile visible-xs'>
+                <h4><a class='navbar-options' href="#" ng-click='login()'>Login</a></h4>
+            </div>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <h4><a class='navbar-options' du-smooth-scroll duration="500" href="#services">About</a></h4>
+                    <h4><a class='navbar-options' du-smooth-scroll duration="500" href="#fb-services">About</a></h4>
                 </li>
                 <li>
                     <h4><a class='navbar-options' du-smooth-scroll duration="500" href="#how_it_works">How It Works</a></h4>
@@ -23,7 +26,7 @@
                     <h4><a class='navbar-options' href="#" ng-click='gotoFbFaq()'>FAQ</a></h4>
                 </li>
                 <li>
-                    <h4><a class='navbar-options' href="#" ng-click='login()'>Login</a><h4>
+                    <h4><a class='navbar-options hidden-xs' href="#" ng-click='login()'>Login</a><h4>
                 </li>
             </ul>
         </div>
@@ -32,67 +35,58 @@
 <!-- <span class='scroll-debug' scroll-position="scroll">{{scroll}}</span> -->
 <header class= 'foodblogger-landing-header'>
     <div class="header-content" id="page-top">
-        <div class="header-content-inner custom-center col-lg-8 col-md-10 col-sm-10 col-xs-12">
-            <h1>The only thing we love more than food is food bloggers</h1>
-            <hr>
-            <h3>Sign up and let your followers get access to your recipes instantly</h3>
-            <div  class='content'>
+        <div class="header-content-inner header-content-inner-fb col-lg-5 col-md-6 col-sm-10 col-xs-12">
+            <div class='header-content-fb-title'>
+                <h1>The only thing we love more than food is food bloggers</h1>
+            </div>
+            <hr class='hidden-xs'>
+            <div class='content'>
                 <div>
-                    <button class='col-md-3 col-sm-4 col-xs-7 landing-page-signup-btn' ng-click='register()'>Sign Up</button>
+                    <button class='col-lg-5 col-md-6 col-sm-4 col-xs-7 landing-page-signup-btn' ng-click='register()'>Sign Up</button>
                 </div>
                 <br>
                 <div>
-                    <button class='col-md-3 col-sm-4 col-xs-7 landing-page-signup-btn landing-page-login-btn' ng-click='login()'>Login</button>
+                    <button class='col-lg-5 col-md-6 col-sm-4 col-xs-7 landing-page-howitworks-btn' ng-click='fbVideo()'><i class="fa fa-play-circle-o" aria-hidden="true"></i> What We Do</button>
                 </div>
             </div>
             <br>
-             <a href="#services" du-smooth-scroll duration="500" class="cta-more-info page-scroll">
+<!--              <a href="#services" du-smooth-scroll duration="500" class="cta-more-info page-scroll">
                 <i class="fa fa-angle-down animated"></i>
-            </a>
+            </a> -->
         </div>
     </div>
 </header>
 <section id="fb-services">
-<!--         <div class="custom-center col-lg-6 col-md-8 col-sm-10 col-xs-12 text-center landing-page-heading">
-            <div class="row">
-                <div class="col-lg-12 text-center ">
-                    <h2>Want to connect with your followers beyond Instagram?</h2>
-                    <hr class="primary">
-                    <h3 class="heading-unbold blogger-sub-heading">Users often forget about food posts once they've liked them, we get your recipe links to users as soon as they like it
-                    </h3>
-                </div>
-            </div>
-        </div> -->
     <div class="text-center landing-page-heading">
         <h2 class="section-heading heading-white">Want to connect with your followers beyond Instagram?</h2>
     </div>
-    <div class="fb-services-features custom-center col-lg-8 col-md-10 col-sm-10 col-xs-10">
-        <h3 class="heading-unbold blogger-sub-heading text-center">Users often forget about food posts once they've liked them, we get your recipe links to users as soon as they like it
+    <div class="fb-services-features custom-center col-lg-11 col-md-10 col-sm-11 col-xs-12">
+        <h3 class="custom-center col-lg-8 col-md-10 col-sm-11 col-xs-11 heading-unbold blogger-sub-heading text-center">Users often forget about food posts once they've liked them, we get your recipe links to users as soon as they like it
         </h3>
         <br>
         <br>
         <div class="row">
             <div class="value_prop col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
                 <div class="service-box">
-                    <img src="/images/icons/fashion.png" class="service-icon img-responsive" alt="Food Blogger Recipe Image 1" data-wow-delay=".1s">
+                    <img src="/images/icons/fashion.png" class="service-icon img-responsive col-sm-10 col-xs-10 custom-center" alt="Food Blogger Recipe Image 1" data-wow-delay=".1s">
                     <p class="text-muted">Your content gains longevity</p>
                 </div>
             </div>
             <div class="value_prop col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
                 <div class="service-box">
-                    <img src="/images/icons/nature.png" class="service-icon img-responsive" alt="Food Blogger Recipe Image 2" data-wow-delay=".1s">
+                    <img src="/images/icons/nature.png" class="service-icon img-responsive col-sm-8 col-xs-10 custom-center" alt="Food Blogger Recipe Image 2" data-wow-delay=".1s">
                     <p class="text-muted">More exposure for your recipes</p>
                 </div>
             </div>
             <div class="value_prop col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
                 <div class="service-box">
-                   <img src="/images/icons/tool.png" class="service-icon img-responsive" alt="Food Blogger Recipe Image 3" data-wow-delay=".1s">
+                   <img src="/images/icons/tool.png" class="service-icon img-responsive col-sm-8 col-xs-10 custom-center" alt="Food Blogger Recipe Image 3" data-wow-delay=".1s">
                     <p class="text-muted">No more links in bios or static URLS</p>
                 </div>
             </div>
             <div class="value_prop col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
                 <div class="service-box">
-                    <img src="/images/icons/gps.png" class="service-icon img-responsive" alt="" data-wow-delay=".1s">
+                    <img src="/images/icons/gps.png" class="service-icon img-responsive col-sm-8 col-xs-10 custom-center" alt="" data-wow-delay=".1s">
                     <p class="text-muted">More traffic for your blog</p>
                 </div>
             </div>
@@ -171,7 +165,7 @@
 
                 <div class="carousel-inner testimonial-box">
                     <div class="active item row">
-                        <div class="col-lg-2 custom-center">
+                        <div class="col-lg-2 col-md-3 col-sm-2 col-xs-5 custom-center">
                             <img src="/images/food_bloggers/fromthelandweliveon.jpg" class="img-responsive img-circle" alt="Food Blogger - From The Land We Live On">
                         </div>
                         <div class="text-center">
@@ -182,7 +176,7 @@
                         </blockquote>
                     </div>
                     <div class="item">
-                        <div class="col-lg-2 custom-center">
+                        <div class="col-lg-2 col-md-3 col-sm-2 col-xs-5 custom-center">
                             <img src="/images/food_bloggers/healthymaven.jpg" class="img-responsive img-circle" alt="Food Blogger - The Healthy Maven">
                         </div>
                         <div class="text-center">
@@ -193,7 +187,7 @@
                         </blockquote>
                     </div>
                     <div class="item">
-                        <div class="col-lg-2 custom-center">
+                        <div class="col-lg-2 col-md-3 col-sm-2 col-xs-5 custom-center">
                             <img src="/images/food_bloggers/gardenheart.jpg" class="img-responsive img-circle" alt="Food Blogger - Garden Heart Holistic">
                         </div>
                         <div class="food-blogger-links text-center">
@@ -216,58 +210,27 @@
         </div> -->
     </div>
 </section>
-<section>
+<section id='featured-bloggers'>
     <div class="col-xs-12 text-center custom-center landing-page-heading">
         <h2 class="section-heading heading-white">See Who Is Using Us</h2>
     </div>
     <div class="featured-bloggers">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 featured-blogger">
-            <a href="#">
-                <div class="">
-                    <div class='featured-blogger-name'>
-                        <h3>
-                            From The Land We Live On
-                        </h3>
-                    </div>
-                    <img class='img-responsive' src="/images/food_bloggers/fromthelandweliveon.jpg" >
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 featured-blogger " ng-repeat="featured_blogger in featured_bloggers">
+            <div class='featured-blogger-size custom-center'>
+                <a href="#" ng-click="gotoFbPage(featured_blogger.blog_url)">
+                <div class='hidden-sm hidden-xs featured-blogger-name'>
+                    <h3>
+                        {{featured_blogger.name}}
+                    </h3>
                 </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 featured-blogger">
-            <a href="#">
-                <div class="">
-                    <div class='featured-blogger-name'>
-                        <h3>
-                            The Pineapple Collective
-                        </h3>
+                <img class='img-responsive' ng-src="{{featured_blogger.image}}" >
+                <div class='blogger-thumbnail-info visible-sm visible-xs'>
+                    <div class='recipe-thumbnail-name'>
+                        <h5>{{featured_blogger.name}}</h5>
                     </div>
-                    <img class='img-responsive' src="/images/food_bloggers/pineapplecollective.jpg" >
                 </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 featured-blogger">
-            <a href="#">
-                <div class="">
-                    <div class='featured-blogger-name'>
-                        <h3>
-                            The Healthy Maven
-                        </h3>
-                    </div>
-                    <img class='img-responsive' src="/images/food_bloggers/healthymaven.jpg" >
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 featured-blogger">
-            <a href="#">
-                <div class="">
-                    <div class='featured-blogger-name'>
-                        <h3>
-                            Garden Heart Holistic
-                        </h3>
-                    </div>
-                    <img class='img-responsive' src="/images/food_bloggers/gardenheart.jpg" >
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
     </div>
 </section>
@@ -275,17 +238,20 @@
     <div class="col-xs-12 text-center landing-page-heading">
         <h2 class="section-heading heading-white">Our Love Story</h2>
     </div>
-    <div class="our-story-info col-lg-6 col-lg-offset-3">
-        <div>
-            <p>Like hundreds and thousands of food bloggers, I use Instagram to grow my blog’s presence. It’s an amazing place to share content and is playing a bigger role in how people discover recipes. As an active user of Instagram myself, I’d like pictures of food daily but when the time came to cook these recipes I could never remember whose feed the post was on and the recipe would be lost.
-            </p>
-            <p>I realised if this was happening to me, it was also happening to my followers and the millions of followers of food bloggers all over the world. As a result, followers miss out on great recipes and food bloggers lose traffic. I wanted to solve this problem and so Love To Eat It was born.
-            </p>
-        </div>
-        <hr>
-        <div>
-            <h4>Sahar Aman - Founder & CEO</h4>
-            <img src="/images/sahar_cooking.jpg" class="img-responsive img-circle custom-center" alt="Food Blogger">
+    <div>
+        <div class="custom-center">
+            <div class="our-story-info custom-center col-lg-6 col-md-8 col-sm-8 col-xs-11">
+
+                <p class="text-muted">Like hundreds and thousands of food bloggers, I use Instagram to grow my blog’s presence. It’s an amazing place to share content and is playing a bigger role in how people discover recipes. As an active user of Instagram myself, I’d like pictures of food daily but when the time came to cook these recipes I could never remember whose feed the post was on and the recipe would be lost.
+                </p>
+                <p>I realised if this was happening to me, it was also happening to my followers and the millions of followers of food bloggers all over the world. As a result, followers miss out on great recipes and food bloggers lose traffic. I wanted to solve this problem and so Love To Eat It was born.
+                </p>
+                <hr>
+                <div>
+                    <h4>Sahar Aman - Founder & CEO</h4>
+                    <img src="/images/sahar_cooking.jpg" class="img-responsive img-circle custom-center" alt="Food Blogger">
+                </div>
+            </div>
         </div>
     </div>
 </section>

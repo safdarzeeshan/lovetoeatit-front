@@ -9,7 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('RecipeExampleCtrl',
-        function ($scope, $window, $stateParams, Recipe, $state) {
+        function ($scope, $window, $stateParams, Recipe, $state, ModalService, $element) {
 
         amplitude.logEvent('Recipe Example Details page');
         var id = $stateParams.id;
@@ -64,8 +64,47 @@ angular.module('loveToEatItFrontEndApp')
             amplitude.logEvent('Clicked recipe details', recipeProperties);
         };
 
-        $scope.gotoRegister = function(){
+        $scope.gotoSignup = function(){
+            //open modal
             $state.go('register');
         };
 
+
+        $scope.signupRegisterModal = function(){
+            ModalService.showModal({
+                templateUrl: 'views/modal_register_or_login.html',
+                controller: 'ModalLoginSignUpCtrl'
+                }).then(function(modal) {
+                    modal.element.modal();
+                    modal.close.then(function(state) {
+                        console.log(state);
+                        $state.go(state);
+                    });
+            });
+        };
+
+        $scope.gotoRegister = function(){
+            $state.go('register');
+        };
   });
+
+angular.module('loveToEatItFrontEndApp')
+    .controller('ModalLoginSignUpCtrl', function($scope, close, $state ) {
+
+        var messages = ['Eat me now! Sign up or login to get cooking!',
+                    "If you can't smell what the rock's been cooking you need to sign up or login",
+                    'Begin your foodie adventure by signing up or logging in'];
+
+        var rand_message = messages[Math.floor(Math.random() * messages.length)];
+
+        $scope.message = rand_message;
+
+
+        $scope.gotoSignup = function(){
+            close('register', 300);
+        };
+
+        $scope.gotoLogin = function(){
+            close('login', 300);
+        };
+});
