@@ -37,6 +37,8 @@ header {
     color: #fff;
     color: rgba(95, 94, 93, 0.9);
     min-height: 700px;
+    height: 100vh;
+    max-height: 1200px;
     // height: 100vh;
 
 }
@@ -439,10 +441,10 @@ footer .copyright {
 
 @media #{$mobile-width}{
 
-  .recipe-picks{
-    margin-left: auto;
-    margin-right: auto;
+  header{
+    min-height: 600px;
   }
+
   .user-landing-header{
     background: url("/images/DSC_0563_mobile.jpg");
     background-position: center;
@@ -499,6 +501,11 @@ footer .copyright {
         }
       }
     }
+  }
+
+  .recipe-picks{
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .blogger-sub-heading{

@@ -58,8 +58,7 @@ angular.module('loveToEatItFrontEndApp')
 .filter('user_liked_recipe_count',function ($filter) {
 
     return function(recipes){
-        var recipes_liked = $filter('filter')(recipes, { has_user_liked: "true" });
-        return recipes_liked.length;
+        return recipes.length;
     };
 
 });
