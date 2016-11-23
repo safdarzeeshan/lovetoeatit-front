@@ -21,7 +21,8 @@
                 <div class='collection-image'>
                     <div class='collection-thumbnail-image-border'>
                     </div>
-                    <img class="img-responsive" ng-src='{{ collection.recipes | user_liked_image }}'>
+                    <!-- <img class="img-responsive" ng-src='{{ collection.recipes | user_liked_image }}'> -->
+                    <img class="img-responsive" ng-src='{{ collection.recipes[0].image_url }}'>
                 </div>
             </a>
         </div>
