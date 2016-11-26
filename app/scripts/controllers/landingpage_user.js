@@ -58,6 +58,8 @@ angular.module('loveToEatItFrontEndApp')
     };
 
     $scope.howitworksVideo = function(){
+        amplitude.logEvent('clicked user how it works video');
+
         ModalService.showModal({
             templateUrl: 'views/modal_video.html',
             controller: "ModalCtrl",
@@ -81,6 +83,11 @@ angular.module('loveToEatItFrontEndApp')
             'id': id,
         };
         amplitude.logEvent('Clicked recipe pick', recipeProperties);
+    };
+
+    $scope.gotoFoodbloggerPage = function(){
+        amplitude.logEvent('clicked on goto foodblogger page');
+        $state.go('landingpage_foodblogger');
     };
 
 });

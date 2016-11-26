@@ -55,11 +55,13 @@ angular.module('loveToEatItFrontEndApp')
     }
 
     $scope.fbVideo = function(){
+        amplitude.logEvent('clicked food blogger mission video');
+
         ModalService.showModal({
             templateUrl: 'views/modal_video.html',
             controller: "ModalCtrl",
             inputs: {
-                message: "https://www.youtube.com/embed/79D-0dY255w?autohide=2&showinfo=0&autoplay=1"
+                message: "https://www.youtube.com/embed/WlAjuWGgzv8?autohide=2&showinfo=0&autoplay=1"
         }
         }).then(function(modal) {
             modal.element.modal();
