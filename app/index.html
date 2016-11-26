@@ -1,10 +1,10 @@
   <!doctype html>
-<html class="no-js" >
+<html ng-app="loveToEatItFrontEndApp" class="no-js" >
   <head>
     <meta charset="utf-8">
     <base href="/">
     <link rel="shortcut icon" href="/logo.ico">
-    <title>Love to Eat it - Create the cookbook of your dreams</title>
+    <title>Love To Eat It - {{title}}</title>
     <meta name="description" content="Keep track of your favourite recipes from food bloggers on Instagram! Sign-up, like a picture with our link in it & we’ll hook you with recipe info.">
     <!-- <meta name="viewport" content="width=device-width"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@
     <meta property="og:title" content="Love To Eat It" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.lovetoeat.it" />
-    <meta property="og:image" content="/images/LTEI_Facebook-share.jpg" />
+    <meta property="og:image" content="{{shareImage}}" />
     <meta property="og:description" content="Keep track of your favourite recipes from food bloggers on Instagram! Sign-up, like a picture with our link in it & we’ll hook you with recipe info." />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -53,7 +53,7 @@
     <!-- Amplitude -->
 
   </head>
-  <body ng-app="loveToEatItFrontEndApp">
+  <body>
       <div ui-view autoscroll="true"></div>
 
 
@@ -141,7 +141,8 @@
     <script src="scripts/controllers/foodblogger_recipes.js"></script>
     <script src="scripts/controllers/edituser.js"></script>
     <script src="scripts/controllers/allusers.js"></script>
-    <script src="scripts/controllers/recipeExample.js"></script>
+    <script src="scripts/controllers/guest.js"></script>
+    <script src="scripts/services/metatags.js"></script>
     <!-- endbuild -->
 </body>
 </html>

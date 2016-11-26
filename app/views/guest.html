@@ -1,0 +1,33 @@
+<nav id="user-menu" scroll-position="scroll" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/"><img class='menu-logo' alt="Love To Eat It Brand" src='images/logo.png'/></a>
+            <div class='login-btn-mobile visible-xs'>
+                <h4><a class='navbar-options' href="#" ng-click='login()'>Login</a></h4>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+  <!--               <li>
+                    <h4><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#services">About</a></h4>
+                </li> -->
+<!--                 <li>
+                    <h4><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#topRecipePicks">Recipes</a></h4>
+                </li> -->
+                <li>
+                    <h4><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="/foodbloggers">Food Bloggers</a></h4>
+                </li>
+                <li>
+                    <h4><a class='navbar-options hidden-xs' data-target=".navbar-collapse.in" href="#" ng-click='login()'>Login</a><h4>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div ui-view></div>

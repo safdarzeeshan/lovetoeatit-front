@@ -9,12 +9,18 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('UserCtrl',
-    function ($scope, $localStorage, $location, $state, Auth, $http, $cookies, $element) {
+    function ($scope, $window, $stateParams, $localStorage, $location, Likes, $state, Auth, $http, $cookies, $element) {
 
     var role,
         setupProfile;
 
     $scope.showMobileMenu = false;
+    $scope.userStatus= 'guest';
+
+    if(Auth.$isLoggedIn())
+    {
+        $scope.userStatus= 'user';
+    }
 
     //check role
     role = function(){
@@ -69,7 +75,7 @@ angular.module('loveToEatItFrontEndApp')
             delete $cookies.remove('token');
             amplitude.logEvent('Clicked Logout');
             amplitude.clearUserProperties();
-            $state.go('landingpage_user');
+            $state.go('guest.landingpage_user');
 
         }).catch(function(error){
             console.log('error' + error);
@@ -132,6 +138,14 @@ angular.module('loveToEatItFrontEndApp')
 
     $scope.darkenBackground = function(){
       console.log($('#bs-example-navbar-collapse-1').attr('aria-expanded'));
+    };
+
+    $scope.getRecipe = function(id){
+        $state.go($scope.userStatus + '.recipe' , { 'id': id});
+        var recipeProperties = {
+            'id': id,
+        };
+        amplitude.logEvent('Clicked recipe details', recipeProperties);
     };
 
     role();

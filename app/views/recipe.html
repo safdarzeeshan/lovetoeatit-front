@@ -58,9 +58,12 @@
                 <h6>{{ recipe.time }}</h6>
             </div>
             <div class='recipe-likes'>
-                <a ng-class="recipe.has_user_liked ? 'like true' : 'like false' " ng-click="likeClick(recipe.local_id)">
+                <a ng-if="userStatus === 'user'" ng-class="recipe.has_user_liked ? 'like true' : 'like false' " ng-click="likeClickRecipe(recipe.local_id)">
                     <img ng-if="recipe.has_user_liked" src='images/heart-filled.png'/>
                     <img ng-if="recipe.has_user_liked === false" src='images/heart-outline.png'/>
+                </a>
+                <a ng-if="userStatus === 'guest'" ng-click="signupRegisterModal()">
+                    <img src='images/heart-outline.png'/>
                 </a>
                 <h6>{{recipe.no_of_likes}}</h6>
             </div>

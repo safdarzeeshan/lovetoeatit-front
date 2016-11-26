@@ -23,14 +23,6 @@ angular.module('loveToEatItFrontEndApp')
             $scope.likes = response.data;
         });
 
-        $scope.getRecipe = function(id){
-            $state.go('user.recipe' , { 'id': id});
-            var recipeProperties = {
-                'id': id,
-            };
-            amplitude.logEvent('Clicked recipe details', recipeProperties);
-        };
-
         $scope.likeClick = function($index, recipe_local_id){
             amplitude.logEvent('Recipe thumbnail like clicked ');
 

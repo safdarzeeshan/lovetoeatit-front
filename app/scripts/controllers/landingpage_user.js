@@ -9,7 +9,9 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('LandingPageUserCtrl',
-    function ($scope, Recipe, $window, Config, Brand, ModalService, $state, $element) {
+    function ($scope, Recipe, $window, Config, Brand, ModalService, $state, $element, $rootScope) {
+
+    $rootScope.title = 'Begin your foodie adventure';
 
     $scope.scroll = 0;
     $scope.brand ={};
@@ -76,30 +78,11 @@ angular.module('loveToEatItFrontEndApp')
 
         console.log('here');
 
-        $state.go('recipeexample' , { 'id': id});
+        $state.go('guest.recipe' , { 'id': id});
         var recipeProperties = {
             'id': id,
         };
         amplitude.logEvent('Clicked recipe pick', recipeProperties);
-    };
-
-});
-
-angular.module('loveToEatItFrontEndApp')
-.directive('scrollPosition',function ($window) {
-
-    return {
-        scope: {
-            scroll: '=scrollPosition'
-        },
-        link: function(scope, element, attrs) {
-            var windowEl = angular.element($window);
-            var handler = function() {
-                scope.scroll = windowEl.scrollTop();
-            };
-            windowEl.on('scroll', scope.$apply.bind(scope, handler));
-            handler();
-        }
     };
 
 });

@@ -21,14 +21,5 @@ angular.module('loveToEatItFrontEndApp')
             $scope.resultCount=$scope.recipes;
 
         });
-
-        $scope.getRecipe = function(id){
-            $state.go('user.recipe' , { 'id': id});
-
-            var recipeProperties = {
-                'id': id,
-            };
-            amplitude.logEvent('Clicked recipe details', recipeProperties);
-        };
     }
 );
