@@ -169,6 +169,12 @@
         margin-top: 10px;
         color: white;
     }
+
+    &:focus, &:active{
+        background-color: $secondary-color;
+        border: none;
+    }
+
 }
 
 .recipe-url-btn:hover{

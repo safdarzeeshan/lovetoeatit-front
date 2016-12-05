@@ -8,12 +8,14 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-.controller('LoginCtrl', function ($http, $cookies, Validate, Auth, $scope, $state, $window, $localStorage) {
+.controller('LoginCtrl', function ($http, $cookies, $rootScope, Validate, Auth, $scope, $state, $window, $localStorage) {
 
     $scope.model = {'email':'','password':''};
     $scope.loading = false;
 
     amplitude.logEvent('Login Page');
+
+    $rootScope.title ="Login";
 
     $scope.gotoRegister = function(){
         amplitude.logEvent('Clicked sign up');

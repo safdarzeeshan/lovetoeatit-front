@@ -46,9 +46,12 @@
                     </div>
                 </div>
                 <div class='recipe-thumbnail-likes'>
-                    <a class="recipe-thumbnail-like" ng-click="likeClick($index, recipe.local_id)">
+                    <a ng-if="userStatus === 'user'" class="recipe-thumbnail-like" ng-click="likeClick($index, recipe.local_id)">
                         <i ng-if="recipe.has_user_liked == true" class="fa fa-heart"></i>
                         <i ng-if="recipe.has_user_liked == false" class="fa fa-heart-o"></i>
+                    </a>
+                    <a ng-if="userStatus === 'guest'" class="recipe-thumbnail-like" ng-click="signupRegisterModal()">
+                        <i class="fa fa-heart-o"></i>
                     </a>
                     <br>
                     <b>{{recipe.no_of_likes}}</b>

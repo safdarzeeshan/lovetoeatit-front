@@ -9,12 +9,14 @@
  */
 angular.module('loveToEatItFrontEndApp')
 .controller('LikesCtrl',
-    function ($scope, $window, $state,  Likes, $http, $cookies) {
+    function ($scope, $window, $rootScope, $state,  Likes, $http, $cookies) {
 
         $scope.limit = 40;
         $scope.loading= true;
         amplitude.logEvent('Likes page');
         $scope.no_likes = false;
+
+        $rootScope.title ="Your recipe likes";
 
         //get likes and populate scope
         Likes.$getLikes()
@@ -29,14 +31,6 @@ angular.module('loveToEatItFrontEndApp')
         .catch(function(error){
             console.log(error);
         });
-
-        $scope.getRecipe = function(id){
-            $state.go('user.recipe' , { 'id': id});
-            var recipeProperties = {
-                'id': id,
-            };
-            amplitude.logEvent('Clicked recipe details', recipeProperties);
-        };
 
         $scope.likeClick = function($index, recipe_local_id){
             amplitude.logEvent('Recipe thumbnail like clicked ');

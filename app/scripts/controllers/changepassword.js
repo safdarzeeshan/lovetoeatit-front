@@ -8,10 +8,12 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-  .controller('ChangePasswordCtrl', function ($scope, Auth, $state,Validate) {
+  .controller('ChangePasswordCtrl', function ($scope, $rootScope, Auth, $state,Validate) {
 
     $scope.password = {};
     $scope.pwdChanged = false;
+
+    $rootScope.title = 'Change Password';
 
     $scope.changePassword = function(formData){
         $scope.errors = [];

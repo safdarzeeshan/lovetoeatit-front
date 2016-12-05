@@ -9,12 +9,9 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('LandingPageUserCtrl',
-    function ($scope, Recipe, $window, Config, Brand, ModalService, $state, $element) {
+    function ($scope, Recipe, FoodBlogger, $window, Config, Brand, ModalService, $state, $element, $rootScope) {
 
-    $scope.scroll = 0;
-    $scope.brand ={};
-    $scope.emailBrandCta = true;
-    $scope.emailBrandSuccess = false;
+    $rootScope.title = 'Begin your foodie adventure';
 
     amplitude.logEvent('User Landing page');
 
@@ -29,6 +26,19 @@ angular.module('loveToEatItFrontEndApp')
         console.log(error);
     });
 
+    FoodBlogger.$getCategoryTagsList()
+    .then(function(response){
+        console.log(response.data)
+        $scope.categoryTags=response.data;
+    })
+    .catch(function(error){
+        console.log(error);
+    });
+
+    $scope.gotoCategoryTagRecipes = function(name){
+        $state.go('guest.tagrecipes' , { 'tag': 'category_tag', 'name': name});
+    };
+
     $scope.login = function(){
         amplitude.logEvent('User clicked Login');
         $state.go('login');
@@ -37,24 +47,6 @@ angular.module('loveToEatItFrontEndApp')
     $scope.register = function(){
         amplitude.logEvent('User clicked Sign Up');
         $state.go('register');
-    };
-
-    $scope.emailBrandDataForm = function(){
-        amplitude.logEvent('User clicked Drop us a line');
-        $scope.emailBrandCta = false;
-    };
-
-    $scope.submitBrandForm = function(){
-        amplitude.logEvent('Brand form submitted');
-        $scope.emailBrandSuccess = true;
-
-        Brand.$emailBrandData($scope.brand)
-        .success(function(response){
-            console.log(response);
-
-        }),function(error){
-            console.log('cannot send email' + error);
-        };
     };
 
     $scope.howitworksVideo = function(){
@@ -78,7 +70,7 @@ angular.module('loveToEatItFrontEndApp')
 
         console.log('here');
 
-        $state.go('recipeexample' , { 'id': id});
+        $state.go('guest.recipe' , { 'id': id});
         var recipeProperties = {
             'id': id,
         };
@@ -88,25 +80,6 @@ angular.module('loveToEatItFrontEndApp')
     $scope.gotoFoodbloggerPage = function(){
         amplitude.logEvent('clicked on goto foodblogger page');
         $state.go('landingpage_foodblogger');
-    };
-
-});
-
-angular.module('loveToEatItFrontEndApp')
-.directive('scrollPosition',function ($window) {
-
-    return {
-        scope: {
-            scroll: '=scrollPosition'
-        },
-        link: function(scope, element, attrs) {
-            var windowEl = angular.element($window);
-            var handler = function() {
-                scope.scroll = windowEl.scrollTop();
-            };
-            windowEl.on('scroll', scope.$apply.bind(scope, handler));
-            handler();
-        }
     };
 
 });

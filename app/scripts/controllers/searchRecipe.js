@@ -9,11 +9,13 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('SearchRecipeCtrl',
-    function ($scope, $stateParams, $state, Recipe) {
+    function ($scope, $rootScope, $stateParams, $state, Recipe) {
 
         amplitude.logEvent('Search results page');
         var searchTerm = $stateParams.q;
         $scope.searchTerm=searchTerm;
+
+        $rootScope.title ="Search Results";
 
         Recipe.$getRecipeSearch(searchTerm)
         .then(function( response ) {
@@ -21,14 +23,5 @@ angular.module('loveToEatItFrontEndApp')
             $scope.resultCount=$scope.recipes;
 
         });
-
-        $scope.getRecipe = function(id){
-            $state.go('user.recipe' , { 'id': id});
-
-            var recipeProperties = {
-                'id': id,
-            };
-            amplitude.logEvent('Clicked recipe details', recipeProperties);
-        };
     }
 );

@@ -9,16 +9,21 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('RecipeCtrl',
-    function ($scope, $window, $stateParams, Recipe, Likes, $state, $rootScope) {
+    function ($scope, $window, $rootScope, $stateParams, Recipe, Auth, Likes, $state) {
 
         amplitude.logEvent('Recipe Details page');
         // console.log($rootScope.previousState);
         var id = $stateParams.id;
 
+        console.log($scope.userStatus);
+
         Recipe.$getRecipe(id)
         .then(function( response ) {
             $scope.recipe = response.data;
-            var c_t = response.data.collection_tags[0].name
+            $rootScope.title = response.data.name;
+            $rootScope.shareImage = response.data.image_url;
+
+            var c_t = response.data.collection_tags[0].name;
 
             Recipe.$getRelatedRecipes(c_t)
             .then(function( response ) {
@@ -39,7 +44,7 @@ angular.module('loveToEatItFrontEndApp')
         };
 
         $scope.gotoFbRecipes = function(blog_name) {
-            $state.go('user.foodbloggerrecipes' , {'name': blog_name});
+            $state.go($scope.userStatus + '.foodbloggerrecipes' , {'name': blog_name});
         };
 
         $scope.gotoBlog = function(blog_url) {
@@ -47,25 +52,17 @@ angular.module('loveToEatItFrontEndApp')
             amplitude.logEvent('Food Blogger blog link clicked');
         };
 
-        $scope.likeClick = function(recipe_local_id){
+        $scope.gotoTagRecipes = function(tag, name){
+            $state.go($scope.userStatus + '.tagrecipes' , { 'tag': tag, 'name': name});
+        };
+
+        $scope.likeClickRecipe = function(recipe_local_id){
             amplitude.logEvent('Recipe like clicked');
             Likes.$likeRecipe(recipe_local_id)
             .then(function(response){
                 $scope.recipe.has_user_liked = response.data.has_user_liked;
                 $scope.recipe.no_of_likes = response.data.no_of_likes;
             });
-        };
-
-        $scope.getRecipe = function(id){
-            $state.go('user.recipe' , { 'id': id});
-            var recipeProperties = {
-                'id': id,
-            };
-            amplitude.logEvent('Clicked recipe details', recipeProperties);
-        };
-
-        $scope.gotoTagRecipes = function(tag, name){
-            $state.go('user.tagrecipes' , { 'tag': tag, 'name': name});
         };
 
     }

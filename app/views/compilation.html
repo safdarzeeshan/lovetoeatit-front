@@ -1,0 +1,61 @@
+<div ng-if="loading" class='col-md-4 text-center loading'>
+    <i class="fa fa-spinner fa-pulse"></i>
+    <h2>collecting some recipes...</h2>
+</div>
+
+<div ng-if="loading === false">
+    <div class='col-lg-9 col-md-10 col-xs-12 custom-center compilation-main nga-fast nga-fade' ng-if='compilationRecipes ===false 'style="background:radial-gradient(ellipse at center, rgba(0,0,0,0.37) 0%,rgba(0,0,0,0) 58%),url({{compilation.image_url}}); background-size: cover; background-repeat: no-repeat;">
+        <div class="compilation-description custom-center text-center">
+            <h1 class='heading-white'>{{ compilation.name }}</h1>
+            <h3 class='heading-white'>{{compilation.description}}</h3>
+            <button type="button" ng-click="showCompilationRecipes()" class="btn btn-primary recipe-url-btn"><h3>Begin</h3></button>
+        </div>
+    </div>
+    <div class='compilation-recipes' ng-if='compilationRecipes'>
+        <div class='compilation-recipe-arrow hidden-sm hidden-xs'>
+            <a class='arrow-left' ng-if='recipeCompPosition > 0' href='#' ng-click="prevRecipeComp()"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </div>
+        <div ng-if='compilationEnd===false' class="compilation-recipe-card col-lg-9 col-md-10 col-sm-12 col-xs-12">
+            <div class="compilation-recipe slide-animation nonDraggableImage" id='recip_comp_{{$index}}'
+                ng-swipe-right="prevRecipeComp()" ng-swipe-left="nextRecipeComp()"
+                ng-repeat="comp_recipe in compilation.recipes"
+                ng-hide="!isCurrentSlideIndex($index)">
+                <ul class='compilation-recipe-indicators-list'>
+                    <li class='compilation-recipe-indicators' ng-repeat="n in _.range(0, compilation.recipes.length)"
+                    style="width: calc(100% / {{compilation.recipes.length}})">
+                        <div class='compilation-recipe-indicator indicator-active' ng-if="n <= recipeCompPosition"></div>
+                        <div class='compilation-recipe-indicator indicator-inactive' ng-if="n> recipeCompPosition"></div>
+                    </li>
+                </ul>
+                <div class='col-lg-7 col-md-7 col-md-offset-0 col-sm-8 col-sm-offset-2 col-xs-12 compilation-recipe-image'>
+                    <div class='recipe-details-image'>
+                        <a href="#" ng-click="gotoRecipe(comp_recipe.recipe.url)">
+                            <div class='recipe-details-image-border'>
+                            </div>
+                            <img class="img-responsive" ng-src='{{ comp_recipe.recipe.image_url }}'>
+                        </a>
+                    </div>
+                </div>
+                <div class='col-lg-5 col-md-5 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12 compilation-recipe-details'>
+                    <div >
+                        <h1 class='text-center compilation-recipe-number'>{{$index + 1}}.</h1>
+                        <h3 class='text-center compilation-recipe-title'>{{comp_recipe.title}}</h3>
+                        <p>{{comp_recipe.snippet}}</p>
+                    </div>
+                    <div class='text-center'>
+                        <button type="button" ng-click="gotoRecipe(comp_recipe.recipe.url)" class="btn btn-primary recipe-url-btn"><h3>View Full Recipe</h3></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if='compilationEnd' class="compilation-recipe-card col-lg-9 col-md-10 col-xs-12 nga-fast nga-slide-right">
+            <div class="compilation-recipe slide-animation">
+                <img ng-if="userStatus === 'guest'" class="compilation-end-image" src="/images/LTEI_Facebook-share.jpg">
+                <img ng-if="userStatus === 'user'" class="compilation-end-image" src="/images/LTEI_Facebook-share.jpg">
+            </div>
+        </div>
+        <div class='compilation-recipe-arrow hidden-sm hidden-xs'>
+          <a class='arrow-right' href='#' ng-if='compilationEnd===false' ng-click="nextRecipeComp()"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</div>

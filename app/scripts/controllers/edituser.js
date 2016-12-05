@@ -8,14 +8,14 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-    .controller('EditUserCtrl', function ($scope, Auth, FoodBlogger, $window, $stateParams, $state) {
+    .controller('EditUserCtrl', function ($scope, Auth, $rootScope, FoodBlogger, $window, $stateParams, $state) {
 
         $scope.loading= true;
         $scope.success = false;
         $scope.blogger_info ={};
         var updateRole;
         var username = $stateParams.username;
-
+        $rootScope.title = 'Edit User';
 
         Auth.$getUserUsername(username)
         .success(function( response ) {

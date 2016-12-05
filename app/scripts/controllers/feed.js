@@ -9,10 +9,12 @@
  */
 angular.module('loveToEatItFrontEndApp')
 .controller('FeedCtrl',
-    function ($scope, $window, $state, Likes, Collections, Recipe) {
+    function ($scope, $window, $rootScope, $state, Likes, Collections, Recipe) {
 
         $scope.collection = true;
         $scope.lastLike = true;
+
+        $rootScope.title = 'Home';
 
         amplitude.logEvent('Feed page');
         Collections.$getCollectionsFeed()

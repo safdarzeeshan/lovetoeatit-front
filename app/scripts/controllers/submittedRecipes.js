@@ -9,7 +9,9 @@
  */
 angular.module('loveToEatItFrontEndApp')
 .controller('SubmittedRecipesCtrl',
-    function ($scope, $window, $state,  FoodBlogger) {
+    function ($scope, $rootScope, $window, $state,  FoodBlogger) {
+
+        $rootScope.title ="Submitted Recipes";
 
         amplitude.logEvent('Submitted recipes page');
         //get likes and populate scope
@@ -29,13 +31,5 @@ angular.module('loveToEatItFrontEndApp')
             // $scope.recipes[0].ig_media_associated = false;
 
         });
-
-        $scope.getRecipe = function(id){
-            $state.go('user.recipe' , { 'id': id});
-            var recipeProperties = {
-                'id': id,
-            };
-            amplitude.logEvent('Clicked recipe details', recipeProperties);
-        };
     }
 );

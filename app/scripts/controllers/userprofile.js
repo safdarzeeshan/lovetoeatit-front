@@ -8,9 +8,10 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-  .controller('UserProfileCtrl', function ($scope, $state, Config, Auth, $window) {
+  .controller('UserProfileCtrl', function ($scope, $rootScope, $state, Config, Auth, $window) {
 
     amplitude.logEvent('User profile page');
+    $rootScope.title ="User profile";
 
     Auth.$getUser()
     .success(function(response){
