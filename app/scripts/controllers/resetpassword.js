@@ -8,10 +8,12 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-  .controller('ResetPasswordCtrl', function ($scope, Auth, $state) {
+  .controller('ResetPasswordCtrl', function ($scope, $rootScope, Auth, $state) {
 
     $scope.resetPasswordConf = false;
     $scope.email = {};
+
+    $rootScope.title ="Reset Password";
 
     $scope.resetPassword = function(){
         console.log($scope.email);

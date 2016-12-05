@@ -7,8 +7,10 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-  .controller('RegisterCtrl', function ($http, $cookies, $scope, Auth, Validate, $state, $localStorage, ModalService) {
+  .controller('RegisterCtrl', function ($http, $cookies, $rootScope, $scope, Auth, Validate, $state, $localStorage, ModalService) {
     $scope.newuser = {'username':'','password':''};
+
+    $rootScope.title ="Sign Up";
 
     //check if user came from foodblogger page
     if ($localStorage.foodBloggerStatus === 'FoodBloggerWaiting'){

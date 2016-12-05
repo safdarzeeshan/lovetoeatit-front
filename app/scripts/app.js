@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
-    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService', 'ngAnimate','ui.bootstrap'
+    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService', 'ngAnimate','ui.bootstrap', 'angular-carousel', 'ngTouch','underscore'
 ]).factory('responseIntercepter', function ($q) {
     return {
         response: function (response) {
@@ -52,7 +52,7 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
     $urlRouterProvider.otherwise(function($injector, $location){
         $injector.invoke(function($state) {
-            $state.go('landingpage_user');
+            $state.go('guest.landingpage_user');
         });
     });
 
@@ -63,28 +63,47 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
         // HOME STATES AND NESTED VIEWS
 
-        .state('landingpage_user', {
-            url: '/',
+        .state('guest', {
+            url: '',
+            templateUrl: 'views/guest.html',
+            controller: 'GuestCtrl',
+            requireLogin: false
+
+        })
+
+        .state('guest.landingpage_user', {
+            url: '/foodie',
             templateUrl: 'views/landingpage_user.html',
             controller: 'LandingPageUserCtrl',
             requireLogin: false
 
         })
 
-        .state('recipeexample', {
-            url: '/recipeexample?id',
-            templateUrl: 'views/recipeExample.html',
-            controller: 'RecipeExampleCtrl',
-            requireLogin: false
-
-        })
-
-        .state('landingpage_foodblogger', {
+        .state('guest.landingpage_foodblogger', {
             url: '/foodbloggers',
             templateUrl: 'views/landingpage_foodbloggers.html',
             controller: 'LandingPageFBCtrl',
             requireLogin: false
 
+        })
+
+        .state('guest.foodbloggersfaq', {
+            url: '/foodbloggersfaq',
+            templateUrl: 'views/foodbloggers_faq.html',
+            controller: 'FaqFbCtrl',
+            requireLogin: false
+        })
+
+        .state('privacypolicy', {
+            url: '/privacypolicy',
+            templateUrl: 'views/privacypolicy.html',
+            requireLogin: false
+        })
+
+        .state('termsofuse', {
+            url: '/termsofuse',
+            templateUrl: 'views/termsofuse.html',
+            requireLogin: false
         })
 
         .state('login', {
@@ -130,25 +149,6 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             url: '/iguser/foodblogger?code',
             templateUrl: 'views/iguser.html',
             controller: 'AuthFbCtrl',
-            requireLogin: false
-        })
-
-        .state('foodbloggersfaq', {
-            url: '/foodbloggersfaq',
-            templateUrl: 'views/foodbloggers_faq.html',
-            controller: 'FaqFbCtrl',
-            requireLogin: false
-        })
-
-        .state('privacypolicy', {
-            url: '/privacypolicy',
-            templateUrl: 'views/privacypolicy.html',
-            requireLogin: false
-        })
-
-        .state('termsofuse', {
-            url: '/termsofuse',
-            templateUrl: 'views/termsofuse.html',
             requireLogin: false
         })
 
@@ -234,6 +234,125 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             onboardingStatus: ['New', 'InProgress','Complete']
         })
 
+        .state('user.allRecipes', {
+            url: '/recipes',
+            templateUrl: 'views/allRecipes.html',
+            controller: 'AllRecipesCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete'],
+            guestState: 'guest.allRecipes'
+
+        })
+
+        .state('guest.allRecipes', {
+            url: '/recipes',
+            templateUrl: 'views/allRecipes.html',
+            controller: 'AllRecipesCtrl',
+            requireLogin: false,
+            userState: 'user.allRecipes'
+
+        })
+
+        .state('user.recipe', {
+            url: '/recipe?id',
+            templateUrl: 'views/recipe.html',
+            controller: 'RecipeCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete'],
+            guestState: 'guest.recipe'
+
+        })
+
+        .state('guest.recipe', {
+            url: '/recipe?id',
+            templateUrl: 'views/recipe.html',
+            controller: 'RecipeCtrl',
+            requireLogin: false,
+            userState: 'user.recipe'
+        })
+
+        .state('user.tagrecipes', {
+            url: '/tagrecipes?name&tag',
+            templateUrl: 'views/allTagRecipes.html',
+            controller: 'AllTagRecipesCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete'],
+            guestState: 'guest.tagrecipes'
+
+        })
+
+        .state('guest.tagrecipes', {
+            url: '/tagrecipes?name&tag',
+            templateUrl: 'views/allTagRecipes.html',
+            controller: 'AllTagRecipesCtrl',
+            requireLogin: false,
+            userState: 'user.tagrecipes'
+
+        })
+
+        .state('user.foodbloggerrecipes', {
+            url: '/foodblogger?name',
+            templateUrl: 'views/foodblogger_recipes.html',
+            controller: 'FoodbloggerRecipesCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete'],
+            guestState: 'guest.foodbloggerrecipes'
+
+        })
+
+        .state('guest.foodbloggerrecipes', {
+            url: '/foodblogger?name',
+            templateUrl: 'views/foodblogger_recipes.html',
+            controller: 'FoodbloggerRecipesCtrl',
+            requireLogin: false,
+            userState: 'user.foodbloggerrecipes'
+
+        })
+
+        .state('user.compilation', {
+            url: '/compilation?name',
+            templateUrl: 'views/compilation.html',
+            controller: 'CompilationCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete'],
+            guestState: 'guest.compilation'
+
+        })
+
+        .state('guest.compilation', {
+            url: '/compilation?name',
+            templateUrl: 'views/compilation.html',
+            controller: 'CompilationCtrl',
+            requireLogin: false,
+            userState: 'user.compilation'
+
+        })
+
+        .state('user.searchResults', {
+            url: '/search?q',
+            templateUrl: 'views/searchResults.html',
+            controller: 'SearchRecipeCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete'],
+            guestState: 'guest.searchResults'
+
+        })
+
+        .state('guest.searchResults', {
+            url: '/search?q',
+            templateUrl: 'views/searchResults.html',
+            controller: 'SearchRecipeCtrl',
+            requireLogin: false,
+            userState: 'user.searchResults'
+
+        })
+
         .state('user.feed', {
             url: '/feed',
             templateUrl: 'views/feed.html',
@@ -268,57 +387,6 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             url: '/collection?collection_tag',
             templateUrl: 'views/collectionTag.html',
             controller: 'CollectionTagCtrl',
-            requireLogin: true,
-            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
-            onboardingStatus: ['Complete']
-
-        })
-
-        .state('user.allRecipes', {
-            url: '/recipes',
-            templateUrl: 'views/allRecipes.html',
-            controller: 'AllRecipesCtrl',
-            requireLogin: true,
-            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
-            onboardingStatus: ['Complete']
-
-        })
-
-        .state('user.recipe', {
-            url: '/recipe?id',
-            templateUrl: 'views/recipe.html',
-            controller: 'RecipeCtrl',
-            requireLogin: true,
-            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
-            onboardingStatus: ['Complete']
-
-        })
-
-        .state('user.tagrecipes', {
-            url: '/tagrecipes?name&tag',
-            templateUrl: 'views/allTagRecipes.html',
-            controller: 'AllTagRecipesCtrl',
-            requireLogin: true,
-            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
-            onboardingStatus: ['Complete']
-
-        })
-
-        .state('user.foodbloggerrecipes', {
-            url: '/foodblogger?name',
-            templateUrl: 'views/foodblogger_recipes.html',
-            controller: 'FoodbloggerRecipesCtrl',
-            requireLogin: true,
-            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
-            onboardingStatus: ['Complete']
-
-        })
-
-
-        .state('user.searchResults', {
-            url: '/search?q',
-            templateUrl: 'views/searchResults.html',
-            controller: 'SearchRecipeCtrl',
             requireLogin: true,
             role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
             onboardingStatus: ['Complete']
@@ -429,25 +497,77 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
             }
         }
 
+        //redirect logged in user to user page
+        if (!toState.requireLogin && Auth.$isLoggedIn() && toState.hasOwnProperty('userState')){
+
+            if(toState.name === 'guest.foodbloggerrecipes'){
+                $state.transitionTo(toState.userState, {'name': toParams.name});
+                event.preventDefault();
+            }
+
+            if(toState.name === 'guest.recipe'){
+                $state.transitionTo(toState.userState, {'id': toParams.id});
+                event.preventDefault();
+            }
+
+            if(toState.name === 'guest.compilation'){
+                $state.transitionTo(toState.userState, {'name': toParams.name});
+                event.preventDefault();
+            }
+
+            if(toState.name === 'guest.tagrecipes'){
+                $state.transitionTo(toState.userState, {'tag': toParams.tag, 'name': toParams.name });
+                event.preventDefault();
+            }
+
+            if((toState.name === 'guest.allRecipes') || (toState.name === 'guest.searchResults')){
+                $state.transitionTo(toState.userState);
+                event.preventDefault();
+            }
+
+        }
+
         //redirect logged in user to default page
-        if (!toState.requireLogin && Auth.$isLoggedIn()){
+        if (!toState.requireLogin && Auth.$isLoggedIn() && !toState.hasOwnProperty('userState')){
 
-            if (toState.url === '/recipeexample?id'){
-                $state.transitionTo('user.recipe', { 'id': toParams.id});
+            $state.transitionTo('user.feed');
+            event.preventDefault();
+
+        }
+
+        //redirect unlogged in user to guest state
+        if (toState.requireLogin && !Auth.$isLoggedIn() && toState.hasOwnProperty('guestState')){
+
+            if(toState.name === 'user.foodbloggerrecipes'){
+                $state.transitionTo(toState.guestState, {'name': toParams.name});
                 event.preventDefault();
             }
 
-            else{
-                $state.transitionTo('user.feed');
+            if(toState.name === 'user.recipe'){
+                $state.transitionTo(toState.guestState, {'id': toParams.id});
                 event.preventDefault();
             }
+
+            if(toState.name === 'user.compilation'){
+                $state.transitionTo(toState.guestState, {'name': toParams.name});
+                event.preventDefault();
+            }
+
+            if(toState.name === 'user.tagrecipes'){
+                $state.transitionTo(toState.guestState, {'tag': toParams.tag, 'name': toParams.name });
+                event.preventDefault();
+            }
+
+            if((toState.name === 'user.allRecipes') || (toState.name === 'user.searchResults')){
+                $state.transitionTo(toState.guestState);
+                event.preventDefault();
+            }
+
         }
 
         //redirect unlogged in user to login page
-        if (toState.requireLogin && !Auth.$isLoggedIn()){
-
-            // User isn’t authenticated
-            $state.transitionTo('landingpage_user');
+        if (toState.requireLogin && !Auth.$isLoggedIn() && !toState.hasOwnProperty('guestState')){
+            $state.transitionTo('guest.landingpage_user');
             event.preventDefault();
         }
 

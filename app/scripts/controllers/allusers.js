@@ -8,9 +8,11 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-    .controller('AllUsersCtrl', function ($scope, Auth, $state) {
+    .controller('AllUsersCtrl', function ($scope, $rootScope, Auth, $state) {
 
         $scope.loading= true;
+
+        $rootScope.title = 'All Users';
 
         Auth.$getAllUsers()
         .then(function( response ) {

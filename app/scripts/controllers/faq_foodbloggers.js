@@ -9,9 +9,11 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('FaqFbCtrl',
-    function ($scope, $window, Config, $localStorage, $state) {
+    function ($scope, $window, $rootScope, Config, $localStorage, $state) {
 
         $scope.oneAtATime = true;
+
+        $rootScope.title = 'Foodbloggers FAQ';
 
         $scope.faqs = [
             {

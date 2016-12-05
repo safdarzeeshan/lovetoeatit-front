@@ -9,7 +9,9 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('LandingPageFBCtrl',
-    function ($scope, $window, $localStorage, Config, ModalService, $state, $element) {
+    function ($scope, $window, $rootScope, $localStorage, Config, ModalService, $state, $element) {
+
+    $rootScope.title = "Foodbloggers love us";
 
     $scope.featured_bloggers = [
         {
@@ -18,12 +20,12 @@ angular.module('loveToEatItFrontEndApp')
             blog_url:'http://www.simplystacie.net/'
         },
         {
-            name:'Little Bits of Real Food',
+            name:'Little Bits Of...',
             image:'https://s3-us-west-2.amazonaws.com/ltei-webpage-static/food-bloggers/little_bits_of.jpg',
             blog_url:'http://littlebitsof.com/'
         },
         {
-            name:'Hollistic Foodie',
+            name:'Holistic Foodie',
             image:'https://s3-us-west-2.amazonaws.com/ltei-webpage-static/food-bloggers/hollistic_foodie.jpg',
             blog_url:'http://holisticfoodie.com/'
         },
@@ -50,9 +52,9 @@ angular.module('loveToEatItFrontEndApp')
         $state.go('foodbloggersfaq');
     };
 
-    $scope.gotoFbPage = function(blog_url){
-        $window.open(blog_url);
-    }
+    $scope.gotoFbRecipes = function(blog_name){
+        $state.go('guest.foodbloggerrecipes' , {'name': blog_name});
+    };
 
     $scope.fbVideo = function(){
         amplitude.logEvent('clicked food blogger mission video');

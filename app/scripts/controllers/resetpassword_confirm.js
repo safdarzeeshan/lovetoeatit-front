@@ -8,7 +8,7 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-  .controller('ResetPasswordConfirmCtrl', function ($state, $scope, $stateParams, Auth, Validate) {
+  .controller('ResetPasswordConfirmCtrl', function ($state, $scope, $rootScope, $stateParams, Auth, Validate) {
     $scope.model = {'new_password1':'','new_password2':''};
     $scope.complete = false;
     $scope.loading = false;
