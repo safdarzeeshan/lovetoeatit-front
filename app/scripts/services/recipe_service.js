@@ -26,8 +26,8 @@ angular.module('loveToEatItFrontEndApp')
         return $http.get( baseUrl + '/api/toprecipepicks');
     };
 
-    recipeFactory.$getRecipeExample = function(id) {
-        return $http.get( baseUrl + '/api/recipeexample?id=' +id );
+    recipeFactory.$getCompilation = function(name) {
+        return $http.get( baseUrl + '/api/compilation?name=' + name );
     };
 
     recipeFactory.$getPopularRecipesFeed = function() {

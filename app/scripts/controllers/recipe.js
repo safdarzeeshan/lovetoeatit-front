@@ -9,7 +9,7 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('RecipeCtrl',
-    function ($scope, $window, $stateParams, Recipe, Auth, Likes, $state, $rootScope) {
+    function ($scope, $window, $rootScope, $stateParams, Recipe, Auth, Likes, $state) {
 
         amplitude.logEvent('Recipe Details page');
         // console.log($rootScope.previousState);

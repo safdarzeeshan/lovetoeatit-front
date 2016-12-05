@@ -11,17 +11,32 @@
             <div class='login-btn-mobile visible-xs'>
                 <h4><a class='navbar-options' href="#" ng-click='login()'>Login</a></h4>
             </div>
+            <div class='login-btn-mobile visible-xs'>
+                <h4><a class='navbar-options' href="#" ng-click='gotoFbPage()'>Food Blogger?</a></h4>
+            </div>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' ng-class="navClass('collections')" href="#" ng-click='signupRegisterModal()'>Cookbook</a></h4></li>
+                <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' ng-class="navClass('likes')" href="#" ng-click='signupRegisterModal()'>Likes</a></h4></li>
+                <li><h4><a data-toggle="collapse" data-target=".navbar-collapse.in" class='navbar-options' ng-class="navClass('recipes')" href="#" ng-click='gotoAllRecipes()'>Discover</a></h4></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
-  <!--               <li>
-                    <h4><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#services">About</a></h4>
-                </li> -->
 <!--                 <li>
                     <h4><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#topRecipePicks">Recipes</a></h4>
                 </li> -->
                 <li>
-                    <h4><a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="/foodbloggers">Food Bloggers</a></h4>
+                  <form class="navbar-form" role="search">
+                    <div class="form-group">
+                      <input type="text" class="form-control search-box" placeholder="Search by recipe, ingredients etc" ng-model='searchTerm'>
+                    </div>
+                    <button type="submit" data-toggle="collapse"  data-target=".navbar-collapse.in" class="search-btn" ng-click='search(searchTerm)'><i class="fa fa-search"></i></button>
+                  </form>
+                </li>
+                <li class='li-option-foodblogger hidden-xs'>
+                    <a class='navbar-options' data-target=".navbar-collapse.in" du-smooth-scroll href="#" ng-click='gotoFbPage()'>
+                        <h4 class='heading-white'>Are you a food blogger?</h4>
+                    </a>
                 </li>
                 <li>
                     <h4><a class='navbar-options hidden-xs' data-target=".navbar-collapse.in" href="#" ng-click='login()'>Login</a><h4>
@@ -30,4 +45,4 @@
         </div>
     </div>
 </nav>
-<div ui-view></div>
+<div class="content" ui-view autoscroll="true"></div>

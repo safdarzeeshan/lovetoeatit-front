@@ -38,6 +38,10 @@ module.exports = function(config) {
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+      'bower_components/angular-touch/angular-touch.js',
+      'bower_components/angular-carousel/dist/angular-carousel.js',
+      'bower_components/underscore/underscore.js',
+      'bower_components/angular-underscore-module/angular-underscore-module.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

@@ -9,12 +9,14 @@
  */
 angular.module('loveToEatItFrontEndApp')
 .controller('FoodbloggerRecipesCtrl',
-    function ($scope, $stateParams, $window, $state,  Auth, FoodBlogger ,Likes, $http, $cookies) {
+    function ($scope, $stateParams, $rootScope, $window, $state,  Auth, FoodBlogger ,Likes, $http, $cookies) {
 
         $scope.limit = 40;
         $scope.loading= true;
         var name = $stateParams.name;
         amplitude.logEvent('food blogger recipe page');
+
+        $rootScope.title = name + "'s Recipes";
 
         //get likes and populate scope
         FoodBlogger.$getFoodBloggerRecipes(name)

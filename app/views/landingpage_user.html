@@ -87,7 +87,20 @@
         </div>
     </div>
 </section>
-
+<section id="topRecipePicks">
+    <div class="col-xs-12 text-center landing-page-heading">
+        <h2 class="section-heading heading-white">Check out our favorite categories</h2>
+    </div>
+    <div class='category-tags'>
+        <div class='recipe-details-tags landing-page-tags' ng-repeat="tag in categoryTags">
+            <a href="#" ng-click="gotoCategoryTagRecipes(tag.name)">
+                <span>
+                    {{ tag.name }}
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
 <!-- <section class="banner">
     <div class="container landing-page-heading">
         <div class="text-center">

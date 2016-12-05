@@ -9,11 +9,13 @@
  */
 angular.module('loveToEatItFrontEndApp')
 .controller('CollectionsCtrl',
-    function ($scope, $window, $state, Collections, $filter) {
+    function ($scope, $window, $rootScope, $state, Collections, $filter) {
 
         amplitude.logEvent('Collections page');
         $scope.loading= true;
         $scope.no_collections = false;
+
+        $rootScope.title = 'Your Cookbook';
 
         //get all recipes and populate scope
         Collections.$getAllCollections()

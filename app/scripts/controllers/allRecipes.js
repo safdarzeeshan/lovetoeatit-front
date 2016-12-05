@@ -9,12 +9,13 @@
  */
 angular.module('loveToEatItFrontEndApp')
 .controller('AllRecipesCtrl',
-    function ($scope, $window, $state, Auth, Recipe, Likes, FoodBlogger) {
+    function ($scope, $window, $state, Auth, Recipe, Likes, FoodBlogger, $rootScope) {
 
         $scope.limit = 40;
         $scope.loading= true;
 
         amplitude.logEvent('Discover Page');
+        $rootScope.title = 'Discover New Recipes';
         //get all recipes and populate scope
         Recipe.$getAllRecipes()
         .then(function( response ) {

@@ -48,6 +48,26 @@ angular.module('loveToEatItFrontEndApp')
             amplitude.logEvent('Clicked recipe details', recipeProperties);
         };
 
+        $scope.search = function(searchTerm){
+            $state.go('guest.searchResults' , { 'q': searchTerm});
+            //Add search term to amplitude
+            var searchProperties = {
+                'searchTerm': searchTerm,
+            };
+            amplitude.logEvent('Clicked search', searchProperties);
+        };
+
+        $scope.gotoAllRecipes = function() {
+            $state.go('guest.allRecipes');
+            amplitude.logEvent('Clicked Discover');
+        };
+
+        $scope.gotoFbPage = function(){
+            console.log('here');
+            $state.go('guest.landingpage_foodblogger');
+            amplitude.logEvent('Clicked are you a foodblooger');
+        };
+
   });
 
 angular.module('loveToEatItFrontEndApp')

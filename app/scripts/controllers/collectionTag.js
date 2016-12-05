@@ -9,13 +9,15 @@
  */
 angular.module('loveToEatItFrontEndApp')
 .controller('CollectionTagCtrl',
-    function ($scope, $stateParams, $state, $http, $cookies, Collections, Likes) {
+    function ($scope, $stateParams, $rootScope, $state, $http, $cookies, Collections, Likes) {
 
         $scope.loading= true;
         amplitude.logEvent('Collection tag page');
         //get collection for tag and populate scope
         var collectionTag = $stateParams.collection_tag;
         $scope.collection_name = collectionTag;
+
+        $rootScope.title = 'Your ' + collectionTag + ' Recipes';
 
         Collections.$getCollection(collectionTag)
         .then(function( response ) {

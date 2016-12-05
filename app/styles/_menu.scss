@@ -49,6 +49,28 @@
     margin-right: 20px;
 }
 
+.li-option-foodblogger{
+    background: $secondary-color-overlay;
+    transition: background-color 0.2s ease;
+
+    .navbar-options{
+        opacity: 1;
+        padding: 0px;
+
+        h4{
+            width: 130px;
+            margin: 0;
+            padding: 9px 9px;
+            text-align: center;
+            line-height: 21px;
+        }
+    }
+
+    &:hover{
+        background: $secondary-color;
+    }
+}
+
 #dropdown-toggle{
     padding: 0;
     margin-right: 15px;

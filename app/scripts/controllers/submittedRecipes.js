@@ -9,7 +9,9 @@
  */
 angular.module('loveToEatItFrontEndApp')
 .controller('SubmittedRecipesCtrl',
-    function ($scope, $window, $state,  FoodBlogger) {
+    function ($scope, $rootScope, $window, $state,  FoodBlogger) {
+
+        $rootScope.title ="Submitted Recipes";
 
         amplitude.logEvent('Submitted recipes page');
         //get likes and populate scope

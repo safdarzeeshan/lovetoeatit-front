@@ -9,7 +9,9 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('SubmitRecipeCtrl',
-    function (Auth, $http, $scope, $state, FoodBlogger, Upload, $cookies, ModalService, $element) {
+    function (Auth, $http, $scope, $rootScope, $state, FoodBlogger, Upload, $cookies, ModalService, $element) {
+
+    $rootScope.title ="Submit Recipe";
 
     amplitude.logEvent('Submit Recipe page');
     $scope.recipe ={};

@@ -9,12 +9,14 @@
  */
 angular.module('loveToEatItFrontEndApp')
 .controller('LikesCtrl',
-    function ($scope, $window, $state,  Likes, $http, $cookies) {
+    function ($scope, $window, $rootScope, $state,  Likes, $http, $cookies) {
 
         $scope.limit = 40;
         $scope.loading= true;
         amplitude.logEvent('Likes page');
         $scope.no_likes = false;
+
+        $rootScope.title ="Your recipe likes";
 
         //get likes and populate scope
         Likes.$getLikes()

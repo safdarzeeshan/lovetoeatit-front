@@ -9,14 +9,9 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('LandingPageUserCtrl',
-    function ($scope, Recipe, $window, Config, Brand, ModalService, $state, $element, $rootScope) {
+    function ($scope, Recipe, FoodBlogger, $window, Config, Brand, ModalService, $state, $element, $rootScope) {
 
     $rootScope.title = 'Begin your foodie adventure';
-
-    $scope.scroll = 0;
-    $scope.brand ={};
-    $scope.emailBrandCta = true;
-    $scope.emailBrandSuccess = false;
 
     amplitude.logEvent('User Landing page');
 
@@ -31,6 +26,19 @@ angular.module('loveToEatItFrontEndApp')
         console.log(error);
     });
 
+    FoodBlogger.$getCategoryTagsList()
+    .then(function(response){
+        console.log(response.data)
+        $scope.categoryTags=response.data;
+    })
+    .catch(function(error){
+        console.log(error);
+    });
+
+    $scope.gotoCategoryTagRecipes = function(name){
+        $state.go('guest.tagrecipes' , { 'tag': 'category_tag', 'name': name});
+    };
+
     $scope.login = function(){
         amplitude.logEvent('User clicked Login');
         $state.go('login');
@@ -39,24 +47,6 @@ angular.module('loveToEatItFrontEndApp')
     $scope.register = function(){
         amplitude.logEvent('User clicked Sign Up');
         $state.go('register');
-    };
-
-    $scope.emailBrandDataForm = function(){
-        amplitude.logEvent('User clicked Drop us a line');
-        $scope.emailBrandCta = false;
-    };
-
-    $scope.submitBrandForm = function(){
-        amplitude.logEvent('Brand form submitted');
-        $scope.emailBrandSuccess = true;
-
-        Brand.$emailBrandData($scope.brand)
-        .success(function(response){
-            console.log(response);
-
-        }),function(error){
-            console.log('cannot send email' + error);
-        };
     };
 
     $scope.howitworksVideo = function(){

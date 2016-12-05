@@ -8,10 +8,12 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-  .controller('AllTagRecipesCtrl', function ($scope, $stateParams, Auth, Recipe, $state) {
+  .controller('AllTagRecipesCtrl', function ($scope, $rootScope, $stateParams, Auth, Recipe, $state) {
 
     var tag = $stateParams.tag;
     var name = $stateParams.name;
+
+    $rootScope.title = 'Find ' + $stateParams.name + ' Recipes';
 
     $scope.loading= true;
     $scope.limit = 40;

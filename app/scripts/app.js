@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
-    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService', 'ngAnimate','ui.bootstrap'
+    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService', 'ngAnimate','ui.bootstrap', 'angular-carousel', 'ngTouch','underscore'
 ]).factory('responseIntercepter', function ($q) {
     return {
         response: function (response) {
@@ -313,6 +313,26 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
         })
 
+        .state('user.compilation', {
+            url: '/compilation?name',
+            templateUrl: 'views/compilation.html',
+            controller: 'CompilationCtrl',
+            requireLogin: true,
+            role: ['Foodie','FoodBloggerWaiting','FoodBlogger','Admin'],
+            onboardingStatus: ['Complete'],
+            guestState: 'guest.compilation'
+
+        })
+
+        .state('guest.compilation', {
+            url: '/compilation?name',
+            templateUrl: 'views/compilation.html',
+            controller: 'CompilationCtrl',
+            requireLogin: false,
+            userState: 'user.compilation'
+
+        })
+
         .state('user.searchResults', {
             url: '/search?q',
             templateUrl: 'views/searchResults.html',
@@ -490,6 +510,11 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
                 event.preventDefault();
             }
 
+            if(toState.name === 'guest.compilation'){
+                $state.transitionTo(toState.userState, {'name': toParams.name});
+                event.preventDefault();
+            }
+
             if(toState.name === 'guest.tagrecipes'){
                 $state.transitionTo(toState.userState, {'tag': toParams.tag, 'name': toParams.name });
                 event.preventDefault();
@@ -523,13 +548,17 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
                 event.preventDefault();
             }
 
+            if(toState.name === 'user.compilation'){
+                $state.transitionTo(toState.guestState, {'name': toParams.name});
+                event.preventDefault();
+            }
+
             if(toState.name === 'user.tagrecipes'){
                 $state.transitionTo(toState.guestState, {'tag': toParams.tag, 'name': toParams.name });
                 event.preventDefault();
             }
 
             if((toState.name === 'user.allRecipes') || (toState.name === 'user.searchResults')){
-                console.log('here')
                 $state.transitionTo(toState.guestState);
                 event.preventDefault();
             }

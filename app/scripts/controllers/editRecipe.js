@@ -9,8 +9,9 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('EditRecipeCtrl',
-    function ($scope, FoodBlogger, Recipe, Upload, $state, ModalService, $element) {
+    function ($scope, FoodBlogger, $rootScope, Recipe, Upload, $state, ModalService, $element) {
 
+    $rootScope.title = 'Edit Recipe';
 
     amplitude.logEvent('Edit recipe page');
     $scope.recipe ={};
