@@ -9,13 +9,14 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('UserCtrl',
-    function ($scope, $window, $stateParams, $localStorage, $location, Likes, $state, Auth, $http, $cookies, $element) {
+    function ($scope, $window, $stateParams, $localStorage, $location, Likes, $state, Auth, $http, $cookies, $element, $rootScope) {
 
     var role,
         setupProfile;
 
     $scope.showMobileMenu = false;
     $scope.userStatus= 'guest';
+    $rootScope.shareUrl = $location.absUrl();
 
     if(Auth.$isLoggedIn())
     {

@@ -8,13 +8,14 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-  .controller('GuestCtrl', function ($scope, Likes, $state, Auth, ModalService, $element) {
+  .controller('GuestCtrl', function ($scope, Likes, $location, $state, Auth, ModalService, $element, $rootScope) {
 
         $scope.login = function(){
             amplitude.logEvent('User clicked Login');
             $state.go('login');
         };
 
+        $rootScope.shareUrl = $location.absUrl();
         $scope.userStatus = 'guest';
 
         if(Auth.$isLoggedIn())

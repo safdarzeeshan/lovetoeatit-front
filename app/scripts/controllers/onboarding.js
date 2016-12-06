@@ -9,6 +9,8 @@
  */
 angular.module('loveToEatItFrontEndApp')
   .controller('OnboardingCtrl',
-    function () {
+    function ($rootScope) {
+
+        $rootScope.title ="Pre heating the oven";
 
 });

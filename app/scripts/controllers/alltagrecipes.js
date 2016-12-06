@@ -23,6 +23,7 @@ angular.module('loveToEatItFrontEndApp')
         $scope.loading= false;
         $scope.tag = name;
         $scope.recipes = response.data;
+        $rootScope.shareImage = response.data[0].image_url;
     });
 
 

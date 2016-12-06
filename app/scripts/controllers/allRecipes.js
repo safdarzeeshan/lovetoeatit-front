@@ -21,6 +21,7 @@ angular.module('loveToEatItFrontEndApp')
         .then(function( response ) {
             $scope.recipes = response.data;
             $scope.loading= false;
+            $rootScope.shareImage = response.data[0].image_url;
 
         })
         .catch(function(error){

@@ -14,7 +14,7 @@ angular.module('loveToEatItFrontEndApp')
     $rootScope.title = 'Begin your foodie adventure';
 
     amplitude.logEvent('User Landing page');
-
+    $rootScope.shareImage = 'https://s3-us-west-2.amazonaws.com/ltei-webpage-static/share+images/LTEI_Facebook-share.jpg';
 
     Recipe.$getTopRecipePicks()
     .then(function( response ) {
