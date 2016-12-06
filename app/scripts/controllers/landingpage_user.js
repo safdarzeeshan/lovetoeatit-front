@@ -12,6 +12,7 @@ angular.module('loveToEatItFrontEndApp')
     function ($scope, Recipe, FoodBlogger, $window, Config, Brand, ModalService, $state, $element, $rootScope) {
 
     $rootScope.title = 'Begin your foodie adventure';
+    $rootScope.shareDescription = 'Keep track of your favourite recipes from food bloggers on Instagram! Sign-up, like a picture with our link in it & we’ll hook you with recipe info.';
 
     amplitude.logEvent('User Landing page');
     $rootScope.shareImage = 'https://s3-us-west-2.amazonaws.com/ltei-webpage-static/share+images/LTEI_Facebook-share.jpg';

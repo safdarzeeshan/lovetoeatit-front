@@ -15,6 +15,8 @@ angular.module('loveToEatItFrontEndApp')
         $scope.lastLike = true;
 
         $rootScope.title = 'Home';
+        $rootScope.shareDescription = 'Keep track of your favourite recipes from food bloggers on Instagram! Sign-up, like a picture with our link in it & we’ll hook you with recipe info.';
+
 
         amplitude.logEvent('Feed page');
         Collections.$getCollectionsFeed()

@@ -17,6 +17,8 @@ angular.module('loveToEatItFrontEndApp')
         amplitude.logEvent('food blogger recipe page');
 
         $rootScope.title = name + "'s Recipes";
+        $rootScope.shareDescription = name + "'s Recipes." + 'Keep track of your favourite recipes from food bloggers on Instagram! Sign-up, like a picture with our link in it & we’ll hook you with recipe info.';
+
 
         //get likes and populate scope
         FoodBlogger.$getFoodBloggerRecipes(name)
