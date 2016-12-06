@@ -13,6 +13,8 @@ angular.module('loveToEatItFrontEndApp')
 
     $rootScope.title = "Foodbloggers love us";
     $rootScope.shareImage = 'https://s3-us-west-2.amazonaws.com/ltei-webpage-static/share+images/LTEI_Facebook-share.jpg';
+    $rootScope.shareDescription = "Users often forget about food posts once they've liked them, we get your recipe links to users as soon as they like it";
+
 
     $scope.featured_bloggers = [
         {

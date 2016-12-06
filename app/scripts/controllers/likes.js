@@ -17,6 +17,8 @@ angular.module('loveToEatItFrontEndApp')
         $scope.no_likes = false;
 
         $rootScope.title ="Your recipe likes";
+        $rootScope.shareDescription = 'Keep track of your favourite recipes from food bloggers on Instagram! Sign-up, like a picture with our link in it & we’ll hook you with recipe info.';
+
 
         //get likes and populate scope
         Likes.$getLikes()

@@ -6,6 +6,22 @@
     // for Safari
     display: -webkit-flex;
     -webkit-align-items: center;
+
+    .compilation-description{
+
+        p{
+            font-size: 18px;
+        }
+
+        .recipe-url-btn{
+            background-color: $primary-color;
+            opacity: 0.9;
+
+            &:hover{
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .compilation-recipes{
@@ -99,7 +115,18 @@
  }
 
  .compilation-recipe-image{
-    padding: 4em
+    padding: 4em;
+    padding-bottom: 3em;
+
+    .blogger-name{
+        margin-top: 10px;
+
+        p{
+            font-size: 14px;
+            font-family: Times New Roman;
+            font-style: italic;
+        }
+    }
  }
 
 .compilation-recipe-details{
@@ -170,6 +197,19 @@
         .recipe-url-btn{
             width: 100%;
         }
+    }
+
+    .compilation-recipe-number{
+        font-family: Lato, "Noto Sans", "Trebuchet MS";
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 20px;
+        float: left;
+        font-size: 32px;
+    }
+
+    .compilation-recipe-title{
+        text-align: left !important;
     }
 
     .compilation-main{

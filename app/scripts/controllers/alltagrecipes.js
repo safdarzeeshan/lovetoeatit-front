@@ -14,6 +14,8 @@ angular.module('loveToEatItFrontEndApp')
     var name = $stateParams.name;
 
     $rootScope.title = 'Find ' + $stateParams.name + ' Recipes';
+    $rootScope.shareDescription =  'Find ' + $stateParams.name + ' Recipes' + 'Keep track of your favourite recipes from food bloggers on Instagram! Sign-up, like a picture with our link in it & we’ll hook you with recipe info.';
+
 
     $scope.loading= true;
     $scope.limit = 40;

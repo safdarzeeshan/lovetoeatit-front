@@ -16,6 +16,8 @@ angular.module('loveToEatItFrontEndApp')
     amplitude.logEvent('Login Page');
 
     $rootScope.title ="Login";
+    $rootScope.shareDescription = 'Keep track of your favourite recipes from food bloggers on Instagram! Sign-up, like a picture with our link in it & we’ll hook you with recipe info.';
+
 
     $scope.gotoRegister = function(){
         amplitude.logEvent('Clicked sign up');

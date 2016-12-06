@@ -4,11 +4,12 @@
 </div>
 
 <div ng-if="loading === false">
-    <div class='col-lg-9 col-md-10 col-xs-12 custom-center compilation-main nga-fast nga-fade' ng-if='compilationRecipes ===false 'style="background:radial-gradient(ellipse at center, rgba(0,0,0,0.37) 0%,rgba(0,0,0,0) 58%),url({{compilation.image_url}}); background-size: cover; background-repeat: no-repeat;">
-        <div class="compilation-description custom-center text-center">
+    <div class='col-lg-9 col-md-10 col-xs-12 custom-center compilation-main nga-fast nga-fade' ng-if='compilationRecipes ===false 'style="background:radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0) 75%),url({{compilation.image_url}}); background-size: cover; background-repeat: no-repeat;">
+        <div class="compilation-description col-lg-8 col-md-10 col-sm-10 col-xs-12 custom-center text-center">
             <h1 class='heading-white'>{{ compilation.name }}</h1>
-            <h3 class='heading-white'>{{compilation.description}}</h3>
-            <button type="button" ng-click="showCompilationRecipes()" class="btn btn-primary recipe-url-btn"><h3>Begin</h3></button>
+            <br>
+            <p class='heading-white'>{{compilation.description}}</p>
+            <button type="button" ng-click="showCompilationRecipes()" class="btn btn-primary recipe-url-btn"><h3>Lets Get Started</h3></button>
         </div>
     </div>
     <div class='compilation-recipes' ng-if='compilationRecipes'>
@@ -35,8 +36,11 @@
                             <img class="img-responsive" ng-src='{{ comp_recipe.recipe.image_url }}'>
                         </a>
                     </div>
+                    <div class='blogger-name text-center'>
+                        <p>Recipe by {{comp_recipe.recipe.food_blogger.blog_name}}<p>
+                    </div>
                 </div>
-                <div class='col-lg-5 col-md-5 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12 compilation-recipe-details'>
+                <div class='col-lg-5 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2 col-xs-12 compilation-recipe-details'>
                     <div >
                         <h1 class='text-center compilation-recipe-number'>{{$index + 1}}.</h1>
                         <h3 class='text-center compilation-recipe-title'>{{comp_recipe.title}}</h3>
@@ -50,8 +54,23 @@
         </div>
         <div ng-if='compilationEnd' class="compilation-recipe-card col-lg-9 col-md-10 col-xs-12 nga-fast nga-slide-right">
             <div class="compilation-recipe slide-animation">
-                <img ng-if="userStatus === 'guest'" class="compilation-end-image" src="/images/LTEI_Facebook-share.jpg">
-                <img ng-if="userStatus === 'user'" class="compilation-end-image" src="/images/LTEI_Facebook-share.jpg">
+                <a ng-if="userStatus === 'guest'" href='#' ng-click='gotoRegister()'>
+                    <img class="compilation-end-image" src="/images/LTEI_Facebook-share.jpg">
+                </a>
+                <div ng-if="userStatus === 'user'">
+                    <br>
+                    <h3 class='text-center'>Did you enjoy that? Checkout some of our recipe categories</h3>
+                    <div class='category-tags'>
+                        <div class='recipe-details-tags landing-page-tags' ng-repeat="tag in categoryTags">
+                        <a href="#" ng-click="gotoCategoryTagRecipes(tag.name)">
+                        <span>
+                        {{ tag.name }}
+                        </span>
+                        </a>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class='compilation-recipe-arrow hidden-sm hidden-xs'>

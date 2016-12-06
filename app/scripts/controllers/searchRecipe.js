@@ -16,6 +16,8 @@ angular.module('loveToEatItFrontEndApp')
         $scope.searchTerm=searchTerm;
 
         $rootScope.title ="Search Results for " + searchTerm;
+        $rootScope.shareDescription = 'Keep track of your favourite recipes from food bloggers on Instagram! Sign-up, like a picture with our link in it & we’ll hook you with recipe info.';
+
 
         Recipe.$getRecipeSearch(searchTerm)
         .then(function( response ) {
