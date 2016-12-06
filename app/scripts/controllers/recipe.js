@@ -22,6 +22,7 @@ angular.module('loveToEatItFrontEndApp')
             $scope.recipe = response.data;
             $rootScope.title = response.data.name;
             $rootScope.shareImage = response.data.image_url;
+            $rootScope.shareDescription = response.data.snippet;
 
             var c_t = response.data.collection_tags[0].name;
 

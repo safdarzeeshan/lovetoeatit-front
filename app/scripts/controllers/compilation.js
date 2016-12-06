@@ -8,7 +8,7 @@
  * Controller of the loveToEatItFrontEndApp
  */
 angular.module('loveToEatItFrontEndApp')
-  .controller('CompilationCtrl', function ($scope, $window, $stateParams, $state, Recipe, $rootScope, _) {
+  .controller('CompilationCtrl', function ($scope, $window, FoodBlogger, $stateParams, $state, Recipe, $rootScope, _, hotkeys) {
 
     var compilationName = $stateParams.name;
     $scope.recipeCompPosition= 0;
@@ -21,13 +21,38 @@ angular.module('loveToEatItFrontEndApp')
     amplitude.logEvent('Recipe Compilation', {'name':compilationName});
     $rootScope.title = $stateParams.name;
 
+    hotkeys.add({
+        combo: 'right',
+        description: 'Next Recipe',
+        callback: function() {
+            $scope.nextRecipeComp();
+        }
+    });
+
+    hotkeys.add({
+        combo: 'left',
+        description: 'Previous Recipe',
+        callback: function() {
+            $scope.prevRecipeComp();
+        }
+    });
+
     Recipe.$getCompilation(compilationName)
     .then(function( response ) {
         $scope.loading= false;
         $scope.compilation = response.data;
-        $rootScope.shareImage = response.data.image_url;
+        $rootScope.shareImage = response.data.share_image_url;
+        $rootScope.shareDescription = response.data.description;
+
     });
 
+    FoodBlogger.$getCategoryTagsList()
+    .then(function(response){
+        $scope.categoryTags=response.data;
+    })
+    .catch(function(error){
+        console.log(error);
+    });
     $scope.showCompilationRecipes = function(){
         amplitude.logEvent('Clicked Begin');
         $scope.compilationRecipes = true;
@@ -73,6 +98,10 @@ angular.module('loveToEatItFrontEndApp')
     $scope.gotoRecipe = function(recipe_url) {
         $window.open(recipe_url);
         amplitude.logEvent('Recipe blog link clicked');
+    };
+
+    $scope.gotoCategoryTagRecipes = function(name){
+        $state.go($scope.userStatus + '.tagrecipes' , { 'tag': 'category_tag', 'name': name});
     };
 
   })
