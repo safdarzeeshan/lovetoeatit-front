@@ -7,13 +7,13 @@
     <title>Love To Eat It - {{title}}</title>
     <meta name="fragment" content="!">
     <meta name="description" content="Keep track of your favourite recipes from food bloggers on Instagram! Sign-up, like a picture with our link in it & we’ll hook you with recipe info.">
-    <!-- <meta name="viewport" content="width=device-width"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--Open Graph tags-->
+
+    <!--Open Graph tags-->
     <meta property="og:title" content="Love To Eat It - {{title}}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{shareUrl}}" />
-    <meta property="og:image" content="{{shareImage}}" />
+    <meta property="og:image:url" content="{{shareImage}}" />
     <meta property="og:description" content="Keep track of your favourite recipes from food bloggers on Instagram! Sign-up, like a picture with our link in it & we’ll hook you with recipe info." />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -45,21 +45,11 @@
 
       amplitude.init("26289a3becaff6ba6aa8872bb90143b5");
     </script>
-    <script type="text/javascript">
-    (function() {
-    var hm = document.createElement('script'); hm.type ='text/javascript'; hm.async = true;
-    hm.src = ('++u-heatmap-it+log-js').replace(/[+]/g,'/').replace(/-/g,'.');
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
-
     <!-- Amplitude -->
 
   </head>
   <body>
       <div ui-view autoscroll="true"></div>
-
-
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 
