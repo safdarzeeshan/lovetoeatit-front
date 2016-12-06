@@ -15,13 +15,13 @@ angular.module('loveToEatItFrontEndApp')
         var searchTerm = $stateParams.q;
         $scope.searchTerm=searchTerm;
 
-        $rootScope.title ="Search Results";
+        $rootScope.title ="Search Results for " + searchTerm;
 
         Recipe.$getRecipeSearch(searchTerm)
         .then(function( response ) {
             $scope.recipes = response.data;
             $scope.resultCount=$scope.recipes;
-
+            $rootScope.shareImage = response.data[0].image_url;
         });
     }
 );

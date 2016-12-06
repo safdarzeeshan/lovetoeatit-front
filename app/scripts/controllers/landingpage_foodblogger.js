@@ -12,6 +12,7 @@ angular.module('loveToEatItFrontEndApp')
     function ($scope, $window, $rootScope, $localStorage, Config, ModalService, $state, $element) {
 
     $rootScope.title = "Foodbloggers love us";
+    $rootScope.shareImage = 'https://s3-us-west-2.amazonaws.com/ltei-webpage-static/share+images/LTEI_Facebook-share.jpg';
 
     $scope.featured_bloggers = [
         {
@@ -57,6 +58,8 @@ angular.module('loveToEatItFrontEndApp')
     };
 
     $scope.fbVideo = function(){
+        amplitude.logEvent('clicked food blogger mission video');
+
         ModalService.showModal({
             templateUrl: 'views/modal_video.html',
             controller: "ModalCtrl",

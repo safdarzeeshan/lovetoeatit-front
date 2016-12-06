@@ -14,7 +14,7 @@ angular.module('loveToEatItFrontEndApp')
     $rootScope.title = 'Begin your foodie adventure';
 
     amplitude.logEvent('User Landing page');
-
+    $rootScope.shareImage = 'https://s3-us-west-2.amazonaws.com/ltei-webpage-static/share+images/LTEI_Facebook-share.jpg';
 
     Recipe.$getTopRecipePicks()
     .then(function( response ) {
@@ -50,6 +50,8 @@ angular.module('loveToEatItFrontEndApp')
     };
 
     $scope.howitworksVideo = function(){
+        amplitude.logEvent('clicked user how it works video');
+
         ModalService.showModal({
             templateUrl: 'views/modal_video.html',
             controller: "ModalCtrl",
@@ -73,6 +75,11 @@ angular.module('loveToEatItFrontEndApp')
             'id': id,
         };
         amplitude.logEvent('Clicked recipe pick', recipeProperties);
+    };
+
+    $scope.gotoFoodbloggerPage = function(){
+        amplitude.logEvent('clicked on goto foodblogger page');
+        $state.go('landingpage_foodblogger');
     };
 
 });
