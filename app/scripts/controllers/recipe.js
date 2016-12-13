@@ -16,6 +16,7 @@ angular.module('loveToEatItFrontEndApp')
         var id = $stateParams.id;
 
         console.log($scope.userStatus);
+        console.log($rootScope.previousState);
 
         Recipe.$getRecipe(id)
         .then(function( response ) {

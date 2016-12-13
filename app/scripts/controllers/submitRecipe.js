@@ -90,14 +90,12 @@ angular.module('loveToEatItFrontEndApp')
             }
 
         }).catch(function(error){
-            console.log(error);
             $scope.loading= false;
             $scope.showForm= true;
             $scope.fromImageUrl= true;
-            // $scope.noRecipeInfo= true;
-            amplitude.logEvent('error');
-            console.log(error);
             $scope.submittingRecipe= false;
+            amplitude.logEvent('error');
+
             ModalService.showModal({
                 templateUrl: 'views/modal_error.html',
                 controller: "ModalCtrl",
