@@ -43,6 +43,8 @@ module.exports = function(config) {
       'bower_components/underscore/underscore.js',
       'bower_components/angular-underscore-module/angular-underscore-module.js',
       'bower_components/angular-hotkeys/build/hotkeys.js',
+      'bower_components/slick-carousel/slick/slick.js',
+      'bower_components/angular-slick-carousel/dist/angular-slick.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
