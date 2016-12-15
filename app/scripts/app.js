@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
-    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService', 'ngAnimate','ui.bootstrap', 'angular-carousel', 'ngTouch','underscore','cfp.hotkeys'
+    'ngCookies', 'ui.router', 'csrf-cross-domain', 'ngStorage', 'checklist-model', 'ngFileUpload', 'ngImgCrop', 'duScroll', 'angularModalService', 'ngAnimate','ui.bootstrap', 'angular-carousel', 'ngTouch','underscore','cfp.hotkeys', 'slickCarousel'
 ]).factory('responseIntercepter', function ($q) {
     return {
         response: function (response) {
@@ -454,6 +454,10 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
 }).config(function(hotkeysProvider) {
     hotkeysProvider.includeCheatSheet = false;
+
+}).config(function (slickCarouselConfig) {
+    slickCarouselConfig.dots = false;
+    slickCarouselConfig.autoplay = false;
 
 }).run(function ($http, $cookies, $rootScope, $location, $state, Auth, $localStorage, Config, $stateParams) {
 
