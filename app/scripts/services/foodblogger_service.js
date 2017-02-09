@@ -61,6 +61,29 @@ angular.module('loveToEatItFrontEndApp')
         });
     };
 
+    foodBloggerFactory.$submitRecipeWithImageAdmin = function(recipeData, image, imageFileName) {
+
+        var fd = new FormData();
+        fd.append('image', image, imageFileName);
+        fd.append('data', recipeData);
+
+        return  $http.post(baseUrl + '/api/recipecreateadmin/', fd, {
+            transformRequest: angular.identity,
+            headers: {'x-csrftoken': $cookies.get('x-csrftoken'), 'Content-Type': undefined}
+        });
+    };
+
+
+    foodBloggerFactory.$sendFbRecipeEmail = function(recipe_id) {
+
+        return $http({
+            method: 'GET',
+            url: baseUrl + '/api/sendfbrecipeemail?recipe_id=' + recipe_id,
+            headers : {'x-csrftoken': $cookies.get('x-csrftoken'),'Content-Type': 'application/json'},
+        });
+    };
+
+
     foodBloggerFactory.$editRecipe = function(id, recipeData, image, imageFileName) {
 
         var fd = new FormData();

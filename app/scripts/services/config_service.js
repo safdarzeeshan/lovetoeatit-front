@@ -13,7 +13,6 @@ angular.module('loveToEatItFrontEndApp')
 
     //local - Backend
     // config.$baseUrl = 'http://api.lovetoeat.test:8000';
-
     //AWS - Backend
     config.$baseUrl =  'http://api.lovetoeat.it';
 
