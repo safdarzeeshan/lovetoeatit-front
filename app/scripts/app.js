@@ -403,6 +403,16 @@ var loveToEatItFrontEndApp = angular.module('loveToEatItFrontEndApp', [
 
         })
 
+        .state('user.submitRecipeAdmin', {
+            url: '/submitrecipeadmin',
+            templateUrl: 'views/submitRecipeAdmin.html',
+            controller: 'SubmitRecipeAdminCtrl',
+            requireLogin: true,
+            role: ['Admin'],
+            onboardingStatus: ['Complete']
+
+        })
+
         .state('user.editRecipe', {
             url: '/editrecipe',
             templateUrl: 'views/editRecipe.html',

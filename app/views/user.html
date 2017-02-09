@@ -35,6 +35,7 @@
             <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" ng-click='gotoUserProfile()'>Profile</a></li>
             <li ng-if="FoodBlogger || Admin"><a  data-toggle="collapse"  data-target=".navbar-collapse.in" href="#" ng-click='gotoSubmittedRecipes()'>Submitted Recipes</a></li>
             <li ng-if="FoodBlogger || Admin" role="separator" class="divider"></li>
+            <li ng-if="Admin"><a href="#" data-toggle="collapse"  data-target=".navbar-collapse.in" ng-click='gotoNewRecipeAdmin()'>Add Recipe</a></li>
             <li ng-if="Admin"><a href="#" data-toggle="collapse"  data-target=".navbar-collapse.in" ng-click='gotoEditRecipe()'>Edit Recipe</a></li>
             <li ng-if="Admin"><a href="#" data-toggle="collapse"  data-target=".navbar-collapse.in" ng-click='gotoEditUser()'>Edit User</a></li>
             <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" ng-click='logout()'>Logout</a></li>
